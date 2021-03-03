@@ -10,10 +10,11 @@ spring:
       config: classpath:ehcache.xml
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.106.185.189:3306/culpro?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&zeroDateTimeBehavior=convertToNull&useOldAliasMetadataBehavior=true
+    url: jdbc:mysql://localhost:3306/qzzp?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&zeroDateTimeBehavior=convertToNull&useOldAliasMetadataBehavior=true
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
+    name: qzzp #Êý¾Ý¿âÃû
     druid:
       stat-view-servlet:
         enabled: false
@@ -37,7 +38,6 @@ spring:
       filter:
         stat:
           log-slow-sql: true
-    name: culpro
   thymeleaf:
     #    prefix: classpath:/templates
     cache: false
