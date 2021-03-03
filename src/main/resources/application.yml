@@ -1,0 +1,75 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: zyy-portals
+  # 缓存配置
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:ehcache.xml
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.106.185.189:3306/culpro?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&zeroDateTimeBehavior=convertToNull&useOldAliasMetadataBehavior=true
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      stat-view-servlet:
+        enabled: false
+        login-username: admin
+        login-password: sin0s0ft
+        allow: 20.20.10.1/24
+        url-pattern: "/druid/*"
+      web-stat-filter:
+        enabled: false
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+        url-pattern: "/*"
+      initialSize: 5
+      maxActive: 500
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      filter:
+        stat:
+          log-slow-sql: true
+    name: culpro
+  thymeleaf:
+    #    prefix: classpath:/templates
+    cache: false
+    encoding: utf-8
+  # 热部署
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+    freemarker:
+      cache: false    #页面不加载缓存，修改即时生效
+
+mybatis:
+  #  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.zzyportals.dataobject
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+pagehelper:
+  helperDialect: mysql
+  offsetAsPageNum: true
+  rowBoundsWithCount: true
+  reasonable: false
+  supportMethodsArguments: true
+  returnPageInfo: true
+  params: count=countSql
+
+logging:
+  #  file:
+  #    name: zyy-portals.log
+  #    max-size: 10MB
+  com.zzyportals: debug
+  level:
+    root: info
+
