@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/news-notice-office/news-notice-office.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/footer.css}">
+    <title>河北中医药网</title>
+</head>
+<body>
+<!-- 引用页面头部-->
+<div th:replace="commons/head :: head"></div>
+<div class="container-fluid" >
+    <div class="row" th:each="news,status:${newsList}">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 news-border">
+            <div class="row">
+                <div class="col-2 col-md-1 news-list-time">
+                    <div class="news-red-line"></div>
+                    <div class="news-circle">
+                        <div class="text-center news-circle-text" th:text="${#dates.format(news.dataDelayedRelease,'dd')}"></div>
+                    </div>
+                    <span class="news-list-time" th:text="${#dates.format(news.dataDelayedRelease,'yyyy.MM')}"></span>
+                </div>
+                <div class="col-10 col-md-11 news-list-right" >
+                    <a class="news-list-right-title"
+                       th:text="${news.dataTitle}" th:href="@{/news/detail.html(itemid=${news.itemid},pageNum=${newsList.pageNum},pageSize=${newsList.pageSize},menutab=2)} ">
+                    </a>
+                    <p class="news-list-right-text" th:utext="${#strings.abbreviate(news.dataContent,155)}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <br>
+    <!--page bar-->
+    <div class="row" th:if="${newsList.getPageNum() le newsList.getPages()}">
+        <div class="offset-lg-2 offset-xl-2 col-12 col-md-8 col-lg-8 col-xl-8">
+            <div class="row  pagerow col-12 col-sm-12" th:if="${newsList.pages<10}">
+                <ul id="menu">
+                    <li th:if="${newsList.pageNum}>1"><a class="page-btn" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-1,pageSize=${newsList.pageSize},menutab=2)}">&lt;</a></li>
+                    <li th:each="num : ${#numbers.sequence(1,newsList.pages)}">
+                        <a th:classappend="page-btn" th:text="${num}" th:class="${newsList.pageNum eq num ? 'page-btn-active':''}"
+                           th:href="@{/news/list.html(pageNum=${num},pageSize=${newsList.pageSize},menutab=2)}"></a>
+                    </li>
+                    <li th:if="${newsList.pageNum lt newsList.pages}">
+                        <a class="page-btn" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+1,pageSize=${newsList.pageSize},menutab=2)}">&gt;</a>
+                    </li>
+                    <li>
+                        <select th:onchange="goNewsPageSize()" id="pageNewsSelect" class="page-select">
+                            <option th:selected="${newsList.pageSize eq 10}" value="10">10条/页</option>
+                            <option th:selected="${newsList.pageSize eq 20}" value="20">20条/页</option>
+                            <option th:selected="${newsList.pageSize eq 30}" value="30">30条/页</option>
+                        </select>
+                    </li>
+                    <li><div class="news-page-lastitem">跳至
+                        <input th:type="number" id="inputContentNews" class="news-input" th:min="1" th:max="${newsList.pages}" th:value="${newsList.pageNum}">页
+                        <a th:onclick="goNewsPage()"><span class="page-btn-sure">Go</span></a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="offset-lg-2 offset-xl-2 col-12 col-md-8 col-lg-8 col-xl-8">
+            <div class="row  pagerow col-12 col-sm-12" th:if="${newsList.pages>10}">
+                <ul id="menu">
+                    <li th:if="${newsList.pageNum}>1"><a class="page-btn" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-1,pageSize=${newsList.pageSize},menutab=2)}">&lt;</a></li>
+                    <li th:if="${newsList.pageNum-8 gt 1}"><a class="page-btn" th:text="${newsList.pageNum-9}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-9,pageSize=${newsList.pageSize})}"></a></li>
+                    <li th:if="${newsList.pageNum-7 gt 1}"><a class="page-btn" th:text="${newsList.pageNum-8}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-8,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum-6 gt 1}"><a class="page-btn" th:text="${newsList.pageNum-7}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-7,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum-5 gt 1}"><a class="page-btn" th:text="${newsList.pageNum-6}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-6,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum-4 gt 1}"><a class="page-btn" th:text="${newsList.pageNum-5}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-5,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum-3 gt 1}"><a class="page-btn" th:text="${newsList.pageNum-4}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-4,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum-2 gt 1}"><a class="page-btn" th:text="${newsList.pageNum-3}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-3,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum-1 gt 1}"><a class="page-btn" th:text="${newsList.pageNum-2}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}-2,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum gt 1}" > <a class="page-btn" th:text="${newsList.pageNum-1}"  th:href="@{/news/list.html(pageNum=${newsList.pageNum}-1,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum le newsList.pages}">  <a th:classappend="page-btn" th:class="${newsList.pageNum le newsList.pages ? 'page-btn-active':''}" th:text="${newsList.pageNum}" th:href="@{/news/list.html(pageNum=${newsList.pageNum},pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum+1 lt newsList.pages}"><a class="page-btn" th:text="${newsList.pageNum+1}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+1,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum+2 lt newsList.pages}"><a class="page-btn" th:text="${newsList.pageNum+2}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+2,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum+3 lt newsList.pages}"><a class="page-btn" th:text="${newsList.pageNum+3}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+3,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum+4 lt newsList.pages}"><a class="page-btn" th:text="${newsList.pageNum+4}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+4,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum+5 lt newsList.pages}"><a class="page-btn" th:text="${newsList.pageNum+5}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+5,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum+6 lt newsList.pages}"><a class="page-btn" th:text="${newsList.pageNum+6}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+6,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum+7 lt newsList.pages}"><a class="page-btn" th:text="${newsList.pageNum+7}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+7,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum+8 lt newsList.pages}"><a class="page-btn" th:text="${newsList.pageNum+8}" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+8,pageSize=${newsList.pageSize},menutab=2)}"></a></li>
+                    <li th:if="${newsList.pageNum lt newsList.pages}">  <a class="page-btn" th:href="@{/news/list.html(pageNum=${newsList.pageNum}+1,pageSize=${newsList.pageSize},menutab=2)}">&gt;</a></li>
+                    <li>
+                        <select     th:onchange="'goNewsPageSize2()'" id="pageNewsSelect2" class="page-select">
+                            <option th:selected="${newsList.pageSize eq 10}"  value="10">10条/页</option>
+                            <option th:selected="${newsList.pageSize eq 20}" value="20">20条/页</option>
+                            <option th:selected="${newsList.pageSize eq 30}" value="30">30条/页</option>
+                        </select>
+                    </li>
+                    <li>
+                        <div class="news-page-lastitem">
+                            跳至<input th:type="number" id="inputContentNews2" th:max="${newsList.pages}" th:min="1"  class="news-input" th:value="${newsList.pageNum}">页
+                            <a href="javascript:void (0)" th:onclick="goNewsPage2()"><span class="page-btn-sure">Go</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--引用页面底部-->
+<div th:replace="commons/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+<script type="text/javascript"   th:src="@{/project/js/newsOfficeNotice.js}"> </script>
+</body>
+</html>

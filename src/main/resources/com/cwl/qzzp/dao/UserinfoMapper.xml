@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cwl.qzzp.dao.UserinfoMapper">
+  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.UserinfoDTO">
+    <id column="UserId" jdbcType="CHAR" property="userid" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="jobHuntingStatus" jdbcType="VARCHAR" property="jobhuntingstatus" />
+    <result column="identitys" jdbcType="VARCHAR" property="identitys" />
+    <result column="heardImage" jdbcType="VARCHAR" property="heardimage" />
+    <result column="personalAdvantage" jdbcType="VARCHAR" property="personaladvantage" />
+    <result column="itemCreateAt" jdbcType="TIMESTAMP" property="itemcreateat" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    UserId, email, `password`, userName, gender, birthday, phone, jobHuntingStatus, identitys, 
+    heardImage, personalAdvantage, itemCreateAt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where UserId = #{userid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from userinfo
+    where UserId = #{userid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" keyColumn="UserId" keyProperty="userid" parameterType="com.cwl.qzzp.dto.UserinfoDTO" useGeneratedKeys="true">
+    insert into userinfo (email, `password`, userName, 
+      gender, birthday, phone, 
+      jobHuntingStatus, identitys, heardImage, 
+      personalAdvantage, itemCreateAt)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{phone,jdbcType=VARCHAR}, 
+      #{jobhuntingstatus,jdbcType=VARCHAR}, #{identitys,jdbcType=VARCHAR}, #{heardimage,jdbcType=VARCHAR}, 
+      #{personaladvantage,jdbcType=VARCHAR}, #{itemcreateat,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="UserId" keyProperty="userid" parameterType="com.cwl.qzzp.dto.UserinfoDTO" useGeneratedKeys="true">
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="jobhuntingstatus != null">
+        jobHuntingStatus,
+      </if>
+      <if test="identitys != null">
+        identitys,
+      </if>
+      <if test="heardimage != null">
+        heardImage,
+      </if>
+      <if test="personaladvantage != null">
+        personalAdvantage,
+      </if>
+      <if test="itemcreateat != null">
+        itemCreateAt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="jobhuntingstatus != null">
+        #{jobhuntingstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="identitys != null">
+        #{identitys,jdbcType=VARCHAR},
+      </if>
+      <if test="heardimage != null">
+        #{heardimage,jdbcType=VARCHAR},
+      </if>
+      <if test="personaladvantage != null">
+        #{personaladvantage,jdbcType=VARCHAR},
+      </if>
+      <if test="itemcreateat != null">
+        #{itemcreateat,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.UserinfoDTO">
+    update userinfo
+    <set>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="jobhuntingstatus != null">
+        jobHuntingStatus = #{jobhuntingstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="identitys != null">
+        identitys = #{identitys,jdbcType=VARCHAR},
+      </if>
+      <if test="heardimage != null">
+        heardImage = #{heardimage,jdbcType=VARCHAR},
+      </if>
+      <if test="personaladvantage != null">
+        personalAdvantage = #{personaladvantage,jdbcType=VARCHAR},
+      </if>
+      <if test="itemcreateat != null">
+        itemCreateAt = #{itemcreateat,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where UserId = #{userid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.UserinfoDTO">
+    update userinfo
+    set email = #{email,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      phone = #{phone,jdbcType=VARCHAR},
+      jobHuntingStatus = #{jobhuntingstatus,jdbcType=VARCHAR},
+      identitys = #{identitys,jdbcType=VARCHAR},
+      heardImage = #{heardimage,jdbcType=VARCHAR},
+      personalAdvantage = #{personaladvantage,jdbcType=VARCHAR},
+      itemCreateAt = #{itemcreateat,jdbcType=TIMESTAMP}
+    where UserId = #{userid,jdbcType=CHAR}
+  </update>
+</mapper>

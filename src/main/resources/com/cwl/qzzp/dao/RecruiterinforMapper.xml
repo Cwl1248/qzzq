@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cwl.qzzp.dao.RecruiterinforMapper">
+  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.RecruiterinforDTO">
+    <id column="itemId" jdbcType="CHAR" property="itemid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyname" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    itemId, userName, `password`, companyName, title, createTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from recruiterinfor
+    where itemId = #{itemid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from recruiterinfor
+    where itemId = #{itemid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO" useGeneratedKeys="true">
+    insert into recruiterinfor (userName, `password`, companyName, 
+      title, createTime)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO" useGeneratedKeys="true">
+    insert into recruiterinfor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="companyname != null">
+        companyName,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO">
+    update recruiterinfor
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where itemId = #{itemid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO">
+    update recruiterinfor
+    set userName = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where itemId = #{itemid,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false">
+
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <!--defaultCache:echcache的默认缓存策略  -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="1800"
+            timeToLiveSeconds="1800"
+            maxElementsOnDisk="100000"
+            diskExpiryThreadIntervalSeconds="1800"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+    <!-- home page数据缓存 -->
+    <cache name="HomePageCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="120"
+           maxElementsOnDisk="10000"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+    <!-- 字典数据缓存策略 -->
+    <cache name="DictitemDOSCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="86400"
+           timeToLiveSeconds="86400"
+           maxElementsOnDisk="10000"
+           diskExpiryThreadIntervalSeconds="86400"
+           memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+    <!-- 新闻中心、通知公告、政策法规、办事指南 数据缓存策略 -->
+    <cache name="DataDOSCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="1800"
+           maxElementsOnDisk="2000"
+           diskExpiryThreadIntervalSeconds="1800"
+           memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+</ehcache>

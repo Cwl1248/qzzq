@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cwl.qzzp.dao.ManagementteamMapper">
+  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.ManagementTeamDTO">
+    <id column="mIds" jdbcType="CHAR" property="mids" />
+    <result column="dataId" jdbcType="CHAR" property="dataid" />
+    <result column="mName" jdbcType="VARCHAR" property="mname" />
+    <result column="mIntroducation" jdbcType="VARCHAR" property="mintroducation" />
+    <result column="pMintroducation" jdbcType="VARCHAR" property="pmintroducation" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mIds, dataId, mName, mIntroducation, pMintroducation
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from managementteam
+    where mIds = #{mids,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from managementteam
+    where mIds = #{mids,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" keyColumn="mIds" keyProperty="mids" parameterType="com.cwl.qzzp.dto.ManagementTeamDTO" useGeneratedKeys="true">
+    insert into managementteam (dataId, mName, mIntroducation, 
+      pMintroducation)
+    values (#{dataid,jdbcType=CHAR}, #{mname,jdbcType=VARCHAR}, #{mintroducation,jdbcType=VARCHAR}, 
+      #{pmintroducation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="mIds" keyProperty="mids" parameterType="com.cwl.qzzp.dto.ManagementTeamDTO" useGeneratedKeys="true">
+    insert into managementteam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        dataId,
+      </if>
+      <if test="mname != null">
+        mName,
+      </if>
+      <if test="mintroducation != null">
+        mIntroducation,
+      </if>
+      <if test="pmintroducation != null">
+        pMintroducation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        #{dataid,jdbcType=CHAR},
+      </if>
+      <if test="mname != null">
+        #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="mintroducation != null">
+        #{mintroducation,jdbcType=VARCHAR},
+      </if>
+      <if test="pmintroducation != null">
+        #{pmintroducation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.ManagementTeamDTO">
+    update managementteam
+    <set>
+      <if test="dataid != null">
+        dataId = #{dataid,jdbcType=CHAR},
+      </if>
+      <if test="mname != null">
+        mName = #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="mintroducation != null">
+        mIntroducation = #{mintroducation,jdbcType=VARCHAR},
+      </if>
+      <if test="pmintroducation != null">
+        pMintroducation = #{pmintroducation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mIds = #{mids,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.ManagementTeamDTO">
+    update managementteam
+    set dataId = #{dataid,jdbcType=CHAR},
+      mName = #{mname,jdbcType=VARCHAR},
+      mIntroducation = #{mintroducation,jdbcType=VARCHAR},
+      pMintroducation = #{pmintroducation,jdbcType=VARCHAR}
+    where mIds = #{mids,jdbcType=CHAR}
+  </update>
+</mapper>
