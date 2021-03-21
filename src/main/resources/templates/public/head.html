@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
+
+</head>
+<style>
+
+
+</style>
+<body>
+<div th:fragment="head">
+    <div class="navigationBar">
+        <div class="logo">云职</div>
+        <div class="lg-bar-l">
+            <ul class="lg-bar-tab">
+                <li class="cityName">杭州站<span>
+
+                    <img style="margin-left: 2px;" th:src="@{/project/images/xl2.svg}"></span>
+                </li>
+                <li class="tab-active"><a>首页</a></li>
+                <li><a>公司</a></li>
+                <li><a>校园招聘</a></li>
+                <li><a>职位</a></li>
+                <li><a>言职</a></li>
+            </ul>
+        </div>
+        <div class="lg-bar-r">
+            <ul class="lg-bar-tab">
+                <li><a>上传电子简历<span><img th:src="@{/project/images/rt32.svg}"></span></a></li>
+                <li><a>登录</a></li>
+                <li><a>注册</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

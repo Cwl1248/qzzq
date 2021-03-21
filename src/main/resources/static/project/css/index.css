@@ -1,0 +1,242 @@
+body {
+    min-height: 1800px;
+    color: #555555;
+}
+
+.search-wrapper {
+    margin: 0;
+    padding: 30px 0 28px;
+    background: #F2F5F4;
+    min-width: 1200px;
+    position: fixed;
+    top: 0px;
+}
+
+.search-box {
+    border: 0 solid #00b38a;
+    width: 938px;
+!important;
+    height: 46px;
+    margin: 0 auto;
+    position: relative
+}
+
+.input-group-addon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: calc(1.5em + .75rem + 2px);
+    background: #6495ED;
+    color: white;
+    font-weight: bolder;
+}
+
+.menu {
+    z-index: 10;
+    width: 331px;
+    height: 440px;
+    clear: both;
+}
+
+.menu_1 {
+    width: 331px;
+    height: 40px;
+    clear: both;
+}
+
+.menu_1_text1 {
+    float: left;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+    margin-left: 4px;
+    margin-right: 15px;
+}
+
+.menu_1_text2 {
+    float: left;
+    width: 80px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.menu_1_img {
+    float: left;
+    width: 6px;
+    margin-top: 14px;
+    height: 11px;
+    background: url(http://www.lgstatic.com/www/static/index/modules/sidebar/img/arrow_92b8589.png) 0 0 no-repeat;
+}
+
+.showdiv {
+    width: 600px;
+    height: max-content;
+    margin-left: 331px;
+    display: none;
+    background-color: #fff;
+    box-shadow: 2px -2px 4px #c8c8ce;
+}
+
+.showdiv_head {
+    margin-top: 15px;
+    width: 600px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    color: #6495ED;
+    background-color: #fff;
+}
+
+.showdiv_content {
+    display: flex;
+    width: 600px;
+    font-size: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+}
+
+.showdiv_content_text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    color: #555555;
+    margin-left: 16px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.showdiv_content_text:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    color: #6495ED;
+    margin-left: 16px;
+    margin-top: 5px;
+    border-bottom: 1px solid #6495ED;
+    cursor: pointer;
+}
+
+.pos-list-menu {
+    margin-top: 45px;
+    z-index: -10;
+    margin-left: 4px;
+    min-width: 1200px
+}
+
+.hot-position {
+    text-decoration: none;
+    padding-right: 58px;
+    cursor: pointer;
+    color: #999;
+    font-size: 20px;
+}
+
+.hot-position:hover {
+    text-decoration: none;
+    padding-right: 58px;
+    cursor: pointer;
+    color: #999;
+    font-size: 20px;
+}
+
+.pos-list {
+    padding: 10px;
+    margin-top: 30px;
+    border: 1px solid #EAEEED;
+    border-radius: 5px;
+    height: 249px;
+}
+
+.pos-list:hover {
+    padding: 10px;
+    margin-top: 30px;
+    border: 1px solid #EAEEED;
+    border-radius: 5px;
+    height: 249px;
+    box-shadow: 0px 0px 4px #c8c8ce;
+}
+
+.pos-name {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.time-info {
+    color: #999999;
+}
+
+.salary-info {
+    color: #FA6041;
+}
+
+.exe-req {
+    color: #777777;
+}
+
+.industry-category {
+    display: inline-block;
+    width: 75px;
+    height: 26px;
+    padding: 0 5px;
+    font-size: 12px;
+    line-height: 26px;
+    color: #999;
+    border: 1px solid #F0F0F0;
+    border-radius: 3px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.company-info {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
+    color: #999999;
+    margin-top: 6px;
+}
+
+.img-Logo {
+
+    width: 60px;
+    height: 60px;
+}
+
+.more {
+    cursor: pointer;
+    width: 387px;
+    line-height: 40px;
+    font-size: 18px;
+    margin-top: 40px;
+    color: #6495ED;
+    text-align: center;
+    border: 1px solid #6495ED;
+}
+
+.more:hover {
+    cursor: pointer;
+    width: 387px;
+    line-height: 40px;
+    font-size: 18px;
+    margin-top: 40px;
+    color: #fefefe;
+    text-align: center;
+    background: #6495ED;
+    border: 1px solid #6495ED;
+}
