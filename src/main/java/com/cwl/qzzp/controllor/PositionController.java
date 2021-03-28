@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Slf4j
 @Controller
-public class positionController {
+public class PositionController {
 
     @GetMapping("/positionlist")
     public String getPositionData() {
