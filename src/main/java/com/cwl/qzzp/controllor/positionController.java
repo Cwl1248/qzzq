@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author ：ChengWl
- * @date ：Created in 2021/3/14
- * @description：首页
+ * @date ：Created in 2021/3/28
+ * @description:职位控制器
  */
 @Slf4j
 @Controller
-public class IndexController {
+public class positionController {
 
-    @GetMapping("/index")
-    public String getIndexData() {
+    @GetMapping("/positionlist")
+    public String getPositionData() {
 
-        return "index/index";
+        return "positionlist/positionList";
     }
 }

@@ -1,0 +1,109 @@
+body {
+    min-height: 1800px;
+    color: #555555;
+    font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial, "Helvetica Neue", Helvetica;
+}
+
+.search-wrapper {
+    margin: 0;
+    padding: 30px 0 28px;
+    background: #F2F5F4;
+    min-width: 1200px;
+    position: fixed;
+    top: 0;
+}
+
+.search-box {
+    border: 0 solid #00b38a;
+    width: 938px;!important;
+    height: 46px;
+    margin: 0 auto;
+    position: relative
+}
+
+.input-group-addon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: calc(1.5em + .75rem + 2px);
+    background: #6495ED;
+    color: white;
+    font-weight: bolder;
+}
+/*---------------*/
+
+ul.filter-wrapper{
+    background-color: #fafafa;
+    border: 1px solid #ededed;
+    min-height: 36px;
+    padding: 15px 25px;
+}
+.choose{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    margin: 10px 10px;
+}
+.title{
+    color: #555555;
+    font-weight: 800;
+}
+.choose-list{
+    cursor: pointer;
+    color: #555;
+    text-decoration-line: none;
+    margin: 0 10px;
+}
+.choose-list:active{
+    cursor: pointer;
+    color: #6495ED;
+    margin: 0 10px;
+}
+.position-name{
+    cursor: pointer;
+    text-decoration-line: none;
+    color: #6495ED;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal
+}
+.position-name:hover{
+    cursor: pointer;
+    text-decoration-line: none;
+    color: #6495ED;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal
+}
+.t{
+    color: #999999;
+    margin-left: 25px;
+}
+.com-name{
+    color: #6495ED;
+    cursor: pointer;
+    text-decoration-line: none;
+}
+.com-name:hover{
+    color: #6495ED;
+    cursor: pointer;
+    text-decoration-line: none;
+}
+.job-category{
+    display: inline-block;
+    max-width: 108px;
+    height: 25px;
+    padding: 0 5px;
+    font-size: 18px;
+    line-height: 25px;
+    color: #555;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal
+}

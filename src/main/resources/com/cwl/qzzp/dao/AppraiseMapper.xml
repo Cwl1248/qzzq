@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cwl.qzzp.dao.AppraiseMapper">
-  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.AppraiseDTO">
-    <id column="itemId" jdbcType="CHAR" property="itemid" />
-    <result column="userId" jdbcType="CHAR" property="userid" />
-    <result column="multipleScore" jdbcType="DOUBLE" property="multiplescore" />
-    <result column="matchScore" jdbcType="DOUBLE" property="matchscore" />
-    <result column="ratingTheInterviewe" jdbcType="DOUBLE" property="ratingtheinterviewe" />
-    <result column="environment" jdbcType="DOUBLE" property="environment" />
-    <result column="InterviewProcess" jdbcType="VARCHAR" property="interviewprocess" />
-    <result column="dataId" jdbcType="CHAR" property="dataid" />
-    <result column="evaluationLabel1" jdbcType="VARCHAR" property="evaluationlabel1" />
-    <result column="evaluationLabel2" jdbcType="VARCHAR" property="evaluationlabel2" />
-    <result column="evaluationLabel3" jdbcType="VARCHAR" property="evaluationlabel3" />
-    <result column="evaluationLabel4" jdbcType="VARCHAR" property="evaluationlabel4" />
-    <result column="evaluationLabel5" jdbcType="VARCHAR" property="evaluationlabel5" />
-    <result column="crateTime" jdbcType="TIMESTAMP" property="cratetime" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.AppraiseDTO">
+        <id column="itemId" jdbcType="CHAR" property="itemid"/>
+        <result column="userId" jdbcType="CHAR" property="userid"/>
+        <result column="multipleScore" jdbcType="DOUBLE" property="multiplescore"/>
+        <result column="matchScore" jdbcType="DOUBLE" property="matchscore"/>
+        <result column="ratingTheInterviewe" jdbcType="DOUBLE" property="ratingtheinterviewe"/>
+        <result column="environment" jdbcType="DOUBLE" property="environment"/>
+        <result column="InterviewProcess" jdbcType="VARCHAR" property="interviewprocess"/>
+        <result column="dataId" jdbcType="CHAR" property="dataid"/>
+        <result column="evaluationLabel1" jdbcType="VARCHAR" property="evaluationlabel1"/>
+        <result column="evaluationLabel2" jdbcType="VARCHAR" property="evaluationlabel2"/>
+        <result column="evaluationLabel3" jdbcType="VARCHAR" property="evaluationlabel3"/>
+        <result column="evaluationLabel4" jdbcType="VARCHAR" property="evaluationlabel4"/>
+        <result column="evaluationLabel5" jdbcType="VARCHAR" property="evaluationlabel5"/>
+        <result column="crateTime" jdbcType="TIMESTAMP" property="cratetime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     itemId, userId, multipleScore, matchScore, ratingTheInterviewe, environment, InterviewProcess, 
     dataId, evaluationLabel1, evaluationLabel2, evaluationLabel3, evaluationLabel4, evaluationLabel5, 
     crateTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from appraise
-    where itemId = #{itemid,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from appraise
+        where itemId = #{itemid,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from appraise
     where itemId = #{itemid,jdbcType=CHAR}
   </delete>
-  <insert id="insert" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.AppraiseDTO" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.AppraiseDTO"
+            useGeneratedKeys="true">
     insert into appraise (userId, multipleScore, matchScore, 
       ratingTheInterviewe, environment, InterviewProcess, 
       dataId, evaluationLabel1, evaluationLabel2, 
@@ -44,137 +45,138 @@
       #{evaluationlabel3,jdbcType=VARCHAR}, #{evaluationlabel4,jdbcType=VARCHAR}, #{evaluationlabel5,jdbcType=VARCHAR}, 
       #{cratetime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.AppraiseDTO" useGeneratedKeys="true">
-    insert into appraise
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        userId,
-      </if>
-      <if test="multiplescore != null">
-        multipleScore,
-      </if>
-      <if test="matchscore != null">
-        matchScore,
-      </if>
-      <if test="ratingtheinterviewe != null">
-        ratingTheInterviewe,
-      </if>
-      <if test="environment != null">
-        environment,
-      </if>
-      <if test="interviewprocess != null">
-        InterviewProcess,
-      </if>
-      <if test="dataid != null">
-        dataId,
-      </if>
-      <if test="evaluationlabel1 != null">
-        evaluationLabel1,
-      </if>
-      <if test="evaluationlabel2 != null">
-        evaluationLabel2,
-      </if>
-      <if test="evaluationlabel3 != null">
-        evaluationLabel3,
-      </if>
-      <if test="evaluationlabel4 != null">
-        evaluationLabel4,
-      </if>
-      <if test="evaluationlabel5 != null">
-        evaluationLabel5,
-      </if>
-      <if test="cratetime != null">
-        crateTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=CHAR},
-      </if>
-      <if test="multiplescore != null">
-        #{multiplescore,jdbcType=DOUBLE},
-      </if>
-      <if test="matchscore != null">
-        #{matchscore,jdbcType=DOUBLE},
-      </if>
-      <if test="ratingtheinterviewe != null">
-        #{ratingtheinterviewe,jdbcType=DOUBLE},
-      </if>
-      <if test="environment != null">
-        #{environment,jdbcType=DOUBLE},
-      </if>
-      <if test="interviewprocess != null">
-        #{interviewprocess,jdbcType=VARCHAR},
-      </if>
-      <if test="dataid != null">
-        #{dataid,jdbcType=CHAR},
-      </if>
-      <if test="evaluationlabel1 != null">
-        #{evaluationlabel1,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationlabel2 != null">
-        #{evaluationlabel2,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationlabel3 != null">
-        #{evaluationlabel3,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationlabel4 != null">
-        #{evaluationlabel4,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationlabel5 != null">
-        #{evaluationlabel5,jdbcType=VARCHAR},
-      </if>
-      <if test="cratetime != null">
-        #{cratetime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.AppraiseDTO">
-    update appraise
-    <set>
-      <if test="userid != null">
-        userId = #{userid,jdbcType=CHAR},
-      </if>
-      <if test="multiplescore != null">
-        multipleScore = #{multiplescore,jdbcType=DOUBLE},
-      </if>
-      <if test="matchscore != null">
-        matchScore = #{matchscore,jdbcType=DOUBLE},
-      </if>
-      <if test="ratingtheinterviewe != null">
-        ratingTheInterviewe = #{ratingtheinterviewe,jdbcType=DOUBLE},
-      </if>
-      <if test="environment != null">
-        environment = #{environment,jdbcType=DOUBLE},
-      </if>
-      <if test="interviewprocess != null">
-        InterviewProcess = #{interviewprocess,jdbcType=VARCHAR},
-      </if>
-      <if test="dataid != null">
-        dataId = #{dataid,jdbcType=CHAR},
-      </if>
-      <if test="evaluationlabel1 != null">
-        evaluationLabel1 = #{evaluationlabel1,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationlabel2 != null">
-        evaluationLabel2 = #{evaluationlabel2,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationlabel3 != null">
-        evaluationLabel3 = #{evaluationlabel3,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationlabel4 != null">
-        evaluationLabel4 = #{evaluationlabel4,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationlabel5 != null">
-        evaluationLabel5 = #{evaluationlabel5,jdbcType=VARCHAR},
-      </if>
-      <if test="cratetime != null">
-        crateTime = #{cratetime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where itemId = #{itemid,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.AppraiseDTO">
+    <insert id="insertSelective" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.AppraiseDTO"
+            useGeneratedKeys="true">
+        insert into appraise
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="multiplescore != null">
+                multipleScore,
+            </if>
+            <if test="matchscore != null">
+                matchScore,
+            </if>
+            <if test="ratingtheinterviewe != null">
+                ratingTheInterviewe,
+            </if>
+            <if test="environment != null">
+                environment,
+            </if>
+            <if test="interviewprocess != null">
+                InterviewProcess,
+            </if>
+            <if test="dataid != null">
+                dataId,
+            </if>
+            <if test="evaluationlabel1 != null">
+                evaluationLabel1,
+            </if>
+            <if test="evaluationlabel2 != null">
+                evaluationLabel2,
+            </if>
+            <if test="evaluationlabel3 != null">
+                evaluationLabel3,
+            </if>
+            <if test="evaluationlabel4 != null">
+                evaluationLabel4,
+            </if>
+            <if test="evaluationlabel5 != null">
+                evaluationLabel5,
+            </if>
+            <if test="cratetime != null">
+                crateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                #{userid,jdbcType=CHAR},
+            </if>
+            <if test="multiplescore != null">
+                #{multiplescore,jdbcType=DOUBLE},
+            </if>
+            <if test="matchscore != null">
+                #{matchscore,jdbcType=DOUBLE},
+            </if>
+            <if test="ratingtheinterviewe != null">
+                #{ratingtheinterviewe,jdbcType=DOUBLE},
+            </if>
+            <if test="environment != null">
+                #{environment,jdbcType=DOUBLE},
+            </if>
+            <if test="interviewprocess != null">
+                #{interviewprocess,jdbcType=VARCHAR},
+            </if>
+            <if test="dataid != null">
+                #{dataid,jdbcType=CHAR},
+            </if>
+            <if test="evaluationlabel1 != null">
+                #{evaluationlabel1,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationlabel2 != null">
+                #{evaluationlabel2,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationlabel3 != null">
+                #{evaluationlabel3,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationlabel4 != null">
+                #{evaluationlabel4,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationlabel5 != null">
+                #{evaluationlabel5,jdbcType=VARCHAR},
+            </if>
+            <if test="cratetime != null">
+                #{cratetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.AppraiseDTO">
+        update appraise
+        <set>
+            <if test="userid != null">
+                userId = #{userid,jdbcType=CHAR},
+            </if>
+            <if test="multiplescore != null">
+                multipleScore = #{multiplescore,jdbcType=DOUBLE},
+            </if>
+            <if test="matchscore != null">
+                matchScore = #{matchscore,jdbcType=DOUBLE},
+            </if>
+            <if test="ratingtheinterviewe != null">
+                ratingTheInterviewe = #{ratingtheinterviewe,jdbcType=DOUBLE},
+            </if>
+            <if test="environment != null">
+                environment = #{environment,jdbcType=DOUBLE},
+            </if>
+            <if test="interviewprocess != null">
+                InterviewProcess = #{interviewprocess,jdbcType=VARCHAR},
+            </if>
+            <if test="dataid != null">
+                dataId = #{dataid,jdbcType=CHAR},
+            </if>
+            <if test="evaluationlabel1 != null">
+                evaluationLabel1 = #{evaluationlabel1,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationlabel2 != null">
+                evaluationLabel2 = #{evaluationlabel2,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationlabel3 != null">
+                evaluationLabel3 = #{evaluationlabel3,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationlabel4 != null">
+                evaluationLabel4 = #{evaluationlabel4,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationlabel5 != null">
+                evaluationLabel5 = #{evaluationlabel5,jdbcType=VARCHAR},
+            </if>
+            <if test="cratetime != null">
+                crateTime = #{cratetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where itemId = #{itemid,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.AppraiseDTO">
     update appraise
     set userId = #{userid,jdbcType=CHAR},
       multipleScore = #{multiplescore,jdbcType=DOUBLE},

@@ -40,7 +40,7 @@ ul {
     padding: 0;
 }
 
-ul > li {
+.ui-li{
     position: relative;
     text-align: center;
     float: left
@@ -65,14 +65,15 @@ ul > li {
 }
 
 
-ul > li > a {
+.ul-li-a {
     display: inline-block;
     height: 52px;
     line-height: 52px;
     padding: 0 30px;
 }
 
-ul > li > a:hover {
+.ul-li-a:hover {
+    text-decoration: none;
     color: #fff;
 }
 
