@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>公司</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/companyList.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/swiper-3.4.2.min.css}">
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
+    <script type="text/javascript" th:src="@{/project/js/swiper-3.4.2.min.js}"></script>
+</head>
+<body>
+<div th:replace="public/head :: head"></div>
+
+<div class="container-fluid">
+
+    <!--搜索框-->
+    <div class="row">
+        <div class="search-wrapper col-md-12">
+            <div class="search-box">
+                <div class="input-group ">
+                    <input type="text" class="form-control" placeholder="搜索职位、公司或地点" aria-describedby="basic-addon2">
+                    <span class="input-group-addon" id="basic-addon2">搜 索</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <ul class="filter-wrapper">
+                <!--工作地点-->
+                <li class="choose">
+                    <span class="title">工作地点:</span>
+                    <a class="choose-list" href="javascript:">北京</a>
+                    <a class="choose-list" href="javascript:">上海</a>
+                    <a class="choose-list" href="javascript:">广州</a>
+                    <a class="choose-list" href="javascript:">深圳</a>
+                    <a class="choose-list" href="javascript:">杭州</a>
+                    <a class="choose-list" href="javascript:">苏州</a>
+                    <a class="choose-list" href="javascript:">南京</a>
+                    <a class="choose-list" href="javascript:">成都</a>
+                    <a class="choose-list" href="javascript:">西安</a>
+                    <a class="choose-list" href="javascript:">长沙</a>
+                    <a class="choose-list" href="javascript:">武汉</a>
+                    <a class="choose-list" href="javascript:">重庆</a>
+                    <a class="choose-list" href="javascript:">南宁</a>
+                    <a class="choose-list" href="javascript:">青岛</a>
+                    <a class="choose-list" href="javascript:">郑州</a>
+                    <a class="choose-list" href="javascript:">合肥</a>
+                    <a class="choose-list" href="javascript:">惠州</a>
+                    <a class="choose-list" href="javascript:">福州</a>
+                    <a class="choose-list" href="javascript:">大连</a>
+                    <a class="choose-list" href="javascript:">珠海</a>
+                    <a class="choose-list" href="javascript:">全部城市&gt</a>
+
+                </li>
+                <!--融资阶段-->
+                <li class="choose">
+                    <span class="title">融资阶段:</span>
+                    <a class="choose-list" href="javascript:">未融资</a>
+                    <a class="choose-list" href="javascript:">天使轮</a>
+                    <a class="choose-list" href="javascript:">A轮</a>
+                    <a class="choose-list" href="javascript:">B轮</a>
+                    <a class="choose-list" href="javascript:">C轮</a>
+                    <a class="choose-list" href="javascript:">D轮及以上</a>
+                    <a class="choose-list" href="javascript:">上市公司</a>
+                    <a class="choose-list" href="javascript:">不需要融资</a>
+                </li>
+                <!--公司规模-->
+                <li class="choose">
+                    <span class="title">公司规模:</span>
+                    <a class="choose-list" href="javascript:">少于15人</a>
+                    <a class="choose-list" href="javascript:">15-50人</a>
+                    <a class="choose-list" href="javascript:">50-150人</a>
+                    <a class="choose-list" href="javascript:">150-500人</a>
+                    <a class="choose-list" href="javascript:">500-2000人</a>
+                    <a class="choose-list" href="javascript:">2000人以上</a>
+                </li>
+                <!--行业领域-->
+                <li class="choose">
+                    <span class="title">行业领域:</span>
+                    <a class="choose-list" href="javascript:">移动互联网</a>
+                    <a class="choose-list" href="javascript:">电商</a>
+                    <a class="choose-list" href="javascript:">金融</a>
+                    <a class="choose-list" href="javascript:">企业服务</a>
+                    <a class="choose-list" href="javascript:">教育</a>
+                    <a class="choose-list" href="javascript:">游戏</a>
+                    <a class="choose-list" href="javascript:">硬件</a>
+                    <a class="choose-list" href="javascript:">消费生活</a>
+                    <a class="choose-list" href="javascript:">社交</a>
+                    <a class="choose-list" href="javascript:">旅游</a>
+                    <a class="choose-list" href="javascript:">体育</a>
+                    <a class="choose-list" href="javascript:">汽车</a>
+                    <a class="choose-list" href="javascript:">物流</a>
+                    <a class="choose-list" href="javascript:">医疗</a>
+                    <a class="choose-list" href="javascript:">房产</a>
+                    <a class="choose-list" href="javascript:">其他</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="row" style="margin-top:5px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 ">
+            <div class="sort">
+                <span class="title">排序方式：</span>
+                <a class="sort-type-active">默认方式</a>
+                <a class="sort-type">面试评价数</a>
+                <a class="sort-type">职位数量</a>
+                <a class="sort-type">简历处理率</a>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="row" style="margin-top:15px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-3 ">
+                    <div class="com-infos">
+                        <div class="com-img">
+                            <img style="width: 80px;height: 80px;"
+                                                  th:src="@{/project/images/ALi-Logo.png}"/>
+                            <div class="company-profile" style="color: #555555;font-weight: 600">阿里集团</div>
+                            <div class="company-profile">科技金融/上市公司/2000人以上</div>
+                            <div class="company-profile" style="color: #555555;font-weight: 600">全球最有影响力的互联网金融公司</div>
+                            <div style="display: flex">
+                                <div style="width: 33.33%"><div>149</div><div>面试评价</div></div>
+                                <div style="width: 33.33%"><div>149</div><div>在招职位</div></div>
+                                <div style="width: 33.33%"><div>149</div><div>简历处理率</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="com-infos">11</div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="com-infos">11</div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="com-infos">11</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+
+
+</div>
+
+
+<script>
+
+</script>
+
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+
+
+</body>
+</html>

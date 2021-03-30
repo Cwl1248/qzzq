@@ -59,51 +59,61 @@ ul.filter-wrapper{
     color: #6495ED;
     margin: 0 10px;
 }
-.position-name{
+.sort{
+    background-color: #fafafa;
+    border: 1px solid #ededed;
+    min-height: 36px;
+    padding: 15px 35px;
+}
+.sort-type-active{
+    padding: 0 10px;
     cursor: pointer;
     text-decoration-line: none;
     color: #6495ED;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal
+    font-size: 15px;
+    font-weight: bolder;
 }
-.position-name:hover{
+.sort-type{
+    padding: 0 10px;
     cursor: pointer;
     text-decoration-line: none;
-    color: #6495ED;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal
+    color: #555555;
+    font-size: 15px;
+    font-weight: bolder;
 }
-.t{
+.sort-type:hover{
+    padding: 0 10px;
+    cursor: pointer;
+    text-decoration-line: none;
+    color: #555555;
+    font-size: 15px;
+    font-weight: bolder;
+}
+.com-infos{
+    display: flex;
+    padding: 15px;
+    margin-top: 15px;
+    border: 1px solid #EAEEED;
+    border-radius: 2px;
+    height: 249px;
+}
+.com-infos:hover{
+    padding: 15px;
+    margin-top: 15px;
+    border: 1px solid #EAEEED;
+    border-radius: 2px;
+    height: 249px;
+    box-shadow: 0 0 4px #c8c8ce;
+}
+.com-img{
+   text-align: center;
+    width: 100%;
+    height: 80px;
+}
+.company-profile{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
     color: #999999;
-    margin-left: 25px;
-}
-.com-name{
-    color: #6495ED;
-    cursor: pointer;
-    text-decoration-line: none;
-}
-.com-name:hover{
-    color: #6495ED;
-    cursor: pointer;
-    text-decoration-line: none;
-}
-.job-category{
-    display: inline-block;
-    max-width: 108px;
-    height: 25px;
-    padding: 0 5px;
-    font-size: 18px;
-    line-height: 25px;
-    color: #555;
-    border: 1px solid #dcdcdc;
-    border-radius: 3px;
-    vertical-align: middle;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal
 }
