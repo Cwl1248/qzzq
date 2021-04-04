@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cwl.qzzp.dao.UserinfoMapper">
+<mapper namespace="com.cwl.qzzp.dao.UserinfoDao">
   <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.UserinfoDTO">
     <id column="UserId" jdbcType="CHAR" property="userid" />
     <result column="email" jdbcType="VARCHAR" property="email" />

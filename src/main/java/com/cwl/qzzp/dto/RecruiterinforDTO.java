@@ -16,6 +16,11 @@ public class RecruiterinforDTO implements Serializable {
     private String itemid;
 
     /**
+     * 公司的ID
+     */
+    private String dataid;
+
+    /**
      * 招聘者名字
      */
     private String username;

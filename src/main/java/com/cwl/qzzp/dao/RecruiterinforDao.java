@@ -2,7 +2,7 @@ package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.RecruiterinforDTO;
 
-public interface RecruiterinforMapper {
+public interface RecruiterinforDao {
     int deleteByPrimaryKey(String itemid);
 
     int insert(RecruiterinforDTO record);

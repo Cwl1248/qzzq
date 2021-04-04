@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cwl.qzzp.dao.RecruiterinforMapper">
+<mapper namespace="com.cwl.qzzp.dao.RecruiterinforDao">
   <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.RecruiterinforDTO">
     <id column="itemId" jdbcType="CHAR" property="itemid" />
+    <result column="dataId" jdbcType="CHAR" property="dataid" />
     <result column="userName" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="companyName" jdbcType="VARCHAR" property="companyname" />
@@ -10,7 +11,7 @@
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
   <sql id="Base_Column_List">
-    itemId, userName, `password`, companyName, title, createTime
+    itemId, dataId, userName, `password`, companyName, title, createTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -23,14 +24,19 @@
     where itemId = #{itemid,jdbcType=CHAR}
   </delete>
   <insert id="insert" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO" useGeneratedKeys="true">
-    insert into recruiterinfor (userName, `password`, companyName, 
-      title, createTime)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
-      #{title,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+    insert into recruiterinfor (dataId, userName, `password`, 
+      companyName, title, createTime
+      )
+    values (#{dataid,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{companyname,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO" useGeneratedKeys="true">
     insert into recruiterinfor
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        dataId,
+      </if>
       <if test="username != null">
         userName,
       </if>
@@ -48,6 +54,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        #{dataid,jdbcType=CHAR},
+      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
@@ -68,6 +77,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO">
     update recruiterinfor
     <set>
+      <if test="dataid != null">
+        dataId = #{dataid,jdbcType=CHAR},
+      </if>
       <if test="username != null">
         userName = #{username,jdbcType=VARCHAR},
       </if>
@@ -88,7 +100,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO">
     update recruiterinfor
-    set userName = #{username,jdbcType=VARCHAR},
+    set dataId = #{dataid,jdbcType=CHAR},
+      userName = #{username,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},
       companyName = #{companyname,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},

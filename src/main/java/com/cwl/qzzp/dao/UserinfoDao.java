@@ -2,7 +2,7 @@ package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.UserinfoDTO;
 
-public interface UserinfoMapper {
+public interface UserinfoDao {
     int deleteByPrimaryKey(String userid);
 
     int insert(UserinfoDTO record);

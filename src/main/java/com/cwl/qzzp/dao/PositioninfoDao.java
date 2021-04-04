@@ -2,7 +2,7 @@ package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.PositioninfoDTO;
 
-public interface PositioninfoMapper {
+public interface PositioninfoDao {
     int deleteByPrimaryKey(String pid);
 
     int insert(PositioninfoDTO record);

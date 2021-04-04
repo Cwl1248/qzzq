@@ -1,15 +1,14 @@
 package com.cwl.qzzp.dto;
 
+import java.io.Serializable;
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
- * managementteam(企业管理者团队)
+ * managementteam
  * @author 
  */
 @Data
-public class ManagementTeamDTO implements Serializable {
+public class ManagementteamDTO implements Serializable {
     /**
      * 主键
      */

@@ -2,7 +2,7 @@ package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.EnterpriseinfoDTO;
 
-public interface EnterpriseinfoMapper {
+public interface EnterpriseinfoDao {
     int deleteByPrimaryKey(String eid);
 
     int insert(EnterpriseinfoDTO record);

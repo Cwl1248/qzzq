@@ -2,7 +2,7 @@ package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.AppraiseDTO;
 
-public interface AppraiseMapper {
+public interface AppraiseDao {
     int deleteByPrimaryKey(String itemid);
 
     int insert(AppraiseDTO record);

@@ -1,12 +1,11 @@
 package com.cwl.qzzp.dto;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
 
 /**
- * positioninfo(职位信息表)
+ * positioninfo
  * @author 
  */
 @Data
@@ -20,6 +19,11 @@ public class PositioninfoDTO implements Serializable {
      * 父ID
      */
     private String dataid;
+
+    /**
+     * 招聘者id
+     */
+    private String reid;
 
     /**
      * 职位名称
@@ -60,6 +64,36 @@ public class PositioninfoDTO implements Serializable {
      * 职位发布状态
      */
     private String states;
+
+    /**
+     * 职位的性质（全职/兼职/实习）
+     */
+    private String postnature;
+
+    /**
+     * 职位分类1
+     */
+    private String posttype1;
+
+    /**
+     * 职位分类2
+     */
+    private String posttype2;
+
+    /**
+     * 职位分类3
+     */
+    private String posttype3;
+
+    /**
+     * 职位分类4
+     */
+    private String posttype4;
+
+    /**
+     * 职位分类5
+     */
+    private String posttype5;
 
     /**
      * 发布时间

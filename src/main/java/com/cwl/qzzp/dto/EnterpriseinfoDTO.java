@@ -1,11 +1,10 @@
 package com.cwl.qzzp.dto;
 
+import java.io.Serializable;
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
- * enterpriseinfo(企业信息表)
+ * enterpriseinfo
  * @author 
  */
 @Data
@@ -114,6 +113,11 @@ public class EnterpriseinfoDTO implements Serializable {
      * 浏览次数
      */
     private Integer visitnum;
+
+    /**
+     * 员工人数
+     */
+    private Integer numberofworkers;
 
     private static final long serialVersionUID = 1L;
 }
