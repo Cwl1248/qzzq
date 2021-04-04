@@ -18,4 +18,10 @@ public class PositionController {
 
         return "positionlist/positionList";
     }
+
+    @GetMapping("/positionInfo")
+    public String getPositionInfoData() {
+
+        return "positionlist/positionInfo";
+    }
 }

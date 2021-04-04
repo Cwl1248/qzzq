@@ -5,19 +5,13 @@
     <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
 
 </head>
-<style>
-
-
-</style>
 <body>
 <div th:fragment="head">
     <div class="navigationBar">
         <div class="logo">云职</div>
         <div class="lg-bar-l">
             <ul class="lg-bar-tab">
-                <li class="cityName ui-li">杭州站<span>
-
-                    <img style="margin-left: 2px;" th:src="@{/project/images/xl2.svg}"></span>
+                <li class="cityName ui-li">杭州站<span><img style="margin-left: 2px;" th:src="@{/project/images/xl2.svg}"></span>
                 </li>
                 <li class="tab-active ui-li"><a class="ul-li-a">首页</a></li>
                 <li class="ui-li"><a class="ul-li-a">公司</a></li>
@@ -28,10 +22,39 @@
         </div>
         <div class="lg-bar-r">
             <ul class="lg-bar-tab">
-                <li class="ui-li"><a class="ul-li-a">上传电子简历<span><img th:src="@{/project/images/rt32.svg}"></span></a></li>
-                <li class="ui-li"><a class="ul-li-a">登录</a></li>
+                <li class="ui-li"><a class="ul-li-a">上传电子简历<span><img th:src="@{/project/images/rt32.svg}"></span></a>
+                </li>
+                <li class="ui-li"><a class="ul-li-a" data-toggle="modal" data-target="#loginModal">登录</a></li>
                 <li class="ui-li"><a class="ul-li-a">注册</a></li>
             </ul>
+        </div>
+    </div>
+
+    <!-- 登录模态框 -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div style="font-size:36px;color: #17a2b8">云职</div>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="请输入登录邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer col-md-12">
+                    <button type="button" class="btn btn-info ">登录</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
