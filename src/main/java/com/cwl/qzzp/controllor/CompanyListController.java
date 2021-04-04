@@ -18,4 +18,10 @@ public class CompanyListController {
 
         return "companyList/companyList";
     }
+
+    @GetMapping("/companyInfo")
+    public String getCompanyInfoData() {
+
+        return "companyList/companyInfo";
+    }
 }
