@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/bottom.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/myInfo.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/swiper-3.4.2.min.css}">
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
+    <script type="text/javascript" th:src="@{/project/js/swiper-3.4.2.min.js}"></script>
+</head>
+<body>
+<div th:replace="public/head :: head"></div>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 mcontainer">
+            <!--编辑个人资料-->
+            <div>
+                <div class="edit-profile">编辑个人资料</div>
+                <!--姓名 性别 生日-->
+                <div class="row" style="padding-left: 60px;padding-top: 30px">
+                    <div class="col-md-4">
+                        <span class="in-left">姓名</span>
+                        <span><input type="text" placeholder="请输入你的姓名" value="" class="inputInfo"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="in-left">性别</span>
+                        <span>
+                            <button class="sex-btn" value="男" style="color: #999999">男</button>
+                            <button class="sex-btn" value="女" style="color: #999999">女</button>
+                        </span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="in-left">生日</span>
+                        <span><input type="date" placeholder="请输入你的生日" value="" class="inputInfo"></span>
+                    </div>
+                </div>
+                <!--邮箱 联系方式 所在城市-->
+                <div class="row" style="padding-left: 60px;padding-top: 30px">
+                    <div class="col-md-4">
+                        <span class="in-left">邮箱</span>
+                        <span><input type="email" placeholder="请输入你的邮箱" value="" class="inputInfo"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="in-left">联系方式</span>
+                        <span><input type="tel" placeholder="请输入你的电话" value="" class="inputInfo"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="in-left">所在城市</span>
+                        <span><input type="text" placeholder="城市名" value="" class="inputInfo"></span>
+                    </div>
+
+                </div>
+                <!--身份类别-->
+                <div class="row" style="padding-left: 60px;padding-top: 30px">
+                    <div class="col-md-4">
+                        <span class="in-left">身份类别</span>
+                        <span>
+                            <button class="shenfen-btn" value="学生"
+                                    style="float: left;margin-left: 10px ;color: #999999">学生</button>
+                            <button class="shenfen-btn" value="非学生" style="float: right;color: #999999">非学生</button>
+                        </span>
+                    </div>
+                    <div class="col-md-8"></div>
+                </div>
+                <!--确认 取消按钮-->
+                <div class="row" style="padding-left: 60px;padding-top: 30px">
+                    <div class="col-md-4">
+                        <span>
+                            <button class="confirm-btn">确认</button>
+                            <button class="cancel-btn">取消</button>
+                        </span>
+                    </div>
+                    <div class="col-md-8"></div>
+                </div>
+            </div>
+
+            <!--个人优势-->
+            <div style="margin-top: 35px">
+                <div class="edit-profile">个人优势</div>
+                <textarea class="edit-area"></textarea>
+            </div>
+            <!--求职意向-->
+            <div style="margin-top: 35px">
+                <div class="edit-profile">求职意向</div>
+                <div class="row" style="margin-left:45px;margin-top: 30px">
+                    <div class="col-md-4">
+                        <span class="grey-font">期待职位</span>
+                        <span>
+                            <input type="text" value="" class="looking-forward-to-the-position" id="looking-forward-to-the-position" placeholder="请输入期待职位">
+                        </span>
+                    </div>
+                    <div class="col-md-4" >
+                        <span class="grey-font">期待城市</span>
+                        <span> <input type="text" value="" class="looking-forward-to-the-position"
+                                      placeholder="请输入期待城市"></span>
+
+                    </div>
+                    <div class="col-md-4">
+                        <span class="grey-font">期待薪资</span>
+                        <div style="margin-top: 15px">
+                            <span>
+                                <select>
+                                     <option value="1000">1k</option>
+                                     <option value="2000">2k</option>
+                                     <option value="3000">3k</option>
+                                     <option value="4000">4k</option>
+                                     <option value="5000">5k</option>
+                                     <option value="6000">6k</option>
+                                     <option value="7000">7k</option>
+                                     <option value="8000">8k</option>
+                                     <option value="9000">9k</option>
+                                     <option value="10000">10k</option>
+                                </select>
+                            </span>
+
+                            <span>
+                                 <select>
+                                     <option value="11000">11k</option>
+                                     <option value="12000">12k</option>
+                                     <option value="13000">13k</option>
+                                     <option value="14000">14k</option>
+                                     <option value="15000">15k</option>
+                                     <option value="16000">16k</option>
+                                     <option value="17000">17k</option>
+                                     <option value="18000">18k</option>
+                                     <option value="19000">19k</option>
+                                     <option value="20000">20k</option>
+                                     <option value="21000">21k</option>
+                                     <option value="22000">22k</option>
+                                     <option value="23000">23k</option>
+                                     <option value="24000">24k</option>
+                                     <option value="25000">25k</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--教育经历-->
+            <div style="margin-top: 35px">
+                <div class="edit-profile">教育经历</div>
+                <div class="row" style="margin-left:45px;margin-top: 30px">
+                    <div class="col-md-4">
+                        <span class="grey-font">学校名称</span>
+                        <span>
+                            <input type="text" value="" class="looking-forward-to-the-position" id="" placeholder="请输入学校名称">
+                        </span>
+                    </div>
+
+                    <div class="col-md-4" >
+                        <span class="grey-font">专业名称</span>
+                        <span> <input type="text" value="" class="looking-forward-to-the-position" placeholder="请输入专业名称"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="grey-font">学历</span>
+                        <div style="margin-top: 15px">
+                            <span>
+                                <select>
+                                     <option value="大专">大专</option>
+                                     <option value="本科">本科</option>
+                                     <option value="硕士">硕士</option>
+                                     <option value="博士">博士</option>
+                                     <option value="其他">其他</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div style="margin-left:15px; margin-top: 15px">
+                        <span class="grey-font">毕业时间</span>
+                        <div>
+                            <input type="date" value="" class="looking-forward-to-the-position" placeholder="请输入毕业时间">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--工作经历-->
+            <div style="margin-top: 35px">
+                <div class="edit-profile">工作经历</div>
+                <div style="margin-left:60px;margin-top: 30px">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="grey-font">公司名称</span>
+                            <input type="text" class="looking-forward-to-the-position" placeholder="请输入公司名称 ">
+                        </div>
+                        <div class="col-md-6">
+                            <span class="grey-font">公司行业</span>
+                            <input type="text" class="looking-forward-to-the-position" placeholder="请输入公司行业">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 30px">
+                        <div class="col-md-6">
+                            <span class="grey-font">所属部门</span>
+                            <input type="text" class="looking-forward-to-the-position" placeholder="请输入所属部门">
+                        </div>
+                        <div class="col-md-6">
+                            <span class="grey-font">职位类别</span>
+                            <input type="text" class="looking-forward-to-the-position" placeholder="如：部门经理">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 30px">
+                        <div class="col-md-6">
+                            <span class="grey-font">职位名称</span>
+                            <input type="text" class="looking-forward-to-the-position" placeholder="请输入职位名称">
+                        </div>
+                        <div class="col-md-6">
+                            <span class="grey-font">工作时间</span>
+                            <input type="text" class="looking-forward-to-the-position" placeholder="如：三年以上">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 35px">
+                <div class="edit-profile">附件简历</div>
+               <div class="row">
+                   <div class="col-md-4"></div>
+                   <div class="col-md-4">  <button class="up-btn">添加</button></div>
+                   <div class="col-md-4"></div>
+               </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+</div>
+
+<div th:replace="public/bottom :: bottom"></div>
+
+<script>
+</script>
+
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+
+
+</body>
+</html>

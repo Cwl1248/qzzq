@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PositionController {
 
-    @GetMapping("/positionlist")
+    @GetMapping("/positionList")
     public String getPositionData() {
 
         return "positionlist/positionList";

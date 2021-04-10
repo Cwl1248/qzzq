@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/modules/laydate.css}" media="all">
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/layui.css}" media="all">
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/bottom.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/positionInfo.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/swiper-3.4.2.min.css}">
@@ -332,6 +333,9 @@
     </div>
 
 </div>
+
+<div th:replace="public/bottom :: bottom"></div>
+
 <script type="text/javascript" th:src="@{/project/js/layui.js}"></script>
 <script>
     layui.use(['rate'], function () {
