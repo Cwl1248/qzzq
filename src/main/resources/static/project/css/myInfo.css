@@ -60,7 +60,7 @@ input, textarea {
 }
 
 .sex-btn {
-    margin-left: 35px;
+    margin-left: 30px;
     background: #ffffff;
     border-radius: 5px;
     padding: 6px;
@@ -136,7 +136,7 @@ input, textarea {
 select{
     outline: none!important;
     padding-left: 5px;
-    width: 140px;
+    width: 130px;
     color: #999999;
     border-radius: 5px;
     border: 1px solid #E8E9EB;
@@ -144,7 +144,7 @@ select{
 }
 select:focus{
     outline: none!important;
-    width: 140px;
+    width: 130px;
     color: #999999;
     border-radius: 5px;
     border: 1px solid #6495ED;
