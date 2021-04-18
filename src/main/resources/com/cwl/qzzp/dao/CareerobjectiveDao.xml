@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cwl.qzzp.dao.CareerobjectiveDao">
+  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.CareerobjectiveDTO">
+    <id column="Id" jdbcType="CHAR" property="id" />
+    <result column="dataId" jdbcType="CHAR" property="dataid" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="starting_salary_from" jdbcType="VARCHAR" property="startingSalaryFrom" />
+    <result column="starting_salary_to" jdbcType="VARCHAR" property="startingSalaryTo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, dataId, `position`, city, starting_salary_from, starting_salary_to
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from careerobjective
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from careerobjective
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.cwl.qzzp.dto.CareerobjectiveDTO" useGeneratedKeys="true">
+    insert into careerobjective (dataId, `position`, city, 
+      starting_salary_from, starting_salary_to)
+    values (#{dataid,jdbcType=CHAR}, #{position,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{startingSalaryFrom,jdbcType=VARCHAR}, #{startingSalaryTo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.cwl.qzzp.dto.CareerobjectiveDTO" useGeneratedKeys="true">
+    insert into careerobjective
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        dataId,
+      </if>
+      <if test="position != null">
+        `position`,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="startingSalaryFrom != null">
+        starting_salary_from,
+      </if>
+      <if test="startingSalaryTo != null">
+        starting_salary_to,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        #{dataid,jdbcType=CHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="startingSalaryFrom != null">
+        #{startingSalaryFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="startingSalaryTo != null">
+        #{startingSalaryTo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.CareerobjectiveDTO">
+    update careerobjective
+    <set>
+      <if test="dataid != null">
+        dataId = #{dataid,jdbcType=CHAR},
+      </if>
+      <if test="position != null">
+        `position` = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="startingSalaryFrom != null">
+        starting_salary_from = #{startingSalaryFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="startingSalaryTo != null">
+        starting_salary_to = #{startingSalaryTo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.CareerobjectiveDTO">
+    update careerobjective
+    set dataId = #{dataid,jdbcType=CHAR},
+      `position` = #{position,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      starting_salary_from = #{startingSalaryFrom,jdbcType=VARCHAR},
+      starting_salary_to = #{startingSalaryTo,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

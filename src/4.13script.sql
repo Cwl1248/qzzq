@@ -109,7 +109,8 @@ create table userinfo
     identitys         varchar(20)  default ''                null comment '身份',
     heardImage        varchar(200) default ''                null comment '头像',
     personalAdvantage varchar(200) default ''                null comment '个人优势',
-    itemCreateAt      timestamp    default CURRENT_TIMESTAMP null comment '创建时间'
+    itemCreateAt      timestamp    default CURRENT_TIMESTAMP null comment '创建时间',
+    Resume_path         varchar(20)  default ''                null comment '简历路径',
 )
     comment '用户信息表';
 

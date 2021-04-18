@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cwl.qzzp.dao.WorkExperienceDao">
+  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.WorkExperienceDTO">
+    <id column="Id" jdbcType="CHAR" property="id" />
+    <result column="dataId" jdbcType="CHAR" property="dataid" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyname" />
+    <result column="company_industry" jdbcType="VARCHAR" property="companyIndustry" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="tybe_of_job" jdbcType="VARCHAR" property="tybeOfJob" />
+    <result column="position_Name" jdbcType="VARCHAR" property="positionName" />
+    <result column="operating_hours" jdbcType="VARCHAR" property="operatingHours" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, dataId, companyName, company_industry, department, tybe_of_job, position_Name, 
+    operating_hours
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from work_experience
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from work_experience
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.cwl.qzzp.dto.WorkExperienceDTO" useGeneratedKeys="true">
+    insert into work_experience (dataId, companyName, company_industry, 
+      department, tybe_of_job, position_Name, 
+      operating_hours)
+    values (#{dataid,jdbcType=CHAR}, #{companyname,jdbcType=VARCHAR}, #{companyIndustry,jdbcType=VARCHAR}, 
+      #{department,jdbcType=VARCHAR}, #{tybeOfJob,jdbcType=VARCHAR}, #{positionName,jdbcType=VARCHAR}, 
+      #{operatingHours,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.cwl.qzzp.dto.WorkExperienceDTO" useGeneratedKeys="true">
+    insert into work_experience
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        dataId,
+      </if>
+      <if test="companyname != null">
+        companyName,
+      </if>
+      <if test="companyIndustry != null">
+        company_industry,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="tybeOfJob != null">
+        tybe_of_job,
+      </if>
+      <if test="positionName != null">
+        position_Name,
+      </if>
+      <if test="operatingHours != null">
+        operating_hours,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        #{dataid,jdbcType=CHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIndustry != null">
+        #{companyIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="tybeOfJob != null">
+        #{tybeOfJob,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null">
+        #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatingHours != null">
+        #{operatingHours,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.WorkExperienceDTO">
+    update work_experience
+    <set>
+      <if test="dataid != null">
+        dataId = #{dataid,jdbcType=CHAR},
+      </if>
+      <if test="companyname != null">
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIndustry != null">
+        company_industry = #{companyIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="tybeOfJob != null">
+        tybe_of_job = #{tybeOfJob,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null">
+        position_Name = #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatingHours != null">
+        operating_hours = #{operatingHours,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.WorkExperienceDTO">
+    update work_experience
+    set dataId = #{dataid,jdbcType=CHAR},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      company_industry = #{companyIndustry,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      tybe_of_job = #{tybeOfJob,jdbcType=VARCHAR},
+      position_Name = #{positionName,jdbcType=VARCHAR},
+      operating_hours = #{operatingHours,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cwl.qzzp.dao.EducationalexperienceDao">
+  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.EducationalexperienceDTO">
+    <id column="Id" jdbcType="CHAR" property="id" />
+    <result column="dataId" jdbcType="CHAR" property="dataid" />
+    <result column="schoolName" jdbcType="VARCHAR" property="schoolname" />
+    <result column="professional_title" jdbcType="VARCHAR" property="professionalTitle" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="graduation_time" jdbcType="TIMESTAMP" property="graduationTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, dataId, schoolName, professional_title, education, graduation_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from educationalexperience
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from educationalexperience
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.cwl.qzzp.dto.EducationalexperienceDTO" useGeneratedKeys="true">
+    insert into educationalexperience (dataId, schoolName, professional_title, 
+      education, graduation_time)
+    values (#{dataid,jdbcType=CHAR}, #{schoolname,jdbcType=VARCHAR}, #{professionalTitle,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{graduationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.cwl.qzzp.dto.EducationalexperienceDTO" useGeneratedKeys="true">
+    insert into educationalexperience
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        dataId,
+      </if>
+      <if test="schoolname != null">
+        schoolName,
+      </if>
+      <if test="professionalTitle != null">
+        professional_title,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="graduationTime != null">
+        graduation_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataid != null">
+        #{dataid,jdbcType=CHAR},
+      </if>
+      <if test="schoolname != null">
+        #{schoolname,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalTitle != null">
+        #{professionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationTime != null">
+        #{graduationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.EducationalexperienceDTO">
+    update educationalexperience
+    <set>
+      <if test="dataid != null">
+        dataId = #{dataid,jdbcType=CHAR},
+      </if>
+      <if test="schoolname != null">
+        schoolName = #{schoolname,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalTitle != null">
+        professional_title = #{professionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationTime != null">
+        graduation_time = #{graduationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.EducationalexperienceDTO">
+    update educationalexperience
+    set dataId = #{dataid,jdbcType=CHAR},
+      schoolName = #{schoolname,jdbcType=VARCHAR},
+      professional_title = #{professionalTitle,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      graduation_time = #{graduationTime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
