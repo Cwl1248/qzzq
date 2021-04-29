@@ -39,4 +39,14 @@ public class ManagerController {
     public String jobTable() {
         return "page/table";
     }
+
+
+    /**
+     * 更新职位数据
+     * @return
+     */
+    @GetMapping("/upDataJobTable")
+    public String upDataJobTable(String pid) {
+        return "page/table/edit";
+    }
 }

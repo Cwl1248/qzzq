@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>layui</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../../../static/lib/layui-v2.6.3/css/layui.css" media="all">
-    <link rel="stylesheet" href="../../../static/project/css/public.css" media="all">
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/project/css/public.css}" media="all">
+    <script th:src="@{/project/js/wangEditor.min.js}"></script>
     <style>
         body {
             background-color: #ffffff;
@@ -15,59 +17,187 @@
     </style>
 </head>
 <body>
-<div class="layui-form layuimini-form">
-    <div class="layui-form-item">
-        <label class="layui-form-label required">用户名</label>
-        <div class="layui-input-block">
-            <input type="text" name="username" lay-verify="required" lay-reqtext="用户名不能为空" placeholder="请输入用户名" value="" class="layui-input">
-            <tip>填写自己管理账号的名称。</tip>
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label required">性别</label>
-        <div class="layui-input-block">
-            <input type="radio" name="sex" value="男" title="男" checked="">
-            <input type="radio" name="sex" value="女" title="女">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label required">手机</label>
-        <div class="layui-input-block">
-            <input type="number" name="phone" lay-verify="required" lay-reqtext="手机不能为空" placeholder="请输入手机" value="" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">邮箱</label>
-        <div class="layui-input-block">
-            <input type="email" name="email" placeholder="请输入邮箱" value="" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">职业</label>
-        <div class="layui-input-block">
-            <input type="text" name="work" placeholder="请输入职业" value="" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label">备注信息</label>
-        <div class="layui-input-block">
-            <textarea name="remark" class="layui-textarea" placeholder="请输入备注信息"></textarea>
-        </div>
-    </div>
+<div class="layuimini-container">
+    <div class="layuimini-main">
 
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
-        </div>
+        <blockquote class="layui-elem-quote layui-text">
+            职位信息修改
+        </blockquote>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>职位基本信息</legend>
+        </fieldset>
+        <form class="layui-form" lay-filter="positionForm">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">职位名称</label>
+                    <div class="layui-input-block">
+                        <input id="ptitle" type="text" name="ptitle" lay-verify="title"
+                               autocomplete="off" placeholder="请输入职位名称"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">经验要求</label>
+                    <div class="layui-input-block">
+                        <select id="experience" name="experience" lay-filter="aihao">
+                            <option value=""></option>
+                            <option value="经验不限">经验不限</option>
+                            <option value="在校/应届">在校/应届</option>
+                            <option value="3年及以下">3年及以下</option>
+                            <option value="3-5年">3-5年</option>
+                            <option value="5-10年">5-10年</option>
+                            <option value="10年">10年</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">学历要求</label>
+                    <div class="layui-input-block">
+                        <select id="education" name="education" lay-filter="">
+                            <option value=""></option>
+                            <option value="不限">不限</option>
+                            <option value="大专及以上">大专及以上</option>
+                            <option value="本科及以上">本科及以上</option>
+                            <option value="硕士及以上">硕士及以上</option>
+                            <option value="博士">博士</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">薪资范围</label>
+                    <div class="layui-input-block">
+                        <input id="salary" type="text" name="salary" lay-verify="required" autocomplete="off"
+                               placeholder="例如：25k-30k"
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">职位诱惑</label>
+                <div class="layui-input-block">
+                    <input id="temptation" type="text" name="temptation" lay-verify="required" autocomplete="off"
+                           placeholder="例如：大平台，老板nice，团队氛围好"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">职位性质</label>
+                    <div class="layui-input-inline">
+                        <select id="postnature" name="postnature" lay-filter="">
+                            <option value=""></option>
+                            <option value="全职">全职</option>
+                            <option value="兼职">兼职</option>
+                            <option value="实习">实习</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">所属部门</label>
+                    <div class="layui-input-inline">
+                        <input id="departments" type="text" name="departments" lay-verify="required"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">工作地址</label>
+                    <div class="layui-input-inline">
+                        <input id="place" type="text" name="place" lay-verify="required"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">分类一</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="posttype1" id="posttype1" lay-verify="required" placeholder="例如：JAVA"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">分类二</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="posttype2" id="posttype2" lay-verify=""
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">分类三</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="posttype3" id="posttype3" lay-verify=""
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">分类四</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="posttype4" id="posttype4"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">分类五</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="posttype5" id="posttype5"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>职位描述</legend>
+            </fieldset>
+            <div class="layui-form-item">
+                <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block">
+                        <div id="div1"></div>
+                        <textarea class="layui-textarea" name="description" lay-verify="description" id="editor"
+                                  style="width: 100%;height: 300px;display: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+
     </div>
 </div>
-</div>
-<script src="../../../static/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+
+<script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
+<script th:src="@{/lib/jquery-3.4.1/jquery-3.4.1.min.js}" charset="utf-8"></script>
+<script th:src="@{/project/js/lay-config.js}" charset="utf-8"></script>
 <script>
+    /**
+     * 获取url参数
+     * @param paramName
+     */
+    function getUrlParam(paramName) {
+        var paramValue = "", isFound = !1;
+        if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+            arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+            while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+        }
+        return paramValue == "" && (paramValue = null), paramValue
+    }
+</script>
+<script>
+    const E = window.wangEditor
+    const editor = new E('#div1')
+    const $text1 = $('#editor')
+    editor.config.onchange = function (html) {
+        $text1.val(html)
+    }
+    editor.create()
+    $text1.val()
     layui.use(['form'], function () {
         var form = layui.form,
             layer = layui.layer,
             $ = layui.$;
+        // var pid = getUrlParam("pid")
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
