@@ -1,8 +1,13 @@
 package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.PositioninfoDTO;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface PositioninfoDao {
+
     int deleteByPrimaryKey(String pid);
 
     int insert(PositioninfoDTO record);
@@ -14,4 +19,8 @@ public interface PositioninfoDao {
     int updateByPrimaryKeySelective(PositioninfoDTO record);
 
     int updateByPrimaryKey(PositioninfoDTO record);
+
+    int updateVisitNum(PositioninfoDTO record);
+
+    List<PositioninfoDTO> getAllPosition(String reid);
 }

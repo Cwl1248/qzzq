@@ -1,234 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cwl.qzzp.dao.PositioninfoDao">
-  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.PositioninfoDTO">
-    <id column="pId" jdbcType="CHAR" property="pid" />
-    <result column="dataId" jdbcType="CHAR" property="dataid" />
-    <result column="reId" jdbcType="CHAR" property="reid" />
-    <result column="pTitle" jdbcType="VARCHAR" property="ptitle" />
-    <result column="salary" jdbcType="VARCHAR" property="salary" />
-    <result column="experience" jdbcType="VARCHAR" property="experience" />
-    <result column="place" jdbcType="VARCHAR" property="place" />
-    <result column="temptation" jdbcType="VARCHAR" property="temptation" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="departments" jdbcType="VARCHAR" property="departments" />
-    <result column="states" jdbcType="VARCHAR" property="states" />
-    <result column="postNature" jdbcType="VARCHAR" property="postnature" />
-    <result column="postType1" jdbcType="VARCHAR" property="posttype1" />
-    <result column="postType2" jdbcType="VARCHAR" property="posttype2" />
-    <result column="postType3" jdbcType="VARCHAR" property="posttype3" />
-    <result column="postType4" jdbcType="VARCHAR" property="posttype4" />
-    <result column="postType5" jdbcType="VARCHAR" property="posttype5" />
-    <result column="releaseTime" jdbcType="TIMESTAMP" property="releasetime" />
-    <result column="visitNum" jdbcType="INTEGER" property="visitnum" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.PositioninfoDTO">
+        <id column="pId" jdbcType="CHAR" property="pid"/>
+        <result column="dataId" jdbcType="CHAR" property="dataid"/>
+        <result column="reId" jdbcType="CHAR" property="reid"/>
+        <result column="pTitle" jdbcType="VARCHAR" property="ptitle"/>
+        <result column="salary" jdbcType="VARCHAR" property="salary"/>
+        <result column="experience" jdbcType="VARCHAR" property="experience"/>
+        <result column="place" jdbcType="VARCHAR" property="place"/>
+        <result column="temptation" jdbcType="VARCHAR" property="temptation"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="departments" jdbcType="VARCHAR" property="departments"/>
+        <result column="states" jdbcType="VARCHAR" property="states"/>
+        <result column="postNature" jdbcType="VARCHAR" property="postnature"/>
+        <result column="postType1" jdbcType="VARCHAR" property="posttype1"/>
+        <result column="postType2" jdbcType="VARCHAR" property="posttype2"/>
+        <result column="postType3" jdbcType="VARCHAR" property="posttype3"/>
+        <result column="postType4" jdbcType="VARCHAR" property="posttype4"/>
+        <result column="postType5" jdbcType="VARCHAR" property="posttype5"/>
+        <result column="releaseTime" jdbcType="TIMESTAMP" property="releasetime"/>
+        <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
+        <result column="education" jdbcType="VARCHAR" property="education"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     pId, dataId, reId, pTitle, salary, experience, place, temptation, description, departments, 
     states, postNature, postType1, postType2, postType3, postType4, postType5, releaseTime, 
-    visitNum
+    visitNum,education
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from positioninfo
-    where pId = #{pid,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from positioninfo
+        where pId = #{pid,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from positioninfo
     where pId = #{pid,jdbcType=CHAR}
   </delete>
-  <insert id="insert" keyColumn="pId" keyProperty="pid" parameterType="com.cwl.qzzp.dto.PositioninfoDTO" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="pId" keyProperty="pid" parameterType="com.cwl.qzzp.dto.PositioninfoDTO"
+            useGeneratedKeys="true">
     insert into positioninfo (dataId, reId, pTitle, 
       salary, experience, place, 
       temptation, description, departments, 
       states, postNature, postType1, 
       postType2, postType3, postType4, 
-      postType5, releaseTime, visitNum
+      postType5, releaseTime, visitNum,education
       )
     values (#{dataid,jdbcType=CHAR}, #{reid,jdbcType=CHAR}, #{ptitle,jdbcType=VARCHAR}, 
       #{salary,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, 
       #{temptation,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{departments,jdbcType=VARCHAR}, 
       #{states,jdbcType=VARCHAR}, #{postnature,jdbcType=VARCHAR}, #{posttype1,jdbcType=VARCHAR}, 
       #{posttype2,jdbcType=VARCHAR}, #{posttype3,jdbcType=VARCHAR}, #{posttype4,jdbcType=VARCHAR}, 
-      #{posttype5,jdbcType=VARCHAR}, #{releasetime,jdbcType=TIMESTAMP}, #{visitnum,jdbcType=INTEGER}
+      #{posttype5,jdbcType=VARCHAR}, #{releasetime,jdbcType=TIMESTAMP}, #{visitnum,jdbcType=INTEGER},#{education,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="pId" keyProperty="pid" parameterType="com.cwl.qzzp.dto.PositioninfoDTO" useGeneratedKeys="true">
-    insert into positioninfo
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="dataid != null">
-        dataId,
-      </if>
-      <if test="reid != null">
-        reId,
-      </if>
-      <if test="ptitle != null">
-        pTitle,
-      </if>
-      <if test="salary != null">
-        salary,
-      </if>
-      <if test="experience != null">
-        experience,
-      </if>
-      <if test="place != null">
-        place,
-      </if>
-      <if test="temptation != null">
-        temptation,
-      </if>
-      <if test="description != null">
-        description,
-      </if>
-      <if test="departments != null">
-        departments,
-      </if>
-      <if test="states != null">
-        states,
-      </if>
-      <if test="postnature != null">
-        postNature,
-      </if>
-      <if test="posttype1 != null">
-        postType1,
-      </if>
-      <if test="posttype2 != null">
-        postType2,
-      </if>
-      <if test="posttype3 != null">
-        postType3,
-      </if>
-      <if test="posttype4 != null">
-        postType4,
-      </if>
-      <if test="posttype5 != null">
-        postType5,
-      </if>
-      <if test="releasetime != null">
-        releaseTime,
-      </if>
-      <if test="visitnum != null">
-        visitNum,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="dataid != null">
-        #{dataid,jdbcType=CHAR},
-      </if>
-      <if test="reid != null">
-        #{reid,jdbcType=CHAR},
-      </if>
-      <if test="ptitle != null">
-        #{ptitle,jdbcType=VARCHAR},
-      </if>
-      <if test="salary != null">
-        #{salary,jdbcType=VARCHAR},
-      </if>
-      <if test="experience != null">
-        #{experience,jdbcType=VARCHAR},
-      </if>
-      <if test="place != null">
-        #{place,jdbcType=VARCHAR},
-      </if>
-      <if test="temptation != null">
-        #{temptation,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="departments != null">
-        #{departments,jdbcType=VARCHAR},
-      </if>
-      <if test="states != null">
-        #{states,jdbcType=VARCHAR},
-      </if>
-      <if test="postnature != null">
-        #{postnature,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype1 != null">
-        #{posttype1,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype2 != null">
-        #{posttype2,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype3 != null">
-        #{posttype3,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype4 != null">
-        #{posttype4,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype5 != null">
-        #{posttype5,jdbcType=VARCHAR},
-      </if>
-      <if test="releasetime != null">
-        #{releasetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="visitnum != null">
-        #{visitnum,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.PositioninfoDTO">
-    update positioninfo
-    <set>
-      <if test="dataid != null">
-        dataId = #{dataid,jdbcType=CHAR},
-      </if>
-      <if test="reid != null">
-        reId = #{reid,jdbcType=CHAR},
-      </if>
-      <if test="ptitle != null">
-        pTitle = #{ptitle,jdbcType=VARCHAR},
-      </if>
-      <if test="salary != null">
-        salary = #{salary,jdbcType=VARCHAR},
-      </if>
-      <if test="experience != null">
-        experience = #{experience,jdbcType=VARCHAR},
-      </if>
-      <if test="place != null">
-        place = #{place,jdbcType=VARCHAR},
-      </if>
-      <if test="temptation != null">
-        temptation = #{temptation,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="departments != null">
-        departments = #{departments,jdbcType=VARCHAR},
-      </if>
-      <if test="states != null">
-        states = #{states,jdbcType=VARCHAR},
-      </if>
-      <if test="postnature != null">
-        postNature = #{postnature,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype1 != null">
-        postType1 = #{posttype1,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype2 != null">
-        postType2 = #{posttype2,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype3 != null">
-        postType3 = #{posttype3,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype4 != null">
-        postType4 = #{posttype4,jdbcType=VARCHAR},
-      </if>
-      <if test="posttype5 != null">
-        postType5 = #{posttype5,jdbcType=VARCHAR},
-      </if>
-      <if test="releasetime != null">
-        releaseTime = #{releasetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="visitnum != null">
-        visitNum = #{visitnum,jdbcType=INTEGER},
-      </if>
-    </set>
-    where pId = #{pid,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.PositioninfoDTO">
+
+    <insert id="insertSelective" keyColumn="pId" keyProperty="pid" parameterType="com.cwl.qzzp.dto.PositioninfoDTO"
+            useGeneratedKeys="true">
+        insert into positioninfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pid != null">
+                pid,
+            </if>
+            <if test="dataid != null">
+                dataId,
+            </if>
+            <if test="reid != null">
+                reId,
+            </if>
+            <if test="ptitle != null">
+                pTitle,
+            </if>
+            <if test="salary != null">
+                salary,
+            </if>
+            <if test="experience != null">
+                experience,
+            </if>
+            <if test="place != null">
+                place,
+            </if>
+            <if test="temptation != null">
+                temptation,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="departments != null">
+                departments,
+            </if>
+            <if test="states != null">
+                states,
+            </if>
+            <if test="postnature != null">
+                postNature,
+            </if>
+            <if test="posttype1 != null">
+                postType1,
+            </if>
+            <if test="posttype2 != null">
+                postType2,
+            </if>
+            <if test="posttype3 != null">
+                postType3,
+            </if>
+            <if test="posttype4 != null">
+                postType4,
+            </if>
+            <if test="posttype5 != null">
+                postType5,
+            </if>
+            releaseTime,
+            <if test="visitnum != null">
+                visitnum,
+            </if>
+            <if test="education !=null">
+                education
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pid != null">
+                #{pid,jdbcType=CHAR},
+            </if>
+            <if test="dataid != null">
+                #{dataid,jdbcType=CHAR},
+            </if>
+            <if test="reid != null">
+                #{reid,jdbcType=CHAR},
+            </if>
+            <if test="ptitle != null">
+                #{ptitle,jdbcType=VARCHAR},
+            </if>
+            <if test="salary != null">
+                #{salary,jdbcType=VARCHAR},
+            </if>
+            <if test="experience != null">
+                #{experience,jdbcType=VARCHAR},
+            </if>
+            <if test="place != null">
+                #{place,jdbcType=VARCHAR},
+            </if>
+            <if test="temptation != null">
+                #{temptation,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="departments != null">
+                #{departments,jdbcType=VARCHAR},
+            </if>
+            <if test="states != null">
+                #{states,jdbcType=VARCHAR},
+            </if>
+            <if test="postnature != null">
+                #{postnature,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype1 != null">
+                #{posttype1,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype2 != null">
+                #{posttype2,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype3 != null">
+                #{posttype3,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype4 != null">
+                #{posttype4,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype5 != null">
+                #{posttype5,jdbcType=VARCHAR},
+            </if>
+            now(),
+            <if test="visitnum != null">
+                #{visitnum,jdbcType=INTEGER},
+            </if>
+            <if test="education !=null">
+                #{education,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.PositioninfoDTO">
+        update positioninfo
+        <set>
+            <if test="ptitle != null">
+                pTitle = #{ptitle,jdbcType=VARCHAR},
+            </if>
+            <if test="salary != null">
+                salary = #{salary,jdbcType=VARCHAR},
+            </if>
+            <if test="experience != null">
+                experience = #{experience,jdbcType=VARCHAR},
+            </if>
+            <if test="place != null">
+                place = #{place,jdbcType=VARCHAR},
+            </if>
+            <if test="temptation != null">
+                temptation = #{temptation,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="departments != null">
+                departments = #{departments,jdbcType=VARCHAR},
+            </if>
+            <if test="states != null">
+                states = #{states,jdbcType=VARCHAR},
+            </if>
+            <if test="postnature != null">
+                postNature = #{postnature,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype1 != null">
+                postType1 = #{posttype1,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype2 != null">
+                postType2 = #{posttype2,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype3 != null">
+                postType3 = #{posttype3,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype4 != null">
+                postType4 = #{posttype4,jdbcType=VARCHAR},
+            </if>
+            <if test="posttype5 != null">
+                postType5 = #{posttype5,jdbcType=VARCHAR},
+            </if>
+            <if test="releasetime != null">
+                releaseTime = #{releasetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="education !=null">
+                #{education,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pId = #{pid,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.PositioninfoDTO">
     update positioninfo
     set dataId = #{dataid,jdbcType=CHAR},
       reId = #{reid,jdbcType=CHAR},
@@ -250,4 +256,20 @@
       visitNum = #{visitnum,jdbcType=INTEGER}
     where pId = #{pid,jdbcType=CHAR}
   </update>
+
+    <update id="updateVisitNum" parameterType="com.cwl.qzzp.dto.PositioninfoDTO">
+        update positioninfo set visitNum=IFNULL(visitNum, 0)+1
+        <where>
+            <if test="pid != null and pid != ''">
+                pId=#{pid}
+            </if>
+        </where>
+    </update>
+
+    <select id="getAllPosition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from positioninfo
+        where reId = #{reid,jdbcType=CHAR}
+    </select>
 </mapper>

@@ -1,0 +1,75 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "/manage/welcome"
+  },
+  "logoInfo": {
+    "title": "云职",
+    "image": "project/images/Y.svg",
+    "href": "/toIndex"
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "职位管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "职位发布",
+              "href": "manage/jobPosting",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "职位信息管理",
+              "href": "manage/jobTable",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "公司信息管理",
+          "href": "",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "公司信息",
+              "href": "page/login-2.html",
+              "icon": "fa fa-stumbleupon-circle",
+              "target": "_self"
+            },
+            {
+              "title": "职位信息修改",
+              "href": "page/login-1.html",
+              "icon": "fa fa-tags",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "简历管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "404页面",
+              "href": "../page/404.html",
+              "icon": "fa fa-hourglass-end",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

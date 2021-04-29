@@ -78,7 +78,8 @@ create table positioninfo
     postType4   varchar(10) default ''                null comment '职位分类4',
     postType5   varchar(10) default ''                null comment '职位分类5',
     releaseTime timestamp   default CURRENT_TIMESTAMP null comment '发布时间',
-    visitNum    int                                   null comment '浏览次数'
+    visitNum    int                                   null comment '浏览次数',
+    education   varchar(50) default ''                null comment '学历要求'
 )
     comment '职位信息表';
 

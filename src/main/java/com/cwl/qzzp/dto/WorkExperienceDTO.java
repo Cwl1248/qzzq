@@ -1,11 +1,13 @@
 package com.cwl.qzzp.dto;
 
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * work_experience
- * @author 
+ *
+ * @author
  */
 @Data
 public class WorkExperienceDTO implements Serializable {

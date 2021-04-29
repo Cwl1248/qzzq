@@ -1,8 +1,9 @@
 package com.cwl.qzzp.dto;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * positioninfo
@@ -104,6 +105,11 @@ public class PositioninfoDTO implements Serializable {
      * 浏览次数
      */
     private Integer visitnum;
+
+    /**
+     * 学历要求
+     */
+    private String education;
 
     private static final long serialVersionUID = 1L;
 }
