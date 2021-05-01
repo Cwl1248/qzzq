@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/public.css}" media="all">
     <script th:src="@{/project/js/wangEditor.min.js}"></script>
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
 </head>
 <body>
 <div class="layuimini-container">
@@ -182,11 +183,34 @@
     const E = window.wangEditor
     const editor = new E('#div1')
     const $text1 = $('#editor')
+    editor.config.menus = [
+        'head',
+        'bold',
+        'fontSize',
+        'fontName',
+        'italic',
+        'underline',
+        'strikeThrough',
+        'indent',
+        'lineHeight',
+        'foreColor',
+        'backColor',
+        'link',
+        'list',
+        'todo',
+        'justify',
+        'quote',
+        'table',
+        'code',
+        'splitLine',
+        'undo',
+        'redo',
+    ]
     editor.config.onchange = function (html) {
         $text1.val(html)
     }
     editor.create()
-    $text1.val()
+    $text1.val(editor.txt.html())
     layui.use(['form', 'layedit', 'laydate'], function () {
         var form = layui.form,
             layer = layui.layer;

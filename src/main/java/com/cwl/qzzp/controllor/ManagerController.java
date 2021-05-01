@@ -49,4 +49,25 @@ public class ManagerController {
     public String upDataJobTable(String pid) {
         return "page/table/edit";
     }
+
+
+    /**
+     * 修改资料
+     * @return
+     */
+    @GetMapping("/modifyInformation")
+    public String modifyInformation() {
+        return "page/user-setting";
+    }
+
+    /**
+     * 修改密码
+     * @return
+     */
+    @GetMapping("/changePassword")
+    public String changePassword() {
+        return "page/user-password";
+    }
+
+
 }

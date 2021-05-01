@@ -10,7 +10,9 @@ public enum RetCode {
     /*操作成功*/
     OK(0, "操作成功"),
     FAIL(1, "发布失败"),
-    RELOAD(2, "'加载职位表数据失败'");
+    RELOAD(2, "'加载职位表数据失败'"),
+    LOGINFAIL(3,"登录失败"),
+    REGISTRATIONFAILED(4,"注册失败");
 
 
     public int code;

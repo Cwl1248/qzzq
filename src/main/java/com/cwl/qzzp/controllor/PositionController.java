@@ -48,4 +48,11 @@ public class PositionController {
         return positionService.getAllPosition();
     }
 
+
+    @PostMapping("/upData")
+    @ResponseBody
+    public ResultData upDataPositionInfoData(@RequestBody PositioninfoDTO position) {
+        return positionService. upDataPositionInfoData(position);
+    }
+
 }

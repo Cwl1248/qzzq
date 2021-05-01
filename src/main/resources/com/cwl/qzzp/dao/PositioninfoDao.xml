@@ -198,9 +198,6 @@
             <if test="temptation != null">
                 temptation = #{temptation,jdbcType=VARCHAR},
             </if>
-            <if test="description != null">
-                description = #{description,jdbcType=VARCHAR},
-            </if>
             <if test="departments != null">
                 departments = #{departments,jdbcType=VARCHAR},
             </if>
@@ -225,11 +222,8 @@
             <if test="posttype5 != null">
                 postType5 = #{posttype5,jdbcType=VARCHAR},
             </if>
-            <if test="releasetime != null">
-                releaseTime = #{releasetime,jdbcType=TIMESTAMP},
-            </if>
             <if test="education !=null">
-                #{education,jdbcType=VARCHAR},
+                education = #{education,jdbcType=VARCHAR},
             </if>
         </set>
         where pId = #{pid,jdbcType=CHAR}

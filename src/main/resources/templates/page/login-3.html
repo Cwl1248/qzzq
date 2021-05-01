@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -305,7 +306,7 @@
             <div class="center">
                 <div class="item">
                     <span class="icon icon-2"></span>
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入登录账号" maxlength="24"/>
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入账号" maxlength="24"/>
                 </div>
 
                 <div class="item">
@@ -314,19 +315,10 @@
                     <span class="bind-password icon icon-4"></span>
                 </div>
 
-                <!--<div id="validatePanel" class="item" style="width: 137px;">
-                    <input type="text" name="captcha" placeholder="请输入验证码" maxlength="4">
-                    <img id="refreshCaptcha" class="validateImg" src="/project/images/captcha.jpg">
-                </div>-->
-
-            </div>
-            <div class="tip">
-                <span class="login-tip">立即登录</span>
-               
-                <a href="javascript:" class="forget-password">注册</a>
             </div>
             <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
                 <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>
+                <button class="login-btn" lay-submit="" lay-filter="registered">还没账户？点我注册</button>
             </div>
         </form>
     </div>
@@ -362,21 +354,74 @@
         // 进行登录操作
         form.on('submit(login)', function (data) {
             data = data.field;
-            if (data.username == '') {
+            if (data.username === '') {
                 layer.msg('用户名不能为空');
                 return false;
             }
-            if (data.password == '') {
+            if (data.password === '') {
                 layer.msg('密码不能为空');
                 return false;
             }
-            if (data.captcha == '') {
-                layer.msg('验证码不能为空');
+            const username = JSON.stringify(data.username)
+            const password = JSON.stringify(data.password)
+            $.ajax({
+                url: '/RecruiterInfor/login',
+                type: 'post',
+              /*  contentType: 'application/json; charset=UTF-8',*/
+                async: false,
+                data: {username: username, password: password},
+                success: function (res) {
+                    console.log(res)
+                    if (res.status === 0) {
+                        layer.msg('登录成功', function () {
+                            window.location = '/toIndex';
+                            window.localStorage.setItem('username',username)
+                            window.localStorage.setItem('password',password)
+                        });
+                    } else {
+                        layer.msg('登录成功', function () {
+                            window.location = '/registered';
+                        });
+                    }
+                }
+            })
+
+            return false;
+        });
+        // 进行注册操作
+        form.on('submit(registered)', function (data) {
+            data = data.field;
+            if (data.username === '') {
+                layer.msg('用户名不能为空');
                 return false;
             }
-            layer.msg('登录成功', function () {
-                window.location = '../managePage/index.html';
-            });
+            if (data.password === '') {
+                layer.msg('密码不能为空');
+                return false;
+            }
+            const username = JSON.stringify(data.username)
+            const password = JSON.stringify(data.password)
+            $.ajax({
+                url: '/RecruiterInfor/registered',
+                type: 'post',
+                /*contentType: 'application/json; charset=UTF-8',*/
+                async: false,
+                data: {username: username, password: password},
+                success: function (res) {
+                    console.log(res)
+                    if (res.status === 0) {
+                        layer.msg('注册成功', function () {
+                            window.location = '/toIndex';
+                            window.localStorage.setItem('username',username)
+                            window.localStorage.setItem('password',password)
+                        });
+                    } else {
+                        layer.msg('注册失败', function () {
+                            window.location = '/registered';
+                        });
+                    }
+                }
+            })
             return false;
         });
     });

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  * @author ：ChengWl
  * @date ：Created in 2021/3/14
- * @description：首页
+ * @description：门户首页
  */
 @Slf4j
 @Controller

@@ -53,4 +53,14 @@ public class PositionService {
         }
 
     }
+
+    public ResultData upDataPositionInfoData(PositioninfoDTO position) {
+        log.info("需要修改职位信息：{}", position);
+        int i = positioninfodao.updateByPrimaryKeySelective(position);
+        if (i != 0) {
+            return ResultData.ok();
+        } else {
+            return ResultData.failed(RetCode.FAIL);
+        }
+    }
 }

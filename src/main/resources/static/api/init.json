@@ -42,13 +42,13 @@
           "target": "_self",
           "child": [
             {
-              "title": "公司信息",
+              "title": "查看公司信息",
               "href": "page/login-2.html",
               "icon": "fa fa-stumbleupon-circle",
               "target": "_self"
             },
             {
-              "title": "职位信息修改",
+              "title": "修改公司信息",
               "href": "page/login-1.html",
               "icon": "fa fa-tags",
               "target": "_self"
@@ -62,7 +62,7 @@
           "target": "_self",
           "child": [
             {
-              "title": "404页面",
+              "title": "查看投递情况",
               "href": "../page/404.html",
               "icon": "fa fa-hourglass-end",
               "target": "_self"

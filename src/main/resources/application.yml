@@ -59,8 +59,8 @@ spring:
 mybatis:
   #  config-location: classpath:mybatis/mybatis-config.xml
   type-aliases-package: com.cwl.qzzp.dto
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 pagehelper:
   helperDialect: mysql
   offsetAsPageNum: true

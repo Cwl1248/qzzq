@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
     <link rel="stylesheet" th:href="@{/project/css/public.css}" media="all">
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
     <script th:src="@{/project/js/wangEditor.min.js}"></script>
     <style>
         body {
@@ -26,7 +27,7 @@
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
             <legend>职位基本信息</legend>
         </fieldset>
-        <form class="layui-form" lay-filter="positionForm">
+        <form class="layui-form" lay-filter="positionForm" ID="positionForm">
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">职位名称</label>
@@ -156,15 +157,23 @@
             <div class="layui-form-item">
                 <div class="layui-form-item layui-form-text">
                     <div class="layui-input-block">
-                        <div id="div1"></div>
-                        <textarea class="layui-textarea" name="description" lay-verify="description" id="editor"
-                                  style="width: 100%;height: 300px;display: none;"></textarea>
+                        <textarea disabled class="layui-textarea" name="description" lay-verify="description"
+                                  id="editor"
+                                  style="width: 100%;height: 300px;"></textarea>
                     </div>
                 </div>
             </div>
+            <div class="layui-form-item layui-hide">
+                <input type="text" name="pid" id="pid"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认修改</button>
+                <button class="layui-btn layui-btn-primary" lay-submit lay-filter="cancel">取消</button>
+            </div>
         </form>
-
     </div>
+
 </div>
 
 <script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
@@ -183,37 +192,40 @@
         }
         return paramValue == "" && (paramValue = null), paramValue
     }
+
 </script>
 <script>
-    const E = window.wangEditor
-    const editor = new E('#div1')
-    const $text1 = $('#editor')
-    editor.config.onchange = function (html) {
-        $text1.val(html)
-    }
-    editor.create()
-    $text1.val()
     layui.use(['form'], function () {
         var form = layui.form,
             layer = layui.layer,
             $ = layui.$;
-        // var pid = getUrlParam("pid")
-
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            var index = layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            }, function () {
+            var param = JSON.stringify(data.field);
 
-                // 关闭弹出层
-                layer.close(index);
+            $.ajax({
+                url: '/position/upData',
+                type: 'post',
+                contentType: 'application/json; charset=UTF-8',
+                async: false,
+                data: param,
+                success: function (res) {
+                    console.log(res)
+                    if (res.status === 0) {
+                        layer.msg("修改成功")
+                    } else {
+                        layer.msg("修改失败")
+                    }
+                }
+            })
 
-                var iframeIndex = parent.layer.getFrameIndex(window.name);
-                parent.layer.close(iframeIndex);
 
-            });
+            // 关闭弹出层
+            layer.close();
 
-            return false;
+            var iframeIndex = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(iframeIndex);
+            parent.layui.table.reload('currentTableId');
         });
 
     });
