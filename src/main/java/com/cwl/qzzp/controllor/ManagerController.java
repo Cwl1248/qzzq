@@ -69,5 +69,22 @@ public class ManagerController {
         return "page/user-password";
     }
 
+    /**
+     * 添加公司信息
+     * @return
+     */
+    @GetMapping("/addCompanyInformation")
+    public String addCompanyInformation() {
+        return "page/companyform";
+    }
 
+
+    /**
+     * 修改公司信息
+     * @return
+     */
+    @GetMapping("/upDataCompanyInformation")
+    public String upDataCompanyInformation() {
+        return "page/editCompanyform";
+    }
 }

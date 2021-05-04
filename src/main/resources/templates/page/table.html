@@ -54,8 +54,11 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <button type="submit" class="layui-btn layui-btn-primary" lay-submit
-                                    lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索
+                            <button type="button" class="layui-btn layui-btn-primary" lay-submit
+                                    lay-filter="data-search-btn" id="data-search-btn"><i class="layui-icon"></i> 搜 索
+                            </button>
+                            <button type="button" class="layui-btn layui-btn-primary" lay-submit
+                                    lay-filter="" id="reset"><i class="layui-icon"></i> 重置
                             </button>
                         </div>
                     </div>
@@ -74,35 +77,86 @@
 <script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
 <script th:inline="none">
 
-    function delHtmlTag(str){
-        return str.replace(/<[^>]+>/g,"");//去掉所有的html标记
+    function delHtmlTag(str) {
+        return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
     }
+    function bindData(data,id){
+        var listener = {};
+        id = id || "" != "" ? "#" + id : "";
+        $(id + " input,select,textarea").each(function(i,item){
+            if($(item).attr("id") != null || $(item).is("input[type='radio'],input[type='checkbox']")){
+                var dataName;
+                if($(item).is("input[type='radio'],input[type='checkbox']")){
+                    dataName = $(item).attr("name");
+                }else{
+                    dataName = $(item).attr("id");
+                    data[dataName] = "";
+                }
+                listener[dataName] = {
+                    get: function() {
+                        var value = $(item).val();
+                        if($(item).is("input[type='radio']")){
+                            value = $(":radio[name='"+$(item).attr("name")+"']:checked").val();
+                        }else if($(item).is("input[type='checkbox']")){
+                            value = [];
+                            $(":checkbox[name='"+$(item).attr("name")+"']:checked").each(function(i,v){
+                                value[i] = $(v).val();
+                            });
+                        }
+                        // layer.msg("get:" + dataName + "的值为:" + value);
+                        return value;
+                    },
+                    set: function(value) {
+                        if($(item).is("input[type='radio']")){
+                            $(":radio[name='"+$(item).attr("name")+"']").removeAttr("checked");
+                            $(":radio[name='"+$(item).attr("name")+"'][value='"+value+"']").prop('checked', true);
+                        }else if($(item).is("input[type='checkbox']")){
+                            value = (value == 0 || (value.length == 1 && value[0] == 0)) ? [,0] : value;
+                            $(":checkbox[name='"+$(item).attr("name")+"']").removeAttr("checked");
+                            $(value).each(function(i,v){
+                                $(":checkbox[name='"+$(item).attr("name")+"'][value='"+v+"']").prop('checked', true);
+                            });
+                        }else{
+                            $(item).val(value);
+                        }
+                        // layer.msg("set:" + dataName + "的值变更为:" + value);
+                    }
+                };
+            }
+        });
+        Object.defineProperties(data, listener);
+    }
+    var data = {}
     layui.use(['form', 'table'], function () {
         table = layui.table, $ = layui.$, laypage = layui.laypage, form = layui.form, layer = layui.layer;
+        bindData(data);
         table.render({
             elem: '#currentTableId',
             url: '/position/getAllPosition',
             toolbar: '#toolbarDemo',
             cellMinWidth: 80,
             even: true,//开启隔行背景
-            defaultToolbar: ['filter', 'exports', 'print', {
-                title: '提示',
-                layEvent: 'LAYTABLE_TIPS',
-                icon: 'layui-icon-tips'
-            }],
-            parseData: function (res) {
+            defaultToolbar: ''
+            , page: {theme: '#1E9FFF'}
+            , parseData: function (res) {
+                var result;
+                if (this.page.curr) {
+                    result = res.data.rows.slice(this.limit * (this.page.curr - 1), this.limit * this.page.curr);
+                } else {
+                    result = res.data.rows.slice(0, this.limit);
+                }
                 return {
                     "code": res.status,
                     "msg": res.message,
-                    "count": res.data.length == null ? 0 : res.data.length,
-                    "data": res.data
+                    "count": res.data.records == null ? 0 : res.data.records,
+                    "data": result
                 };
-            },
-            page: true,
-            request: {
-                pageName: 'page' // 页码的参数名称，默认：page
-                , limitName: 'limit' //每页数据量的参数名，默认：limit
-            },
+            }
+            , request: {
+                limitName: 'rows' //每页数据量的参数名，默认：limit
+            }
+            , limit: 10
+            , limits: [10, 20],
             cols: [[
                 {field: 'ptitle', title: '职位名称', align: "center"},
                 {field: 'salary', title: '薪资待遇', align: "center"},
@@ -120,30 +174,52 @@
                 },
                 {title: '操作', toolbar: '#currentTableBar', align: "center"}
             ]],
-            limits: [10, 15, 20],
             done: function (res, curr, count) {
                 $("table").css("width", "100%");
             },
         });
 
-        // 监听搜索操作
-        form.on('submit(data-search-btn)', function (data) {
-            var result = JSON.stringify(data.field);
-            layer.alert(result, {
-                title: '最终的搜索信息'
-            });
+        //搜索
+        $(document).on('click', '#data-search-btn', function () {
+            search();
+        });
+        // 按下回车键触发查询操作
+        $(document).keyup(function (event) {
+            if (event.keyCode === 13) {
+                search();
+            }
+        });
 
-            //执行搜索重载
+
+        function search() {
             table.reload('currentTableId', {
-                page: {
+                url: 'station/taskQueue/list',
+                where: {
+                    ptitle: $("#ptitle").val(),
+                    place: $("#place").val(),
+                }//查询条件
+                , page: {
                     curr: 1
                 }
-                , where: {
-                    searchParams: result
-                }
-            }, 'data');
+            });
+        }
 
-            return false;
+        //重置
+        $(document).on('click', '#reset', function () {
+            $.each(data, function (key, value) {
+                data[key] = "";
+                $("#" + key).val('');
+            });
+            form.render();
+            table.reload('currentTableId', {
+                where: {
+                    ptitle: $("#ptitle").val(),
+                    place: $("#place").val(),
+                } //查询条件
+                , page: {
+                    curr: 1
+                }
+            });
         });
 
         table.on('tool(currentTableFilter)', function (obj) {
@@ -181,7 +257,6 @@
                 });
             }
         });
-
 
 
     });

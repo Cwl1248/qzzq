@@ -42,13 +42,19 @@
           "target": "_self",
           "child": [
             {
-              "title": "查看公司信息",
-              "href": "page/login-2.html",
+              "title": "添加公司信息",
+              "href": "manage/addCompanyInformation",
               "icon": "fa fa-stumbleupon-circle",
               "target": "_self"
             },
             {
               "title": "修改公司信息",
+              "href": "manage/upDataCompanyInformation",
+              "icon": "fa fa-tags",
+              "target": "_self"
+            },
+            {
+              "title": "添加公司高管信息",
               "href": "page/login-1.html",
               "icon": "fa fa-tags",
               "target": "_self"

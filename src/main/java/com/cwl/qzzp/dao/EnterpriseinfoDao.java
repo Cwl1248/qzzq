@@ -1,7 +1,9 @@
 package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.EnterpriseinfoDTO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface EnterpriseinfoDao {
     int deleteByPrimaryKey(String eid);
 

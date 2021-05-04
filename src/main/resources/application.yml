@@ -3,7 +3,7 @@ server:
 spring:
   application:
     name: qzzp
-#缓存配置
+  #缓存配置
   cache:
     type: ehcache
     ehcache:
@@ -43,11 +43,11 @@ spring:
     cache: false
     encoding: utf-8
   http:
-      encoding:
-        charset: UTF-8
-        enabled: true
-        force: true
-#热部署
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  #热部署
   devtools:
     restart:
       enabled: true
@@ -55,6 +55,11 @@ spring:
       exclude: WEB-INF/**
     freemarker:
       cache: false #页面不加载缓存，修改即时生效
+
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
 
 mybatis:
   #  config-location: classpath:mybatis/mybatis-config.xml
@@ -77,4 +82,11 @@ logging:
   com.cwl.qzzp: debug
   level:
     root: info
+#  图片路径:
+uploadImage:
+  logoPath: "D:/qzzpImg/LOGO"
+  elePath: "D:/qzzpImg/ELE"
+
+
+
 

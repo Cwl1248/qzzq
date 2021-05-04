@@ -1,5 +1,6 @@
 package com.cwl.qzzp.controllor;
 
+import com.cwl.qzzp.common.PagingDTO;
 import com.cwl.qzzp.common.ResultData;
 import com.cwl.qzzp.dto.PositioninfoDTO;
 import com.cwl.qzzp.service.PositionService;
@@ -7,8 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author ：ChengWl
@@ -44,7 +43,7 @@ public class PositionController {
 
     @GetMapping("/getAllPosition")
     @ResponseBody
-    public ResultData<List<PositioninfoDTO>> getAllPosition() {
+    public ResultData<PagingDTO<PositioninfoDTO>> getAllPosition() {
         return positionService.getAllPosition();
     }
 

@@ -2,6 +2,7 @@ package com.cwl.qzzp.service;
 
 import com.cwl.qzzp.common.ResultData;
 import com.cwl.qzzp.common.RetCode;
+import com.cwl.qzzp.common.annotation.Page;
 import com.cwl.qzzp.dao.PositioninfoDao;
 import com.cwl.qzzp.dto.PositioninfoDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,8 @@ public class PositionService {
         }
     }
 
-    public ResultData<List<PositioninfoDTO>> getAllPosition() {
+    @Page
+    public ResultData  getAllPosition() {
         List<PositioninfoDTO> positions = positioninfodao.getAllPosition("a30f7eaa-00e2-4260-b884-9ec2a95bf191");
         if (positions.size() > 0) {
             return ResultData.ok(positions);

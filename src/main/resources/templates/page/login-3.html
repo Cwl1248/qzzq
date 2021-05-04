@@ -364,19 +364,22 @@
             }
             const username = JSON.stringify(data.username)
             const password = JSON.stringify(data.password)
+            const user = JSON.stringify(data)
+            console.log(user)
             $.ajax({
                 url: '/RecruiterInfor/login',
                 type: 'post',
-              /*  contentType: 'application/json; charset=UTF-8',*/
                 async: false,
-                data: {username: username, password: password},
+                contentType: 'application/json; charset=UTF-8',
+                data: user,
                 success: function (res) {
                     console.log(res)
                     if (res.status === 0) {
                         layer.msg('登录成功', function () {
                             window.location = '/toIndex';
-                            window.localStorage.setItem('username',username)
-                            window.localStorage.setItem('password',password)
+                            window.localStorage.setItem('username', username)
+                            window.localStorage.setItem('password', password)
+                            window.localStorage.setItem('itemid', res.data)
                         });
                     } else {
                         layer.msg('登录成功', function () {
@@ -388,6 +391,7 @@
 
             return false;
         });
+
         // 进行注册操作
         form.on('submit(registered)', function (data) {
             data = data.field;
@@ -401,19 +405,22 @@
             }
             const username = JSON.stringify(data.username)
             const password = JSON.stringify(data.password)
+            const user = JSON.stringify(data)
+            console.log(user)
             $.ajax({
                 url: '/RecruiterInfor/registered',
                 type: 'post',
-                /*contentType: 'application/json; charset=UTF-8',*/
+                contentType: 'application/json; charset=UTF-8',
                 async: false,
-                data: {username: username, password: password},
+                data: user,
                 success: function (res) {
                     console.log(res)
                     if (res.status === 0) {
                         layer.msg('注册成功', function () {
                             window.location = '/toIndex';
-                            window.localStorage.setItem('username',username)
-                            window.localStorage.setItem('password',password)
+                            window.localStorage.setItem('username', username)
+                            window.localStorage.setItem('password', password)
+                            window.localStorage.setItem('itemid', res.data)
                         });
                     } else {
                         layer.msg('注册失败', function () {

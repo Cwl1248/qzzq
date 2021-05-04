@@ -1,10 +1,14 @@
 package com.cwl.qzzp.controllor;
 
 import com.cwl.qzzp.common.ResultData;
+import com.cwl.qzzp.dto.RecruiterinforDTO;
 import com.cwl.qzzp.service.RecruiterinforService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author ：ChengWl
@@ -18,15 +22,16 @@ public class RecruiterInforController {
 
     @Autowired
     RecruiterinforService recruiterinforService;
-    @PostMapping("/login")
-    public ResultData login(@RequestBody String username, String password) {
 
-        return recruiterinforService.login(username,password);
+    @PostMapping("/login")
+    public ResultData login(@RequestBody RecruiterinforDTO recruiterinforDTO) {
+
+        return recruiterinforService.login(recruiterinforDTO);
     }
 
     @PostMapping("/registered")
-    public ResultData registered(@RequestBody String username, String password) {
+    public ResultData registered(@RequestBody RecruiterinforDTO recruiterinforDTO) {
 
-        return recruiterinforService.registered(username,password);
+        return recruiterinforService.registered(recruiterinforDTO);
     }
 }

@@ -1,288 +1,277 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cwl.qzzp.dao.EnterpriseinfoDao">
-  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.EnterpriseinfoDTO">
-    <id column="eId" jdbcType="CHAR" property="eid" />
-    <result column="logoImage" jdbcType="VARCHAR" property="logoimage" />
-    <result column="eName" jdbcType="VARCHAR" property="ename" />
-    <result column="ePlace" jdbcType="VARCHAR" property="eplace" />
-    <result column="signLanguage" jdbcType="VARCHAR" property="signlanguage" />
-    <result column="eIntroducation" jdbcType="VARCHAR" property="eintroducation" />
-    <result column="financingStage" jdbcType="VARCHAR" property="financingstage" />
-    <result column="category" jdbcType="VARCHAR" property="category" />
-    <result column="eUrl" jdbcType="VARCHAR" property="eurl" />
-    <result column="eImage1" jdbcType="VARCHAR" property="eimage1" />
-    <result column="eImage2" jdbcType="VARCHAR" property="eimage2" />
-    <result column="eImage3" jdbcType="VARCHAR" property="eimage3" />
-    <result column="evaluationNum" jdbcType="INTEGER" property="evaluationnum" />
-    <result column="positionNum" jdbcType="INTEGER" property="positionnum" />
-    <result column="dealRate" jdbcType="DOUBLE" property="dealrate" />
-    <result column="benefit1" jdbcType="VARCHAR" property="benefit1" />
-    <result column="benefit2" jdbcType="VARCHAR" property="benefit2" />
-    <result column="benefit3" jdbcType="VARCHAR" property="benefit3" />
-    <result column="benefit4" jdbcType="VARCHAR" property="benefit4" />
-    <result column="benefit5" jdbcType="VARCHAR" property="benefit5" />
-    <result column="visitNum" jdbcType="INTEGER" property="visitnum" />
-    <result column="numberOfWorkers" jdbcType="INTEGER" property="numberofworkers" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    eId, logoImage, eName, ePlace, signLanguage, eIntroducation, financingStage, category, 
+    <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.EnterpriseinfoDTO">
+        <id column="eId" jdbcType="CHAR" property="eid"/>
+        <result column="logoImage" jdbcType="VARCHAR" property="logoimage"/>
+        <result column="eName" jdbcType="VARCHAR" property="ename"/>
+        <result column="ePlace" jdbcType="VARCHAR" property="eplace"/>
+        <result column="signLanguage" jdbcType="VARCHAR" property="signlanguage"/>
+        <result column="eIntroducation" jdbcType="VARCHAR" property="eintroducation"/>
+        <result column="financingStage" jdbcType="VARCHAR" property="financingstage"/>
+        <result column="category" jdbcType="VARCHAR" property="category"/>
+        <result column="eUrl" jdbcType="VARCHAR" property="eurl"/>
+        <result column="eImage1" jdbcType="VARCHAR" property="eimage1"/>
+        <result column="eImage2" jdbcType="VARCHAR" property="eimage2"/>
+        <result column="eImage3" jdbcType="VARCHAR" property="eimage3"/>
+        <result column="evaluationNum" jdbcType="INTEGER" property="evaluationnum"/>
+        <result column="positionNum" jdbcType="INTEGER" property="positionnum"/>
+        <result column="dealRate" jdbcType="DOUBLE" property="dealrate"/>
+        <result column="benefit1" jdbcType="VARCHAR" property="benefit1"/>
+        <result column="benefit2" jdbcType="VARCHAR" property="benefit2"/>
+        <result column="benefit3" jdbcType="VARCHAR" property="benefit3"/>
+        <result column="benefit4" jdbcType="VARCHAR" property="benefit4"/>
+        <result column="benefit5" jdbcType="VARCHAR" property="benefit5"/>
+        <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
+        <result column="numberOfWorkers" jdbcType="INTEGER" property="numberofworkers"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        eId, logoImage, eName, ePlace, signLanguage, eIntroducation, financingStage, category,
     eUrl, eImage1, eImage2, eImage3, evaluationNum, positionNum, dealRate, benefit1, 
     benefit2, benefit3, benefit4, benefit5, visitNum, numberOfWorkers
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from enterpriseinfo
-    where eId = #{eid,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from enterpriseinfo
-    where eId = #{eid,jdbcType=CHAR}
-  </delete>
-  <insert id="insert" keyColumn="eId" keyProperty="eid" parameterType="com.cwl.qzzp.dto.EnterpriseinfoDTO" useGeneratedKeys="true">
-    insert into enterpriseinfo (logoImage, eName, ePlace, 
-      signLanguage, eIntroducation, financingStage, 
-      category, eUrl, eImage1, 
-      eImage2, eImage3, evaluationNum, 
-      positionNum, dealRate, benefit1, 
-      benefit2, benefit3, benefit4, 
-      benefit5, visitNum, numberOfWorkers
-      )
-    values (#{logoimage,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, #{eplace,jdbcType=VARCHAR}, 
-      #{signlanguage,jdbcType=VARCHAR}, #{eintroducation,jdbcType=VARCHAR}, #{financingstage,jdbcType=VARCHAR}, 
-      #{category,jdbcType=VARCHAR}, #{eurl,jdbcType=VARCHAR}, #{eimage1,jdbcType=VARCHAR}, 
-      #{eimage2,jdbcType=VARCHAR}, #{eimage3,jdbcType=VARCHAR}, #{evaluationnum,jdbcType=INTEGER}, 
-      #{positionnum,jdbcType=INTEGER}, #{dealrate,jdbcType=DOUBLE}, #{benefit1,jdbcType=VARCHAR}, 
-      #{benefit2,jdbcType=VARCHAR}, #{benefit3,jdbcType=VARCHAR}, #{benefit4,jdbcType=VARCHAR}, 
-      #{benefit5,jdbcType=VARCHAR}, #{visitnum,jdbcType=INTEGER}, #{numberofworkers,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" keyColumn="eId" keyProperty="eid" parameterType="com.cwl.qzzp.dto.EnterpriseinfoDTO" useGeneratedKeys="true">
-    insert into enterpriseinfo
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="logoimage != null">
-        logoImage,
-      </if>
-      <if test="ename != null">
-        eName,
-      </if>
-      <if test="eplace != null">
-        ePlace,
-      </if>
-      <if test="signlanguage != null">
-        signLanguage,
-      </if>
-      <if test="eintroducation != null">
-        eIntroducation,
-      </if>
-      <if test="financingstage != null">
-        financingStage,
-      </if>
-      <if test="category != null">
-        category,
-      </if>
-      <if test="eurl != null">
-        eUrl,
-      </if>
-      <if test="eimage1 != null">
-        eImage1,
-      </if>
-      <if test="eimage2 != null">
-        eImage2,
-      </if>
-      <if test="eimage3 != null">
-        eImage3,
-      </if>
-      <if test="evaluationnum != null">
-        evaluationNum,
-      </if>
-      <if test="positionnum != null">
-        positionNum,
-      </if>
-      <if test="dealrate != null">
-        dealRate,
-      </if>
-      <if test="benefit1 != null">
-        benefit1,
-      </if>
-      <if test="benefit2 != null">
-        benefit2,
-      </if>
-      <if test="benefit3 != null">
-        benefit3,
-      </if>
-      <if test="benefit4 != null">
-        benefit4,
-      </if>
-      <if test="benefit5 != null">
-        benefit5,
-      </if>
-      <if test="visitnum != null">
-        visitNum,
-      </if>
-      <if test="numberofworkers != null">
-        numberOfWorkers,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="logoimage != null">
-        #{logoimage,jdbcType=VARCHAR},
-      </if>
-      <if test="ename != null">
-        #{ename,jdbcType=VARCHAR},
-      </if>
-      <if test="eplace != null">
-        #{eplace,jdbcType=VARCHAR},
-      </if>
-      <if test="signlanguage != null">
-        #{signlanguage,jdbcType=VARCHAR},
-      </if>
-      <if test="eintroducation != null">
-        #{eintroducation,jdbcType=VARCHAR},
-      </if>
-      <if test="financingstage != null">
-        #{financingstage,jdbcType=VARCHAR},
-      </if>
-      <if test="category != null">
-        #{category,jdbcType=VARCHAR},
-      </if>
-      <if test="eurl != null">
-        #{eurl,jdbcType=VARCHAR},
-      </if>
-      <if test="eimage1 != null">
-        #{eimage1,jdbcType=VARCHAR},
-      </if>
-      <if test="eimage2 != null">
-        #{eimage2,jdbcType=VARCHAR},
-      </if>
-      <if test="eimage3 != null">
-        #{eimage3,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationnum != null">
-        #{evaluationnum,jdbcType=INTEGER},
-      </if>
-      <if test="positionnum != null">
-        #{positionnum,jdbcType=INTEGER},
-      </if>
-      <if test="dealrate != null">
-        #{dealrate,jdbcType=DOUBLE},
-      </if>
-      <if test="benefit1 != null">
-        #{benefit1,jdbcType=VARCHAR},
-      </if>
-      <if test="benefit2 != null">
-        #{benefit2,jdbcType=VARCHAR},
-      </if>
-      <if test="benefit3 != null">
-        #{benefit3,jdbcType=VARCHAR},
-      </if>
-      <if test="benefit4 != null">
-        #{benefit4,jdbcType=VARCHAR},
-      </if>
-      <if test="benefit5 != null">
-        #{benefit5,jdbcType=VARCHAR},
-      </if>
-      <if test="visitnum != null">
-        #{visitnum,jdbcType=INTEGER},
-      </if>
-      <if test="numberofworkers != null">
-        #{numberofworkers,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.EnterpriseinfoDTO">
-    update enterpriseinfo
-    <set>
-      <if test="logoimage != null">
-        logoImage = #{logoimage,jdbcType=VARCHAR},
-      </if>
-      <if test="ename != null">
-        eName = #{ename,jdbcType=VARCHAR},
-      </if>
-      <if test="eplace != null">
-        ePlace = #{eplace,jdbcType=VARCHAR},
-      </if>
-      <if test="signlanguage != null">
-        signLanguage = #{signlanguage,jdbcType=VARCHAR},
-      </if>
-      <if test="eintroducation != null">
-        eIntroducation = #{eintroducation,jdbcType=VARCHAR},
-      </if>
-      <if test="financingstage != null">
-        financingStage = #{financingstage,jdbcType=VARCHAR},
-      </if>
-      <if test="category != null">
-        category = #{category,jdbcType=VARCHAR},
-      </if>
-      <if test="eurl != null">
-        eUrl = #{eurl,jdbcType=VARCHAR},
-      </if>
-      <if test="eimage1 != null">
-        eImage1 = #{eimage1,jdbcType=VARCHAR},
-      </if>
-      <if test="eimage2 != null">
-        eImage2 = #{eimage2,jdbcType=VARCHAR},
-      </if>
-      <if test="eimage3 != null">
-        eImage3 = #{eimage3,jdbcType=VARCHAR},
-      </if>
-      <if test="evaluationnum != null">
-        evaluationNum = #{evaluationnum,jdbcType=INTEGER},
-      </if>
-      <if test="positionnum != null">
-        positionNum = #{positionnum,jdbcType=INTEGER},
-      </if>
-      <if test="dealrate != null">
-        dealRate = #{dealrate,jdbcType=DOUBLE},
-      </if>
-      <if test="benefit1 != null">
-        benefit1 = #{benefit1,jdbcType=VARCHAR},
-      </if>
-      <if test="benefit2 != null">
-        benefit2 = #{benefit2,jdbcType=VARCHAR},
-      </if>
-      <if test="benefit3 != null">
-        benefit3 = #{benefit3,jdbcType=VARCHAR},
-      </if>
-      <if test="benefit4 != null">
-        benefit4 = #{benefit4,jdbcType=VARCHAR},
-      </if>
-      <if test="benefit5 != null">
-        benefit5 = #{benefit5,jdbcType=VARCHAR},
-      </if>
-      <if test="visitnum != null">
-        visitNum = #{visitnum,jdbcType=INTEGER},
-      </if>
-      <if test="numberofworkers != null">
-        numberOfWorkers = #{numberofworkers,jdbcType=INTEGER},
-      </if>
-    </set>
-    where eId = #{eid,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.EnterpriseinfoDTO">
-    update enterpriseinfo
-    set logoImage = #{logoimage,jdbcType=VARCHAR},
-      eName = #{ename,jdbcType=VARCHAR},
-      ePlace = #{eplace,jdbcType=VARCHAR},
-      signLanguage = #{signlanguage,jdbcType=VARCHAR},
-      eIntroducation = #{eintroducation,jdbcType=VARCHAR},
-      financingStage = #{financingstage,jdbcType=VARCHAR},
-      category = #{category,jdbcType=VARCHAR},
-      eUrl = #{eurl,jdbcType=VARCHAR},
-      eImage1 = #{eimage1,jdbcType=VARCHAR},
-      eImage2 = #{eimage2,jdbcType=VARCHAR},
-      eImage3 = #{eimage3,jdbcType=VARCHAR},
-      evaluationNum = #{evaluationnum,jdbcType=INTEGER},
-      positionNum = #{positionnum,jdbcType=INTEGER},
-      dealRate = #{dealrate,jdbcType=DOUBLE},
-      benefit1 = #{benefit1,jdbcType=VARCHAR},
-      benefit2 = #{benefit2,jdbcType=VARCHAR},
-      benefit3 = #{benefit3,jdbcType=VARCHAR},
-      benefit4 = #{benefit4,jdbcType=VARCHAR},
-      benefit5 = #{benefit5,jdbcType=VARCHAR},
-      visitNum = #{visitnum,jdbcType=INTEGER},
-      numberOfWorkers = #{numberofworkers,jdbcType=INTEGER}
-    where eId = #{eid,jdbcType=CHAR}
-  </update>
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from enterpriseinfo
+        where eId = #{eid,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from enterpriseinfo
+        where eId = #{eid,jdbcType=CHAR}
+    </delete>
+    <insert id="insert" keyColumn="eId" keyProperty="eid" parameterType="com.cwl.qzzp.dto.EnterpriseinfoDTO"
+            useGeneratedKeys="true">
+        insert into enterpriseinfo (logoImage, eName, ePlace,
+                                    signLanguage, eIntroducation, financingStage,
+                                    category, eUrl, eImage1,
+                                    eImage2, eImage3, evaluationNum,
+                                    positionNum, dealRate, benefit1,
+                                    benefit2, benefit3, benefit4,
+                                    benefit5, visitNum, numberOfWorkers)
+        values (#{logoimage,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, #{eplace,jdbcType=VARCHAR},
+                #{signlanguage,jdbcType=VARCHAR}, #{eintroducation,jdbcType=VARCHAR},
+                #{financingstage,jdbcType=VARCHAR},
+                #{category,jdbcType=VARCHAR}, #{eurl,jdbcType=VARCHAR}, #{eimage1,jdbcType=VARCHAR},
+                #{eimage2,jdbcType=VARCHAR}, #{eimage3,jdbcType=VARCHAR}, #{evaluationnum,jdbcType=INTEGER},
+                #{positionnum,jdbcType=INTEGER}, #{dealrate,jdbcType=DOUBLE}, #{benefit1,jdbcType=VARCHAR},
+                #{benefit2,jdbcType=VARCHAR}, #{benefit3,jdbcType=VARCHAR}, #{benefit4,jdbcType=VARCHAR},
+                #{benefit5,jdbcType=VARCHAR}, #{visitnum,jdbcType=INTEGER}, #{numberofworkers,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="eId" keyProperty="eid" parameterType="com.cwl.qzzp.dto.EnterpriseinfoDTO"
+            useGeneratedKeys="true">
+        insert into enterpriseinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="eid != null">
+                eId,
+            </if>
+            <if test="logoimage != null">
+                logoImage,
+            </if>
+            <if test="ename != null">
+                eName,
+            </if>
+            <if test="eplace != null">
+                ePlace,
+            </if>
+            <if test="signlanguage != null">
+                signLanguage,
+            </if>
+            <if test="eintroducation != null">
+                eIntroducation,
+            </if>
+            <if test="financingstage != null">
+                financingStage,
+            </if>
+            <if test="category != null">
+                category,
+            </if>
+            <if test="eurl != null">
+                eUrl,
+            </if>
+            <if test="eimage1 != null">
+                eImage1,
+            </if>
+            <if test="eimage2 != null">
+                eImage2,
+            </if>
+            <if test="eimage3 != null">
+                eImage3,
+            </if>
+            evaluationNum,
+            positionNum,
+            dealRate,
+            <if test="benefit1 != null">
+                benefit1,
+            </if>
+            <if test="benefit2 != null">
+                benefit2,
+            </if>
+            <if test="benefit3 != null">
+                benefit3,
+            </if>
+            <if test="benefit4 != null">
+                benefit4,
+            </if>
+            <if test="benefit5 != null">
+                benefit5,
+            </if>
+            visitNum,
+            <if test="numberofworkers != null">
+                numberOfWorkers,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="eid != null">
+                #{eid,jdbcType=VARCHAR},
+            </if>
+            <if test="logoimage != null">
+                #{logoimage,jdbcType=VARCHAR},
+            </if>
+            <if test="ename != null">
+                #{ename,jdbcType=VARCHAR},
+            </if>
+            <if test="eplace != null">
+                #{eplace,jdbcType=VARCHAR},
+            </if>
+            <if test="signlanguage != null">
+                #{signlanguage,jdbcType=VARCHAR},
+            </if>
+            <if test="eintroducation != null">
+                #{eintroducation,jdbcType=VARCHAR},
+            </if>
+            <if test="financingstage != null">
+                #{financingstage,jdbcType=VARCHAR},
+            </if>
+            <if test="category != null">
+                #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="eurl != null">
+                #{eurl,jdbcType=VARCHAR},
+            </if>
+            <if test="eimage1 != null">
+                #{eimage1,jdbcType=VARCHAR},
+            </if>
+            <if test="eimage2 != null">
+                #{eimage2,jdbcType=VARCHAR},
+            </if>
+            <if test="eimage3 != null">
+                #{eimage3,jdbcType=VARCHAR},
+            </if>
+            0,
+            0,
+            0.0,
+            <if test="benefit1 != null">
+                #{benefit1,jdbcType=VARCHAR},
+            </if>
+            <if test="benefit2 != null">
+                #{benefit2,jdbcType=VARCHAR},
+            </if>
+            <if test="benefit3 != null">
+                #{benefit3,jdbcType=VARCHAR},
+            </if>
+            <if test="benefit4 != null">
+                #{benefit4,jdbcType=VARCHAR},
+            </if>
+            <if test="benefit5 != null">
+                #{benefit5,jdbcType=VARCHAR},
+            </if>
+            1,
+            <if test="numberofworkers != null">
+                #{numberofworkers,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.EnterpriseinfoDTO">
+        update enterpriseinfo
+        <set>
+            <if test="logoimage != null">
+                logoImage = #{logoimage,jdbcType=VARCHAR},
+            </if>
+            <if test="ename != null">
+                eName = #{ename,jdbcType=VARCHAR},
+            </if>
+            <if test="eplace != null">
+                ePlace = #{eplace,jdbcType=VARCHAR},
+            </if>
+            <if test="signlanguage != null">
+                signLanguage = #{signlanguage,jdbcType=VARCHAR},
+            </if>
+            <if test="financingstage != null">
+                financingStage = #{financingstage,jdbcType=VARCHAR},
+            </if>
+            <if test="category != null">
+                category = #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="eurl != null">
+                eUrl = #{eurl,jdbcType=VARCHAR},
+            </if>
+            <if test="eimage1 != null">
+                eImage1 = #{eimage1,jdbcType=VARCHAR},
+            </if>
+            <if test="eimage2 != null">
+                eImage2 = #{eimage2,jdbcType=VARCHAR},
+            </if>
+            <if test="eimage3 != null">
+                eImage3 = #{eimage3,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluationnum != null">
+                evaluationNum = #{evaluationnum,jdbcType=INTEGER},
+            </if>
+            <if test="positionnum != null">
+                positionNum = #{positionnum,jdbcType=INTEGER},
+            </if>
+            <if test="dealrate != null">
+                dealRate = #{dealrate,jdbcType=DOUBLE},
+            </if>
+            <if test="benefit1 != null">
+                benefit1 = #{benefit1,jdbcType=VARCHAR},
+            </if>
+            <if test="benefit2 != null">
+                benefit2 = #{benefit2,jdbcType=VARCHAR},
+            </if>
+            <if test="benefit3 != null">
+                benefit3 = #{benefit3,jdbcType=VARCHAR},
+            </if>
+            <if test="benefit4 != null">
+                benefit4 = #{benefit4,jdbcType=VARCHAR},
+            </if>
+            <if test="benefit5 != null">
+                benefit5 = #{benefit5,jdbcType=VARCHAR},
+            </if>
+            <if test="visitnum != null">
+                visitNum = #{visitnum,jdbcType=INTEGER},
+            </if>
+            <if test="numberofworkers != null">
+                numberOfWorkers = #{numberofworkers,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where eId = #{eid,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.EnterpriseinfoDTO">
+        update enterpriseinfo
+        set logoImage       = #{logoimage,jdbcType=VARCHAR},
+            eName           = #{ename,jdbcType=VARCHAR},
+            ePlace          = #{eplace,jdbcType=VARCHAR},
+            signLanguage    = #{signlanguage,jdbcType=VARCHAR},
+            eIntroducation  = #{eintroducation,jdbcType=VARCHAR},
+            financingStage  = #{financingstage,jdbcType=VARCHAR},
+            category        = #{category,jdbcType=VARCHAR},
+            eUrl            = #{eurl,jdbcType=VARCHAR},
+            eImage1         = #{eimage1,jdbcType=VARCHAR},
+            eImage2         = #{eimage2,jdbcType=VARCHAR},
+            eImage3         = #{eimage3,jdbcType=VARCHAR},
+            evaluationNum   = #{evaluationnum,jdbcType=INTEGER},
+            positionNum     = #{positionnum,jdbcType=INTEGER},
+            dealRate        = #{dealrate,jdbcType=DOUBLE},
+            benefit1        = #{benefit1,jdbcType=VARCHAR},
+            benefit2        = #{benefit2,jdbcType=VARCHAR},
+            benefit3        = #{benefit3,jdbcType=VARCHAR},
+            benefit4        = #{benefit4,jdbcType=VARCHAR},
+            benefit5        = #{benefit5,jdbcType=VARCHAR},
+            visitNum        = #{visitnum,jdbcType=INTEGER},
+            numberOfWorkers = #{numberofworkers,jdbcType=VARCHAR}
+        where eId = #{eid,jdbcType=CHAR}
+    </update>
 </mapper>

@@ -1,9 +1,12 @@
 package com.cwl.qzzp.controllor;
 
+import com.cwl.qzzp.common.ResultData;
+import com.cwl.qzzp.dto.EnterpriseinfoDTO;
+import com.cwl.qzzp.service.EnterpriseService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author ：ChengWl
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/company")
 public class CompanyListController {
+    @Autowired
+    EnterpriseService enterpriseService;
 
     @GetMapping("/companyList")
     public String getCompanyListData() {
@@ -25,5 +30,25 @@ public class CompanyListController {
     public String getCompanyInfoData() {
 
         return "companyList/companyInfo";
+    }
+
+    @PostMapping("/increase")
+    @ResponseBody
+    public ResultData increaseData(@RequestBody EnterpriseinfoDTO company) {
+        return enterpriseService.increaseData(company);
+    }
+
+
+    @GetMapping("/selectByPk")
+    @ResponseBody
+    public ResultData selectByPk(String eid){
+        return enterpriseService.selectByPk(eid);
+    }
+
+
+    @PostMapping("/updata")
+    @ResponseBody
+    public ResultData updata(@RequestBody EnterpriseinfoDTO company) {
+        return enterpriseService.updata(company);
     }
 }
