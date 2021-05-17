@@ -28,30 +28,38 @@
         <div class="col-md-8" style="padding-top: 35px">
             <!--职位名称-->
             <div class="row">
-                <div class="col-md-12 position-wrapper-name">阿里巴巴 JAVA高级工程师</div>
+                <div class="col-md-12 position-wrapper-name"
+                     th:text="${position.enterpriseinfoDTO.ename+' '+position.ptitle}"></div>
             </div>
             <!--职位薪资/工作地点/经验要求/学习要求/职业性质（全职、实习、兼职）-->
             <div style="margin-top: 20px;font-size: 20px;color: #555555;font-weight: 400">
-                <span style="color: #FD5F39">20k-40k·16薪</span>
+                <span style="color: #FD5F39" th:text="${position.salary+'·14薪'}"></span>
                 <span>/</span>
-                <span>杭州</span>
+                <!-- <span th:text="${position.place}"></span>
+                 <span>/</span>-->
+                <span th:text="${position.experience}"></span>
                 <span>/</span>
-                <span>经验不限</span>
+                <span th:text="${position.education}"></span>
                 <span>/</span>
-                <span>本科及以上</span>
-                <span>/</span>
-                <span>全职</span>
+                <span th:text="${position.postnature}"></span>
             </div>
             <!--职业分类（max 5钟 ）-->
             <div style="margin-top: 20px">
                 <ul class="position-label clearfix">
-                    <li class="labels">电商平台</li>
-                    <li class="labels">新零售</li>
-                    <li class="labels">Java</li>
+                    <li class="labels" th:class="${position.posttype1 ne '' ? 'labels':'p-hide'}"
+                        th:text="${position.posttype1}"></li>
+                    <li class="labels" th:class="${position.posttype2 ne '' ? 'labels':' p-hide'}"
+                        th:text="${position.posttype2}"></li>
+                    <li class="labels" th:class="${position.posttype3 ne '' ? 'labels':' p-hide'}"
+                        th:text="${position.posttype3}"></li>
+                    <li class="labels" th:class="${position.posttype4 ne '' ? 'labels':' p-hide'}"
+                        th:text="${position.posttype4}"></li>
+                    <li class="labels" th:class="${position.posttype5 ne '' ? 'labels':' p-hide'}"
+                        th:text="${position.posttype5}"></li>
                 </ul>
             </div>
             <div style="color: #999">
-                <span>2020-11-19</span>
+                <span th:text="${#dates.format(position.releasetime,'yyyy-MM-dd')}"></span>
                 发布
             </div>
         </div>
@@ -65,43 +73,23 @@
             <!--职位诱惑-->
             <div>
                 <div class="pos-title">职位诱惑:</div>
-                <div style="color: #333333">阿里巴巴中国站电商业务</div>
+                <div style="color: #333333" th:text="${position.temptation}"></div>
             </div>
             <!--职位描述-->
             <div>
                 <div class="pos-title">职位描述:</div>
                 <div style="color: #333333">
-                    <div class="job-detail">
-                        职位诱惑：
-                        <br>HC充足 快速流程 便捷沟通
-                        <br>活跃氛围 待遇优厚 福利多多
-                        <br>
-                        <br>职位描述：
-                        <br>1、参与阿里巴巴中国站市场商家及运营系统架构设计及研发工作；
-                        <br>2、通过对业务和技术栈的理解，对现有产品功能和系统架构进行改良和优化；
-                        <br>3、从用户和技术出发，实现面向未来的系统规划、设计和落地；
-                        <br>4、技术预研和技术难点攻关，保障系统可用性、稳定性和可扩展性。
-                        <br>
-                        <br>职位要求：
-                        <br>1、至少1～3年以上Java开发经验，有扎实的Java基础(熟悉I/O、多线程、集合等基础框架，熟悉分布式、缓存、消息、搜索等机制)；
-                        <br>2、熟悉JavaEE规范，熟悉常用的设计模式。精通Java及Web应用的开发，深入了解Spring，iBatis，Cache，RPC，JVM等机制与源码思想；
-                        <br>3、具备大型复杂项目的实战及管理经验，设计及负责过大型复杂系统，系统架构设计有一定前瞻性；
-                        <br>4、深刻理解企业应用设计模式，有大型分布式、高并发、高负载、高可用性系统设计开发经验；
-                        <br>5、对复杂的服务端系统有构架、经验优化经验。对新技术热爱并有实际开发经验；
-                        <br>6、具备电商或CRM经验优先，大数据分析开发相关实战经验者更佳，对阿里巴巴产品及中间件熟悉者更佳。
-                        <br>
-                        <br>工作地址：
-                        <br>杭州市-滨江区-长河街道-网商路699号
+                    <div class="job-detail" th:utext="${position.description}">
                     </div>
                 </div>
             </div>
             <!--工作地点-->
             <div>
                 <div class="pos-title">工作地点:</div>
-                <div>杭州 - 滨江区 - 长河 - 网商路699号</div>
+                <div th:text="${position.place}"></div>
             </div>
             <!--面试评价-->
-            <div style="border-bottom: 1px dashed #dce4e6;margin-right: 15px">
+            <div style="border-bottom: 1px dashed #dce4e6;margin-right: 15px"  th:class="${position.appraiseDTO.size() gt 1 ? '':'p-hide'}">
                 <div class="interview-evaluation">面试评价</div>
                 <!--评分结果区-->
                 <fieldset>
@@ -112,226 +100,57 @@
                 </fieldset>
             </div>
             <!--评论区-->
-            <div>
+            <div th:class="${position.appraiseDTO.size() gt 1 ? '':'p-hide'}" th:each="a,status:${position.appraiseDTO}">
                 <div style=" margin: 15px 0;padding: 10px;">
                     <div class="comment">
                         <div class="row">
                             <div class="col-md-4" style="color: #555555">秦*研</div>
                             <div class="col-md-4" style="color: #999999;text-align: center"></div>
-                            <div class="col-md-4" style="color: #999999;text-align: right">2020-01-19</div>
+                            <div class="col-md-4" style="color: #999999;text-align: right"
+                                 th:text="${#dates.format(a.cratetime,'yyyy-MM-dd')}"></div>
                         </div>
                         <div class="row" style="margin-top: 15px">
                             <div class="col-md-12">
-                                <span class="interview-tag">面试效率高</span>
-                                <span class="interview-tag">面试官很nice</span>
-                                <span class="interview-tag">面试官是大牛</span>
+                                <span class="interview-tag" th:class="${a.evaluationlabel1 ne '' ? 'interview-tag':'p-hide'}"
+                                      th:text="${a.evaluationlabel1}"></span>
+                                <span class="interview-tag" th:class="${a.evaluationlabel2 ne '' ? 'interview-tag':'p-hide'}"
+                                      th:text="${a.evaluationlabel2}"></span>
+                                <span class="interview-tag" th:class="${a.evaluationlabel3 ne '' ? 'interview-tag':'p-hide'}"
+                                      th:text="${a.evaluationlabel3}"></span>
+                                <span class="interview-tag" th:class="${a.evaluationlabel4 ne '' ? 'interview-tag':'p-hide'}"
+                                      th:text="${a.evaluationlabel4}"></span>
+                                <span class="interview-tag" th:class="${a.evaluationlabel5 ne '' ? 'interview-tag':'p-hide'}"
+                                      th:text="${a.evaluationlabel5}"></span>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 15px">
                             <div class="col-md-12">
                                 <span style="color: #999999"> [面试过程]</span>
-                                <span class="comment-content">
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style=" margin: 15px 0;padding: 10px;">
-                    <div class="comment">
-                        <div class="row">
-                            <div class="col-md-4" style="color: #555555">秦*研</div>
-                            <div class="col-md-4" style="color: #999999;text-align: center"> </div>
-                            <div class="col-md-4" style="color: #999999;text-align: right">2020-01-19</div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span class="interview-tag">面试效率高</span>
-                                <span class="interview-tag">面试官很nice</span>
-                                <span class="interview-tag">面试官是大牛</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span style="color: #999999"> [面试过程]</span>
-                                <span class="comment-content">
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style=" margin: 15px 0;padding: 10px;">
-                    <div class="comment">
-                        <div class="row">
-                            <div class="col-md-4" style="color: #555555">秦*研</div>
-                            <div class="col-md-4" style="color: #999999;text-align: center"> </div>
-                            <div class="col-md-4" style="color: #999999;text-align: right">2020-01-19</div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span class="interview-tag">面试效率高</span>
-                                <span class="interview-tag">面试官很nice</span>
-                                <span class="interview-tag">面试官是大牛</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span style="color: #999999"> [面试过程]</span>
-                                <span class="comment-content">
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style=" margin: 15px 0;padding: 10px;">
-                    <div class="comment">
-                        <div class="row">
-                            <div class="col-md-4" style="color: #555555">秦*研</div>
-                            <div class="col-md-4" style="color: #999999;text-align: center"> </div>
-                            <div class="col-md-4" style="color: #999999;text-align: right">2020-01-19</div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span class="interview-tag">面试效率高</span>
-                                <span class="interview-tag">面试官很nice</span>
-                                <span class="interview-tag">面试官是大牛</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span style="color: #999999"> [面试过程]</span>
-                                <span class="comment-content">
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style=" margin: 15px 0;padding: 10px;">
-                    <div class="comment">
-                        <div class="row">
-                            <div class="col-md-4" style="color: #555555">秦*研</div>
-                            <div class="col-md-4" style="color: #999999;text-align: center"> </div>
-                            <div class="col-md-4" style="color: #999999;text-align: right">2020-01-19</div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span class="interview-tag">面试效率高</span>
-                                <span class="interview-tag">面试官很nice</span>
-                                <span class="interview-tag">面试官是大牛</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span style="color: #999999"> [面试过程]</span>
-                                <span class="comment-content">
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style=" margin: 15px 0;padding: 10px;">
-                    <div class="comment">
-                        <div class="row">
-                            <div class="col-md-4" style="color: #555555">秦*研</div>
-                            <div class="col-md-4" style="color: #999999;text-align: center"> </div>
-                            <div class="col-md-4" style="color: #999999;text-align: right">2020-01-19</div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span class="interview-tag">面试效率高</span>
-                                <span class="interview-tag">面试官很nice</span>
-                                <span class="interview-tag">面试官是大牛</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12">
-                                <span style="color: #999999"> [面试过程]</span>
-                                <span class="comment-content">
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。
-                                面试官给了很多建议，自己要对问题更深入的研究下去。谢谢面试官。</span>
+                                <span class="comment-content" th:text="${a.interviewprocess}">
+                               </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--右边公司基本信息及在招职位-->
+        <!--右边公司基本信息-->
         <div class="col-md-3">
             <div style="margin-top: 15px">
                 <!--公司基本信息-->
                 <div>
-                    <span class="pos-title">阿里集团基本信息</span>
-                    <div class="company-info-r">人数：2000人以上</div>
-                    <div class="company-info-r">领域：物联网|电商|视频媒体</div>
-                    <div class="company-info-r">地点：杭州</div>
-                    <div class="company-info-r">公司网站：<a href="https://you.163.com/" style="color: #999999">https://you.163.com/</a>
+                    <span class="pos-title" th:text="${position.enterpriseinfoDTO.ename+'基本信息'}"></span>
+                    <div class="company-info-r" th:text="${'人数：'+position.enterpriseinfoDTO.numberofworkers}"></div>
+                    <div class="company-info-r" th:text="${'领域：'+position.enterpriseinfoDTO.category}"></div>
+                    <div class="company-info-r"
+                         th:text="${'地点：'+#strings.abbreviate(position.enterpriseinfoDTO.eplace,40)}"></div>
+                    <div class="company-info-r" th:text="${'公司网站：'+position.enterpriseinfoDTO.eurl}"><a
+                            th:href="${position.enterpriseinfoDTO.eurl}" style="color: #999999"></a>
                     </div>
-                </div>
-                <!--其他在招职位-->
-                <div style="margin-top: 15px;width: 70%" >
-                    <span class="pos-title">其他在招职位</span>
-                    <div style="padding: 5px;margin-top: 20px;border-bottom: 1px dashed #dce4e6;">
-                        <div style="color: #999999">新媒体运营-在线教育</div>
-                        <div>
-                            <span style="color: #FD5F39">12k-20k</span>
-                            <span style="float: right;color: #999999;font-weight: 600">2020-12-18<span style="font-weight: 400!important;">&nbsp;发布</span></span>
-                        </div>
-                    </div>
-                    <div style="padding: 5px;margin-top: 20px;border-bottom: 1px dashed #dce4e6;">
-                        <div style="color: #999999">新媒体运营-在线教育</div>
-                        <div>
-                            <span style="color: #FD5F39">12k-20k</span>
-                            <span style="float: right;color: #999999;font-weight: 600">2020-12-18<span style="font-weight: 400!important;">&nbsp;发布</span></span>
-                        </div>
-                    </div>
-                    <div style="padding: 5px;margin-top: 20px;border-bottom: 1px dashed #dce4e6;">
-                        <div style="color: #999999">新媒体运营-在线教育</div>
-                        <div>
-                            <span style="color: #FD5F39">12k-20k</span>
-                            <span style="float: right;color: #999999;font-weight: 600">2020-12-18<span style="font-weight: 400!important;">&nbsp;发布</span></span>
-                        </div>
-                    </div>
-                    <div style="padding: 5px;margin-top: 20px;border-bottom: 1px dashed #dce4e6;">
-                        <div style="color: #999999">新媒体运营-在线教育</div>
-                        <div>
-                            <span style="color: #FD5F39">12k-20k</span>
-                            <span style="float: right;color: #999999;font-weight: 600">2020-12-18<span style="font-weight: 400!important;">&nbsp;发布</span></span>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <div th:replace="public/bottom :: bottom"></div>
@@ -342,31 +161,31 @@
         var rate = layui.rate;
         rate.render({
             elem: '#overview'
-            , value: 2.5 //初始值
+            , value: 4 //初始值
             , half: true //开启半星
             , readonly: true //只读
         })
         rate.render({
             elem: '#star1'
-            , value: 4.5 //初始值
+            , value: [[${mu}]] //初始值
             , half: true //开启半星
             , readonly: true //只读
         })
         rate.render({
             elem: '#star2'
-            , value: 4.5 //初始值
+            , value: [[${m}]] //初始值
             , half: true //开启半星
             , readonly: true //只读
         })
         rate.render({
             elem: '#star3'
-            , value: 3.5 //初始值
+            , value: [[${e}]] //初始值
             , half: true //开启半星
             , readonly: true //只读
         })
         rate.render({
             elem: '#star4'
-            , value: 4 //初始值
+            , value: [[${r}]] //初始值
             , half: true //开启半星
             , readonly: true //只读
         })

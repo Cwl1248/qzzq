@@ -1,8 +1,14 @@
 package com.cwl.qzzp.controllor;
 
+import com.cwl.qzzp.dto.PositioninfoDTO;
+import com.cwl.qzzp.service.PositionService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 /**
  * @author ：ChengWl
@@ -12,10 +18,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 @Controller
 public class IndexController {
+    @Autowired
+    PositionService positionService;
 
     @GetMapping("/index")
-    public String getIndexData() {
-
+    public String getIndexData(ModelMap modelMap) {
+        List<PositioninfoDTO> list = positionService.getIndexPosition();
+        modelMap.addAttribute("positionInfoList",list);
         return "index/index";
     }
 }

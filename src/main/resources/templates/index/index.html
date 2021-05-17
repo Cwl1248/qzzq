@@ -350,299 +350,43 @@
                 </li>
             </ul>
             <!--职位列表-->
-            <div class="row">
-                <div class="col-md-4 ">
+            <div class="row" >
+                <div class="col-md-4" th:each="p,status:${positionInfoList}">
                     <div class="pos-list">
                         <!--职位名称 发布时间 薪资信息-->
                         <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
+                            <a class="col-md-4 pos-name" th:text="${p.ptitle}" th:href="@{/position/positionInfo(pid=${p.pid})}"></a>
+                            <div class="col-md-4 time-info" th:text="${#dates.format(p.releasetime,'['+'mm:ss'+']')}"></div>
+                            <div class="col-md-4 salary-info" th:text="${p.salary} +'·14薪'"></div>
                         </div>
                         <!--经验要求-->
                         <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
+                            <div class="col-md-12 exe-req">
+                                <span th:text="${p.experience} +'/'"></span>
+                                <span th:text="${p.education}"></span>
+                            </div>
+                            <div class="col-md-4 exe-req" ></div>
                         </div>
                         <!--行业类别-->
                         <div style="margin-top: 15px;overflow: hidden">
                             <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
                         </div>
                         <!--分割线-->
                         <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
                         <!--企业信息-->
                         <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
+                            <div ><img class="img-Logo" th:src="@{${p.logoSrc}}"></div>
                             <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
+                                <div style="color: #555555" th:text="${p.departments}"></div>
                                 <div class="company-info">电商/上市公司/杭州</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4 ">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
-                                <div class="company-info">电商/上市公司/杭州</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
-                                <div class="company-info">电商/上市公司/杭州</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
-                                <div class="company-info">电商/上市公司/杭州</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
-                                <div class="company-info">电商/上市公司/杭州</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
-                                <div class="company-info">电商/上市公司/杭州</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
-                                <div class="company-info">电商/上市公司/杭州</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
-                                <div class="company-info">电商/上市公司/杭州</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <div class="col-md-4 pos-name">前端工程师</div>
-                            <div class="col-md-4 time-info">[16:00发布]</div>
-                            <div class="col-md-4 salary-info">20k-24k·16薪</div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6 exe-req">经验3-5年/本科</div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
-                            <span class="industry-category">视频</span>
-                            <span class="industry-category">IT技术支持</span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{/project/images/ALi-Logo.png}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">阿里巴巴-事业群</div>
-                                <div class="company-info">电商/上市公司/杭州</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
             <!--查看更多按钮-->
             <div class="row">
-                <div class="more" style="margin-left: 510px">查看更多</div>
+                <a class="more" style="margin-left: 510px " href="/position/positionList"><span >查看更多</span></a>
             </div>
 
         </div>
@@ -659,7 +403,6 @@
         div.style.display = "block";
         var m = document.getElementById(m)
         m.style.boxShadow = "2px -2px 6px #c8c8ce";
-
     }
 
     function mOut(obj, m) {

@@ -65,4 +65,12 @@ public class PositionService {
             return ResultData.failed(RetCode.FAIL);
         }
     }
+
+    public List<PositioninfoDTO> getIndexPosition(){
+        return positioninfodao.getIndexPosition();
+    }
+
+    public PositioninfoDTO getPositionInfoData(String pid) {
+        return positioninfodao.getPositionInfoData(pid);
+    }
 }

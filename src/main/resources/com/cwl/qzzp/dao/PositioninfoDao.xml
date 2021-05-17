@@ -22,11 +22,57 @@
         <result column="releaseTime" jdbcType="TIMESTAMP" property="releasetime"/>
         <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
         <result column="education" jdbcType="VARCHAR" property="education"/>
+        <result column="logoSrc" jdbcType="VARCHAR" property="logoSrc"/>
+        <result column="logoSrc" jdbcType="VARCHAR" property="logoSrc"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMap2" type="com.cwl.qzzp.dto.PositioninfoDTO">
+        <id column="pId" jdbcType="CHAR" property="pid"/>
+        <result column="dataId" jdbcType="CHAR" property="dataid"/>
+        <result column="reId" jdbcType="CHAR" property="reid"/>
+        <result column="pTitle" jdbcType="VARCHAR" property="ptitle"/>
+        <result column="salary" jdbcType="VARCHAR" property="salary"/>
+        <result column="experience" jdbcType="VARCHAR" property="experience"/>
+        <result column="place" jdbcType="VARCHAR" property="place"/>
+        <result column="temptation" jdbcType="VARCHAR" property="temptation"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="departments" jdbcType="VARCHAR" property="departments"/>
+        <result column="states" jdbcType="VARCHAR" property="states"/>
+        <result column="postNature" jdbcType="VARCHAR" property="postnature"/>
+        <result column="postType1" jdbcType="VARCHAR" property="posttype1"/>
+        <result column="postType2" jdbcType="VARCHAR" property="posttype2"/>
+        <result column="postType3" jdbcType="VARCHAR" property="posttype3"/>
+        <result column="postType4" jdbcType="VARCHAR" property="posttype4"/>
+        <result column="postType5" jdbcType="VARCHAR" property="posttype5"/>
+        <result column="releaseTime" jdbcType="TIMESTAMP" property="releasetime"/>
+        <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
+        <result column="education" jdbcType="VARCHAR" property="education"/>
+        <result column="logoSrc" jdbcType="VARCHAR" property="logoSrc"/>
+        <association property="enterpriseinfoDTO" javaType="com.cwl.qzzp.dto.EnterpriseinfoDTO">
+            <id column="eId" jdbcType="CHAR" property="eid"/>
+            <result column="eName" jdbcType="VARCHAR" property="ename"/>
+            <result column="ePlace" jdbcType="VARCHAR" property="eplace"/>
+            <result column="signLanguage" jdbcType="VARCHAR" property="signlanguage"/>
+            <result column="eIntroducation" jdbcType="VARCHAR" property="eintroducation"/>
+            <result column="financingStage" jdbcType="VARCHAR" property="financingstage"/>
+            <result column="category" jdbcType="VARCHAR" property="category"/>
+            <result column="eUrl" jdbcType="VARCHAR" property="eurl"/>
+            <result column="benefit1" jdbcType="VARCHAR" property="benefit1"/>
+            <result column="benefit2" jdbcType="VARCHAR" property="benefit2"/>
+            <result column="benefit3" jdbcType="VARCHAR" property="benefit3"/>
+            <result column="benefit4" jdbcType="VARCHAR" property="benefit4"/>
+            <result column="benefit5" jdbcType="VARCHAR" property="benefit5"/>
+            <result column="numberOfWorkers" jdbcType="INTEGER" property="numberofworkers"/>
+        </association>
+        <collection property="appraiseDTO" ofType="com.cwl.qzzp.dto.AppraiseDTO"
+                    resultMap="com.cwl.qzzp.dao.AppraiseDao.BaseResultMap"
+                    column="pId">
+        </collection>
     </resultMap>
     <sql id="Base_Column_List">
     pId, dataId, reId, pTitle, salary, experience, place, temptation, description, departments, 
     states, postNature, postType1, postType2, postType3, postType4, postType5, releaseTime, 
-    visitNum,education
+    visitNum,education,logoSrc
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
@@ -265,5 +311,24 @@
         <include refid="Base_Column_List"/>
         from positioninfo
         where reId = #{reid,jdbcType=CHAR}
+    </select>
+
+
+    <select id="getIndexPosition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from positioninfo
+        where states = '发布'
+        order by visitNum
+        limit 9;
+    </select>
+
+    <select id="getPositionInfoData" parameterType="string" resultMap="BaseResultMap2">
+        select p.*,e.*,a.*
+        from positioninfo p
+        left join enterpriseinfo e on p.dataId = e.eId
+        left join appraise a on p.pId = a.dataId
+        where
+        pId = #{pid}
     </select>
 </mapper>

@@ -169,6 +169,16 @@ body {
 }
 
 .pos-name {
+    color: #999999;
+    text-decoration-line: none;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.pos-name:hover{
+    color: #999999;
+    text-decoration-line: none;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
@@ -228,6 +238,7 @@ body {
     color: #6495ED;
     text-align: center;
     border: 1px solid #6495ED;
+    text-decoration-line: none;
 }
 
 .more:hover {
@@ -240,4 +251,5 @@ body {
     text-align: center;
     background: #6495ED;
     border: 1px solid #6495ED;
+    text-decoration-line: none;
 }

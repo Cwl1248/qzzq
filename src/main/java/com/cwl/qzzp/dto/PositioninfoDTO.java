@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * positioninfo
@@ -111,5 +112,14 @@ public class PositioninfoDTO implements Serializable {
      */
     private String education;
 
+    /**
+     * 公司logo
+     */
+    private String logoSrc;
+
     private static final long serialVersionUID = 1L;
+
+    private EnterpriseinfoDTO enterpriseinfoDTO;
+
+    private List<AppraiseDTO> AppraiseDTO;
 }

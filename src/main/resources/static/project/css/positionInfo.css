@@ -112,6 +112,7 @@ ul {
     color: #000;
     background-color: #fff
 }
+
 .company-info-r {
     text-indent: 20px;
     word-break: break-word;
@@ -124,4 +125,11 @@ legend {
     width: fit-content !important;
     display: inline !important;
     margin-bottom: 0 !important;
+}
+
+.p-hide {
+    display: none;
+}
+.p-show{
+    display: flex;
 }

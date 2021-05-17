@@ -23,4 +23,8 @@ public interface PositioninfoDao {
     int updateVisitNum(PositioninfoDTO record);
 
     List<PositioninfoDTO> getAllPosition(String reid);
+
+    List<PositioninfoDTO> getIndexPosition();
+
+    PositioninfoDTO getPositionInfoData(String pid);
 }
