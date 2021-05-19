@@ -3,6 +3,7 @@ package com.cwl.qzzp.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * enterpriseinfo
@@ -126,4 +127,8 @@ public class EnterpriseinfoDTO implements Serializable {
     private String itemid;
 
     private static final long serialVersionUID = 1L;
+
+    private List<PositioninfoDTO> positioninfoDTOList;
+
+    private ManagementteamDTO managementTeamDTO;
 }

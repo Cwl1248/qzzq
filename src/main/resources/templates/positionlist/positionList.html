@@ -35,7 +35,7 @@
             <ul class="filter-wrapper">
                 <!--工作地点-->
                 <li class="choose">
-                    <span class="title">工作地点:</span>
+                    <span class="title">主要城市:</span>
                     <a class="choose-list" href="javascript:">北京</a>
                     <a class="choose-list" href="javascript:">上海</a>
                     <a class="choose-list" href="javascript:">广州</a>
@@ -56,8 +56,6 @@
                     <a class="choose-list" href="javascript:">福州</a>
                     <a class="choose-list" href="javascript:">大连</a>
                     <a class="choose-list" href="javascript:">珠海</a>
-                    <a class="choose-list" href="javascript:">全部城市&gt</a>
-
                 </li>
                 <!--经验要求-->
                 <li class="choose">
@@ -144,44 +142,60 @@
         <div class="col-md-1"></div>
     </div>
 
-    <div class="row" style="margin-top:30px;font-size: 18px!important;">
+    <div class="row" style="margin-top:30px;font-size: 18px!important;" th:each="p,status:${list}">
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div style="display:flex; border: 1px solid #ededed;border-radius: 2px;padding: 10px">
                 <div class="col-7">
-                    <a class="position-name">python开发工程师</a>
-                    <span class="t">18:32发布</span>
+                    <a class="position-name" th:href="@{/position/positionInfo(pid=${p.pid},menutab=3)}" th:text="${p.ptitle}"></a>
+                    <span class="t" th:text="${#dates.format(p.releasetime,'mm:ss'+'发布')}"></span>
                     <div style="margin-top: 15px">
-                        <span style="color: #FD5F39"> 12k-18k </span>
-                        <span style="color: #555555;margin-left: 15px"> 经验1-3年 </span>
-                        <span style="color: #555555">/本科</span>
+                        <span style="color: #FD5F39" th:text="${p.salary}"></span>
+                        <span style="color: #555555;margin-left: 15px" th:text="${'经验'+p.experience}+'/'"></span>
+                        <span style="color: #555555" th:text="${p.education}"></span>
                     </div>
                 </div>
                 <div class="col-4">
-                    <a class="com-name">德科信息</a>
+                    <a class="com-name" th:text="${p.enterpriseinfoDTO.ename}"></a>
                     <div style="margin-top: 15px;color: #555555">
-                        <span>物联网</span>
-                        <span>/&nbsp;不需要融资</span>
-                        <span>/&nbsp;2000人以上</span>
+                        <span th:text="${p.enterpriseinfoDTO.category}+'/'"></span>
+                        <span th:text="${p.enterpriseinfoDTO.financingstage}+'/ '"></span>
+                        <span th:text="${p.enterpriseinfoDTO.numberofworkers}"></span>
                     </div>
                 </div>
                 <div class="col-1">
-                    <div style="border: 1px solid #ededed;height: 75px"><img style="width: 84px;height: 75px"
-                                                                             th:src="@{/project/images/ALi-Logo.png}">
+                    <div style="border: 1px solid #ededed;height: 75px"><img style="width: 84px;height: 75px" th:src="@{${'http://localhost:7089/'+p.enterpriseinfoDTO.logoimage}}">
                     </div>
                 </div>
             </div>
             <div style="display:flex;background:#fafafa;padding: 10px">
                 <div class="col-7">
                     <div>
-                        <span class="job-category">Python</span>
-                        <span class="job-category">Python</span>
-                        <span class="job-category">Python</span>
+                        <span class="job-category" th:text="${p.posttype1}"
+                              th:class="${p.posttype1 ne '' ? 'job-category':'p-hide'}"></span>
+                        <span class="job-category" th:text="${p.posttype2}"
+                              th:class="${p.posttype2 ne '' ? 'job-category':'p-hide'}"></span>
+                        <span class="job-category" th:text="${p.posttype3}"
+                              th:class="${p.posttype3 ne '' ? 'job-category':'p-hide'}"></span>
+                        <span class="job-category" th:text="${p.posttype4}"
+                              th:class="${p.posttype4 ne '' ? 'job-category':'p-hide'}"></span>
+                        <span class="job-category" th:text="${p.posttype5}"
+                              th:class="${p.posttype5 ne '' ? 'job-category':'p-hide'}"></span>
                     </div>
                 </div>
                 <div class="col-4">
-                    <div>
-                        “包吃 班车 六险一金”
+                    <div><span>"</span>
+                        <span th:text="${p.enterpriseinfoDTO.benefit1}"
+                              th:class="${p.enterpriseinfoDTO.benefit1 ne '' ? '':'p-hide'}"></span>
+                        <span th:text="${p.enterpriseinfoDTO.benefit2}"
+                              th:class="${p.enterpriseinfoDTO.benefit2 ne '' ? '':'p-hide'}"></span>
+                        <span th:text="${p.enterpriseinfoDTO.benefit3}"
+                              th:class="${p.enterpriseinfoDTO.benefit3 ne '' ? '':'p-hide'}"></span>
+                        <span th:text="${p.enterpriseinfoDTO.benefit4}"
+                              th:class="${p.enterpriseinfoDTO.benefit4 ne '' ? '':'p-hide'}"></span>
+                        <span th:text="${p.enterpriseinfoDTO.benefit5}"
+                              th:class="${p.enterpriseinfoDTO.benefit5 ne '' ? '':'p-hide'}"></span>
+                        <span>"</span>
                     </div>
                 </div>
                 <div class="col-1"></div>
@@ -190,11 +204,62 @@
         <div class="col-md-1"></div>
     </div>
 
+    <!--page bar-->
+    <div class="" th:if="${list.getPageNum() le list.getPages()}">
+        <div class="pagerow " th:if="${list.pages<10}">
+            <ul id="menu">
+                <li th:if="${list.pageNum}>1"><a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a></li>
+                <li th:each="num : ${#numbers.sequence(1,list.pages)}">
+                    <a th:classappend="page-btn" th:text="${num}" th:class="${list.pageNum eq num ? 'page-btn-active':''}"
+                       th:href="@{/company/companyList(pageNum=${num},pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum lt list.pages}">
+                    <a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="pagerow" th:if="${list.pages>10}">
+            <ul id="menu">
+                <li th:if="${list.pageNum}>1"><a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a></li>
+                <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}" th:href="@{/company/companyList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a></li>
+                <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}" th:href="@{/company/companyList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}" th:href="@{/company/companyList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}" th:href="@{/company/companyList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}" th:href="@{/company/companyList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}" th:href="@{/company/companyList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}" th:href="@{/company/companyList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}" th:href="@{/company/companyList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum gt 1}" > <a class="page-btn" th:text="${list.pageNum-1}"  th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum le list.pages}">  <a th:classappend="page-btn" th:class="${list.pageNum le list.pages ? 'page-btn-active':''}" th:text="${list.pageNum}" th:href="@{/company/companyList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}" th:href="@{/company/companyList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}" th:href="@{/company/companyList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}" th:href="@{/company/companyList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}" th:href="@{/company/companyList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}" th:href="@{/company/companyList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}" th:href="@{/company/companyList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}" th:href="@{/company/companyList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=3)}"></a></li>
+                <li th:if="${list.pageNum lt list.pages}">  <a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a></li>
+            </ul>
+        </div>
+    </div>
+
 
 </div>
 
 <div th:replace="public/bottom :: bottom"></div>
 <script>
+    function  goNewsPage() {
+        let pageNum3= $("#inputContentNews").val()
+        let pageSize3= $("#pageNewsSelect").val()
+        location.href = `/company/companyList?pageNum=${pageNum3}&pageSize=${pageSize3}&menutab=3`;
+    }
+    /*下拉列表*/
+    function goNewsPageSize () {
+        let pageSize3= $("#pageNewsSelect").val()
+        location.href = `/company/companyList?pageNum=1&pageSize=${pageSize3}&menutab=3`;
+    }
 
 </script>
 

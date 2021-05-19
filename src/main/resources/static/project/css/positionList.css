@@ -98,7 +98,7 @@ ul.filter-wrapper{
     padding: 0 5px;
     font-size: 18px;
     line-height: 25px;
-    color: #555;
+    color: #999999;
     border: 1px solid #dcdcdc;
     border-radius: 3px;
     vertical-align: middle;
@@ -106,4 +106,109 @@ ul.filter-wrapper{
     text-overflow: ellipsis;
     white-space: nowrap;
     word-wrap: normal
+}
+
+/*分页栏*/
+.pagerow{
+    padding: 0;
+    margin: 0;
+}
+
+#menu {
+    margin-top: 25px;
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding:0;
+    font-size: 22px;/*15px*/
+}
+#menu li{
+    list-style: none;
+    margin-right: 0.8%;
+    font-size:22px;
+}
+/*按钮组*/
+.page-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #6495ED;
+    border-radius: 15%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: #6495ED;
+    background-color: #ffffff;
+    text-decoration: none;
+}
+/*字体高亮*/
+.page-btn-active{
+    color: white !important;
+    background-color: #6495ED !important;
+    font-weight: 700;
+}
+.page-btn:hover{
+    color: #6495ED;
+    text-decoration: none;
+    font-weight: 700;
+}
+/*下拉列表*/
+.page-select {
+    display: block;
+    border: 1px solid #6495ED;
+    border-radius: 5px;
+    height: 40px;
+    text-decoration: none;
+    color: #6495ED;
+    background-color: #ffffff;
+    outline:0;
+    font-size: 22px;
+
+}
+/*按钮组悬停效果*/
+#menu li button:hover{
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #6495ED;
+}
+/*按钮组获得焦点效果*/
+#menu li button:focus{
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #6495ED;
+    outline:0;
+}
+/*页数输入框*/
+.news-input {
+    border: 1px solid #6495ED;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 2px;
+    vertical-align: middle;
+    color: #6495ED;
+    outline:0;
+}
+/**/
+.news-page-lastitem{
+    vertical-align: middle;
+    width: 100%;
+}
+
+.page-btn-sure{
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #6495ED;
+    border-radius: 15%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: #6495ED;
+    vertical-align: middle;
+    background-color: #ffffff;
+    text-decoration: none;
 }

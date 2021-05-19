@@ -25,15 +25,58 @@
         <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
         <result column="numberOfWorkers" jdbcType="INTEGER" property="numberofworkers"/>
     </resultMap>
+    <resultMap id="BaseResultMap2" type="com.cwl.qzzp.dto.EnterpriseinfoDTO">
+        <id column="eId" jdbcType="CHAR" property="eid"/>
+        <result column="logoImage" jdbcType="VARCHAR" property="logoimage"/>
+        <result column="eName" jdbcType="VARCHAR" property="ename"/>
+        <result column="ePlace" jdbcType="VARCHAR" property="eplace"/>
+        <result column="signLanguage" jdbcType="VARCHAR" property="signlanguage"/>
+        <result column="eIntroducation" jdbcType="VARCHAR" property="eintroducation"/>
+        <result column="financingStage" jdbcType="VARCHAR" property="financingstage"/>
+        <result column="category" jdbcType="VARCHAR" property="category"/>
+        <result column="eUrl" jdbcType="VARCHAR" property="eurl"/>
+        <result column="eImage1" jdbcType="VARCHAR" property="eimage1"/>
+        <result column="eImage2" jdbcType="VARCHAR" property="eimage2"/>
+        <result column="eImage3" jdbcType="VARCHAR" property="eimage3"/>
+        <result column="evaluationNum" jdbcType="INTEGER" property="evaluationnum"/>
+        <result column="positionNum" jdbcType="INTEGER" property="positionnum"/>
+        <result column="dealRate" jdbcType="DOUBLE" property="dealrate"/>
+        <result column="benefit1" jdbcType="VARCHAR" property="benefit1"/>
+        <result column="benefit2" jdbcType="VARCHAR" property="benefit2"/>
+        <result column="benefit3" jdbcType="VARCHAR" property="benefit3"/>
+        <result column="benefit4" jdbcType="VARCHAR" property="benefit4"/>
+        <result column="benefit5" jdbcType="VARCHAR" property="benefit5"/>
+        <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
+        <result column="numberOfWorkers" jdbcType="INTEGER" property="numberofworkers"/>
+        <association property="managementTeamDTO" javaType="com.cwl.qzzp.dto.ManagementteamDTO">
+            <id column="mIds" jdbcType="CHAR" property="mids"/>
+            <result column="dataId" jdbcType="CHAR" property="dataid"/>
+            <result column="mName" jdbcType="VARCHAR" property="mname"/>
+            <result column="mIntroducation" jdbcType="VARCHAR" property="mintroducation"/>
+            <result column="pMintroducation" jdbcType="VARCHAR" property="pmintroducation"/>
+        </association>
+        <collection property="positioninfoDTOList" ofType="com.cwl.qzzp.dto.PositioninfoDTO"
+                    resultMap="com.cwl.qzzp.dao.PositioninfoDao.BaseResultMap" column="dataId">
+        </collection>
+    </resultMap>
     <sql id="Base_Column_List">
         eId, logoImage, eName, ePlace, signLanguage, eIntroducation, financingStage, category,
     eUrl, eImage1, eImage2, eImage3, evaluationNum, positionNum, dealRate, benefit1, 
     benefit2, benefit3, benefit4, benefit5, visitNum, numberOfWorkers
     </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <sql id="Base_Column_List2">
+        eId, logoImage, eName, ePlace, signLanguage, eIntroducation, financingStage, category,
+    eUrl, eImage1, eImage2, eImage3, evaluationNum, benefit1,
+    benefit2, benefit3, benefit4, benefit5, numberOfWorkers
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap2">
         select
-        <include refid="Base_Column_List"/>
-        from enterpriseinfo
+        <include refid="Base_Column_List2"/>
+        ,(select count(p2.pId) from positioninfo p2 where p2.dataId = e.eId) as positionNum,
+        p.pId,p.pTitle,p.experience,p.salary,p.education,p.releaseTime,p.departments
+        from enterpriseinfo e
+        left join positioninfo p on p.dataId=e.eId and p.states='发布'
+        left join managementteam m on m.dataId=e.eId
         where eId = #{eid,jdbcType=CHAR}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -274,4 +317,16 @@
             numberOfWorkers = #{numberofworkers,jdbcType=VARCHAR}
         where eId = #{eid,jdbcType=CHAR}
     </update>
+
+    <select id="getCompanyListData" resultMap="BaseResultMap">
+        select eId,
+               eName,
+               logoImage,
+               category,
+               financingStage,
+               numberOfWorkers,
+               signLanguage,
+               eUrl
+        from enterpriseinfo
+    </select>
 </mapper>

@@ -22,8 +22,6 @@
         <result column="releaseTime" jdbcType="TIMESTAMP" property="releasetime"/>
         <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
         <result column="education" jdbcType="VARCHAR" property="education"/>
-        <result column="logoSrc" jdbcType="VARCHAR" property="logoSrc"/>
-        <result column="logoSrc" jdbcType="VARCHAR" property="logoSrc"/>
     </resultMap>
 
     <resultMap id="BaseResultMap2" type="com.cwl.qzzp.dto.PositioninfoDTO">
@@ -47,7 +45,6 @@
         <result column="releaseTime" jdbcType="TIMESTAMP" property="releasetime"/>
         <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
         <result column="education" jdbcType="VARCHAR" property="education"/>
-        <result column="logoSrc" jdbcType="VARCHAR" property="logoSrc"/>
         <association property="enterpriseinfoDTO" javaType="com.cwl.qzzp.dto.EnterpriseinfoDTO">
             <id column="eId" jdbcType="CHAR" property="eid"/>
             <result column="eName" jdbcType="VARCHAR" property="ename"/>
@@ -66,13 +63,60 @@
         </association>
         <collection property="appraiseDTO" ofType="com.cwl.qzzp.dto.AppraiseDTO"
                     resultMap="com.cwl.qzzp.dao.AppraiseDao.BaseResultMap"
-                    column="pId">
+                    column="dataId">
         </collection>
+    </resultMap>
+
+    <resultMap id="BaseResultMap3" type="com.cwl.qzzp.dto.PositioninfoDTO">
+        <id column="pId" jdbcType="CHAR" property="pid"/>
+        <result column="dataId" jdbcType="CHAR" property="dataid"/>
+        <result column="reId" jdbcType="CHAR" property="reid"/>
+        <result column="pTitle" jdbcType="VARCHAR" property="ptitle"/>
+        <result column="salary" jdbcType="VARCHAR" property="salary"/>
+        <result column="experience" jdbcType="VARCHAR" property="experience"/>
+        <result column="place" jdbcType="VARCHAR" property="place"/>
+        <result column="temptation" jdbcType="VARCHAR" property="temptation"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="departments" jdbcType="VARCHAR" property="departments"/>
+        <result column="states" jdbcType="VARCHAR" property="states"/>
+        <result column="postNature" jdbcType="VARCHAR" property="postnature"/>
+        <result column="postType1" jdbcType="VARCHAR" property="posttype1"/>
+        <result column="postType2" jdbcType="VARCHAR" property="posttype2"/>
+        <result column="postType3" jdbcType="VARCHAR" property="posttype3"/>
+        <result column="postType4" jdbcType="VARCHAR" property="posttype4"/>
+        <result column="postType5" jdbcType="VARCHAR" property="posttype5"/>
+        <result column="releaseTime" jdbcType="TIMESTAMP" property="releasetime"/>
+        <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
+        <result column="education" jdbcType="VARCHAR" property="education"/>
+        <association property="enterpriseinfoDTO" javaType="com.cwl.qzzp.dto.EnterpriseinfoDTO">
+            <id column="eId" jdbcType="CHAR" property="eid"/>
+            <result column="logoImage" jdbcType="VARCHAR" property="logoimage"/>
+            <result column="eName" jdbcType="VARCHAR" property="ename"/>
+            <result column="ePlace" jdbcType="VARCHAR" property="eplace"/>
+            <result column="signLanguage" jdbcType="VARCHAR" property="signlanguage"/>
+            <result column="eIntroducation" jdbcType="VARCHAR" property="eintroducation"/>
+            <result column="financingStage" jdbcType="VARCHAR" property="financingstage"/>
+            <result column="category" jdbcType="VARCHAR" property="category"/>
+            <result column="eUrl" jdbcType="VARCHAR" property="eurl"/>
+            <result column="eImage1" jdbcType="VARCHAR" property="eimage1"/>
+            <result column="eImage2" jdbcType="VARCHAR" property="eimage2"/>
+            <result column="eImage3" jdbcType="VARCHAR" property="eimage3"/>
+            <result column="evaluationNum" jdbcType="INTEGER" property="evaluationnum"/>
+            <result column="positionNum" jdbcType="INTEGER" property="positionnum"/>
+            <result column="dealRate" jdbcType="DOUBLE" property="dealrate"/>
+            <result column="benefit1" jdbcType="VARCHAR" property="benefit1"/>
+            <result column="benefit2" jdbcType="VARCHAR" property="benefit2"/>
+            <result column="benefit3" jdbcType="VARCHAR" property="benefit3"/>
+            <result column="benefit4" jdbcType="VARCHAR" property="benefit4"/>
+            <result column="benefit5" jdbcType="VARCHAR" property="benefit5"/>
+            <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
+            <result column="numberOfWorkers" jdbcType="INTEGER" property="numberofworkers"/>
+        </association>
     </resultMap>
     <sql id="Base_Column_List">
     pId, dataId, reId, pTitle, salary, experience, place, temptation, description, departments, 
     states, postNature, postType1, postType2, postType3, postType4, postType5, releaseTime, 
-    visitNum,education,logoSrc
+    visitNum,education
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
@@ -297,7 +341,7 @@
     where pId = #{pid,jdbcType=CHAR}
   </update>
 
-    <update id="updateVisitNum" parameterType="com.cwl.qzzp.dto.PositioninfoDTO">
+    <update id="updateVisitNum" parameterType="string">
         update positioninfo set visitNum=IFNULL(visitNum, 0)+1
         <where>
             <if test="pid != null and pid != ''">
@@ -314,12 +358,26 @@
     </select>
 
 
-    <select id="getIndexPosition" resultMap="BaseResultMap">
+    <select id="getIndexPosition" resultMap="BaseResultMap3">
         select
-        <include refid="Base_Column_List"/>
-        from positioninfo
+            p.pId,
+            p.pTitle,
+            p.departments,
+            p.postnature,
+            p.education,
+            p.experience,
+            p.releaseTime,
+            p.salary,
+            p.visitNum,
+            e.category,
+            e.eName,
+            e.logoimage,
+            e.financingstage,
+            e.eplace
+        from positioninfo p
+         left join enterpriseinfo e on p.dataId = e.eId
         where states = '发布'
-        order by visitNum
+        order by p.visitNum desc
         limit 9;
     </select>
 
@@ -330,5 +388,33 @@
         left join appraise a on p.pId = a.dataId
         where
         pId = #{pid}
+    </select>
+
+    <select id="getPositionData"  resultMap="BaseResultMap3">
+       select
+            p.pId,
+            p.pTitle,
+            p.postnature,
+            p.education,
+            p.experience,
+            p.releaseTime,
+            p.salary,
+            p.posttype1,
+            p.posttype2,
+            p.posttype3,
+            p.posttype4,
+            p.posttype5,
+            e.category,
+            e.eName,
+            e.logoimage,
+            e.benefit1,
+            e.benefit2,
+            e.benefit3,
+            e.benefit4,
+            e.benefit5,
+            e.numberofworkers,
+            e.financingstage
+        from positioninfo p
+        left join enterpriseinfo e on p.dataId = e.eId
     </select>
 </mapper>

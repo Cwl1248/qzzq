@@ -1,6 +1,7 @@
 package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.PositioninfoDTO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,11 +21,13 @@ public interface PositioninfoDao {
 
     int updateByPrimaryKey(PositioninfoDTO record);
 
-    int updateVisitNum(PositioninfoDTO record);
+    int updateVisitNum(String pid);
 
     List<PositioninfoDTO> getAllPosition(String reid);
 
     List<PositioninfoDTO> getIndexPosition();
 
     PositioninfoDTO getPositionInfoData(String pid);
+
+    List<PositioninfoDTO> getPositionData(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
 }

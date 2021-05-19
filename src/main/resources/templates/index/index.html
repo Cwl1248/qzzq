@@ -324,11 +324,11 @@
         <div class=" col-md-7">
             <div style="margin-top: 30px;height: 372px;" class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{project/images/img2.JPG}">
+                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{/project/images/img2.JPG}">
                     </div>
-                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{project/images/img3.PNG}">
+                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{/project/images/img3.PNG}">
                     </div>
-                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{project/images/img2.JPG}">
+                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{/project/images/img2.JPG}">
                     </div>
                 </div>
                 <!-- 如果需要分页器 -->
@@ -350,35 +350,47 @@
                 </li>
             </ul>
             <!--职位列表-->
-            <div class="row" >
+            <div class="row">
                 <div class="col-md-4" th:each="p,status:${positionInfoList}">
                     <div class="pos-list">
                         <!--职位名称 发布时间 薪资信息-->
                         <div class="row" style="margin-top: 8px">
-                            <a class="col-md-4 pos-name" th:text="${p.ptitle}" th:href="@{/position/positionInfo(pid=${p.pid})}"></a>
-                            <div class="col-md-4 time-info" th:text="${#dates.format(p.releasetime,'['+'mm:ss'+']')}"></div>
-                            <div class="col-md-4 salary-info" th:text="${p.salary} +'·14薪'"></div>
+                            <a class="col-md-4 pos-name" th:text="${p.ptitle}"
+                               th:href="@{/position/positionInfo(pid=${p.pid},menutab=1)}"></a>
+                            <div class="col-md-4 time-info"
+                                 th:text="${#dates.format(p.releasetime,'['+'mm:ss'+']')}"></div>
+                            <div class="col-md-4 salary-info" th:text="${p.salary}"></div>
                         </div>
                         <!--经验要求-->
                         <div class="row" style="margin-top: 15px">
                             <div class="col-md-12 exe-req">
                                 <span th:text="${p.experience} +'/'"></span>
+                                <span th:text="${p.postnature} +'/'"></span>
                                 <span th:text="${p.education}"></span>
                             </div>
-                            <div class="col-md-4 exe-req" ></div>
+                            <div class="col-md-4 exe-req"></div>
                         </div>
                         <!--行业类别-->
                         <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category">社交平台</span>
+                            <span class="industry-category" th:text="${p.enterpriseinfoDTO.category}"></span>
                         </div>
                         <!--分割线-->
                         <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
                         <!--企业信息-->
                         <div style="display:flex;margin-top: 18px">
-                            <div ><img class="img-Logo" th:src="@{${p.logoSrc}}"></div>
+                            <div><img class="img-Logo" th:src="@{${'http://localhost:7089/'+p.enterpriseinfoDTO.logoimage}}"></div>
                             <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555" th:text="${p.departments}"></div>
-                                <div class="company-info">电商/上市公司/杭州</div>
+                                <div style="color: #555555" >
+                                    <span th:text="${p.departments}+'/'"></span>
+                                    <span th:text="${p.enterpriseinfoDTO.ename}"></span>
+                                </div>
+                                <div class="company-info">
+                                    <span th:text="${p.enterpriseinfoDTO.category}"></span>
+                                    <span>/</span>
+                                    <span th:text="${p.enterpriseinfoDTO.financingstage}"></span>
+                                    <span>/</span>
+                                    <span th:text="${#strings.abbreviate(p.enterpriseinfoDTO.eplace,4)}"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -386,7 +398,7 @@
             </div>
             <!--查看更多按钮-->
             <div class="row">
-                <a class="more" style="margin-left: 510px " href="/position/positionList"><span >查看更多</span></a>
+                <a class="more" style="margin-left: 510px " href="/position/positionList"><span>查看更多</span></a>
             </div>
 
         </div>
@@ -415,16 +427,16 @@
     function bigSize(h, n) {
         var h = document.getElementById(h);
         var n = document.getElementById(n);
-        h.style.color="#6495ED"
-        n.style.color="#999999"
+        h.style.color = "#6495ED"
+        n.style.color = "#999999"
 
     }
 
     function bigSize2(h, n) {
         var h = document.getElementById(h);
         var n = document.getElementById(n);
-        h.style.color="#999999"
-        n.style.color="#6495ED"
+        h.style.color = "#999999"
+        n.style.color = "#6495ED"
     }
 
     var mySwiper = new Swiper('.swiper-container', {

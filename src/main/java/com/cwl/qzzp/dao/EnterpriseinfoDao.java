@@ -1,7 +1,10 @@
 package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.EnterpriseinfoDTO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface EnterpriseinfoDao {
@@ -16,4 +19,6 @@ public interface EnterpriseinfoDao {
     int updateByPrimaryKeySelective(EnterpriseinfoDTO record);
 
     int updateByPrimaryKey(EnterpriseinfoDTO record);
+
+    List<EnterpriseinfoDTO> getCompanyListData(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
 }

@@ -21,31 +21,20 @@
         <div class="col-md-2"></div>
         <div class="col-md-8" style="padding-top: 35px">
             <div class="wrapper">
-                <img class="com-img-big" th:src="@{/project/images/ALi-Logo.png}">
+                <img class="com-img-big"
+                     th:src="@{${'http://localhost:7089/'+#strings.substring(companyInfoData.logoimage,16)}}">
                 <div style="margin-top: 15px;margin-left: 15px;width: 100%">
-                    <div class="company-name">网易</div>
-                    <div class="slogan">以匠心，致创新</div>
+                    <div class="company-name" th:text="${companyInfoData.ename}"></div>
+                    <div class="slogan" th:text="${companyInfoData.signlanguage}"></div>
                     <div class="company-data">
                         <ul class="ul-bg">
                             <li>
-                                <span class="tip">1553个</span>
+                                <span class="tip" th:text="${companyInfoData.positionnum}+'个'"></span>
                                 <span class="c-info">岗位招聘数量</span>
                             </li>
                             <li>
                                 <span class="tip">145份</span>
                                 <span class="c-info">岗位面试评价</span>
-                            </li>
-                            <li>
-                                <span class="tip">今天</span>
-                                <span class="c-info">企业最近登录</span>
-                            </li>
-                            <li>
-                                <span class="tip">1888位</span>
-                                <span class="c-info">招聘者数量</span>
-                            </li>
-                            <li>
-                                <span class="tip">30%</span>
-                                <span class="c-info">简历处理率</span>
                             </li>
                         </ul>
                     </div>
@@ -63,21 +52,9 @@
             <!--左边-->
             <div class="data-left">
                 <!--公司介绍-->
-                <div class="companyProfile">网易介绍</div>
+                <div class="companyProfile" th:text="${companyInfoData.ename}+'介绍'"></div>
                 <div class="company_content">
-                    <span>
-                        <p>网易 (NASDAQ: NTES)，1997年由丁磊先生在广州创办、
-                            2000年在美国NASDAQ股票交易所挂牌上市，是中国领先的互联网技术公司，
-                            在开发互联网应用、服务等方面始终保持中国业界领先地位。本着对中国互
-                            联网发展强烈的使命感，缔造美好生活的愿景，网易利用最先进的互联网技术
-                            ，加强人与人之间信息的交流和共享，为海量用户提供优质的产品和服务，
-                            始终秉持着"以匠心、致创新"的理念，通过科技创新改变生活。</p>
-
-                        <p>目前，网易拥有超过21,000名员工，国内主要集中在北京、广州、杭州、上海四地办公，在日本、韩国、澳洲、美国、德国、意大利等地均设有分支机构。自2000年上市以来，网易公司一直保持了财务指标的稳健增长。</p>
-
-                        <p>网易是中国领先的互联网公司之一，是全球领先的在线游戏开发与发行公司，也是中国最大的电子邮件服务商，并拥有中国领先的自营品质电商品牌、中国领先的在线音乐平台、在线教育平台、资讯传媒平台，覆盖全中国超过 10 亿用户。</p>
-
-                        <p>在线游戏、电商、在线音乐、在线教育和资讯传媒是目前网易的核心战略业务。</p>
+                    <span th:utext="${companyInfoData.eintroducation}">
                         </span>
                 </div>
                 <!--公司环境图片-->
@@ -85,13 +62,13 @@
                     <div style="margin-top: 30px;height: 402px;border-radius: 2PX" class="swiper-container">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide"><img style="height: 100%;width: 100%"
-                                                           th:src="@{/project/images/1.JPG}">
+                                                           th:src="@{${'http://localhost:7089/'+companyInfoData.eimage1}}">
                             </div>
                             <div class="swiper-slide"><img style="height: 100%;width: 100%"
-                                                           th:src="@{/project/images/2.JPG}">
+                                                           th:src="@{${'http://localhost:7089/'+companyInfoData.eimage2}}">
                             </div>
                             <div class="swiper-slide"><img style="height: 100%;width: 100%"
-                                                           th:src="@{/project/images/3.JPG}">
+                                                           th:src="@{${'http://localhost:7089/'+companyInfoData.eimage3}}">
                             </div>
                         </div>
                         <!-- 如果需要分页器 -->
@@ -99,75 +76,20 @@
                     </div>
                 </div>
                 <!--招聘职位-->
-                <div class="companyProfile" style="margin-top: 15px;">在招职位</div>
-                <div class="recruitment">
-                    <div>
-                        <span class="recruitment-place">采购经理</span>
-                        <span class="recruitment-place">[杭州]</span>
-                        <span class="recruitment-place" style="float: right">市场部</span>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <span style="color: #fc703e">5-6k</span>
-                        <span class="recruitment-info">1-3年</span>
-                        <span style="color: #999999;margin-right: 15px">|</span>
-                        <span class="recruitment-info">大专</span>
-                        <span style="color: #D0D4DA;float: right;font-size: 16px">2020-01-02发布</span>
-                    </div>
-                </div>
-                <div class="recruitment">
-                    <div>
-                        <span class="recruitment-place">采购经理</span>
-                        <span class="recruitment-place">[杭州]</span>
-                        <span class="recruitment-place" style="float: right">市场部</span>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <span style="color: #fc703e">5-6k</span>
-                        <span class="recruitment-info">1-3年</span>
-                        <span style="color: #999999;margin-right: 15px">|</span>
-                        <span class="recruitment-info">大专</span>
-                        <span style="color: #D0D4DA;float: right;font-size: 16px">2020-01-02发布</span>
-                    </div>
-                </div>
-                <div class="recruitment">
-                    <div>
-                        <span class="recruitment-place">采购经理</span>
-                        <span class="recruitment-place">[杭州]</span>
-                        <span class="recruitment-place" style="float: right">市场部</span>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <span style="color: #fc703e">5-6k</span>
-                        <span class="recruitment-info">1-3年</span>
-                        <span style="color: #999999;margin-right: 15px">|</span>
-                        <span class="recruitment-info">大专</span>
-                        <span style="color: #D0D4DA;float: right;font-size: 16px">2020-01-02发布</span>
-                    </div>
-                </div>
-                <div class="recruitment">
-                    <div>
-                        <span class="recruitment-place">采购经理</span>
-                        <span class="recruitment-place">[杭州]</span>
-                        <span class="recruitment-place" style="float: right">市场部</span>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <span style="color: #fc703e">5-6k</span>
-                        <span class="recruitment-info">1-3年</span>
-                        <span style="color: #999999;margin-right: 15px">|</span>
-                        <span class="recruitment-info">大专</span>
-                        <span style="color: #D0D4DA;float: right;font-size: 16px">2020-01-02发布</span>
-                    </div>
-                </div>
-                <div class="recruitment">
-                    <div>
-                        <span class="recruitment-place">采购经理</span>
-                        <span class="recruitment-place">[杭州]</span>
-                        <span class="recruitment-place" style="float: right">市场部</span>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <span style="color: #fc703e">5-6k</span>
-                        <span class="recruitment-info">1-3年</span>
-                        <span style="color: #999999;margin-right: 15px">|</span>
-                        <span class="recruitment-info">大专</span>
-                        <span style="color: #D0D4DA;float: right;font-size: 16px">2020-01-02发布</span>
+                <div class="companyProfile" style="margin-top: 15px;" >在招职位</div>
+                <div th:each="p:${companyInfoData.positioninfoDTOList}">
+                    <div class="recruitment">
+                        <div>
+                            <span class="recruitment-place" th:text="${p.ptitle}"></span>
+                            <span class="recruitment-place" style="float: right"  th:text="${p.departments}"></span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <span style="color: #fc703e"  th:text="${p.salary}"></span>
+                            <span class="recruitment-info"  th:text="${p.experience}"></span>
+                            <span style="color: #999999;margin-right: 15px">|</span>
+                            <span class="recruitment-info"  th:text="${p.education}"></span>
+                            <span style="color: #D0D4DA;float: right;font-size: 16px"  th:text="${#dates.format(p.releasetime,'yyyy-MM-dd')+'发布'}"></span>
+                        </div>
                     </div>
                 </div>
 
@@ -175,11 +97,13 @@
             <!--右边-->
             <div style="margin-left: 15px">
                 <div>
-                    <span class="com-title">网易基本信息</span>
-                    <div class="company-info-r">人数：8000+</div>
-                    <div class="company-info-r">领域：物联网|电商|视频媒体</div>
-                    <div class="company-info-r">地点：杭州</div>
-                    <div class="company-info-r">公司网站：<a href="https://you.163.com/" style="color: #999999">https://you.163.com/</a>
+                    <span class="com-title" th:text="${companyInfoData.ename}+'基本信息'"></span>
+                    <div class="company-info-r" th:text="'人数：'+${companyInfoData.numberofworkers}"></div>
+                    <div class="company-info-r" th:text="'领域：'+${companyInfoData.category}"></div>
+                    <div class="company-info-r" th:text="'地点：'+${#strings.abbreviate(companyInfoData.eplace,20)}"></div>
+                    <div class="company-info-r">
+                        <span>直达：
+                            <a th:text="${companyInfoData.eurl}" th:href="${companyInfoData.eurl}" style="color: #999999"></a></span>
                     </div>
                 </div>
                 <div style="margin: 30px 0;">
@@ -202,11 +126,12 @@
                     <span class="com-title">公司福利</span>
                     <div style="margin-top: 15px">
                         <ul class="com-ul-tag">
-                            <li class="com-li-tag">节日礼物</li>
-                            <li class="com-li-tag">技能培训</li>
-                            <li class="com-li-tag">免费班车</li>
-                            <li class="com-li-tag">绩效奖金</li>
-                            <li class="com-li-tag">产品好用户多</li>
+                            <li class="com-li-tag" th:text="${companyInfoData.benefit1}"></li>
+                            <li class="com-li-tag" th:text="${companyInfoData.benefit2}"></li>
+                            <li class="com-li-tag" th:text="${companyInfoData.benefit3}"></li>
+                            <li class="com-li-tag" th:text="${companyInfoData.benefit4}"></li>
+                            <li class="com-li-tag" th:text="${companyInfoData.benefit5}"></li>
+
                         </ul>
                     </div>
                 </div>

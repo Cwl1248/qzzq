@@ -112,10 +112,6 @@ public class PositioninfoDTO implements Serializable {
      */
     private String education;
 
-    /**
-     * 公司logo
-     */
-    private String logoSrc;
 
     private static final long serialVersionUID = 1L;
 

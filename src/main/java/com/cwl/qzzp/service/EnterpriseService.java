@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author ：ChengWl
  * @date ：Created in 2021/5/2
@@ -72,7 +74,7 @@ public class EnterpriseService {
     }
 
     public ResultData updata(EnterpriseinfoDTO company) {
-        log.debug("company",company);
+        log.debug("company", company);
         if (ObjectUtils.isNotEmpty(company)) {
             int i = enterpriseinfoMapper.updateByPrimaryKeySelective(company);
             if (i != 0) {
@@ -83,5 +85,27 @@ public class EnterpriseService {
         } else {
             return ResultData.failed(RetCode.FAIL, "更新公司信息失败");
         }
+    }
+
+    public List<EnterpriseinfoDTO> getCompanyListData(int pageNum, int pageSize) {
+
+        List<EnterpriseinfoDTO> companyListData = enterpriseinfoMapper.getCompanyListData(pageNum, pageSize);
+        for (EnterpriseinfoDTO companyListDatum : companyListData) {
+            String logoimage = companyListDatum.getLogoimage();
+            companyListDatum.setLogoimage(StringUtils.substring(logoimage, 16));
+        }
+        return companyListData;
+    }
+
+
+    public EnterpriseinfoDTO getCompanyInfoData(String eId) {
+        EnterpriseinfoDTO enterpriseinfoDTO = enterpriseinfoMapper.selectByPrimaryKey(eId);
+        String eimage1 = enterpriseinfoDTO.getEimage1();
+        String eimage2 = enterpriseinfoDTO.getEimage2();
+        String eimage3 = enterpriseinfoDTO.getEimage3();
+        enterpriseinfoDTO.setEimage1(StringUtils.substring(eimage1,16));
+        enterpriseinfoDTO.setEimage2(StringUtils.substring(eimage2,16));
+        enterpriseinfoDTO.setEimage3(StringUtils.substring(eimage3,16));
+        return  enterpriseinfoDTO;
     }
 }

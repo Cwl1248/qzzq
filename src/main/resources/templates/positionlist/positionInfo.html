@@ -144,8 +144,8 @@
                     <div class="company-info-r" th:text="${'领域：'+position.enterpriseinfoDTO.category}"></div>
                     <div class="company-info-r"
                          th:text="${'地点：'+#strings.abbreviate(position.enterpriseinfoDTO.eplace,40)}"></div>
-                    <div class="company-info-r" th:text="${'公司网站：'+position.enterpriseinfoDTO.eurl}"><a
-                            th:href="${position.enterpriseinfoDTO.eurl}" style="color: #999999"></a>
+                    <div class="company-info-r" >
+                        <a th:text="${'公司网站：'+position.enterpriseinfoDTO.eurl}" th:href="${position.enterpriseinfoDTO.eurl}" style="color: #999999"></a>
                     </div>
                 </div>
             </div>

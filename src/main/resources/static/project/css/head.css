@@ -50,6 +50,18 @@ ul {
     background: #24282c;
     cursor: pointer;
 }
+.tab-active:hover {
+    background: #24282c;
+    cursor: pointer;
+}
+.tab-n {
+    background: #32373e;
+    cursor: pointer;
+}
+.tab-n:hover {
+    background: #32373e;
+    cursor: pointer;
+}
 
 .lg-bar-l > .lg-bar-tab > li > a {
     color: #fff;

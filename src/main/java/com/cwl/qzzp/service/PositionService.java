@@ -4,8 +4,10 @@ import com.cwl.qzzp.common.ResultData;
 import com.cwl.qzzp.common.RetCode;
 import com.cwl.qzzp.common.annotation.Page;
 import com.cwl.qzzp.dao.PositioninfoDao;
+import com.cwl.qzzp.dto.EnterpriseinfoDTO;
 import com.cwl.qzzp.dto.PositioninfoDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -46,7 +48,7 @@ public class PositionService {
     }
 
     @Page
-    public ResultData  getAllPosition() {
+    public ResultData getAllPosition() {
         List<PositioninfoDTO> positions = positioninfodao.getAllPosition("a30f7eaa-00e2-4260-b884-9ec2a95bf191");
         if (positions.size() > 0) {
             return ResultData.ok(positions);
@@ -66,11 +68,30 @@ public class PositionService {
         }
     }
 
-    public List<PositioninfoDTO> getIndexPosition(){
-        return positioninfodao.getIndexPosition();
+    public List<PositioninfoDTO> getIndexPosition() {
+        List<PositioninfoDTO> list = positioninfodao.getIndexPosition();
+        for (PositioninfoDTO positioninfoDTO : list) {
+            EnterpriseinfoDTO enterpriseinfoDTO = positioninfoDTO.getEnterpriseinfoDTO();
+            String logoimage = enterpriseinfoDTO.getLogoimage();
+            enterpriseinfoDTO.setLogoimage(StringUtils.substring(logoimage,16));
+            positioninfoDTO.setEnterpriseinfoDTO(enterpriseinfoDTO);
+        }
+        return list;
     }
 
     public PositioninfoDTO getPositionInfoData(String pid) {
+        positioninfodao.updateVisitNum(pid);
         return positioninfodao.getPositionInfoData(pid);
+    }
+
+    public  List<PositioninfoDTO> getPositionData(int pageNum,int pageSize) {
+        List<PositioninfoDTO> positionData = positioninfodao.getPositionData(pageNum,pageSize);
+        for (PositioninfoDTO positioninfoDTO : positionData) {
+            EnterpriseinfoDTO enterpriseinfoDTO = positioninfoDTO.getEnterpriseinfoDTO();
+            String logoimage = enterpriseinfoDTO.getLogoimage();
+            enterpriseinfoDTO.setLogoimage(StringUtils.substring(logoimage,16));
+            positioninfoDTO.setEnterpriseinfoDTO(enterpriseinfoDTO);
+        }
+       return  positionData;
     }
 }

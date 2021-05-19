@@ -5,6 +5,7 @@ import com.cwl.qzzp.common.ResultData;
 import com.cwl.qzzp.dto.AppraiseDTO;
 import com.cwl.qzzp.dto.PositioninfoDTO;
 import com.cwl.qzzp.service.PositionService;
+import com.github.pagehelper.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,8 +28,17 @@ public class PositionController {
     PositionService positionService;
 
     @GetMapping("/positionList")
-    public String getPositionData() {
-
+    public String getPositionData(ModelMap modelMap,
+                                  @RequestParam(value = "pageNum", required = false) Integer pageNum,
+                                  @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+        if (pageNum == null) {
+            pageNum = 1;
+        }
+        if (pageSize == null) {
+            pageSize = 10;
+        }
+        Page<PositioninfoDTO> positionData =( Page<PositioninfoDTO> ) positionService.getPositionData(pageNum, pageSize);
+        modelMap.addAttribute("list", positionData);
         return "positionlist/positionList";
     }
 
@@ -43,7 +53,7 @@ public class PositionController {
         double e = 0, r = 0, m = 0, mu = 0;
         if (appraiseDTO.size() > 0) {
             for (AppraiseDTO dto : appraiseDTO) {
-                if (dto.getEnvironment() > 0 && dto.getMatchscore() > 0 && dto.getRatingtheinterviewe() > 0 && dto.getMultiplescore() > 0) {
+                if (dto.getEnvironment() != null && dto.getMatchscore() != null && dto.getRatingtheinterviewe() != null && dto.getMultiplescore() != null) {
                     environment += dto.getEnvironment();
                     matchscore += dto.getMatchscore();
                     ratingtheinterviewe += dto.getRatingtheinterviewe();

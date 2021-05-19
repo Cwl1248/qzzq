@@ -11,11 +11,9 @@
         <div class="logo">云职</div>
         <div class="lg-bar-l">
             <ul class="lg-bar-tab">
-                <li class="cityName ui-li">杭州站<span><img style="margin-left: 2px;" th:src="@{/project/images/xl2.svg}"></span>
-                </li>
-                <li class="tab-active ui-li"><a th:href="@{/index}" class="ul-li-a">首页</a></li>
-                <li class="ui-li"><a th:href="@{/company/companyList}" class="ul-li-a">公司</a></li>
-                <li class="ui-li"><a th:href="@{/position/positionList}" class="ul-li-a">职位</a></li>
+                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '1'?'tab-active':'tab-n'}" th:href="@{/index(menutab=1)}" class="ul-li-a">首页</a></li>
+                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '2'?'tab-active':'tab-n'}" th:href="@{/company/companyList/(menutab=2)}" class="ul-li-a">公司</a></li>
+                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '3'?'tab-active':'tab-n'}" th:href="@{/position/positionList/(menutab=3)}" class="ul-li-a">职位</a></li>
             </ul>
         </div>
         <div class="lg-bar-r">
