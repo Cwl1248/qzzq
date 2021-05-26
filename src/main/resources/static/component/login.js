@@ -62,6 +62,7 @@ layui.use(['dropdown', 'util', 'layer', 'table'], function(){
         },{
             title: '修改简历'
             ,id: 101
+            ,href:'/myInfo/toSelect'
         },{
             title: '为我推荐'
             ,id: 102

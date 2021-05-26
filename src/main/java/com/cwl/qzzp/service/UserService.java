@@ -34,4 +34,8 @@ public class UserService {
     public Integer addinfo(UserinfoDTO user) {
         return  UserinfoMapper.updateByPrimaryKeySelective(user);
     }
+
+    public UserinfoDTO selectInfo(String userid) {
+        return UserinfoMapper.selectByPrimaryKey(userid);
+    }
 }

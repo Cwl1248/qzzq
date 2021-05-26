@@ -3,7 +3,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
-
 </head>
 <body>
 <div th:fragment="head">
@@ -21,8 +20,7 @@
         </div>
         <div class="lg-bar-r">
             <ul class="lg-bar-tab">
-                <li class="ui-li "><a href="#"  id="personalCenter" class="ul-li-a">个人中心</a>
-                </li>
+                <li class="ui-li "><a href="javascript:void(0)"  id="personalCenter" class="ul-li-a">个人中心</a></li>
                 <li class="ui-li"><a class="ul-li-a" data-toggle="modal" data-target="#loginModal">登录</a></li>
                 <li class="ui-li"><a class="ul-li-a" data-toggle="modal" data-target="#registeredModal">注册</a></li>
                 <li class="ui-li"><a th:href="@{/registered}" class="ul-li-a">进入企业版</a></li>

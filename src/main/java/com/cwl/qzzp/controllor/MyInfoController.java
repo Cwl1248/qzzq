@@ -11,10 +11,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +32,11 @@ public class MyInfoController {
     @RequestMapping("/InfoDetail")
     public String getMyInfoData() {
         return "myInfo/myInfo";
+    }
+
+    @RequestMapping("/toSelect")
+    public String toSelect() {
+        return "myInfo/updateInfo";
     }
 
     @PostMapping("/login")
@@ -63,7 +65,7 @@ public class MyInfoController {
 
     @PostMapping("/registered")
     @ResponseBody
-    public ResultData registered(@RequestBody UserinfoDTO user){
+    public ResultData registered(@RequestBody UserinfoDTO user) {
         log.info("", user);
         try {
             if (ObjectUtils.isNotEmpty(user)) {
@@ -83,7 +85,7 @@ public class MyInfoController {
 
     @PostMapping("/addinfo")
     @ResponseBody
-    public ResultData addinfo(@RequestBody UserinfoDTO user){
+    public ResultData addinfo(@RequestBody UserinfoDTO user) {
         log.info("", user);
         try {
             if (StringUtils.isNotEmpty(user.getUserid())) {
@@ -98,5 +100,47 @@ public class MyInfoController {
             return ResultData.failed(RetCode.LOGINFAIL.code, "添加失败", e);
         }
         return ResultData.ok();
+    }
+
+
+    @PostMapping("/updataInfo")
+    @ResponseBody
+    public ResultData updataInfo(@RequestBody UserinfoDTO user) {
+        log.info("", user);
+        try {
+            if (StringUtils.isNotEmpty(user.getUserid())) {
+                Integer i = userService.addinfo(user);
+                if (ObjectUtils.isNotEmpty(i)) {
+                    return ResultData.ok();
+                } else {
+                    return ResultData.failed(RetCode.FAIL);
+                }
+            } else {
+                return ResultData.failed(RetCode.FAIL);
+            }
+        } catch (Exception e) {
+            return ResultData.failed(RetCode.FAIL.code, "修改失败", e);
+        }
+    }
+
+    @GetMapping("/selectInfo")
+    @ResponseBody
+    public ResultData selectInfo(String userid) {
+        log.info("", userid);
+        try {
+            if (StringUtils.isNotEmpty(userid)) {
+                UserinfoDTO userinfoDTO = userService.selectInfo(userid);
+                if (ObjectUtils.isNotEmpty(userinfoDTO)) {
+                    return ResultData.ok(userinfoDTO);
+                } else {
+                    return ResultData.failed(RetCode.FAIL);
+                }
+            } else {
+                return ResultData.failed(RetCode.FAIL);
+            }
+        } catch (Exception e) {
+            return ResultData.failed(RetCode.LOGINFAIL.code, "查询失败", e);
+        }
+
     }
 }

@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>编辑简历</title>
+    <title>修改简历</title>
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/bottom.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/myInfo.css}">
@@ -18,13 +18,13 @@
 <div class="container-fluid">
     <div style="margin-left: 17%">
         <blockquote class="layui-elem-quote layui-text" style="width: 1080px;border-radius: 5px">
-            编辑简历
+            修改简历
         </blockquote>
         <form class="layui-form" action="">
             <div class="mcontainer">
                 <!--编辑个人资料-->
                 <div>
-                    <div class="edit-profile">编辑个人资料</div>
+                    <div class="edit-profile">修改个人资料</div>
                     <!--姓名 性别 生日-->
                     <div class="layui-form-item" style="padding-left: 60px;padding-top: 30px">
                         <div class="layui-inline">
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">单选框</label>
+                            <label class="layui-form-label">性别</label>
                             <div class="layui-input-block">
                                 <input type="radio" name="gender" value="男" title="男" checked="">
                                 <input type="radio" name="gender" value="女" title="女">
@@ -44,7 +44,8 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">生日</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="birthday" id="birthday" lay-verify="date" placeholder="生日"
+                                <input type="text" name="birthday" id="birthday" lay-verify="date"
+                                       placeholder="生日"
                                        autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -65,9 +66,7 @@
                                 <input type="radio" name="identitys" value="非学生" title="非学生">
                             </div>
                         </div>
-
                     </div>
-
                 </div>
 
                 <!--个人优势-->
@@ -113,23 +112,23 @@
                         <div class="col-md-1" style="display: flex;justify-content: center;align-items: center"><span class="grey-font" >--</span></div>
                         <div class="col-md-4">
                             <select name="startingSalaryTo" id="startingSalaryTo">
-                            <option value=""></option>
-                            <option value="11k">11k</option>
-                            <option value="12k">12k</option>
-                            <option value="13k">13k</option>
-                            <option value="14k">14k</option>
-                            <option value="15k">15k</option>
-                            <option value="16k">16k</option>
-                            <option value="17k">17k</option>
-                            <option value="18k">18k</option>
-                            <option value="19k">19k</option>
-                            <option value="20k">20k</option>
-                            <option value="21k">21k</option>
-                            <option value="22k">22k</option>
-                            <option value="23k">23k</option>
-                            <option value="24k">24k</option>
-                            <option value="25k">25k</option>
-                        </select>
+                                <option value=""></option>
+                                <option value="11k">11k</option>
+                                <option value="12k">12k</option>
+                                <option value="13k">13k</option>
+                                <option value="14k">14k</option>
+                                <option value="15k">15k</option>
+                                <option value="16k">16k</option>
+                                <option value="17k">17k</option>
+                                <option value="18k">18k</option>
+                                <option value="19k">19k</option>
+                                <option value="20k">20k</option>
+                                <option value="21k">21k</option>
+                                <option value="22k">22k</option>
+                                <option value="23k">23k</option>
+                                <option value="24k">24k</option>
+                                <option value="25k">25k</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -229,7 +228,7 @@
                 <div class="row" style="padding-top: 30px">
                     <div class="col-md-12 text-center">
                  <span>
-                    <button class="confirm-btn" lay-submit="" lay-filter="demo1">确认</button>
+                    <button class="confirm-btn" lay-submit="" lay-filter="demo1">修改</button>
                     <button type="reset" class="cancel-btn">取消</button>
                  </span>
                     </div>
@@ -238,7 +237,6 @@
         </form>
     </div>
 </div>
-
 
 
 <div th:replace="public/bottom :: bottom"></div>
@@ -252,11 +250,7 @@
 <script type="text/javascript" th:src="@{/component/login.js}"></script>
 
 <script>
-    window.onload = function(){
-        var id = sessionStorage.getItem("userid");
-        console.log(id)
-        $("#userid").val(id)
-    }
+
     layui.use('upload', function () {
         var $ = layui.jquery
             , upload = layui.upload;
@@ -284,7 +278,8 @@
     layui.use(['form', 'layedit', 'laydate'], function () {
         var form = layui.form,
             layer = layui.layer,
-            laydate = layui.laydate;
+            laydate = layui.laydate,
+            util = layui.util;
 
         //日期
         laydate.render({
@@ -307,25 +302,67 @@
                 }
             }
         });
+        window.onload = function () {
+            var id = sessionStorage.getItem("userid");
+            $("#userid").val(id)
+            console.log(id)
+            if (id != null) {
+                $.ajax({
+                    url: 'http://localhost:18011/myInfo/selectInfo',
+                    type: 'get',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: {'userid': id},
+                    async: false,
+                    success: function (res) {
+                        console.log(res)
+                        $("#username").val(res.data.username)
+                        $("input[name=gender][value=男]").attr("checked", res.data.gender === '男' ? true : false)
+                        $("input[name=gender][value=女]").attr("checked", res.data.gender === '女' ? true : false)
+                        $("#birthday").val(util.toDateString(res.data.birthday,'yyyy-MM-dd'))
+                        $("#phone").val(res.data.phone)
+                        $("input[name=identitys][value=学生]").attr("checked", res.data.identitys === '学生' ? true : false)
+                        $("input[name=identitys][value=非学生]").attr("checked", res.data.identitys === '非学生' ? true : false)
+                        $("#personaladvantage").val(res.data.personaladvantage)
+                        $("#position").val(res.data.position)
+                        $("#city").val(res.data.city)
+                        $("#startingSalaryFrom").val(res.data.startingSalaryFrom)
+                        $("#startingSalaryTo").val(res.data.startingSalaryTo)
+                        $("#schoolname").val(res.data.schoolname)
+                        $("#professionalTitle").val(res.data.professionalTitle)
+                        $("#education").val(res.data.education)
+                        $("#graduationTime").val(util.toDateString(res.data.graduationTime,'yyyy-MM-dd'))
+                        $("#companyname").val(res.data.companyname)
+                        $("#companyIndustry").val(res.data.companyIndustry)
+                        $("#department").val(res.data.department)
+                        $("#tybeOfJob").val(res.data.tybeOfJob)
+                        $("#operatingHours").val(res.data.operatingHours)
+                        form.render();
 
+                    }
+                })
+            } else {
+                layer.msg("加载信息失败，请重新登录！！！")
+            }
+
+        }
         //监听提交
         form.on('submit(demo1)', function (data) {
             var id = sessionStorage.getItem("userid");
-            if(id !=null){
+            if (id != null) {
                 const user = JSON.stringify(data.field)
                 $.ajax({
-                        url: 'http://localhost:18011/myInfo/addinfo',
+                        url: 'http://localhost:18011/myInfo/updataInfo',
                         type: 'post',
                         contentType: 'application/json; charset=UTF-8',
                         data: user,
-                        async:false,
+                        async: false,
                         success: function (res) {
                             console.log(res)
                             if (res.status === 0) {
                                 layer.msg('添加成功', {
                                     icon: 1,
                                     time: 2000 //2秒关闭（如果不配置，默认是3秒）
-                                }, function(){
+                                }, function () {
 
                                 });
                                 window.location.href = "http://localhost:18011/index"
@@ -335,12 +372,11 @@
                         }
                     }
                 )
-            }
-            else {
+            } else {
                 layer.alert('添加失败，请重新登录！！', {
                     icon: 2,
                     time: 2000 //2秒关闭（如果不配置，默认是3秒）
-                }, function(){
+                }, function () {
                     window.location = "http://localhost:18011/index"
                 });
             }
