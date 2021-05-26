@@ -29,6 +29,7 @@ input, textarea {
     border: 1px solid #e6e6e6;
     border-radius: 5px;
     min-height: 1200px;
+    width: 1200px;
     background: #F8F9FB;;
 }
 
@@ -117,7 +118,7 @@ input, textarea {
     text-indent: 32px;
     border: 1px solid #E8E9EB;
     margin-left: 60px;
-    width: 920px;
+    width: 1080px;
     height: 268px;
 }
 

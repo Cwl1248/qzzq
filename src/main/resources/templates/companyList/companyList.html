@@ -127,7 +127,7 @@
                 <div class="col-md-3" th:each="l,status:${list}">
                     <div class="com-infos">
                         <div class="com-img">
-                            <img style="width: 80px;height: 80px;" th:src="@{${'http://localhost:7089/'+l.logoimage}}"/>
+                            <img style="width: 80px;height: 80px;" th:src="@{${'http://localhost:18011/'+l.logoimage}}"/>
                             <div ><a th:href="@{/company/companyInfo(eId=${l.eid},menutab=2)}" class="company-profile-name" th:text="${l.ename}"></a></div>
                             <div class="company-profile">
                                 <span th:text="${l.category}+'/'"></span>
@@ -202,6 +202,7 @@
 
 <script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/component/login.js}"></script>
 
 
 </body>

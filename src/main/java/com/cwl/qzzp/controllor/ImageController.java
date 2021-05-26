@@ -31,9 +31,7 @@ public class ImageController {
 
     @PostMapping("/upload")
     public Map upload(MultipartFile file, HttpServletRequest request) {
-
         String prefix = "";
-        //保存上传
         OutputStream out = null;
         InputStream fileInput = null;
         try {
@@ -55,7 +53,6 @@ public class ImageController {
                 map2.put("src", filepath);
                 return map;
             }
-
         } catch (Exception e) {
         } finally {
             try {

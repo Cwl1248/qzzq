@@ -1,8 +1,9 @@
 package com.cwl.qzzp.dto;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * userinfo
@@ -69,6 +70,81 @@ public class UserinfoDTO implements Serializable {
      * 创建时间
      */
     private Date itemcreateat;
+
+    /**
+     * 简历路径
+     */
+    private String resumePath;
+
+    /**
+     * 公司名称
+     */
+    private String companyname;
+
+    /**
+     * 公司行业
+     */
+    private String companyIndustry;
+
+    /**
+     * 所属部门
+     */
+    private String department;
+
+    /**
+     * 职位类型
+     */
+    private String tybeOfJob;
+
+    /**
+     * 职位名称
+     */
+    private String positionName;
+
+    /**
+     * 工作时间
+     */
+    private String operatingHours;
+
+    /**
+     * 学校名称
+     */
+    private String schoolname;
+
+    /**
+     * 专业名称
+     */
+    private String professionalTitle;
+
+    /**
+     * 学历
+     */
+    private String education;
+
+    /**
+     * 毕业时间
+     */
+    private Date graduationTime;
+
+    /**
+     * 期待职位
+     */
+    private String position;
+
+    /**
+     * 期待城市
+     */
+    private String city;
+
+    /**
+     * 期待起薪from
+     */
+    private String startingSalaryFrom;
+
+    /**
+     * 期待起薪to
+     */
+    private String startingSalaryTo;
 
     private static final long serialVersionUID = 1L;
 }

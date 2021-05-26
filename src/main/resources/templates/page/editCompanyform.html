@@ -214,8 +214,6 @@
         window.onload = function () {
              var item = window.localStorage.getItem("eid");
              $("#itemid").val(window.localStorage.getItem("eid"))
-           /* var item = "330be95c-5a58-4a14-957a-d2e15a05eb4d";
-            $("#eid").val("330be95c-5a58-4a14-957a-d2e15a05eb4d")*/
             if(item !=null){
                 $.ajax({
                     url: '/company/selectByPk',

@@ -22,7 +22,7 @@
         <div class="col-md-8" style="padding-top: 35px">
             <div class="wrapper">
                 <img class="com-img-big"
-                     th:src="@{${'http://localhost:7089/'+#strings.substring(companyInfoData.logoimage,16)}}">
+                     th:src="@{${'http://localhost:18011/'+#strings.substring(companyInfoData.logoimage,16)}}">
                 <div style="margin-top: 15px;margin-left: 15px;width: 100%">
                     <div class="company-name" th:text="${companyInfoData.ename}"></div>
                     <div class="slogan" th:text="${companyInfoData.signlanguage}"></div>
@@ -62,13 +62,13 @@
                     <div style="margin-top: 30px;height: 402px;border-radius: 2PX" class="swiper-container">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide"><img style="height: 100%;width: 100%"
-                                                           th:src="@{${'http://localhost:7089/'+companyInfoData.eimage1}}">
+                                                           th:src="@{${'http://localhost:18011/'+companyInfoData.eimage1}}">
                             </div>
                             <div class="swiper-slide"><img style="height: 100%;width: 100%"
-                                                           th:src="@{${'http://localhost:7089/'+companyInfoData.eimage2}}">
+                                                           th:src="@{${'http://localhost:18011/'+companyInfoData.eimage2}}">
                             </div>
                             <div class="swiper-slide"><img style="height: 100%;width: 100%"
-                                                           th:src="@{${'http://localhost:7089/'+companyInfoData.eimage3}}">
+                                                           th:src="@{${'http://localhost:18011/'+companyInfoData.eimage3}}">
                             </div>
                         </div>
                         <!-- 如果需要分页器 -->
@@ -156,6 +156,7 @@
 
 <script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/component/login.js}"></script>
 
 
 </body>

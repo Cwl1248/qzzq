@@ -11,15 +11,17 @@
         <div class="logo">云职</div>
         <div class="lg-bar-l">
             <ul class="lg-bar-tab">
-                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '1'?'tab-active':'tab-n'}" th:href="@{/index(menutab=1)}" class="ul-li-a">首页</a></li>
-                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '2'?'tab-active':'tab-n'}" th:href="@{/company/companyList/(menutab=2)}" class="ul-li-a">公司</a></li>
-                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '3'?'tab-active':'tab-n'}" th:href="@{/position/positionList/(menutab=3)}" class="ul-li-a">职位</a></li>
+                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '1'?'tab-active':'tab-n'}"
+                                     th:href="@{/index(menutab=1)}" class="ul-li-a">首页</a></li>
+                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '2'?'tab-active':'tab-n'}"
+                                     th:href="@{/company/companyList/(menutab=2)}" class="ul-li-a">公司</a></li>
+                <li class="ui-li"><a th:classappend="${#request.getParameter('menutab') == '3'?'tab-active':'tab-n'}"
+                                     th:href="@{/position/positionList/(menutab=3)}" class="ul-li-a">职位</a></li>
             </ul>
         </div>
         <div class="lg-bar-r">
             <ul class="lg-bar-tab">
-                <li class="ui-li"><a th:href="@{/myInfo/InfoDetail}" class="ul-li-a">我的简历<span><img
-                        th:src="@{/project/images/rt32.svg}"></span></a>
+                <li class="ui-li "><a href="#"  id="personalCenter" class="ul-li-a">个人中心</a>
                 </li>
                 <li class="ui-li"><a class="ul-li-a" data-toggle="modal" data-target="#loginModal">登录</a></li>
                 <li class="ui-li"><a class="ul-li-a" data-toggle="modal" data-target="#registeredModal">注册</a></li>
@@ -28,33 +30,34 @@
         </div>
     </div>
 
-    <!-- 登录模态框 -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div style="font-size:36px;color: #17a2b8">云职</div>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="请输入登录邮箱">
+        <!-- 登录模态框 -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div style="font-size:36px;color: #17a2b8">云职</div>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="请输入登录邮箱">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer col-md-12">
-                    <button type="button" class="btn btn-info ">登录</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer col-md-12">
+                        <button type="button" class="btn btn-info" onclick="login()">登录</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
     <div class="modal fade" id="registeredModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -76,11 +79,14 @@
                     </form>
                 </div>
                 <div class="modal-footer col-md-12">
-                    <button type="button" class="btn btn-info ">注册</button>
+                    <button type="button" class="btn btn-info " onclick="registered()">注册</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
+
+
 </html>
