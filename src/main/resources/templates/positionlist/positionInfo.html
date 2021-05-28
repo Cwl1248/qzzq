@@ -41,9 +41,18 @@
                 <span>/</span>
                 <span th:text="${position.education}"></span>
                 <span>/</span>
+
                 <span th:text="${position.postnature}"></span>
+                <button type="button" style="margin-left:350px;outline: none"
+                        class="layui-btn layui-btn-primary layui-border-green layui-btn-radius" id="delivery">投递简历
+                </button>
+                <button type="button" style="outline: none"
+                        class="layui-btn layui-btn-primary layui-border-blue layui-btn-radius" id="collect"><i
+                        class="layui-icon  layui-icon-rate"></i>收藏该职位
+                </button>
+
             </div>
-            <!--职业分类（max 5钟 ）-->
+            <!--职业分类（max 5种 ）-->
             <div style="margin-top: 20px">
                 <ul class="position-label clearfix">
                     <li class="labels" th:class="${position.posttype1 ne '' ? 'labels':'p-hide'}"
@@ -89,7 +98,8 @@
                 <div th:text="${position.place}"></div>
             </div>
             <!--面试评价-->
-            <div style="border-bottom: 1px dashed #dce4e6;margin-right: 15px"  th:class="${position.appraiseDTO.size() gt 1 ? '':'p-hide'}">
+            <div style="border-bottom: 1px dashed #dce4e6;margin-right: 15px"
+                 th:class="${position.appraiseDTO.size() gt 1 ? '':'p-hide'}">
                 <div class="interview-evaluation">面试评价</div>
                 <!--评分结果区-->
                 <fieldset>
@@ -100,7 +110,8 @@
                 </fieldset>
             </div>
             <!--评论区-->
-            <div th:class="${position.appraiseDTO.size() gt 1 ? '':'p-hide'}" th:each="a,status:${position.appraiseDTO}">
+            <div th:class="${position.appraiseDTO.size() gt 1 ? '':'p-hide'}"
+                 th:each="a,status:${position.appraiseDTO}">
                 <div style=" margin: 15px 0;padding: 10px;">
                     <div class="comment">
                         <div class="row">
@@ -111,15 +122,20 @@
                         </div>
                         <div class="row" style="margin-top: 15px">
                             <div class="col-md-12">
-                                <span class="interview-tag" th:class="${a.evaluationlabel1 ne '' ? 'interview-tag':'p-hide'}"
+                                <span class="interview-tag"
+                                      th:class="${a.evaluationlabel1 ne '' ? 'interview-tag':'p-hide'}"
                                       th:text="${a.evaluationlabel1}"></span>
-                                <span class="interview-tag" th:class="${a.evaluationlabel2 ne '' ? 'interview-tag':'p-hide'}"
+                                <span class="interview-tag"
+                                      th:class="${a.evaluationlabel2 ne '' ? 'interview-tag':'p-hide'}"
                                       th:text="${a.evaluationlabel2}"></span>
-                                <span class="interview-tag" th:class="${a.evaluationlabel3 ne '' ? 'interview-tag':'p-hide'}"
+                                <span class="interview-tag"
+                                      th:class="${a.evaluationlabel3 ne '' ? 'interview-tag':'p-hide'}"
                                       th:text="${a.evaluationlabel3}"></span>
-                                <span class="interview-tag" th:class="${a.evaluationlabel4 ne '' ? 'interview-tag':'p-hide'}"
+                                <span class="interview-tag"
+                                      th:class="${a.evaluationlabel4 ne '' ? 'interview-tag':'p-hide'}"
                                       th:text="${a.evaluationlabel4}"></span>
-                                <span class="interview-tag" th:class="${a.evaluationlabel5 ne '' ? 'interview-tag':'p-hide'}"
+                                <span class="interview-tag"
+                                      th:class="${a.evaluationlabel5 ne '' ? 'interview-tag':'p-hide'}"
                                       th:text="${a.evaluationlabel5}"></span>
                             </div>
                         </div>
@@ -144,8 +160,9 @@
                     <div class="company-info-r" th:text="${'领域：'+position.enterpriseinfoDTO.category}"></div>
                     <div class="company-info-r"
                          th:text="${'地点：'+#strings.abbreviate(position.enterpriseinfoDTO.eplace,40)}"></div>
-                    <div class="company-info-r" >
-                        <a th:text="${'公司网站：'+position.enterpriseinfoDTO.eurl}" th:href="${position.enterpriseinfoDTO.eurl}" style="color: #999999"></a>
+                    <div class="company-info-r">
+                        <a th:text="${'公司网站：'+position.enterpriseinfoDTO.eurl}"
+                           th:href="${position.enterpriseinfoDTO.eurl}" style="color: #999999"></a>
                     </div>
                 </div>
             </div>
@@ -155,8 +172,13 @@
 
 <div th:replace="public/bottom :: bottom"></div>
 
-<script type="text/javascript" th:src="@{/project/js/layui.js}"></script>
-<script>
+
+
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
+<script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/component/login.js}"></script>
+<script th:inline="javascript">
     layui.use(['rate'], function () {
         var rate = layui.rate;
         rate.render({
@@ -189,14 +211,63 @@
             , half: true //开启半星
             , readonly: true //只读
         })
-    });
+
+        $(document).on('click', '#delivery', function () {
+            let userid = sessionStorage.getItem('userid')
+            let pid = [[${position.pid}]]
+            const deliveryDto = {}
+            deliveryDto.uid = userid
+            deliveryDto.pid = pid
+            console.log(JSON.stringify(deliveryDto))
+            if (userid != null) {
+                $.ajax({
+                    url: '/collection/insertDelivery',
+                    type: 'post',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: JSON.stringify(deliveryDto),
+                    async: false,
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
+            }
+
+        });
+
+        $(document).on('click', '#collect', function () {
+            let userid = sessionStorage.getItem('userid')
+            let pid = [[${position.pid}]]
+            let ptitle = [[${position.ptitle}]]
+            let salary = [[${position.salary}]]
+            let place = [[${position.place}]]
+            let departments = [[${position.departments}]]
+            const collectDto = {}
+            collectDto.uid = userid
+            collectDto.pid = pid
+            collectDto.ptitle = ptitle
+            collectDto.salary = salary
+            collectDto.place = place
+            collectDto.departments = departments
+            console.log(JSON.stringify(collectDto))
+            if (userid != null) {
+                $.ajax({
+                    url: '/collection/insertCollection',
+                    type: 'post',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: JSON.stringify(collectDto),
+                    async: false,
+                    success: function (res) {
+                        console.log(res)
+
+                    }
+                })
+            }
+
+        });
+    })
+
+
 </script>
-
-<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
-<script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
-<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
-<script type="text/javascript" th:src="@{/component/login.js}"></script>
-
 
 </body>
 </html>

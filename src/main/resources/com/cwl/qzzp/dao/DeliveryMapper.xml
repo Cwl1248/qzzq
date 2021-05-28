@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cwl.qzzp.dao.DeliveryMapper">
+    <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.DeliveryDto">
+        <id column="itemId" jdbcType="INTEGER" property="itemid"/>
+        <result column="pid" jdbcType="CHAR" property="pid"/>
+        <result column="uid" jdbcType="CHAR" property="uid"/>
+        <result column="crateTime" jdbcType="TIMESTAMP" property="cratetime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        itemId, pid, `uid`, crateTime
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from delivery
+        where itemId = #{itemid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from delivery
+        where itemId = #{itemid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.DeliveryDto"
+            useGeneratedKeys="true">
+        insert into delivery (pid, `uid`, crateTime)
+        values (#{pid,jdbcType=CHAR}, #{uid,jdbcType=CHAR}, #{cratetime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.DeliveryDto"
+            useGeneratedKeys="true">
+        insert into delivery
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pid != null">
+                pid,
+            </if>
+            <if test="uid != null">
+                `uid`,
+            </if>
+            crateTime
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pid != null">
+                #{pid,jdbcType=CHAR},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=CHAR},
+            </if>
+            now()
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.DeliveryDto">
+        update delivery
+        <set>
+            <if test="pid != null">
+                pid = #{pid,jdbcType=CHAR},
+            </if>
+            <if test="uid != null">
+                `uid` = #{uid,jdbcType=CHAR},
+            </if>
+            <if test="cratetime != null">
+                crateTime = #{cratetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where itemId = #{itemid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.DeliveryDto">
+        update delivery
+        set pid       = #{pid,jdbcType=CHAR},
+            `uid`     = #{uid,jdbcType=CHAR},
+            crateTime = #{cratetime,jdbcType=TIMESTAMP}
+        where itemId = #{itemid,jdbcType=INTEGER}
+    </update>
+</mapper>

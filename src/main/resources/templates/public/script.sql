@@ -113,4 +113,26 @@ create table userinfo
 )
     comment '用户信息表';
 
+create table collect
+(
+    itemId              int(255)    NOT NULL AUTO_INCREMENT               not null comment '主键'primary key,
+    pid              char(50)     default ''                not null comment '职位ID',
+    uid              char(50)     default ''                not null comment '收藏者ID',
+    pTitle      varchar(20) default ''                null comment '职位名称',
+    salary      varchar(20) default ''                null comment '薪资',
+    place       varchar(30) default ''                null comment '工作地点',
+    departments varchar(50) default ''                null comment '所属部门',
+    crateTime           timestamp    default CURRENT_TIMESTAMP null comment '创建时间'
+)
+    comment '收藏表';
+
+create table delivery
+(
+    itemId              int(255)    NOT NULL AUTO_INCREMENT               not null comment '主键'primary key,
+    pid              char(50)     default ''                not null comment '职位ID',
+    uid              char(50)     default ''                not null comment '求职者ID',
+    crateTime           timestamp    default CURRENT_TIMESTAMP null comment '创建时间'
+)
+    comment '投递表';
+
 

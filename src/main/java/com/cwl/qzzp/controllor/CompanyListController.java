@@ -22,6 +22,13 @@ public class CompanyListController {
     @Autowired
     EnterpriseService enterpriseService;
 
+    /**
+     *
+     * @param modelMap
+     * @param pageNum 页号
+     * @param pageSize 每页数据
+     * @return  分页显示公司信息
+     */
     @GetMapping("/companyList")
     public String getCompanyListData(ModelMap modelMap, @RequestParam(value = "pageNum", required = false) Integer pageNum,
                                      @RequestParam(value = "pageSize", required = false) Integer pageSize) {
@@ -36,6 +43,12 @@ public class CompanyListController {
         return "companyList/companyList";
     }
 
+    /**
+     *
+     * @param modelMap
+     * @param eId 公司的主键
+     * @return 公司的详细信息
+     */
     @GetMapping("/companyInfo")
     public String getCompanyInfoData(ModelMap modelMap, String eId) {
         EnterpriseinfoDTO companyInfoData = enterpriseService.getCompanyInfoData(eId);
@@ -43,20 +56,33 @@ public class CompanyListController {
         return "companyList/companyInfo";
     }
 
+    /**
+     * 后台添加公司信息
+     * @param company
+     * @return
+     */
     @PostMapping("/increase")
     @ResponseBody
     public ResultData increaseData(@RequestBody EnterpriseinfoDTO company) {
         return enterpriseService.increaseData(company);
     }
 
-
+    /**
+     * 后台查询公司信息
+     * @param company
+     * @return
+     */
     @GetMapping("/selectByPk")
     @ResponseBody
     public ResultData selectByPk(String eid) {
         return enterpriseService.selectByPk(eid);
     }
 
-
+    /**
+     * 后台更新公司信息
+     * @param company
+     * @return
+     */
     @PostMapping("/updata")
     @ResponseBody
     public ResultData updata(@RequestBody EnterpriseinfoDTO company) {
