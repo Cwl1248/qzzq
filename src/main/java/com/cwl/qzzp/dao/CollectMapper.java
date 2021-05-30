@@ -1,7 +1,10 @@
 package com.cwl.qzzp.dao;
 
 import com.cwl.qzzp.dto.CollectDto;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface CollectMapper {
@@ -16,4 +19,6 @@ public interface CollectMapper {
     int updateByPrimaryKeySelective(CollectDto record);
 
     int updateByPrimaryKey(CollectDto record);
+
+    List<CollectDto> getCollectionPosition(@Param("pageNum")int pageNum, @Param("pageSize") int pageSize, String userid);
 }

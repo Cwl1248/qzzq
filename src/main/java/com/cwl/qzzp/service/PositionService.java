@@ -3,7 +3,9 @@ package com.cwl.qzzp.service;
 import com.cwl.qzzp.common.ResultData;
 import com.cwl.qzzp.common.RetCode;
 import com.cwl.qzzp.common.annotation.Page;
+import com.cwl.qzzp.dao.CollectMapper;
 import com.cwl.qzzp.dao.PositioninfoDao;
+import com.cwl.qzzp.dto.CollectDto;
 import com.cwl.qzzp.dto.EnterpriseinfoDTO;
 import com.cwl.qzzp.dto.PositioninfoDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +31,9 @@ public class PositionService {
 
     @Autowired
     private PositioninfoDao positioninfodao;
+
+    @Autowired
+    private CollectMapper collectMapper;
 
 
     public ResultData postingPositionInfoData(PositioninfoDTO position) {
@@ -93,5 +98,18 @@ public class PositionService {
             positioninfoDTO.setEnterpriseinfoDTO(enterpriseinfoDTO);
         }
        return  positionData;
+    }
+
+    public List<PositioninfoDTO> getPositionInfoDTO(Integer pageNum, Integer pageSize, String position, String city) {
+        return positioninfodao.getPositionInfoDTO(pageNum,pageSize,position,city);
+    }
+
+    public List<CollectDto> getCollectionPosition(int pageNum, int pageSize, String userid) {
+        return collectMapper.getCollectionPosition(pageNum,pageSize,userid);
+    }
+
+    public List<PositioninfoDTO> deliveryRecord(Integer pageNum, Integer pageSize, String userid) {
+
+        return positioninfodao.deliveryRecord(pageNum,pageSize,userid);
     }
 }

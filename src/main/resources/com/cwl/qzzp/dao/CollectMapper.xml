@@ -1,118 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cwl.qzzp.dao.CollectMapper">
-  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.CollectDto">
-    <id column="itemId" jdbcType="INTEGER" property="itemid" />
-    <result column="pid" jdbcType="CHAR" property="pid" />
-    <result column="uid" jdbcType="CHAR" property="uid" />
-    <result column="pTitle" jdbcType="VARCHAR" property="ptitle" />
-    <result column="salary" jdbcType="VARCHAR" property="salary" />
-    <result column="place" jdbcType="VARCHAR" property="place" />
-    <result column="departments" jdbcType="VARCHAR" property="departments" />
-    <result column="crateTime" jdbcType="TIMESTAMP" property="cratetime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    itemId, pid, `uid`, pTitle, salary, place, departments, crateTime
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from collect
-    where itemId = #{itemid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from collect
-    where itemId = #{itemid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.CollectDto" useGeneratedKeys="true">
-    insert into collect (pid, `uid`, pTitle, salary, 
-      place, departments, crateTime
-      )
-    values (#{pid,jdbcType=CHAR}, #{uid,jdbcType=CHAR}, #{ptitle,jdbcType=VARCHAR}, #{salary,jdbcType=VARCHAR}, 
-      #{place,jdbcType=VARCHAR}, #{departments,jdbcType=VARCHAR}, #{cratetime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.CollectDto" useGeneratedKeys="true">
-    insert into collect
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        pid,
-      </if>
-      <if test="uid != null">
-        `uid`,
-      </if>
-      <if test="ptitle != null">
-        pTitle,
-      </if>
-      <if test="salary != null">
-        salary,
-      </if>
-      <if test="place != null">
-        place,
-      </if>
-      <if test="departments != null">
-        departments,
-      </if>
-      crateTime
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        #{pid,jdbcType=CHAR},
-      </if>
-      <if test="uid != null">
-        #{uid,jdbcType=CHAR},
-      </if>
-      <if test="ptitle != null">
-        #{ptitle,jdbcType=VARCHAR},
-      </if>
-      <if test="salary != null">
-        #{salary,jdbcType=VARCHAR},
-      </if>
-      <if test="place != null">
-        #{place,jdbcType=VARCHAR},
-      </if>
-      <if test="departments != null">
-        #{departments,jdbcType=VARCHAR},
-      </if>
-      now()
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.CollectDto">
-    update collect
-    <set>
-      <if test="pid != null">
-        pid = #{pid,jdbcType=CHAR},
-      </if>
-      <if test="uid != null">
-        `uid` = #{uid,jdbcType=CHAR},
-      </if>
-      <if test="ptitle != null">
-        pTitle = #{ptitle,jdbcType=VARCHAR},
-      </if>
-      <if test="salary != null">
-        salary = #{salary,jdbcType=VARCHAR},
-      </if>
-      <if test="place != null">
-        place = #{place,jdbcType=VARCHAR},
-      </if>
-      <if test="departments != null">
-        departments = #{departments,jdbcType=VARCHAR},
-      </if>
-      <if test="cratetime != null">
-        crateTime = #{cratetime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where itemId = #{itemid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.CollectDto">
-    update collect
-    set pid = #{pid,jdbcType=CHAR},
-      `uid` = #{uid,jdbcType=CHAR},
-      pTitle = #{ptitle,jdbcType=VARCHAR},
-      salary = #{salary,jdbcType=VARCHAR},
-      place = #{place,jdbcType=VARCHAR},
-      departments = #{departments,jdbcType=VARCHAR},
-      crateTime = #{cratetime,jdbcType=TIMESTAMP}
-    where itemId = #{itemid,jdbcType=INTEGER}
-  </update>
+    <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.CollectDto">
+        <id column="itemId" jdbcType="INTEGER" property="itemid"/>
+        <result column="pid" jdbcType="CHAR" property="pid"/>
+        <result column="uid" jdbcType="CHAR" property="uid"/>
+        <result column="pTitle" jdbcType="VARCHAR" property="ptitle"/>
+        <result column="salary" jdbcType="VARCHAR" property="salary"/>
+        <result column="place" jdbcType="VARCHAR" property="place"/>
+        <result column="departments" jdbcType="VARCHAR" property="departments"/>
+        <result column="crateTime" jdbcType="TIMESTAMP" property="cratetime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        itemId, pid, `uid`, pTitle, salary, place, departments, crateTime
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from collect
+        where itemId = #{itemid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from collect
+        where itemId = #{itemid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.CollectDto"
+            useGeneratedKeys="true">
+        insert into collect (pid, `uid`, pTitle, salary,
+                             place, departments, crateTime)
+        values (#{pid,jdbcType=CHAR}, #{uid,jdbcType=CHAR}, #{ptitle,jdbcType=VARCHAR}, #{salary,jdbcType=VARCHAR},
+                #{place,jdbcType=VARCHAR}, #{departments,jdbcType=VARCHAR}, #{cratetime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="itemId" keyProperty="itemid" parameterType="com.cwl.qzzp.dto.CollectDto"
+            useGeneratedKeys="true">
+        insert into collect
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pid != null">
+                pid,
+            </if>
+            <if test="uid != null">
+                `uid`,
+            </if>
+            <if test="ptitle != null">
+                pTitle,
+            </if>
+            <if test="salary != null">
+                salary,
+            </if>
+            <if test="place != null">
+                place,
+            </if>
+            <if test="departments != null">
+                departments,
+            </if>
+            crateTime
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pid != null">
+                #{pid,jdbcType=CHAR},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=CHAR},
+            </if>
+            <if test="ptitle != null">
+                #{ptitle,jdbcType=VARCHAR},
+            </if>
+            <if test="salary != null">
+                #{salary,jdbcType=VARCHAR},
+            </if>
+            <if test="place != null">
+                #{place,jdbcType=VARCHAR},
+            </if>
+            <if test="departments != null">
+                #{departments,jdbcType=VARCHAR},
+            </if>
+            now()
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.CollectDto">
+        update collect
+        <set>
+            <if test="pid != null">
+                pid = #{pid,jdbcType=CHAR},
+            </if>
+            <if test="uid != null">
+                `uid` = #{uid,jdbcType=CHAR},
+            </if>
+            <if test="ptitle != null">
+                pTitle = #{ptitle,jdbcType=VARCHAR},
+            </if>
+            <if test="salary != null">
+                salary = #{salary,jdbcType=VARCHAR},
+            </if>
+            <if test="place != null">
+                place = #{place,jdbcType=VARCHAR},
+            </if>
+            <if test="departments != null">
+                departments = #{departments,jdbcType=VARCHAR},
+            </if>
+            <if test="cratetime != null">
+                crateTime = #{cratetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where itemId = #{itemid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.CollectDto">
+        update collect
+        set pid         = #{pid,jdbcType=CHAR},
+            `uid`       = #{uid,jdbcType=CHAR},
+            pTitle      = #{ptitle,jdbcType=VARCHAR},
+            salary      = #{salary,jdbcType=VARCHAR},
+            place       = #{place,jdbcType=VARCHAR},
+            departments = #{departments,jdbcType=VARCHAR},
+            crateTime   = #{cratetime,jdbcType=TIMESTAMP}
+        where itemId = #{itemid,jdbcType=INTEGER}
+    </update>
+
+    <select id="getCollectionPosition" resultMap="BaseResultMap">
+        select *
+        from collect
+        where uid = #{userid,jdbcType=VARCHAR}
+    </select>
 </mapper>

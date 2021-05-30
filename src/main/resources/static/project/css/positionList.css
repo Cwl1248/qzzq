@@ -1,5 +1,5 @@
 body {
-    min-height: 1800px;
+    width: 100%;
     color: #555555;
     font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial, "Helvetica Neue", Helvetica;
 }
@@ -75,7 +75,8 @@ ul.filter-wrapper{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    word-wrap: normal
+    word-wrap: normal;
+    font-weight: 700;
 }
 .t{
     color: #999999;

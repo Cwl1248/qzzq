@@ -30,4 +30,8 @@ public interface PositioninfoDao {
     PositioninfoDTO getPositionInfoData(String pid);
 
     List<PositioninfoDTO> getPositionData(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+
+    List<PositioninfoDTO> getPositionInfoDTO(@Param("pageNum") int pageNum,@Param("pageSize") int pageSize, String position, String city);
+
+    List<PositioninfoDTO> deliveryRecord(@Param("pageNum") int pageNum, @Param("pageSize")  int pageSize, String userid);
 }

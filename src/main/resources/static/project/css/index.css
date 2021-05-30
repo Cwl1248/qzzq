@@ -1,5 +1,5 @@
 body {
-    min-height: 1800px;
+
     color: #555555;
     font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial, "Helvetica Neue", Helvetica;
 }
@@ -157,6 +157,8 @@ body {
     border: 1px solid #EAEEED;
     border-radius: 5px;
     height: 249px;
+    transition: transform 0.15s;
+    cursor: pointer;
 }
 
 .pos-list:hover {
@@ -166,6 +168,7 @@ body {
     border-radius: 5px;
     height: 249px;
     box-shadow: 0px 0px 4px #c8c8ce;
+    transform: translate(0, -10px);
 }
 
 .pos-name {

@@ -83,8 +83,9 @@
       <if test="evaluationlabel5 != null">
         evaluationLabel5,
       </if>
-      <if test="cratetime != null">
-        crateTime,
+      crateTime,
+      <if test="itemid != null">
+        itemid,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -124,8 +125,9 @@
       <if test="evaluationlabel5 != null">
         #{evaluationlabel5,jdbcType=VARCHAR},
       </if>
-      <if test="cratetime != null">
-        #{cratetime,jdbcType=TIMESTAMP},
+      now(),
+      <if test="itemid != null">
+        #{itemid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

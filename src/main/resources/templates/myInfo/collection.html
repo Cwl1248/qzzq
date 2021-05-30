@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>收职位</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/bottom.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/positionList.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/swiper-3.4.2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
+    <script type="text/javascript" th:src="@{/project/js/swiper-3.4.2.min.js}"></script>
+    <style>
+        .plist {
+            margin-top: 15px;
+        }
+
+        .plist:hover {
+            margin-top: 15px;
+            box-shadow: 0px 0px 4px #c8c8ce;
+        }
+
+        .tip-order {
+            margin-left: 215px;
+            padding: 20px 0 24px;
+            color: #333;
+            font-size: 20px;
+            font-weight: 600;
+            width: 1200px;
+            border-bottom: 1px solid #D8D8D8
+        }
+    </style>
+</head>
+<body>
+<div th:replace="public/head :: head"></div>
+<div class="container-fluid" style="min-height: 500px">
+    <div class="tip-order text-center">您的收藏职位</div>
+    <div class="row" style="margin-top: 20px;margin-left: 200px" th:each="p:${list}">
+        <div class="col-md-1"></div>
+        <div class="col-md-8 ">
+            <div style="display:flex; border: 1px solid #ededed;border-radius: 2px;padding: 10px" class="plist">
+                <a class="position-name" th:href="@{/position/positionInfo(pid=${p.pid},menutab=3)}"
+                   th:text="${p.ptitle}"></a>
+                <div style="margin-top: 15px">
+                    <p style="color: #FD5F39" th:text="${'薪资待遇：'+p.salary}"></p>
+                    <p style="color: #555555" th:text="${'部门名称：'+p.departments}"></p>
+                    <p style="color: #555555" th:text="${'工作地点：'+p.place}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<!--page bar-->
+<div class="" th:if="${list.getPageNum() le list.getPages()}">
+    <div class="pagerow " th:if="${list.pages<10}">
+        <ul id="menu">
+            <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                             th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},userid=${userid},menutab=2)}">&lt;</a>
+            </li>
+            <li th:each="num : ${#numbers.sequence(1,list.pages)}">
+                <a th:classappend="page-btn" th:text="${num}" th:class="${list.pageNum eq num ? 'page-btn-active':''}"
+                   th:href="@{/myInfo/toCollection(pageNum=${num},pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum lt list.pages}">
+                <a class="page-btn"
+                   th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},userid=${userid},menutab=2)}">&gt;</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pagerow" th:if="${list.pages>10}">
+        <ul id="menu">
+            <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                             th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},userid=${userid},menutab=2)}">&lt;</a>
+            </li>
+            <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}"
+                                                  th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a>
+            </li>
+            <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}"
+                                                  th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}"
+                                                  th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}"
+                                                  th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}"
+                                                  th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}"
+                                                  th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}"
+                                                  th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}"
+                                                  th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum gt 1}"><a class="page-btn" th:text="${list.pageNum-1}"
+                                                th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum le list.pages}"><a th:classappend="page-btn"
+                                                         th:class="${list.pageNum le list.pages ? 'page-btn-active':''}"
+                                                         th:text="${list.pageNum}"
+                                                         th:href="@{/myInfo/toCollection(pageNum=${list.pageNum},pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}"
+                                                           th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}"
+                                                           th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}"
+                                                           th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}"
+                                                           th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}"
+                                                           th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}"
+                                                           th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}"
+                                                           th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}"
+                                                           th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+            </li>
+            <li th:if="${list.pageNum lt list.pages}"><a class="page-btn"
+                                                         th:href="@{/myInfo/toCollection(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},userid=${userid},menutab=2)}">&gt;</a>
+            </li>
+            <li>
+        </ul>
+    </div>
+</div>
+</div>
+
+
+<div th:replace="public/bottom :: bottom"></div>
+
+<script>
+</script>
+
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
+<script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/component/login.js}"></script>
+
+<script>
+    /* window.onload = function(){
+         var id = sessionStorage.getItem("userid");
+         console.log(id)
+         $("#userid").val(id)
+
+     }
+
+     layui.use(['form', 'layedit', 'laydate'], function () {
+         var form = layui.form,
+             layer = layui.layer,
+             laydate = layui.laydate;
+
+         //日期
+         laydate.render({
+             elem: '#birthday'
+         });
+         laydate.render({
+             elem: '#graduationTime'
+         });
+
+         form.verify({
+             title: function (value) {
+                 if (value.length < 1) {
+                     return '不允许为空';
+                 }
+             },
+
+             required: function (value) {
+                 if (value.length < 1) {
+                     return '不允许为空';
+                 }
+             }
+         });
+
+     });*/
+</script>
+
+</body>
+</html>

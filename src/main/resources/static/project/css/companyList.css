@@ -1,5 +1,5 @@
 body {
-    min-height: 1800px;
+
     color: #555555;
     font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial, "Helvetica Neue", Helvetica;
 }
@@ -104,6 +104,8 @@ ul.filter-wrapper{
     border: 1px solid #EAEEED;
     border-radius: 2px;
     height: 249px;
+    transition: transform 0.15s;
+    cursor: pointer;
 }
 .com-infos:hover{
     padding: 15px;
@@ -112,6 +114,7 @@ ul.filter-wrapper{
     border-radius: 2px;
     height: 249px;
     box-shadow: 0 0 4px #c8c8ce;
+    transform: translate(0, -5px);
 }
 .com-img{
    text-align: center;

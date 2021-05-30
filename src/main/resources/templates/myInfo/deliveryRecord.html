@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>投递记录</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/bottom.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/positionList.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/swiper-3.4.2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
+    <script type="text/javascript" th:src="@{/project/js/swiper-3.4.2.min.js}"></script>
+    <style>
+        .the-border {
+            box-shadow: 0 0 4px #c8c8ce;
+            border-radius: 5px;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .the-border:hover {
+            box-shadow: 0 0 4px #c8c8ce;
+            cursor: pointer;
+            transform: translate(0, -20px);
+        }
+
+        .tip-order {
+            margin-left: 215px;
+            padding: 20px 0 24px;
+            color: #333;
+            font-size: 20px;
+            font-weight: 600;
+            width: 1200px;
+            border-bottom: 1px solid #D8D8D8
+        }
+
+        .type {
+            display: flex;
+            background: #fafafa;
+            padding: 10px
+        }
+
+        .layui-form-label {
+            float: left;
+            display: block;
+            width: 150px;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: right;
+            padding: 9px 15px;
+        }
+
+        .layui-input-block {
+            margin-left: 50px;
+            min-height: 36px
+        }
+    </style>
+</head>
+<body>
+<div th:replace="public/head :: head"></div>
+<div class="container-fluid" style="min-height: 500px">
+    <div class="tip-order">投递记录</div>
+    <div class="row" style="margin-left: 200px">
+        <div class="col-md-5 " th:each="p:${list}" style="margin-top: 50px">
+            <input class="layui-hide" type="text" name="dataid" id="dataid" th:value="${p.pid}">
+            <div class="the-border">
+                <div style="padding: 10px">
+                    <div>
+                        <a class="position-name" th:href="@{/position/positionInfo(pid=${p.pid},menutab=3)}"
+                           th:text="${p.ptitle}"></a>
+                        <span class="t" th:text="${#dates.format(p.releasetime,'mm:ss'+'发布')}"></span>
+                    </div>
+                    <div style="margin-top: 15px">
+                        <span style="color: #FD5F39" th:text="${p.salary}"></span>
+                        <span style="color: #555555;margin-left: 15px" th:text="${'经验'+p.experience}+'/'"></span>
+                        <span style="color: #555555" th:text="${p.education}"></span>
+                        <span style="color: #555555;margin-left: 100px;cursor: pointer;font-size: 20px;"
+                              data-toggle="modal"
+                              data-target="#evaluate"><i class="layui-icon layui-icon-release"
+                                                         style="font-size: 24px;color: #6495ED"></i>点我评价</span>
+                    </div>
+                </div>
+                <div class="type">
+                    <div>
+                    <span class="job-category" th:text="${p.posttype1}"
+                          th:class="${p.posttype1 ne '' ? 'job-category':'p-hide'}"></span>
+                        <span class="job-category" th:text="${p.posttype2}"
+                              th:class="${p.posttype2 ne '' ? 'job-category':'p-hide'}"></span>
+                        <span class="job-category" th:text="${p.posttype3}"
+                              th:class="${p.posttype3 ne '' ? 'job-category':'p-hide'}"></span>
+                        <span class="job-category" th:text="${p.posttype4}"
+                              th:class="${p.posttype4 ne '' ? 'job-category':'p-hide'}"></span>
+                        <span class="job-category" th:text="${p.posttype5}"
+                              th:class="${p.posttype5 ne '' ? 'job-category':'p-hide'}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--page bar-->
+    <div class="" th:if="${list.getPageNum() le list.getPages()}">
+        <div class="pagerow " th:if="${list.pages<10}">
+            <ul id="menu">
+                <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                                 th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},userid=${userid},menutab=2)}">&lt;</a>
+                </li>
+                <li th:each="num : ${#numbers.sequence(1,list.pages)}">
+                    <a th:classappend="page-btn" th:text="${num}"
+                       th:class="${list.pageNum eq num ? 'page-btn-active':''}"
+                       th:href="@{/myInfo/toRecommend(pageNum=${num},pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum lt list.pages}">
+                    <a class="page-btn"
+                       th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},userid=${userid},menutab=2)}">&gt;</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="pagerow" th:if="${list.pages>10}">
+            <ul id="menu">
+                <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                                 th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},userid=${userid},menutab=2)}">&lt;</a>
+                </li>
+                <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}"
+                                                      th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a>
+                </li>
+                <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}"
+                                                      th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}"
+                                                      th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}"
+                                                      th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}"
+                                                      th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}"
+                                                      th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}"
+                                                      th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}"
+                                                      th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum gt 1}"><a class="page-btn" th:text="${list.pageNum-1}"
+                                                    th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum le list.pages}"><a th:classappend="page-btn"
+                                                             th:class="${list.pageNum le list.pages ? 'page-btn-active':''}"
+                                                             th:text="${list.pageNum}"
+                                                             th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum},pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}"
+                                                               th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}"
+                                                               th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}"
+                                                               th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}"
+                                                               th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}"
+                                                               th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}"
+                                                               th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}"
+                                                               th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}"
+                                                               th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},userid=${userid},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum lt list.pages}"><a class="page-btn"
+                                                             th:href="@{/myInfo/toRecommend(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},userid=${userid},menutab=2)}">&gt;</a>
+                </li>
+                <li>
+            </ul>
+        </div>
+    </div>
+
+    <!--评价模态框-->
+    <div class="modal fade" id="evaluate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div style="font-size:20px;" class="text-info">评价</div>
+                </div>
+                <div class="modal-body">
+                    <form class="layui-form">
+                        <!--评分-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">综合评分</label>
+                            <div class="layui-input-inline">
+                                <select name="multiplescore" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="1">1分</option>
+                                    <option value="2">2分</option>
+                                    <option value="3">3分</option>
+                                    <option value="4">4分</option>
+                                    <option value="5">5分</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">描述相符</label>
+                            <div class="layui-input-inline">
+                                <select name="matchscore" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="1">1分</option>
+                                    <option value="2">2分</option>
+                                    <option value="3">3分</option>
+                                    <option value="4">4分</option>
+                                    <option value="5">5分</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">对面试官评分</label>
+                            <div class="layui-input-inline">
+                                <select name="ratingtheinterviewe" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="1">1分</option>
+                                    <option value="2">2分</option>
+                                    <option value="3">3分</option>
+                                    <option value="4">4分</option>
+                                    <option value="5">5分</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">面试过程评分</label>
+                            <div class="layui-input-inline">
+                                <select name="environment" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="1">1分</option>
+                                    <option value="2">2分</option>
+                                    <option value="3">3分</option>
+                                    <option value="4">4分</option>
+                                    <option value="5">5分</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">面试过程</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" class="layui-textarea" name="interviewprocess" style="width: 590px"></textarea>
+                            </div>
+                        </div>
+                        <!--评价-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">环境评价</label>
+                            <div class="layui-input-inline">
+                                <select name="evaluationlabel1" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="环境高大上">环境高大上</option>
+                                    <option value="环境一般般">环境一般般</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">面试官评价</label>
+                            <div class="layui-input-inline">
+                                <select name="evaluationlabel2" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="面试官太苛刻">面试官太苛刻</option>
+                                    <option value="面试官是大牛">面试官是大牛</option>
+                                    <option value="面试官态度冰冷">面试官态度冰冷</option>
+                                    <option value="面试官是火星来的吧">面试官是火星来的吧</option>
+                                    <option value="面试效率高">面试效率高</option>
+                                    <option value="压力面试">压力面试</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">HR评价</label>
+                            <div class="layui-input-inline">
+                                <select name="evaluationlabel3" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="HR很亲切">HR很亲切</option>
+                                    <option value="HR很冰冷">HR很冰冷</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">待遇评价</label>
+                            <div class="layui-input-inline">
+                                <select name="evaluationlabel4" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="福利待遇杠杠的">福利待遇杠杠的</option>
+                                    <option value="薪资与描述不符">薪资与描述不符</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">其他评价</label>
+                            <div class="layui-input-inline">
+                                <select name="evaluationlabel5" lay-verify="required" lay-search="">
+                                    <option value=""></option>
+                                    <option value="聊得很开心">聊得很开心</option>
+                                    <option value="一般一般吧">一般一般吧</option>
+                                    <option value="公司前景不错">公司前景不错</option>
+                                    <option value="不太顺利">不太顺利</option>
+                                    <option value="完全hold住场面">完全hold住场面</option>
+                                    <option value="最差的一次面试体验">最差的一次面试体验</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                        <input class="layui-hide" type="text" name="userid" id="userid">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div th:replace="public/bottom :: bottom"></div>
+
+<script>
+</script>
+
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
+<script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/component/login.js}"></script>
+<script>
+    /*模态框居中*/
+    $('#evaluate').on('show.bs.modal', function (e) {
+        $(this).css('display', 'block');
+        var modalHeight = $(window).height() / 2 - $('#evaluate .modal-dialog').height() / 2;
+        $(this).find('.modal-dialog').css({
+            'margin-top': modalHeight
+        });
+    });
+</script>
+<script>
+    window.onload=function(){
+     $("#userid").val(sessionStorage.getItem('userid'))
+    }
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , content: function (value) {
+                layedit.sync(editIndex);
+            }
+        });
+
+
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            const appraise = data.field
+            appraise.dataid = $("#dataid").val()
+            let userid = $("#userid").val()
+            console.log(userid)
+            if (userid != null) {
+                $.ajax({
+                    url: '/myInfo/insertAppraise',
+                    type: 'post',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: JSON.stringify(appraise),
+                    async: false,
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
+            } else {
+                layui.msg('请检查登录状态')
+            }
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

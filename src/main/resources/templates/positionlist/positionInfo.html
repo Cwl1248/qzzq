@@ -99,7 +99,7 @@
             </div>
             <!--面试评价-->
             <div style="border-bottom: 1px dashed #dce4e6;margin-right: 15px"
-                 th:class="${position.appraiseDTO.size() gt 1 ? '':'p-hide'}">
+                 th:class="${position.appraiseDTO.size() ge 1 ? '':'p-hide'}">
                 <div class="interview-evaluation">面试评价</div>
                 <!--评分结果区-->
                 <fieldset>
@@ -110,12 +110,12 @@
                 </fieldset>
             </div>
             <!--评论区-->
-            <div th:class="${position.appraiseDTO.size() gt 1 ? '':'p-hide'}"
+            <div th:class="${position.appraiseDTO.size() ge 1 ? '':'p-hide'}"
                  th:each="a,status:${position.appraiseDTO}">
                 <div style=" margin: 15px 0;padding: 10px;">
                     <div class="comment">
                         <div class="row">
-                            <div class="col-md-4" style="color: #555555">秦*研</div>
+                            <div class="col-md-4" style="color: #555555">匿名用户</div>
                             <div class="col-md-4" style="color: #999999;text-align: center"></div>
                             <div class="col-md-4" style="color: #999999;text-align: right"
                                  th:text="${#dates.format(a.cratetime,'yyyy-MM-dd')}"></div>

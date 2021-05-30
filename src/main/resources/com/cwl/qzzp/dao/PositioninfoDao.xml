@@ -390,7 +390,7 @@
         pId = #{pid}
     </select>
 
-    <select id="getPositionData"  resultMap="BaseResultMap3">
+    <select id="getPositionData" resultMap="BaseResultMap3">
        select
             p.pId,
             p.pTitle,
@@ -417,4 +417,49 @@
         from positioninfo p
         left join enterpriseinfo e on p.dataId = e.eId
     </select>
+
+    <select id="getPositionInfoDTO" resultMap="BaseResultMap">
+        select
+        p.pId,
+        p.pTitle,
+        p.postnature,
+        p.education,
+        p.experience,
+        p.releaseTime,
+        p.salary,
+        p.posttype1,
+        p.posttype2,
+        p.posttype3,
+        p.posttype4,
+        p.posttype5
+        from positioninfo p where
+        <if test="city !=null">
+            p.place like concat('%',#{city},'%')
+        </if>
+        <if test="position !=null">
+            and UPPER(p.pTitle) like concat('%',#{position},'%')
+        </if>
+
+    </select>
+
+
+    <select id="deliveryRecord" resultMap="BaseResultMap">
+         select
+            p.pId,
+            p.pTitle,
+            p.postnature,
+            p.education,
+            p.experience,
+            p.releaseTime,
+            p.salary,
+            p.posttype1,
+            p.posttype2,
+            p.posttype3,
+            p.posttype4,
+            p.posttype5
+            from positioninfo p
+            where p.pId in (select d.pid from delivery d where d.uid  =#{userid})
+    </select>
+
+
 </mapper>
