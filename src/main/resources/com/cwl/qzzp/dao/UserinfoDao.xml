@@ -1,356 +1,360 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cwl.qzzp.dao.UserinfoDao">
-  <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.UserinfoDTO">
-    <id column="UserId" jdbcType="CHAR" property="userid" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="userName" jdbcType="VARCHAR" property="username" />
-    <result column="gender" jdbcType="VARCHAR" property="gender" />
-    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="jobHuntingStatus" jdbcType="VARCHAR" property="jobhuntingstatus" />
-    <result column="identitys" jdbcType="VARCHAR" property="identitys" />
-    <result column="heardImage" jdbcType="VARCHAR" property="heardimage" />
-    <result column="personalAdvantage" jdbcType="VARCHAR" property="personaladvantage" />
-    <result column="itemCreateAt" jdbcType="TIMESTAMP" property="itemcreateat" />
-    <result column="Resume_path" jdbcType="VARCHAR" property="resumePath" />
-    <result column="companyName" jdbcType="VARCHAR" property="companyname" />
-    <result column="company_industry" jdbcType="VARCHAR" property="companyIndustry" />
-    <result column="department" jdbcType="VARCHAR" property="department" />
-    <result column="tybe_of_job" jdbcType="VARCHAR" property="tybeOfJob" />
-    <result column="position_Name" jdbcType="VARCHAR" property="positionName" />
-    <result column="operating_hours" jdbcType="VARCHAR" property="operatingHours" />
-    <result column="schoolName" jdbcType="VARCHAR" property="schoolname" />
-    <result column="professional_title" jdbcType="VARCHAR" property="professionalTitle" />
-    <result column="education" jdbcType="VARCHAR" property="education" />
-    <result column="graduation_time" jdbcType="TIMESTAMP" property="graduationTime" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="city" jdbcType="VARCHAR" property="city" />
-    <result column="starting_salary_from" jdbcType="VARCHAR" property="startingSalaryFrom" />
-    <result column="starting_salary_to" jdbcType="VARCHAR" property="startingSalaryTo" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    UserId, email, `password`, userName, gender, birthday, phone, jobHuntingStatus, identitys, 
+    <resultMap id="BaseResultMap" type="com.cwl.qzzp.dto.UserinfoDTO">
+        <id column="UserId" jdbcType="CHAR" property="userid"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="userName" jdbcType="VARCHAR" property="username"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="birthday" jdbcType="TIMESTAMP" property="birthday"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="jobHuntingStatus" jdbcType="VARCHAR" property="jobhuntingstatus"/>
+        <result column="identitys" jdbcType="VARCHAR" property="identitys"/>
+        <result column="heardImage" jdbcType="VARCHAR" property="heardimage"/>
+        <result column="personalAdvantage" jdbcType="VARCHAR" property="personaladvantage"/>
+        <result column="itemCreateAt" jdbcType="TIMESTAMP" property="itemcreateat"/>
+        <result column="Resume_path" jdbcType="VARCHAR" property="resumePath"/>
+        <result column="companyName" jdbcType="VARCHAR" property="companyname"/>
+        <result column="company_industry" jdbcType="VARCHAR" property="companyIndustry"/>
+        <result column="department" jdbcType="VARCHAR" property="department"/>
+        <result column="tybe_of_job" jdbcType="VARCHAR" property="tybeOfJob"/>
+        <result column="position_Name" jdbcType="VARCHAR" property="positionName"/>
+        <result column="operating_hours" jdbcType="VARCHAR" property="operatingHours"/>
+        <result column="schoolName" jdbcType="VARCHAR" property="schoolname"/>
+        <result column="professional_title" jdbcType="VARCHAR" property="professionalTitle"/>
+        <result column="education" jdbcType="VARCHAR" property="education"/>
+        <result column="graduation_time" jdbcType="TIMESTAMP" property="graduationTime"/>
+        <result column="position" jdbcType="VARCHAR" property="position"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="starting_salary_from" jdbcType="VARCHAR" property="startingSalaryFrom"/>
+        <result column="starting_salary_to" jdbcType="VARCHAR" property="startingSalaryTo"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        UserId, email, `password`, userName, gender, birthday, phone, jobHuntingStatus, identitys,
     heardImage, personalAdvantage, itemCreateAt, Resume_path, companyName, company_industry, 
     department, tybe_of_job, position_Name, operating_hours, schoolName, professional_title, 
     education, graduation_time, `position`, city, starting_salary_from, starting_salary_to
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from userinfo
-    where UserId = #{userid,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from userinfo
-    where UserId = #{userid,jdbcType=CHAR}
-  </delete>
-  <insert id="insert" keyColumn="UserId" keyProperty="userid" parameterType="com.cwl.qzzp.dto.UserinfoDTO" useGeneratedKeys="true">
-    insert into userinfo (email, `password`, userName, 
-      gender, birthday, phone, 
-      jobHuntingStatus, identitys, heardImage, 
-      personalAdvantage, itemCreateAt, Resume_path, 
-      companyName, company_industry, department, 
-      tybe_of_job, position_Name, operating_hours, 
-      schoolName, professional_title, education, 
-      graduation_time, `position`, city, 
-      starting_salary_from, starting_salary_to)
-    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{phone,jdbcType=VARCHAR}, 
-      #{jobhuntingstatus,jdbcType=VARCHAR}, #{identitys,jdbcType=VARCHAR}, #{heardimage,jdbcType=VARCHAR}, 
-      #{personaladvantage,jdbcType=VARCHAR}, #{itemcreateat,jdbcType=TIMESTAMP}, #{resumePath,jdbcType=VARCHAR}, 
-      #{companyname,jdbcType=VARCHAR}, #{companyIndustry,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
-      #{tybeOfJob,jdbcType=VARCHAR}, #{positionName,jdbcType=VARCHAR}, #{operatingHours,jdbcType=VARCHAR}, 
-      #{schoolname,jdbcType=VARCHAR}, #{professionalTitle,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
-      #{graduationTime,jdbcType=TIMESTAMP}, #{position,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
-      #{startingSalaryFrom,jdbcType=VARCHAR}, #{startingSalaryTo,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" keyColumn="UserId" keyProperty="userid" parameterType="com.cwl.qzzp.dto.UserinfoDTO" useGeneratedKeys="true">
-    insert into userinfo
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="email != null">
-        email,
-      </if>
-      <if test="password != null">
-        `password`,
-      </if>
-      <if test="username != null">
-        userName,
-      </if>
-      <if test="gender != null">
-        gender,
-      </if>
-      <if test="birthday != null">
-        birthday,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="jobhuntingstatus != null">
-        jobHuntingStatus,
-      </if>
-      <if test="identitys != null">
-        identitys,
-      </if>
-      <if test="heardimage != null">
-        heardImage,
-      </if>
-      <if test="personaladvantage != null">
-        personalAdvantage,
-      </if>
-        itemCreateAt,
-      <if test="resumePath != null">
-        Resume_path,
-      </if>
-      <if test="companyname != null">
-        companyName,
-      </if>
-      <if test="companyIndustry != null">
-        company_industry,
-      </if>
-      <if test="department != null">
-        department,
-      </if>
-      <if test="tybeOfJob != null">
-        tybe_of_job,
-      </if>
-      <if test="positionName != null">
-        position_Name,
-      </if>
-      <if test="operatingHours != null">
-        operating_hours,
-      </if>
-      <if test="schoolname != null">
-        schoolName,
-      </if>
-      <if test="professionalTitle != null">
-        professional_title,
-      </if>
-      <if test="education != null">
-        education,
-      </if>
-      <if test="graduationTime != null">
-        graduation_time,
-      </if>
-      <if test="position != null">
-        `position`,
-      </if>
-      <if test="city != null">
-        city,
-      </if>
-      <if test="startingSalaryFrom != null">
-        starting_salary_from,
-      </if>
-      <if test="startingSalaryTo != null">
-        starting_salary_to,
-      </if>
-      <if test="userid != null">
-        UserId
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null">
-        #{gender,jdbcType=VARCHAR},
-      </if>
-      <if test="birthday != null">
-        #{birthday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="jobhuntingstatus != null">
-        #{jobhuntingstatus,jdbcType=VARCHAR},
-      </if>
-      <if test="identitys != null">
-        #{identitys,jdbcType=VARCHAR},
-      </if>
-      <if test="heardimage != null">
-        #{heardimage,jdbcType=VARCHAR},
-      </if>
-      <if test="personaladvantage != null">
-        #{personaladvantage,jdbcType=VARCHAR},
-      </if>
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from userinfo
+        where UserId = #{userid,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from userinfo
+        where UserId = #{userid,jdbcType=CHAR}
+    </delete>
+    <insert id="insert" keyColumn="UserId" keyProperty="userid" parameterType="com.cwl.qzzp.dto.UserinfoDTO"
+            useGeneratedKeys="true">
+        insert into userinfo (email, `password`, userName,
+                              gender, birthday, phone,
+                              jobHuntingStatus, identitys, heardImage,
+                              personalAdvantage, itemCreateAt, Resume_path,
+                              companyName, company_industry, department,
+                              tybe_of_job, position_Name, operating_hours,
+                              schoolName, professional_title, education,
+                              graduation_time, `position`, city,
+                              starting_salary_from, starting_salary_to)
+        values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+                #{gender,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{phone,jdbcType=VARCHAR},
+                #{jobhuntingstatus,jdbcType=VARCHAR}, #{identitys,jdbcType=VARCHAR}, #{heardimage,jdbcType=VARCHAR},
+                #{personaladvantage,jdbcType=VARCHAR}, #{itemcreateat,jdbcType=TIMESTAMP},
+                #{resumePath,jdbcType=VARCHAR},
+                #{companyname,jdbcType=VARCHAR}, #{companyIndustry,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR},
+                #{tybeOfJob,jdbcType=VARCHAR}, #{positionName,jdbcType=VARCHAR}, #{operatingHours,jdbcType=VARCHAR},
+                #{schoolname,jdbcType=VARCHAR}, #{professionalTitle,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR},
+                #{graduationTime,jdbcType=TIMESTAMP}, #{position,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR},
+                #{startingSalaryFrom,jdbcType=VARCHAR}, #{startingSalaryTo,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="UserId" keyProperty="userid" parameterType="com.cwl.qzzp.dto.UserinfoDTO"
+            useGeneratedKeys="true">
+        insert into userinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="email != null">
+                email,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="username != null">
+                userName,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="jobhuntingstatus != null">
+                jobHuntingStatus,
+            </if>
+            <if test="identitys != null">
+                identitys,
+            </if>
+            <if test="heardimage != null">
+                heardImage,
+            </if>
+            <if test="personaladvantage != null">
+                personalAdvantage,
+            </if>
+            itemCreateAt,
+            <if test="resumePath != null">
+                Resume_path,
+            </if>
+            <if test="companyname != null">
+                companyName,
+            </if>
+            <if test="companyIndustry != null">
+                company_industry,
+            </if>
+            <if test="department != null">
+                department,
+            </if>
+            <if test="tybeOfJob != null">
+                tybe_of_job,
+            </if>
+            <if test="positionName != null">
+                position_Name,
+            </if>
+            <if test="operatingHours != null">
+                operating_hours,
+            </if>
+            <if test="schoolname != null">
+                schoolName,
+            </if>
+            <if test="professionalTitle != null">
+                professional_title,
+            </if>
+            <if test="education != null">
+                education,
+            </if>
+            <if test="graduationTime != null">
+                graduation_time,
+            </if>
+            <if test="position != null">
+                `position`,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="startingSalaryFrom != null">
+                starting_salary_from,
+            </if>
+            <if test="startingSalaryTo != null">
+                starting_salary_to,
+            </if>
+            <if test="userid != null">
+                UserId
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="jobhuntingstatus != null">
+                #{jobhuntingstatus,jdbcType=VARCHAR},
+            </if>
+            <if test="identitys != null">
+                #{identitys,jdbcType=VARCHAR},
+            </if>
+            <if test="heardimage != null">
+                #{heardimage,jdbcType=VARCHAR},
+            </if>
+            <if test="personaladvantage != null">
+                #{personaladvantage,jdbcType=VARCHAR},
+            </if>
 
-      now(),
-      <if test="resumePath != null">
-        #{resumePath,jdbcType=VARCHAR},
-      </if>
-      <if test="companyname != null">
-        #{companyname,jdbcType=VARCHAR},
-      </if>
-      <if test="companyIndustry != null">
-        #{companyIndustry,jdbcType=VARCHAR},
-      </if>
-      <if test="department != null">
-        #{department,jdbcType=VARCHAR},
-      </if>
-      <if test="tybeOfJob != null">
-        #{tybeOfJob,jdbcType=VARCHAR},
-      </if>
-      <if test="positionName != null">
-        #{positionName,jdbcType=VARCHAR},
-      </if>
-      <if test="operatingHours != null">
-        #{operatingHours,jdbcType=VARCHAR},
-      </if>
-      <if test="schoolname != null">
-        #{schoolname,jdbcType=VARCHAR},
-      </if>
-      <if test="professionalTitle != null">
-        #{professionalTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="education != null">
-        #{education,jdbcType=VARCHAR},
-      </if>
-      <if test="graduationTime != null">
-        #{graduationTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="position != null">
-        #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null">
-        #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="startingSalaryFrom != null">
-        #{startingSalaryFrom,jdbcType=VARCHAR},
-      </if>
-      <if test="startingSalaryTo != null">
-        #{startingSalaryTo,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null">
-        #{userid,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.UserinfoDTO">
-    update userinfo
-    <set>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        `password` = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        userName = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null">
-        gender = #{gender,jdbcType=VARCHAR},
-      </if>
-      <if test="birthday != null">
-        birthday = #{birthday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="jobhuntingstatus != null">
-        jobHuntingStatus = #{jobhuntingstatus,jdbcType=VARCHAR},
-      </if>
-      <if test="identitys != null">
-        identitys = #{identitys,jdbcType=VARCHAR},
-      </if>
-      <if test="heardimage != null">
-        heardImage = #{heardimage,jdbcType=VARCHAR},
-      </if>
-      <if test="personaladvantage != null">
-        personalAdvantage = #{personaladvantage,jdbcType=VARCHAR},
-      </if>
-      <if test="itemcreateat != null">
-        itemCreateAt = #{itemcreateat,jdbcType=TIMESTAMP},
-      </if>
-      <if test="resumePath != null">
-        Resume_path = #{resumePath,jdbcType=VARCHAR},
-      </if>
-      <if test="companyname != null">
-        companyName = #{companyname,jdbcType=VARCHAR},
-      </if>
-      <if test="companyIndustry != null">
-        company_industry = #{companyIndustry,jdbcType=VARCHAR},
-      </if>
-      <if test="department != null">
-        department = #{department,jdbcType=VARCHAR},
-      </if>
-      <if test="tybeOfJob != null">
-        tybe_of_job = #{tybeOfJob,jdbcType=VARCHAR},
-      </if>
-      <if test="positionName != null">
-        position_Name = #{positionName,jdbcType=VARCHAR},
-      </if>
-      <if test="operatingHours != null">
-        operating_hours = #{operatingHours,jdbcType=VARCHAR},
-      </if>
-      <if test="schoolname != null">
-        schoolName = #{schoolname,jdbcType=VARCHAR},
-      </if>
-      <if test="professionalTitle != null">
-        professional_title = #{professionalTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="education != null">
-        education = #{education,jdbcType=VARCHAR},
-      </if>
-      <if test="graduationTime != null">
-        graduation_time = #{graduationTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="position != null">
-        `position` = #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null">
-        city = #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="startingSalaryFrom != null">
-        starting_salary_from = #{startingSalaryFrom,jdbcType=VARCHAR},
-      </if>
-      <if test="startingSalaryTo != null">
-        starting_salary_to = #{startingSalaryTo,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where UserId = #{userid,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.UserinfoDTO">
-    update userinfo
-    set email = #{email,jdbcType=VARCHAR},
-      `password` = #{password,jdbcType=VARCHAR},
-      userName = #{username,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=TIMESTAMP},
-      phone = #{phone,jdbcType=VARCHAR},
-      jobHuntingStatus = #{jobhuntingstatus,jdbcType=VARCHAR},
-      identitys = #{identitys,jdbcType=VARCHAR},
-      heardImage = #{heardimage,jdbcType=VARCHAR},
-      personalAdvantage = #{personaladvantage,jdbcType=VARCHAR},
-      itemCreateAt = #{itemcreateat,jdbcType=TIMESTAMP},
-      Resume_path = #{resumePath,jdbcType=VARCHAR},
-      companyName = #{companyname,jdbcType=VARCHAR},
-      company_industry = #{companyIndustry,jdbcType=VARCHAR},
-      department = #{department,jdbcType=VARCHAR},
-      tybe_of_job = #{tybeOfJob,jdbcType=VARCHAR},
-      position_Name = #{positionName,jdbcType=VARCHAR},
-      operating_hours = #{operatingHours,jdbcType=VARCHAR},
-      schoolName = #{schoolname,jdbcType=VARCHAR},
-      professional_title = #{professionalTitle,jdbcType=VARCHAR},
-      education = #{education,jdbcType=VARCHAR},
-      graduation_time = #{graduationTime,jdbcType=TIMESTAMP},
-      `position` = #{position,jdbcType=VARCHAR},
-      city = #{city,jdbcType=VARCHAR},
-      starting_salary_from = #{startingSalaryFrom,jdbcType=VARCHAR},
-      starting_salary_to = #{startingSalaryTo,jdbcType=VARCHAR}
-    where UserId = #{userid,jdbcType=CHAR}
-  </update>
+            now(),
+            <if test="resumePath != null">
+                #{resumePath,jdbcType=VARCHAR},
+            </if>
+            <if test="companyname != null">
+                #{companyname,jdbcType=VARCHAR},
+            </if>
+            <if test="companyIndustry != null">
+                #{companyIndustry,jdbcType=VARCHAR},
+            </if>
+            <if test="department != null">
+                #{department,jdbcType=VARCHAR},
+            </if>
+            <if test="tybeOfJob != null">
+                #{tybeOfJob,jdbcType=VARCHAR},
+            </if>
+            <if test="positionName != null">
+                #{positionName,jdbcType=VARCHAR},
+            </if>
+            <if test="operatingHours != null">
+                #{operatingHours,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolname != null">
+                #{schoolname,jdbcType=VARCHAR},
+            </if>
+            <if test="professionalTitle != null">
+                #{professionalTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="education != null">
+                #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="graduationTime != null">
+                #{graduationTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="position != null">
+                #{position,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="startingSalaryFrom != null">
+                #{startingSalaryFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="startingSalaryTo != null">
+                #{startingSalaryTo,jdbcType=VARCHAR},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.UserinfoDTO">
+        update userinfo
+        <set>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                userName = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="jobhuntingstatus != null">
+                jobHuntingStatus = #{jobhuntingstatus,jdbcType=VARCHAR},
+            </if>
+            <if test="identitys != null">
+                identitys = #{identitys,jdbcType=VARCHAR},
+            </if>
+            <if test="heardimage != null">
+                heardImage = #{heardimage,jdbcType=VARCHAR},
+            </if>
+            <if test="personaladvantage != null">
+                personalAdvantage = #{personaladvantage,jdbcType=VARCHAR},
+            </if>
+            <if test="itemcreateat != null">
+                itemCreateAt = #{itemcreateat,jdbcType=TIMESTAMP},
+            </if>
+            <if test="resumePath != null and resumePath !='' ">
+                Resume_path = #{resumePath,jdbcType=VARCHAR},
+            </if>
+            <if test="companyname != null">
+                companyName = #{companyname,jdbcType=VARCHAR},
+            </if>
+            <if test="companyIndustry != null">
+                company_industry = #{companyIndustry,jdbcType=VARCHAR},
+            </if>
+            <if test="department != null">
+                department = #{department,jdbcType=VARCHAR},
+            </if>
+            <if test="tybeOfJob != null">
+                tybe_of_job = #{tybeOfJob,jdbcType=VARCHAR},
+            </if>
+            <if test="positionName != null">
+                position_Name = #{positionName,jdbcType=VARCHAR},
+            </if>
+            <if test="operatingHours != null">
+                operating_hours = #{operatingHours,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolname != null">
+                schoolName = #{schoolname,jdbcType=VARCHAR},
+            </if>
+            <if test="professionalTitle != null">
+                professional_title = #{professionalTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="education != null">
+                education = #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="graduationTime != null">
+                graduation_time = #{graduationTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="position != null">
+                `position` = #{position,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="startingSalaryFrom != null">
+                starting_salary_from = #{startingSalaryFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="startingSalaryTo != null">
+                starting_salary_to = #{startingSalaryTo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where UserId = #{userid,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cwl.qzzp.dto.UserinfoDTO">
+        update userinfo
+        set email                = #{email,jdbcType=VARCHAR},
+            `password`           = #{password,jdbcType=VARCHAR},
+            userName             = #{username,jdbcType=VARCHAR},
+            gender               = #{gender,jdbcType=VARCHAR},
+            birthday             = #{birthday,jdbcType=TIMESTAMP},
+            phone                = #{phone,jdbcType=VARCHAR},
+            jobHuntingStatus     = #{jobhuntingstatus,jdbcType=VARCHAR},
+            identitys            = #{identitys,jdbcType=VARCHAR},
+            heardImage           = #{heardimage,jdbcType=VARCHAR},
+            personalAdvantage    = #{personaladvantage,jdbcType=VARCHAR},
+            itemCreateAt         = #{itemcreateat,jdbcType=TIMESTAMP},
+            Resume_path          = #{resumePath,jdbcType=VARCHAR},
+            companyName          = #{companyname,jdbcType=VARCHAR},
+            company_industry     = #{companyIndustry,jdbcType=VARCHAR},
+            department           = #{department,jdbcType=VARCHAR},
+            tybe_of_job          = #{tybeOfJob,jdbcType=VARCHAR},
+            position_Name        = #{positionName,jdbcType=VARCHAR},
+            operating_hours      = #{operatingHours,jdbcType=VARCHAR},
+            schoolName           = #{schoolname,jdbcType=VARCHAR},
+            professional_title   = #{professionalTitle,jdbcType=VARCHAR},
+            education            = #{education,jdbcType=VARCHAR},
+            graduation_time      = #{graduationTime,jdbcType=TIMESTAMP},
+            `position`           = #{position,jdbcType=VARCHAR},
+            city                 = #{city,jdbcType=VARCHAR},
+            starting_salary_from = #{startingSalaryFrom,jdbcType=VARCHAR},
+            starting_salary_to   = #{startingSalaryTo,jdbcType=VARCHAR}
+        where UserId = #{userid,jdbcType=CHAR}
+    </update>
 
-  <select id="selectByPK" resultMap="BaseResultMap">
-    select UserId, email, `password`, userName
-    from userinfo
-    where email = #{email}
-      and `password` = #{password}
-  </select>
+    <select id="selectByPK" resultMap="BaseResultMap">
+        select UserId, email, `password`, userName
+        from userinfo
+        where email = #{email}
+          and `password` = #{password}
+    </select>
 </mapper>

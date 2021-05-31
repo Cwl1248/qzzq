@@ -379,7 +379,8 @@
                             window.location = '/toIndex';
                             window.localStorage.setItem('username', username)
                             window.localStorage.setItem('password', password)
-                            window.localStorage.setItem('itemid', res.data)
+                            /*招聘者主键*/
+                            window.sessionStorage.setItem('itemid', res.data)
                         });
                     } else {
                         layer.msg('登录失败', function () {
@@ -420,7 +421,7 @@
                             window.location = '/toIndex';
                             window.localStorage.setItem('username', username)
                             window.localStorage.setItem('password', password)
-                            window.localStorage.setItem('itemid', res.data)
+                            window.sessionStorage.setItem('itemid', res.data)
                         });
                     } else {
                         layer.msg('注册失败', function () {

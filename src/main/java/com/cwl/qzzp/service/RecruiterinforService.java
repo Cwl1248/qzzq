@@ -54,4 +54,8 @@ public class RecruiterinforService {
         }
 
     }
+
+    public RecruiterinforDTO getLoginUser(RecruiterinforDTO recruiterinforDTO){
+        return recruiterinforMapper.selectByPK(recruiterinforDTO);
+    }
 }

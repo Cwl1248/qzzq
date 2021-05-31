@@ -1,5 +1,5 @@
 body {
-
+    overflow-x: hidden;
     color: #555555;
     font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial, "Helvetica Neue", Helvetica;
 }

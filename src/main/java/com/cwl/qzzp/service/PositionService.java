@@ -8,6 +8,7 @@ import com.cwl.qzzp.dao.PositioninfoDao;
 import com.cwl.qzzp.dto.CollectDto;
 import com.cwl.qzzp.dto.EnterpriseinfoDTO;
 import com.cwl.qzzp.dto.PositioninfoDTO;
+import com.cwl.qzzp.dto.RecruiterinforDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +36,23 @@ public class PositionService {
     @Autowired
     private CollectMapper collectMapper;
 
+    @Autowired
+    RecruiterinforService recruiterinforService;
 
-    public ResultData postingPositionInfoData(PositioninfoDTO position) {
+
+    public ResultData postingPositionInfoData(PositioninfoDTO position, RecruiterinforDTO recruiterinforDTO) {
         log.info("即将发布的职位信息：{}", position);
+        RecruiterinforDTO loginUser = recruiterinforService.getLoginUser(recruiterinforDTO);
+        if (StringUtils.isNotEmpty(loginUser.getItemid()) && StringUtils.isNotEmpty(loginUser.getDataid())) {
+            position.setDataid(loginUser.getDataid());
+            position.setReid(loginUser.getItemid());
+        } else {
+            return ResultData.failed(RetCode.FAIL);
+        }
         String pId = getUUID();
         position.setPid(pId);
         position.setStates("发布");
         position.setVisitnum(1);
-        position.setDataid("f3c4ccf9-8e17-4f3e-920d-2507e42d01b2");
-        position.setReid("a30f7eaa-00e2-4260-b884-9ec2a95bf191");
         int i = positioninfodao.insertSelective(position);
         if (i != 0) {
             return ResultData.ok();
@@ -53,8 +62,8 @@ public class PositionService {
     }
 
     @Page
-    public ResultData getAllPosition() {
-        List<PositioninfoDTO> positions = positioninfodao.getAllPosition("a30f7eaa-00e2-4260-b884-9ec2a95bf191");
+    public ResultData getAllPosition(String id) {
+        List<PositioninfoDTO> positions = positioninfodao.getAllPosition(id);
         if (positions.size() > 0) {
             return ResultData.ok(positions);
         } else {
@@ -78,7 +87,7 @@ public class PositionService {
         for (PositioninfoDTO positioninfoDTO : list) {
             EnterpriseinfoDTO enterpriseinfoDTO = positioninfoDTO.getEnterpriseinfoDTO();
             String logoimage = enterpriseinfoDTO.getLogoimage();
-            enterpriseinfoDTO.setLogoimage(StringUtils.substring(logoimage,16));
+            enterpriseinfoDTO.setLogoimage(StringUtils.substring(logoimage, 16));
             positioninfoDTO.setEnterpriseinfoDTO(enterpriseinfoDTO);
         }
         return list;
@@ -89,27 +98,32 @@ public class PositionService {
         return positioninfodao.getPositionInfoData(pid);
     }
 
-    public  List<PositioninfoDTO> getPositionData(int pageNum,int pageSize) {
-        List<PositioninfoDTO> positionData = positioninfodao.getPositionData(pageNum,pageSize);
+    public List<PositioninfoDTO> getPositionData(int pageNum, int pageSize) {
+        List<PositioninfoDTO> positionData = positioninfodao.getPositionData(pageNum, pageSize);
         for (PositioninfoDTO positioninfoDTO : positionData) {
             EnterpriseinfoDTO enterpriseinfoDTO = positioninfoDTO.getEnterpriseinfoDTO();
             String logoimage = enterpriseinfoDTO.getLogoimage();
-            enterpriseinfoDTO.setLogoimage(StringUtils.substring(logoimage,16));
+            enterpriseinfoDTO.setLogoimage(StringUtils.substring(logoimage, 16));
             positioninfoDTO.setEnterpriseinfoDTO(enterpriseinfoDTO);
         }
-       return  positionData;
+        return positionData;
     }
 
     public List<PositioninfoDTO> getPositionInfoDTO(Integer pageNum, Integer pageSize, String position, String city) {
-        return positioninfodao.getPositionInfoDTO(pageNum,pageSize,position,city);
+        return positioninfodao.getPositionInfoDTO(pageNum, pageSize, position, city);
     }
 
     public List<CollectDto> getCollectionPosition(int pageNum, int pageSize, String userid) {
-        return collectMapper.getCollectionPosition(pageNum,pageSize,userid);
+        return collectMapper.getCollectionPosition(pageNum, pageSize, userid);
     }
 
     public List<PositioninfoDTO> deliveryRecord(Integer pageNum, Integer pageSize, String userid) {
 
-        return positioninfodao.deliveryRecord(pageNum,pageSize,userid);
+        return positioninfodao.deliveryRecord(pageNum, pageSize, userid);
+    }
+
+    public PositioninfoDTO getPostion(String id) {
+
+        return positioninfodao.getPostion(id);
     }
 }

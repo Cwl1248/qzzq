@@ -4,15 +4,19 @@ import com.cwl.qzzp.common.ResultData;
 import com.cwl.qzzp.common.RetCode;
 import com.cwl.qzzp.dto.CollectDto;
 import com.cwl.qzzp.dto.DeliveryDto;
+import com.cwl.qzzp.dto.PositionAndDelivery;
+import com.cwl.qzzp.dto.UserinfoDTO;
 import com.cwl.qzzp.service.CollectionService;
+import com.cwl.qzzp.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author ：ChengWl
@@ -27,6 +31,10 @@ public class collectionController {
 
     @Autowired
     CollectionService collectionService;
+
+    @Autowired
+    UserService userService;
+
 
     @PostMapping("/insertCollection")
     @ResponseBody
@@ -66,5 +74,33 @@ public class collectionController {
         } catch (Exception e) {
             return ResultData.failed(RetCode.FAIL.code, "操作失败", e);
         }
+    }
+
+
+    @GetMapping("/getAllDelivery")
+    @ResponseBody
+    public ResultData getAllDelivery(String id) {
+       List<UserinfoDTO> list = new ArrayList<>();
+        try {
+            if (StringUtils.isNotEmpty(id)) {
+                List<DeliveryDto> deliveryDtoList = collectionService.getPostion(id);
+                for (DeliveryDto deliveryDto : deliveryDtoList) {
+                    UserinfoDTO userInfo = userService.getUserInfo(deliveryDto.getUid());
+                    list.add(userInfo);
+                }
+                if (deliveryDtoList.size()>=0 &&list.size()>=0){
+                    PositionAndDelivery positionAndDelivery = new PositionAndDelivery();
+                    positionAndDelivery.setDelivery(deliveryDtoList);
+                    positionAndDelivery.setUserinfo(list);
+                    return ResultData.ok(positionAndDelivery);
+                }
+            } else {
+                return ResultData.failed(RetCode.FAIL);
+            }
+        } catch (Exception e) {
+            return ResultData.failed(RetCode.FAIL.code, "操作失败", e);
+        }
+
+        return ResultData.failed(RetCode.FAIL);
     }
 }

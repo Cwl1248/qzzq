@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author ：ChengWl
  * @date ：Created in 2021/5/26
@@ -33,5 +35,9 @@ public class CollectionService {
 
     public int insertDelivery(DeliveryDto deliveryDto) {
         return deliveryMapper.insertSelective(deliveryDto);
+    }
+
+    public List<DeliveryDto> getPostion(String id) {
+        return deliveryMapper.selectDeliveryDto(id);
     }
 }

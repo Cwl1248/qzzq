@@ -42,6 +42,9 @@
       <if test="pmintroducation != null">
         pMintroducation,
       </if>
+      <if test="mids != null">
+        mids
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="dataid != null">
@@ -55,6 +58,9 @@
       </if>
       <if test="pmintroducation != null">
         #{pmintroducation,jdbcType=VARCHAR},
+      </if>
+      <if test="mids != null">
+        #{mids,jdbcType=VARCHAR}
       </if>
     </trim>
   </insert>

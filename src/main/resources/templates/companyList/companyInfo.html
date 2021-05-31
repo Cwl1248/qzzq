@@ -109,18 +109,10 @@
                 </div>
                 <div style="margin: 30px 0;">
                     <span>管理团队</span>
-                    <div style="display: flex;justify-content: center;align-items: center;margin-top: 15px"><img
-                            style="width: 128px;height: 128px;border-radius: 100%"
-                            th:src="@{/project/images/dinglei.JPG}"></div>
-                    <p class="manager-s-name">丁磊</p>
-                    <p class="manager_job_description">CEO</p>
-                    <div class="manager-desc">
-                        丁磊，宁波人，毕业于电子科技大学，于1997年6月创立网易公司，
-                        现任为网易公司董事局主席兼CEO，凭借系统的专业知识、敏锐的
-                        市场洞察力、团结协作的团队、积极创新的精神和扎扎实实的工作，
-                        网易公司为推动中国互联网的发展做出了重要贡献，同时丁先生也
-                        将网易从一个十几个人的私企发展到今天拥有超过3000多名员工
-                        在美国公开上市的知名互联网技术企业。
+                    <p class="manager-s-name" th:text="${companyInfoData.managementTeamDTO.mname}"></p>
+                    <p class="manager_job_description" th:text="${companyInfoData.managementTeamDTO.pmintroducation}"></p>
+                    <div class="manager-desc" th:utext="${companyInfoData.managementTeamDTO.mintroducation}">
+
                     </div>
                 </div>
                 <div>
@@ -132,7 +124,6 @@
                             <li class="com-li-tag" th:text="${companyInfoData.benefit3}"></li>
                             <li class="com-li-tag" th:text="${companyInfoData.benefit4}"></li>
                             <li class="com-li-tag" th:text="${companyInfoData.benefit5}"></li>
-
                         </ul>
                     </div>
                 </div>

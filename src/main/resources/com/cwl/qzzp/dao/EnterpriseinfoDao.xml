@@ -25,6 +25,7 @@
         <result column="visitNum" jdbcType="INTEGER" property="visitnum"/>
         <result column="numberOfWorkers" jdbcType="INTEGER" property="numberofworkers"/>
     </resultMap>
+
     <resultMap id="BaseResultMap2" type="com.cwl.qzzp.dto.EnterpriseinfoDTO">
         <id column="eId" jdbcType="CHAR" property="eid"/>
         <result column="logoImage" jdbcType="VARCHAR" property="logoimage"/>
@@ -70,8 +71,7 @@
     benefit2, benefit3, benefit4, benefit5, numberOfWorkers
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap2">
-        select
-        <include refid="Base_Column_List2"/>
+        select e.*,m.*
         ,(select count(p2.pId) from positioninfo p2 where p2.dataId = e.eId) as positionNum,
         p.pId,p.pTitle,p.experience,p.salary,p.education,p.releaseTime,p.departments
         from enterpriseinfo e

@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>职位列表</title>
+    <title>投递列表</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -36,41 +36,7 @@
 <div class="layuimini-container">
     <div class="layuimini-main">
 
-       <!-- <fieldset class="table-search-fieldset">
-            <legend>搜索信息</legend>
-            <div style="margin: 10px 10px 10px 10px">
-                <form class="layui-form layui-form-pane" action="">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">职位名称</label>
-                            <div class="layui-input-inline">
-                                <input type="text" id="ptitle" name="ptitle" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">工作地址</label>
-                            <div class="layui-input-inline">
-                                <input type="text" id="place" name="place" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <button type="button" class="layui-btn layui-btn-primary" lay-submit
-                                    lay-filter="data-search-btn" id="data-search-btn"><i class="layui-icon"></i> 搜 索
-                            </button>
-                            <button type="button" class="layui-btn layui-btn-primary" lay-submit
-                                    lay-filter="" id="reset"><i class="layui-icon"></i> 重置
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </fieldset>-->
-
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
-
-        <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="updata">修改</a>
-        </script>
 
     </div>
 </div>
@@ -179,86 +145,6 @@
                 $("table").css("width", "100%");
             },
         });
-
-        //搜索
-        $(document).on('click', '#data-search-btn', function () {
-            search();
-        });
-        // 按下回车键触发查询操作
-        $(document).keyup(function (event) {
-            if (event.keyCode === 13) {
-                search();
-            }
-        });
-
-
-        function search() {
-            table.reload('currentTableId', {
-                url: 'station/taskQueue/list',
-                where: {
-                    ptitle: $("#ptitle").val(),
-                    place: $("#place").val(),
-                }//查询条件
-                , page: {
-                    curr: 1
-                }
-            });
-        }
-
-        //重置
-        $(document).on('click', '#reset', function () {
-            $.each(data, function (key, value) {
-                data[key] = "";
-                $("#" + key).val('');
-            });
-            form.render();
-            table.reload('currentTableId', {
-                where: {
-                    ptitle: $("#ptitle").val(),
-                    place: $("#place").val(),
-                } //查询条件
-                , page: {
-                    curr: 1
-                }
-            });
-        });
-
-        table.on('tool(currentTableFilter)', function (obj) {
-            var data = obj.data;
-            var pid = data.pid
-            if (obj.event === 'updata') {
-                var index = layer.open({
-                    skin: 'demo-class',
-                    title: '更新职位信息',
-                    type: 2,
-                    maxmin: true,
-                    anim: 5,
-                    area: ['100%', '100%'],
-                    content: '/manage/upDataJobTable?pid=' + pid,
-                    success: function (layero, index) {
-                        layer.iframeAuto(index);  //找到它的子窗口的body
-                        var body = layer.getChildFrame('body', index); //为子窗口元素赋值
-                        body.find('select[name=experience]').find('option[value = ' + data.experience + ']').attr("selected", "selected");
-                        body.find('select[name=education]').find('option[value = ' + data.education + ']').attr("selected", "selected");
-                        body.find('select[name=postnature]').find('option[value = ' + data.postnature + ']').attr("selected", "selected");
-                        body.find("input[name=ptitle]").val(data.ptitle);
-                        body.find("input[name=salary]").val(data.salary);
-                        body.find("input[name=temptation]").val(data.temptation);
-                        body.find("input[name=departments]").val(data.departments);
-                        body.find("input[name=place]").val(data.place);
-                        body.find("input[name=posttype1]").val(data.posttype1);
-                        body.find("input[name=posttype2]").val(data.posttype2);
-                        body.find("input[name=posttype3]").val(data.posttype3);
-                        body.find("input[name=posttype4]").val(data.posttype4);
-                        body.find("input[name=posttype5]").val(data.posttype5);
-                        body.find("textarea[name=description]").val(delHtmlTag(data.description));
-                        body.find("input[name=pid]").val(data.pid);
-                        form.render('select');
-                    }
-                });
-            }
-        });
-
 
     });
 </script>

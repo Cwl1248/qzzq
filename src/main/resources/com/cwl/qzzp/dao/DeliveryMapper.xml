@@ -6,9 +6,10 @@
         <result column="pid" jdbcType="CHAR" property="pid"/>
         <result column="uid" jdbcType="CHAR" property="uid"/>
         <result column="crateTime" jdbcType="TIMESTAMP" property="cratetime"/>
+        <result column="pname" jdbcType="VARCHAR" property="pname"/>
     </resultMap>
     <sql id="Base_Column_List">
-        itemId, pid, `uid`, crateTime
+        itemId, pid, `uid`, crateTime,pname
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -36,7 +37,10 @@
             <if test="uid != null">
                 `uid`,
             </if>
-            crateTime
+            crateTime,
+            <if test="pname != null">
+                pname
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="pid != null">
@@ -45,7 +49,10 @@
             <if test="uid != null">
                 #{uid,jdbcType=CHAR},
             </if>
-            now()
+            now(),
+            <if test="pname != null">
+                #{pname,jdbcType=VARCHAR}
+            </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.DeliveryDto">
@@ -70,4 +77,8 @@
             crateTime = #{cratetime,jdbcType=TIMESTAMP}
         where itemId = #{itemid,jdbcType=INTEGER}
     </update>
+
+    <select id="selectDeliveryDto" resultMap="BaseResultMap">
+        select * from delivery where pid in (select p.pId from positioninfo p where p.reId = #{id,jdbcType=VARCHAR})
+    </select>
 </mapper>

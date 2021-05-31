@@ -4,6 +4,7 @@ import com.cwl.qzzp.common.PagingDTO;
 import com.cwl.qzzp.common.ResultData;
 import com.cwl.qzzp.dto.AppraiseDTO;
 import com.cwl.qzzp.dto.PositioninfoDTO;
+import com.cwl.qzzp.dto.PostionAndUser;
 import com.cwl.qzzp.service.PositionService;
 import com.github.pagehelper.Page;
 import lombok.extern.slf4j.Slf4j;
@@ -75,15 +76,15 @@ public class PositionController {
 
     @PostMapping("/posting")
     @ResponseBody
-    public ResultData postingPositionInfoData(@RequestBody PositioninfoDTO position) {
-        return positionService.postingPositionInfoData(position);
+    public ResultData postingPositionInfoData(@RequestBody PostionAndUser p) {
+        return positionService.postingPositionInfoData(p.getPosition(),p.getLoginUser());
     }
 
 
     @GetMapping("/getAllPosition")
     @ResponseBody
-    public ResultData<PagingDTO<PositioninfoDTO>> getAllPosition() {
-        return positionService.getAllPosition();
+    public ResultData<PagingDTO<PositioninfoDTO>> getAllPosition(String id) {
+        return positionService.getAllPosition(id);
     }
 
 

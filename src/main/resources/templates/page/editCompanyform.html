@@ -212,38 +212,46 @@
 
 
         window.onload = function () {
-             var item = window.localStorage.getItem("eid");
-             $("#itemid").val(window.localStorage.getItem("eid"))
-            if(item !=null){
-                $.ajax({
-                    url: '/company/selectByPk',
-                    type: 'get',
-                    contentType: 'application/json; charset=UTF-8',
-                    async: false,
-                    data: {'eid': item},
-                    success: function (res) {
-                        if (res.status === 0) {
-                            $("#ename").val(res.data.ename)
-                            $("#eplace").val(res.data.eplace)
-                            $("#category").val(res.data.category)
-                            $("#eurl").val(res.data.eurl)
-                            $("#signlanguage").val(res.data.signlanguage)
-                            $("#financingstage").val(res.data.financingstage)
-                            $("#numberofworkers").val(res.data.numberofworkers)
-                            $("#benefit1").val(res.data.benefit1)
-                            $("#benefit2").val(res.data.benefit2)
-                            $("#benefit3").val(res.data.benefit3)
-                            $("#benefit4").val(res.data.benefit4)
-                            $("#benefit5").val(res.data.benefit5)
-                            $("#eintroducation").val(delHtmlTag(res.data.eintroducation))
-                            form.render();
-                            console.log(form.val("scoreRuleForm"))
-                        }
-                    }
-                })
-            }else {
-                layer.alert("请检查登录")
-            }
+             let itemid = window.sessionStorage.getItem("itemid")
+             $.ajax({
+                 url:'/RecruiterInfor/getLoginUser',
+                 type: 'get',
+                 contentType: 'application/json; charset=UTF-8',
+                 data:{'id':itemid},
+                 success:function (res) {
+                     console.log(res)
+                     if(itemid !=null){
+                         $.ajax({
+                             url: '/company/selectByPk',
+                             type: 'get',
+                             contentType: 'application/json; charset=UTF-8',
+                             async: false,
+                             data: {'eid':res.data.dataid },
+                             success: function (res) {
+                                 if (res.status === 0) {
+                                     $("#ename").val(res.data.ename)
+                                     $("#eplace").val(res.data.eplace)
+                                     $("#category").val(res.data.category)
+                                     $("#eurl").val(res.data.eurl)
+                                     $("#signlanguage").val(res.data.signlanguage)
+                                     $("#financingstage").val(res.data.financingstage)
+                                     $("#numberofworkers").val(res.data.numberofworkers)
+                                     $("#benefit1").val(res.data.benefit1)
+                                     $("#benefit2").val(res.data.benefit2)
+                                     $("#benefit3").val(res.data.benefit3)
+                                     $("#benefit4").val(res.data.benefit4)
+                                     $("#benefit5").val(res.data.benefit5)
+                                     $("#eintroducation").val(delHtmlTag(res.data.eintroducation))
+                                     form.render();
+                                     console.log(form.val("scoreRuleForm"))
+                                 }
+                             }
+                         })
+                     }else {
+                         layer.alert("请检查登录")
+                     }
+                 }
+             })
         }
 
         form.on('submit(modify)', function (data) {

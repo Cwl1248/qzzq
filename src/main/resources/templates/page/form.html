@@ -231,13 +231,15 @@
 
         //监听提交
         form.on('submit(demo1)', function (data) {
-            const position = JSON.stringify(data.field)
+            const position = data.field
+            let loginUser = {}
+            loginUser.itemid= window.localStorage.getItem('itemid')
             $.ajax({
                     url: '/position/posting',
                     type: 'post',
                     contentType: 'application/json; charset=UTF-8',
                     async: false,
-                    data: position,
+                    data: JSON.stringify({position,loginUser}),
                     success: function (res) {
                         console.log(res)
                         if (res.status === 0) {

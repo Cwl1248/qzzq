@@ -38,4 +38,9 @@ public class UserService {
     public UserinfoDTO selectInfo(String userid) {
         return UserinfoMapper.selectByPrimaryKey(userid);
     }
+
+    public UserinfoDTO getUserInfo(String uid) {
+
+        return UserinfoMapper.selectByPrimaryKey(uid);
+    }
 }

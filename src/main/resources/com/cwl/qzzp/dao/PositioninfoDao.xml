@@ -462,4 +462,11 @@
     </select>
 
 
+    <select id="getPostion" resultMap="BaseResultMap">
+        select  p.pId,
+            p.pTitle
+        from positioninfo p
+        where p.reId = #{id,jdbcType=CHAR}
+    </select>
+
 </mapper>

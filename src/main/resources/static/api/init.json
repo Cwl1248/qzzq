@@ -1,7 +1,7 @@
 {
   "homeInfo": {
-    "title": "首页",
-    "href": "/manage/welcome"
+    "title": "添加公司信息",
+    "href": "manage/addCompanyInformation"
   },
   "logoInfo": {
     "title": "云职",
@@ -55,7 +55,7 @@
             },
             {
               "title": "添加公司高管信息",
-              "href": "page/login-1.html",
+              "href": "manage/addManagementTeamInformation",
               "icon": "fa fa-tags",
               "target": "_self"
             }
@@ -68,8 +68,8 @@
           "target": "_self",
           "child": [
             {
-              "title": "查看投递情况",
-              "href": "../page/404.html",
+              "title": "简历投递",
+              "href": "manage/resumeDelivery",
               "icon": "fa fa-hourglass-end",
               "target": "_self"
             }

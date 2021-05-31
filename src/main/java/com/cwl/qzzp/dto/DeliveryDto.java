@@ -31,5 +31,10 @@ public class DeliveryDto implements Serializable {
      */
     private Date cratetime;
 
+    /**
+     * 职位名称
+     */
+    private String pname;
+
     private static final long serialVersionUID = 1L;
 }

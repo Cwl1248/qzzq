@@ -261,6 +261,11 @@ public class MyInfoController {
         }
     }
 
+    /**
+     * 查询个人信息
+     * @param userid
+     * @return
+     */
     @GetMapping("/selectInfo")
     @ResponseBody
     public ResultData selectInfo(String userid) {

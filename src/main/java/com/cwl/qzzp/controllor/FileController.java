@@ -1,13 +1,13 @@
 package com.cwl.qzzp.controllor;
 
 import com.cwl.qzzp.dto.DocumentFile;
+import com.cwl.qzzp.util.FileUtil;
 import com.cwl.qzzp.util.GetUUIDUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -43,6 +43,21 @@ public class FileController {
             e.printStackTrace();
         }
         return "{\"code\":0,\"filepath\":\""+pathString+"\"}";
+    }
+
+    @RequestMapping(value="/down", produces = {"application/text;charset=UTF-8"})
+    @ResponseBody
+    public String down(HttpServletResponse response, String path){
+        try {
+            //根据文件路径下载文件信息
+            FileUtil.down(response, path);
+            response.setContentType("text/html;charset=utf-8");
+            response.setCharacterEncoding("utf-8");
+            return "下载成功";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "下载失败";
     }
 
 }

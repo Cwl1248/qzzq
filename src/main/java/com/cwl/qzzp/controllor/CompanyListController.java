@@ -51,7 +51,7 @@ public class CompanyListController {
      */
     @GetMapping("/companyInfo")
     public String getCompanyInfoData(ModelMap modelMap, String eId) {
-        EnterpriseinfoDTO companyInfoData = enterpriseService.getCompanyInfoData(eId);
+            EnterpriseinfoDTO companyInfoData = enterpriseService.getCompanyInfoData(eId);
         modelMap.addAttribute("companyInfoData",companyInfoData);
         return "companyList/companyInfo";
     }

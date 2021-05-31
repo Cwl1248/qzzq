@@ -18,4 +18,6 @@ public interface RecruiterinforDao {
     int updateByPrimaryKeySelective(RecruiterinforDTO record);
 
     int updateByPrimaryKey(RecruiterinforDTO record);
+
+    RecruiterinforDTO selectByPK(RecruiterinforDTO record);
 }

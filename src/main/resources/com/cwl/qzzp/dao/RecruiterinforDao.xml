@@ -111,4 +111,9 @@
             createTime  = #{createtime,jdbcType=TIMESTAMP}
         where itemId = #{itemid,jdbcType=CHAR}
     </update>
+
+    <select id="selectByPK" parameterType="com.cwl.qzzp.dto.RecruiterinforDTO"
+            resultType="com.cwl.qzzp.dto.RecruiterinforDTO">
+        select * from recruiterinfor where itemId = #{itemid,jdbcType=CHAR}
+    </select>
 </mapper>

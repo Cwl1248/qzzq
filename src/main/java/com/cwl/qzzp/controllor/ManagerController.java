@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ManagerController {
 
     /**
-     * 首页
+     * 首页  已舍弃
      * @return
      */
     @GetMapping("/welcome")
@@ -86,5 +86,20 @@ public class ManagerController {
     @GetMapping("/upDataCompanyInformation")
     public String upDataCompanyInformation() {
         return "page/editCompanyform";
+    }
+
+
+    /**
+     * 添加管理团队信息
+     * @return
+     */
+    @GetMapping("/addManagementTeamInformation")
+    public String addManagementTeamInformation() {
+        return "page/tramFrom";
+    }
+
+    @GetMapping("/resumeDelivery")
+    public String resumeDelivery(){
+        return "page/deliverytable";
     }
 }
