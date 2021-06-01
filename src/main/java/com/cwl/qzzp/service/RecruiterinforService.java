@@ -58,4 +58,18 @@ public class RecruiterinforService {
     public RecruiterinforDTO getLoginUser(RecruiterinforDTO recruiterinforDTO){
         return recruiterinforMapper.selectByPK(recruiterinforDTO);
     }
+
+    public ResultData updateLoginUser(RecruiterinforDTO recruiterinforDTO) {
+
+        if(ObjectUtils.isNotEmpty(recruiterinforDTO)){
+            int i = recruiterinforMapper.updateByPrimaryKeySelective(recruiterinforDTO);
+            if (i>0){
+                return ResultData.ok();
+            }else {
+                return ResultData.failed(RetCode.FAIL);
+            }
+        }else {
+            return ResultData.failed(RetCode.FAIL);
+        }
+    }
 }

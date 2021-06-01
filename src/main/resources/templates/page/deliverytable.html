@@ -2,153 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <title>投递列表</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <title>公司</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/bottom.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
-    <link rel="stylesheet" th:href="@{/project/css/public.css}" media="all">
     <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
 </head>
-<style type="text/css">
-    body .demo-class .layui-layer-title {
-        background: #1E9FFF;
-        color: #ffffff;
-        font-size: 20px;
-        font-weight: 600;
-        border: none;
-    }
-
-    body .demo-class .layui-layer-btn {
-        border-top: 1px solid #E9E7E7
-    }
-
-    body .demo-class .layui-layer-btn a {
-        background: #1E9FFF;
-    }
-
-    body .demo-class .layui-layer-btn .layui-layer-btn1 {
-        background: #ffffff;
-    }
-</style>
 <body>
-<div class="layuimini-container">
-    <div class="layuimini-main">
 
-        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+<div class="container-fluid">
 
-    </div>
+    <blockquote class="layui-elem-quote layui-text">
+        <button type="button" class="layui-btn layui-btn-normal" id="getdata">点我获取数据</button>
+    </blockquote>
+
 </div>
+
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
 <script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
-<script th:inline="none">
-
-    function delHtmlTag(str) {
-        return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
-    }
-    function bindData(data,id){
-        var listener = {};
-        id = id || "" != "" ? "#" + id : "";
-        $(id + " input,select,textarea").each(function(i,item){
-            if($(item).attr("id") != null || $(item).is("input[type='radio'],input[type='checkbox']")){
-                var dataName;
-                if($(item).is("input[type='radio'],input[type='checkbox']")){
-                    dataName = $(item).attr("name");
-                }else{
-                    dataName = $(item).attr("id");
-                    data[dataName] = "";
-                }
-                listener[dataName] = {
-                    get: function() {
-                        var value = $(item).val();
-                        if($(item).is("input[type='radio']")){
-                            value = $(":radio[name='"+$(item).attr("name")+"']:checked").val();
-                        }else if($(item).is("input[type='checkbox']")){
-                            value = [];
-                            $(":checkbox[name='"+$(item).attr("name")+"']:checked").each(function(i,v){
-                                value[i] = $(v).val();
-                            });
-                        }
-                        // layer.msg("get:" + dataName + "的值为:" + value);
-                        return value;
-                    },
-                    set: function(value) {
-                        if($(item).is("input[type='radio']")){
-                            $(":radio[name='"+$(item).attr("name")+"']").removeAttr("checked");
-                            $(":radio[name='"+$(item).attr("name")+"'][value='"+value+"']").prop('checked', true);
-                        }else if($(item).is("input[type='checkbox']")){
-                            value = (value == 0 || (value.length == 1 && value[0] == 0)) ? [,0] : value;
-                            $(":checkbox[name='"+$(item).attr("name")+"']").removeAttr("checked");
-                            $(value).each(function(i,v){
-                                $(":checkbox[name='"+$(item).attr("name")+"'][value='"+v+"']").prop('checked', true);
-                            });
-                        }else{
-                            $(item).val(value);
-                        }
-                        // layer.msg("set:" + dataName + "的值变更为:" + value);
-                    }
-                };
-            }
-        });
-        Object.defineProperties(data, listener);
-    }
-    var data = {}
-    layui.use(['form', 'table'], function () {
-        table = layui.table, $ = layui.$, laypage = layui.laypage, form = layui.form, layer = layui.layer;
-        bindData(data);
-        table.render({
-            elem: '#currentTableId',
-            url: '/position/getAllPosition',
-            where:{id:window.sessionStorage.getItem('itemid')},
-            toolbar: '#toolbarDemo',
-            cellMinWidth: 80,
-            even: true,//开启隔行背景
-            defaultToolbar: ''
-            , page: {theme: '#1E9FFF'}
-            , parseData: function (res) {
-                var result;
-                if (this.page.curr) {
-                    result = res.data.rows.slice(this.limit * (this.page.curr - 1), this.limit * this.page.curr);
-                } else {
-                    result = res.data.rows.slice(0, this.limit);
-                }
-                return {
-                    "code": res.status,
-                    "msg": res.message,
-                    "count": res.data.records == null ? 0 : res.data.records,
-                    "data": result
-                };
-            }
-            , request: {
-                limitName: 'rows' //每页数据量的参数名，默认：limit
-            }
-            , limit: 10
-            , limits: [10, 20],
-            cols: [[
-                {field: 'ptitle', title: '职位名称', align: "center"},
-                {field: 'salary', title: '薪资待遇', align: "center"},
-                {field: 'experience', title: '经验要求', align: "center"},
-                {field: 'description', title: '职位描述', align: "center"},
-                {field: 'education', title: '学历要求', align: "center"},
-                {field: 'departments', title: '所属部门', align: "center"},
-                {field: 'postnature', title: '性质', align: "center"},
-                {
-                    field: 'releasetime',
-                    width: 150,
-                    title: '发布时间',
-                    align: "center",
-                    templet: "<div>{{layui.util.toDateString(d.created, 'yyyy-MM-dd')}}</div>"
-                },
-                {title: '操作', toolbar: '#currentTableBar', align: "center"}
-            ]],
-            done: function (res, curr, count) {
-                $("table").css("width", "100%");
-            },
-        });
-
-    });
-</script>
-
-
+<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
 </body>
+<script>
+    document.getElementById("getdata").onclick = function () {
+        var item = window.sessionStorage.getItem("itemid");
+        console.log(item)
+        window.location.href='/collection/getAllDelivery?id=' + item
+    }
+</script>
 </html>

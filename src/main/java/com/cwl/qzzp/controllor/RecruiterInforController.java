@@ -50,4 +50,9 @@ public class RecruiterInforController {
           }
 
     }
+
+    @PostMapping("/updateLoginUser")
+    public ResultData updateLoginUser(@RequestBody RecruiterinforDTO recruiterinforDTO){
+        return recruiterinforService.updateLoginUser(recruiterinforDTO);
+    }
 }

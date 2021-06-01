@@ -46,7 +46,6 @@ public class FileController {
     }
 
     @RequestMapping(value="/down", produces = {"application/text;charset=UTF-8"})
-    @ResponseBody
     public String down(HttpServletResponse response, String path){
         try {
             //根据文件路径下载文件信息

@@ -13,7 +13,11 @@
     <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
     <link rel="stylesheet" type="text/css" th:href="@{/lib/font-awesome-4.7.0/css/font-awesome.min.css}" media="all">
     <style>
-        .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+        .layui-form-item .layui-input-company {
+            width: auto;
+            padding-right: 10px;
+            line-height: 38px;
+        }
     </style>
 </head>
 <body>
@@ -26,47 +30,73 @@
             <div class="layui-form-item">
                 <label class="layui-form-label required">姓名</label>
                 <div class="layui-input-block">
-                    <input type="text" name="userName" lay-verify="required" lay-reqtext="姓名不能为空" placeholder="请输入姓名"  value="" class="layui-input">
+                    <input type="text" name="username" id="username" lay-verify="required" lay-reqtext="姓名不能为空" placeholder="请输入姓名"
+                           value="" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label required">职位</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" lay-verify="required" lay-reqtext="职位名称不能为空" placeholder="请输入职位名称"  value="" class="layui-input">
+                    <input type="text" name="title" id="title" lay-verify="required" lay-reqtext="职位名称不能为空"
+                           placeholder="请输入职位名称"
+                           value="" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">所在公司</label>
+                <label class="layui-form-label required">公司名</label>
                 <div class="layui-input-block">
-                    <input type="text" name="companyName"  placeholder=""  value="" class="layui-input">
+                    <input type="text" name="companyname" id="companyname" lay-verify="required" lay-reqtext=""
+                           placeholder="" value="" class="layui-input" disabled>
+                    <input type="text" name="itemid" id="itemid" class="layui-hide">
                 </div>
             </div>
-
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认修改</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
 <script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
 <script th:src="@{/project/js/lay-config.js}" charset="utf-8"></script>
 <script>
-    console.log(window.localStorage.getItem('username'))
-    console.log(window.localStorage.getItem('password'))
-    layui.use(['form','miniTab'], function () {
+    window.onload = function () {
+        var item = window.sessionStorage.getItem('itemid');
+        $("#itemid").val(item)
+        $.ajax({
+                url: '/RecruiterInfor/getLoginUser',
+                data: {'id': item},
+                type: 'get',
+                contentType: 'application/json; charset=UTF-8',
+                success: function (res) {
+                    console.log(res)
+                    $("#username").val(res.data.username)
+                    $("#title").val(res.data.title)
+                    $("#companyname").val(res.data.companyname)
+                }
+
+
+            }
+        )
+    }
+    layui.use(['form', 'miniTab'], function () {
         var form = layui.form,
             layer = layui.layer,
             miniTab = layui.miniTab;
         form.on('submit(saveBtn)', function (data) {
-            var index = layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            }, function () {
-                layer.close(index);
-                miniTab.deleteCurrentByIframe();
-            });
-            return false;
+            $.ajax({
+                    url: '/RecruiterInfor/updateLoginUser',
+                    data: JSON.stringify(data.field),
+                    type: 'post',
+                    contentType: 'application/json; charset=UTF-8',
+                    success: function (res) {
+                        layer.msg("修改成功！！！")
+                        window.location='/manage/modifyInformation'
+                    }
+                }
+            )
         });
 
     });

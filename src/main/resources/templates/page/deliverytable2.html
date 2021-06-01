@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>公司</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/project/css/bottom.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
+</head>
+<style>
+    .boder{
+        border: 1px solid #ededed;
+        border-radius: 5px;
+        padding: 15px;
+        transition: transform 0.15s;
+        cursor: pointer;
+
+    }
+    .boder:hover{
+        box-shadow: 0 0 4px #c8c8ce;
+        transform: translate(0, -5px);
+    }
+    .uname{
+        color: #565656;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+</style>
+<body>
+
+<div class="container-fluid" style="margin-top: 20px">
+<div class="row" >
+    <div class="col-md-4 " th:each="p,status:${data}" >
+        <div class="boder">
+            <div class="uname" th:text="${'姓名：'+p.username}"></div>
+            <div class="uname" th:text="${'性别：'+p.gender}"></div>
+            <div class="uname" th:text="${'联系方式：'+p.phone}"></div>
+            <div class="uname" th:text="${'邮箱：'+p.email}"></div>
+            <div class="uname" th:text="${'毕业院校：'+p.schoolname}"></div>
+            <div class="uname" th:text="${'专业：'+p.professionalTitle}"></div>
+            <div class="uname" th:text="${'毕业时间：'+#dates.format(p.graduationTime,'yyyy-MM-dd')}"></div>
+            <div class="uname" th:text="${'身份：'+p.identitys}"></div>
+            <div class="uname" style="word-wrap:break-word;" th:text="${'个人优势：'+p.personaladvantage}"></div>
+            <div class="uname" th:text="${'期望薪资：'+p.startingSalaryFrom+'-'+p.startingSalaryTo}"></div>
+            <div class="uname" th:text="${'期待职位：'+p.position}"></div>
+            <div class="uname" th:text="${'期待城市：'+p.city}"></div>
+            <a class="layui-btn layui-btn-primary" style="text-decoration: none" th:href="@{/down(path=${p.resumePath})}">下载简历附件</a>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
+<script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
+</body>
+<script>
+</script>
+</html>

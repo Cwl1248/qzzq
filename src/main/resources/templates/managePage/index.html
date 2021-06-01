@@ -60,13 +60,10 @@
                     <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
                 </li>
                 <li class="layui-nav-item layuimini-setting">
-                    <a href="javascript:;">admin</a>
+                    <a href="javascript:;" id="username"></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" layuimini-content-href="manage/modifyInformation" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" layuimini-content-href="manage/changePassword" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
                         </dd>
                         <dd>
                             <hr>
@@ -127,9 +124,13 @@
 
     </div>
 </div>
+<script type="text/javascript" th:src="@{/component/jquery3.5.1/jquery.min.js}"></script>
 <script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
 <script th:src="@{/project/js/lay-config.js}" charset="utf-8"></script>
 <script>
+    window.onload=function(){
+        $("#username").text(window.localStorage.getItem('username'))
+    }
     layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
         var $ = layui.jquery,
             layer = layui.layer,

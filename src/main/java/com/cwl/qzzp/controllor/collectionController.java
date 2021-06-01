@@ -13,6 +13,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -78,9 +79,9 @@ public class collectionController {
 
 
     @GetMapping("/getAllDelivery")
-    @ResponseBody
-    public ResultData getAllDelivery(String id) {
+    public String getAllDelivery(String id, ModelMap modelMap) {
        List<UserinfoDTO> list = new ArrayList<>();
+        PositionAndDelivery positionAndDelivery = new PositionAndDelivery();
         try {
             if (StringUtils.isNotEmpty(id)) {
                 List<DeliveryDto> deliveryDtoList = collectionService.getPostion(id);
@@ -88,19 +89,18 @@ public class collectionController {
                     UserinfoDTO userInfo = userService.getUserInfo(deliveryDto.getUid());
                     list.add(userInfo);
                 }
-                if (deliveryDtoList.size()>=0 &&list.size()>=0){
-                    PositionAndDelivery positionAndDelivery = new PositionAndDelivery();
+                if (deliveryDtoList.size()>0 &&list.size()>0){
+
                     positionAndDelivery.setDelivery(deliveryDtoList);
                     positionAndDelivery.setUserinfo(list);
-                    return ResultData.ok(positionAndDelivery);
+                    modelMap.addAttribute("data",list);
+                  return "page/deliverytable2";
                 }
-            } else {
-                return ResultData.failed(RetCode.FAIL);
             }
         } catch (Exception e) {
-            return ResultData.failed(RetCode.FAIL.code, "操作失败", e);
+            return null;
         }
 
-        return ResultData.failed(RetCode.FAIL);
+        return null;
     }
 }
