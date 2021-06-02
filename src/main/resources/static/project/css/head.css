@@ -16,8 +16,8 @@ body {
 }
 
 .lg-bar-tab {
-    float: left;
-    margin-left: 34px;
+   /* float: left;
+    margin-left: 34px;*/
 }
 
 .cityName {
@@ -85,7 +85,7 @@ ul {
 }
 
 .lg-bar-r {
-    margin-left: 150px;
+    margin-left: 650px;
 }
 
 .lg-bar-r > .lg-bar-tab > li > a {

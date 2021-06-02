@@ -20,7 +20,8 @@ public interface EnterpriseinfoDao {
 
     int updateByPrimaryKey(EnterpriseinfoDTO record);
 
-    List<EnterpriseinfoDTO> getCompanyListData(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    List<EnterpriseinfoDTO> getCompanyListData(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize,
+                                               String title, String place, String category, String numberofworkers, String financingstage);
 
     List<EnterpriseinfoDTO> selectALL();
 }

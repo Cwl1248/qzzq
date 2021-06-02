@@ -4,12 +4,13 @@ body {
     font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial, "Helvetica Neue", Helvetica;
 }
 
-.titlea{
+.titlea {
     color: #555555 !important;
     cursor: pointer !important;
     text-decoration: none !important;
 }
-.titlea:hover{
+
+.titlea:hover {
     color: #555555 !important;
     cursor: pointer !important;
     text-decoration: none !important;
@@ -42,6 +43,21 @@ body {
     background: #6495ED;
     color: white;
     font-weight: bolder;
+    border: 1px solid #6495ED;
+    outline: none;
+}
+
+.input-group-addon:focus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: calc(1.5em + .75rem + 2px);
+    background: #6495ED;
+    color: white;
+    font-weight: bolder;
+    border: 1px solid #6495ED;
+    outline: none;
 }
 
 /*搜素栏样式结束*/
@@ -146,7 +162,6 @@ body {
     margin-top: 45px;
     z-index: -10;
     margin-left: 4px;
-    min-width: 1200px
 }
 
 .hot-position {

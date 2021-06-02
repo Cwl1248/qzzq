@@ -23,8 +23,11 @@
         <div class="search-wrapper col-md-12">
             <div class="search-box">
                 <div class="input-group ">
-                    <input type="text" class="form-control" placeholder="搜索公司名" aria-describedby="basic-addon2">
-                    <span class="input-group-addon" id="basic-addon2">搜 索</span>
+                    <input type="text" class="form-control" placeholder="搜索公司名" id="title"
+                           aria-describedby="basic-addon2">
+                    <button type="button" class="layui-btn layui-btn-normal" id="basic-addon2" onclick="f()">搜 索
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -37,152 +40,190 @@
                 <!--工作地点-->
                 <li class="choose">
                     <span class="title">工作地点:</span>
-                    <a class="choose-list" href="javascript:">北京</a>
-                    <a class="choose-list" href="javascript:">上海</a>
-                    <a class="choose-list" href="javascript:">广州</a>
-                    <a class="choose-list" href="javascript:">深圳</a>
-                    <a class="choose-list" href="javascript:">杭州</a>
-                    <a class="choose-list" href="javascript:">苏州</a>
-                    <a class="choose-list" href="javascript:">南京</a>
-                    <a class="choose-list" href="javascript:">成都</a>
-                    <a class="choose-list" href="javascript:">西安</a>
-                    <a class="choose-list" href="javascript:">长沙</a>
-                    <a class="choose-list" href="javascript:">武汉</a>
-                    <a class="choose-list" href="javascript:">重庆</a>
-                    <a class="choose-list" href="javascript:">南宁</a>
-                    <a class="choose-list" href="javascript:">青岛</a>
-                    <a class="choose-list" href="javascript:">郑州</a>
-                    <a class="choose-list" href="javascript:">合肥</a>
-                    <a class="choose-list" href="javascript:">惠州</a>
-                    <a class="choose-list" href="javascript:">福州</a>
-                    <a class="choose-list" href="javascript:">大连</a>
-                    <a class="choose-list" href="javascript:">珠海</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='北京' ,menutab=3)}">北京</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='上海' ,menutab=3)}">上海</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='广州' ,menutab=3)}">广州</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='深圳' ,menutab=3)}">深圳</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='杭州' ,menutab=3)}">杭州</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='苏州' ,menutab=3)}">苏州</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='南京' ,menutab=3)}">南京</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='成都' ,menutab=3)}">成都</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='西安' ,menutab=3)}">西安</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='长沙' ,menutab=3)}">长沙</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='武汉' ,menutab=3)}">武汉</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='重庆' ,menutab=3)}">重庆</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='南宁' ,menutab=3)}">南宁</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='青岛' ,menutab=3)}">青岛</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='郑州' ,menutab=3)}">郑州</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='合肥' ,menutab=3)}">合肥</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='惠州' ,menutab=3)}">惠州</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='福州' ,menutab=3)}">福州</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(place='大连' ,menutab=3)}">大连</a>
                 </li>
                 <!--融资阶段-->
                 <li class="choose">
                     <span class="title">融资阶段:</span>
-                    <a class="choose-list" href="javascript:">未融资</a>
-                    <a class="choose-list" href="javascript:">天使轮</a>
-                    <a class="choose-list" href="javascript:">A轮</a>
-                    <a class="choose-list" href="javascript:">B轮</a>
-                    <a class="choose-list" href="javascript:">C轮</a>
-                    <a class="choose-list" href="javascript:">D轮及以上</a>
-                    <a class="choose-list" href="javascript:">上市公司</a>
-                    <a class="choose-list" href="javascript:">不需要融资</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='未融资' ,menutab=3)}">未融资</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='天使轮' ,menutab=3)}">天使轮</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='A轮' ,menutab=3)}">A轮</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='B轮' ,menutab=3)}">B轮</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='C轮' ,menutab=3)}">C轮</a>
+                    <a class="choose-list"
+                       th:href="@{/company/companyList/(financingstage='D轮及以上' ,menutab=3)}">D轮及以上</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='上市公司' ,menutab=3)}">上市公司</a>
+                    <a class="choose-list"
+                       th:href="@{/company/companyList/(financingstage='不需要融资' ,menutab=3)}">不需要融资</a>
+
                 </li>
                 <!--公司规模-->
                 <li class="choose">
                     <span class="title">公司规模:</span>
-                    <a class="choose-list" href="javascript:">少于15人</a>
-                    <a class="choose-list" href="javascript:">15-50人</a>
-                    <a class="choose-list" href="javascript:">50-150人</a>
-                    <a class="choose-list" href="javascript:">150-500人</a>
-                    <a class="choose-list" href="javascript:">500-2000人</a>
-                    <a class="choose-list" href="javascript:">2000人以上</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='少于15人' ,menutab=3)}">少于15人</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='15-50人' ,menutab=3)}">15-50人 </a>
+                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='50-150人' ,menutab=3)}">50-150人 </a>
+                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='150-500人' ,menutab=3)}">150-500人</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='500-2000人' ,menutab=3)}">500-2000人</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='2000人以上' ,menutab=3)}">2000人以上</a>
                 </li>
                 <!--行业领域-->
                 <li class="choose">
                     <span class="title">行业领域:</span>
-                    <a class="choose-list" href="javascript:">移动互联网</a>
-                    <a class="choose-list" href="javascript:">电商</a>
-                    <a class="choose-list" href="javascript:">金融</a>
-                    <a class="choose-list" href="javascript:">企业服务</a>
-                    <a class="choose-list" href="javascript:">教育</a>
-                    <a class="choose-list" href="javascript:">游戏</a>
-                    <a class="choose-list" href="javascript:">硬件</a>
-                    <a class="choose-list" href="javascript:">消费生活</a>
-                    <a class="choose-list" href="javascript:">社交</a>
-                    <a class="choose-list" href="javascript:">旅游</a>
-                    <a class="choose-list" href="javascript:">体育</a>
-                    <a class="choose-list" href="javascript:">汽车</a>
-                    <a class="choose-list" href="javascript:">物流</a>
-                    <a class="choose-list" href="javascript:">医疗</a>
-                    <a class="choose-list" href="javascript:">房产</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='移动互联网' ,menutab=3)}">移动互联网</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='消费生活' ,menutab=3)}">消费生活</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='企业服务' ,menutab=3)}">企业服务</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='电商' ,menutab=3)}">电商</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='金融' ,menutab=3)}">金融</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='教育' ,menutab=3)}">教育</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='游戏' ,menutab=3)}">游戏</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='硬件' ,menutab=3)}">硬件</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='社交' ,menutab=3)}">社交</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='旅游' ,menutab=3)}">旅游</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='体育' ,menutab=3)}">体育</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='汽车' ,menutab=3)}">汽车</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='物流' ,menutab=3)}">物流</a>
+                    <a class="choose-list" th:href="@{/company/companyList/(category='医疗' ,menutab=3)}">医疗</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-1"></div>
     </div>
+    <div id="target">
+        <div class="row" style="margin-top:15px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-3" th:each="l,status:${list}">
+                        <div class="com-infos">
+                            <div class="com-img">
+                                <img style="width: 80px;height: 80px;"
+                                     th:src="@{${'http://localhost:18011/'+l.logoimage}}"/>
+                                <div><a th:href="@{/company/companyInfo(eId=${l.eid},menutab=2)}"
+                                        class="company-profile-name" th:text="${l.ename}"></a></div>
+                                <div class="company-profile">
+                                    <span th:text="${l.category}+'/'"></span>
+                                    <span th:text="${l.financingstage}+'/'"></span>
+                                    <span th:text="${l.numberofworkers}"></span>
 
-<!--    <div class="row" style="margin-top:5px;">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 ">
-            <div class="sort">
-                <span class="title">排序方式：</span>
-                <a class="sort-type-active">默认方式</a>
-                <a class="sort-type">面试评价数↓</a>
-                <a class="sort-type">职位数量↓</a>
-                <a class="sort-type">简历处理率↓</a>
-            </div>
-        </div>
-        <div class="col-md-1"></div>
-    </div>-->
-
-    <div class="row" style="margin-top:15px;">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="row">
-                <div class="col-md-3" th:each="l,status:${list}">
-                    <div class="com-infos">
-                        <div class="com-img">
-                            <img style="width: 80px;height: 80px;" th:src="@{${'http://localhost:18011/'+l.logoimage}}"/>
-                            <div ><a th:href="@{/company/companyInfo(eId=${l.eid},menutab=2)}" class="company-profile-name" th:text="${l.ename}"></a></div>
-                            <div class="company-profile">
-                                <span th:text="${l.category}+'/'"></span>
-                                <span th:text="${l.financingstage}+'/'"></span>
-                                <span th:text="${l.numberofworkers}"></span>
-
-                            </div>
-                            <div class="company-profile" style="color: #555555;font-weight: 600" th:text="${l.signlanguage}"></div>
-                            <div style="display: flex;border-top: 1px dashed #E0E0E0;margin-top: 15px;margin-left: 15px">
-                                <a class="url" th:text="${'官网链接:'+l.eurl}" th:href="${l.eurl}"></a>
+                                </div>
+                                <div class="company-profile" style="color: #555555;font-weight: 600"
+                                     th:text="${l.signlanguage}"></div>
+                                <div style="display: flex;border-top: 1px dashed #E0E0E0;margin-top: 15px;margin-left: 15px">
+                                    <a class="url" th:text="${'官网链接:'+l.eurl}" th:href="${l.eurl}"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+        </div>
     </div>
+
 
     <!--page bar-->
     <div class="" th:if="${list.getPageNum() le list.getPages()}">
         <div class="pagerow " th:if="${list.pages<10}">
             <ul id="menu">
-                <li th:if="${list.pageNum}>1"><a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=2)}">&lt;</a></li>
+                <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                                 th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=2)}">&lt;</a>
+                </li>
                 <li th:each="num : ${#numbers.sequence(1,list.pages)}">
-                    <a th:classappend="page-btn" th:text="${num}" th:class="${list.pageNum eq num ? 'page-btn-active':''}"
+                    <a th:classappend="page-btn" th:text="${num}"
+                       th:class="${list.pageNum eq num ? 'page-btn-active':''}"
                        th:href="@{/company/companyList(pageNum=${num},pageSize=${list.pageSize},menutab=2)}"></a>
                 </li>
                 <li th:if="${list.pageNum lt list.pages}">
-                    <a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=2)}">&gt;</a>
+                    <a class="page-btn"
+                       th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=2)}">&gt;</a>
                 </li>
             </ul>
         </div>
 
         <div class="pagerow" th:if="${list.pages>10}">
             <ul id="menu">
-                <li th:if="${list.pageNum}>1"><a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=2)}">&lt;</a></li>
-                <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}" th:href="@{/company/companyList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a></li>
-                <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}" th:href="@{/company/companyList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}" th:href="@{/company/companyList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}" th:href="@{/company/companyList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}" th:href="@{/company/companyList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}" th:href="@{/company/companyList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}" th:href="@{/company/companyList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}" th:href="@{/company/companyList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum gt 1}" > <a class="page-btn" th:text="${list.pageNum-1}"  th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum le list.pages}">  <a th:classappend="page-btn" th:class="${list.pageNum le list.pages ? 'page-btn-active':''}" th:text="${list.pageNum}" th:href="@{/company/companyList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}" th:href="@{/company/companyList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}" th:href="@{/company/companyList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}" th:href="@{/company/companyList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}" th:href="@{/company/companyList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}" th:href="@{/company/companyList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}" th:href="@{/company/companyList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}" th:href="@{/company/companyList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=2)}"></a></li>
-                <li th:if="${list.pageNum lt list.pages}">  <a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=2)}">&gt;</a></li>
+                <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                                 th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=2)}">&lt;</a>
+                </li>
+                <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a>
+                </li>
+                <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum gt 1}"><a class="page-btn" th:text="${list.pageNum-1}"
+                                                    th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum le list.pages}"><a th:classappend="page-btn"
+                                                             th:class="${list.pageNum le list.pages ? 'page-btn-active':''}"
+                                                             th:text="${list.pageNum}"
+                                                             th:href="@{/company/companyList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=2)}"></a>
+                </li>
+                <li th:if="${list.pageNum lt list.pages}"><a class="page-btn"
+                                                             th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=2)}">&gt;</a>
+                </li>
                 <li>
             </ul>
         </div>
@@ -197,4 +238,18 @@
 <script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{/component/login.js}"></script>
 </body>
+<script>
+    function f() {
+        let title = $("#title").val()
+        console.log('title', title)
+        $.get("/company/companyList",
+            {
+                "title": title,
+                "menutab": 2
+            }, function (resp) {
+                $("#target").empty();
+                $("#target").append($(resp).find("#target"));
+            }, "html");
+    }
+</script>
 </html>

@@ -87,9 +87,9 @@ public class EnterpriseService {
         }
     }
 
-    public List<EnterpriseinfoDTO> getCompanyListData(int pageNum, int pageSize) {
+    public List<EnterpriseinfoDTO> getCompanyListData(int pageNum, int pageSize,  String title, String place, String category, String numberofworkers, String financingstage) {
 
-        List<EnterpriseinfoDTO> companyListData = enterpriseinfoMapper.getCompanyListData(pageNum, pageSize);
+        List<EnterpriseinfoDTO> companyListData = enterpriseinfoMapper.getCompanyListData(pageNum, pageSize, title, place, category, numberofworkers, financingstage);
         for (EnterpriseinfoDTO companyListDatum : companyListData) {
             String logoimage = companyListDatum.getLogoimage();
             companyListDatum.setLogoimage(StringUtils.substring(logoimage, 16));

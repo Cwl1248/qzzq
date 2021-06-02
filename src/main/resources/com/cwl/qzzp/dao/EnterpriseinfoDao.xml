@@ -71,12 +71,20 @@
     benefit2, benefit3, benefit4, benefit5, numberOfWorkers
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap2">
-        select e.*,m.*
-        ,(select count(p2.pId) from positioninfo p2 where p2.dataId = e.eId) as positionNum,
-        p.pId,p.pTitle,p.experience,p.salary,p.education,p.releaseTime,p.departments
+        select e.*,
+               m.*
+                ,
+               (select count(p2.pId) from positioninfo p2 where p2.dataId = e.eId) as positionNum,
+               p.pId,
+               p.pTitle,
+               p.experience,
+               p.salary,
+               p.education,
+               p.releaseTime,
+               p.departments
         from enterpriseinfo e
-        left join positioninfo p on p.dataId=e.eId and p.states='发布'
-        left join managementteam m on m.dataId=e.eId
+                 left join positioninfo p on p.dataId = e.eId and p.states = '发布'
+                 left join managementteam m on m.dataId = e.eId
         where eId = #{eid,jdbcType=CHAR}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -320,15 +328,34 @@
 
     <select id="getCompanyListData" resultMap="BaseResultMap">
         select eId,
-               eName,
-               logoImage,
-               category,
-               financingStage,
-               numberOfWorkers,
-               signLanguage,
-               eUrl
+        eName,
+        logoImage,
+        category,
+        financingStage,
+        numberOfWorkers,
+        signLanguage,
+        eUrl
         from enterpriseinfo
+        <where>
+            <if test="title!= null and title!=''">
+                or eName LIKE concat('%',#{title},'%')
+            </if>
+            <if test="category!= null and category!=''">
+                or category LIKE concat('%',#{category},'%')
+            </if>
+            <if test="numberofworkers!= null and numberofworkers!=''">
+                or numberOfWorkers LIKE concat('%',#{numberofworkers},'%')
+            </if>
+            <if test="place!= null and place!=''">
+                or ePlace LIKE concat('%',#{place},'%')
+            </if>
+            <if test="financingstage!= null and financingstage!=''">
+                or financingStage LIKE concat('%',#{financingstage},'%')
+            </if>
+        </where>
     </select>
 
-    <select id="selectALL" resultMap="BaseResultMap">select * from enterpriseinfo</select>
+    <select id="selectALL" resultMap="BaseResultMap">
+        select * from enterpriseinfo
+    </select>
 </mapper>

@@ -23,8 +23,10 @@
         <div class="search-wrapper col-md-12">
             <div class="search-box">
                 <div class="input-group ">
-                    <input type="text" class="form-control" placeholder="搜索职位名称" aria-describedby="basic-addon2">
-                    <span class="input-group-addon" id="basic-addon2">搜 索</span>
+                    <input type="text" class="form-control" id="title" placeholder="搜索职位名称"
+                           aria-describedby="basic-addon2">
+                    <button type="button" class="input-group-addon" id="basic-addon2" onclick="f()">搜 索
+                    </button>
                 </div>
             </div>
         </div>
@@ -143,23 +145,34 @@
                 <div class="showdiv" id="showdiv3">
                     <div class="showdiv_head">视觉设计</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =视觉设计师 )}">视觉设计师</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =网页设计师 )}">网页设计师</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =APP设计师 )}">APP设计师</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =美术设计师 )}">美术设计师</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告设计师 )}">广告设计师</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =原画师 )}">原画师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =视觉设计师 )}">视觉设计师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =网页设计师 )}">网页设计师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =APP设计师 )}">APP设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =美术设计师 )}">美术设计师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告设计师 )}">广告设计师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =原画师 )}">原画师</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">交互设计</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =交互设计师 )}">交互设计师</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =网页交互设计师 )}">网页交互设计师</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =无线交互设计师 )}">无线交互设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =交互设计师 )}">交互设计师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =网页交互设计师 )}">网页交互设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =无线交互设计师 )}">无线交互设计师</a></div>
                     </div>
                     <div class="showdiv_head">用户研究</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =数据分析师 )}">数据分析师</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =用户研究员 )}">用户研究员</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =数据分析师 )}">数据分析师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =用户研究员 )}">用户研究员</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,24 +186,36 @@
                 <div class="showdiv" id="showdiv4">
                     <div class="showdiv_head">运营</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =用户运营 )}">用户运营</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =商家运营 )}">商家运营</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =产品运营 )}">产品运营</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =内容运营 )}">内容运营</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =新媒体运营 )}">新媒体运营</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏运营 )}">游戏运营</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =用户运营 )}">用户运营</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =商家运营 )}">商家运营</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =产品运营 )}">产品运营</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =内容运营 )}">内容运营</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =新媒体运营 )}">新媒体运营</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏运营 )}">游戏运营</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">编辑</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =副主编 )}">副主编</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =内容编辑 )}">内容编辑</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =文案策划 )}">文案策划</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =副主编 )}">副主编</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =内容编辑 )}">内容编辑</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =文案策划 )}">文案策划</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">客服</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =售前客服 )}">售前客服</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =售后客服 )}">售后客服</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =客服经理 )}">客服经理</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =售前客服 )}">售前客服</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =售后客服 )}">售后客服</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =客服经理 )}">客服经理</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -204,25 +229,38 @@
                 <div class="showdiv" id="showdiv5">
                     <div class="showdiv_head">市场/营销</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =市场策划 )}">市场策划</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =市场顾问 )}">市场顾问</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =商务渠道 )}">商务渠道</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =海外市场 )}">海外市场</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =市场策划 )}">市场策划</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =市场顾问 )}">市场顾问</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =商务渠道 )}">商务渠道</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =海外市场 )}">海外市场</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">媒体/公关</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌公关 )}">品牌公关</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =媒介投放 )}">媒介投放</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =媒介合作 )}">媒介合作</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌公关 )}">品牌公关</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =媒介投放 )}">媒介投放</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =媒介合作 )}">媒介合作</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">品牌/广告</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告创意 )}">广告创意</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告制作 )}">广告制作</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告文案 )}">广告文案</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告投放 )}">广告投放</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌专员 )}">品牌专员</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌策划 )}">品牌策划</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告创意 )}">广告创意</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告制作 )}">广告制作</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告文案 )}">广告文案</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告投放 )}">广告投放</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌专员 )}">品牌专员</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌策划 )}">品牌策划</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -236,10 +274,13 @@
                 <div class="showdiv" id="showdiv6">
                     <div class="showdiv_head">人力资源</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =人力资源 )}">人力资源</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =人力资源 )}">人力资源</a>
+                        </div>
                         <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =招聘 )}">招聘</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =培训经理 )}">培训经理</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =HRBP )}">HRBP</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =培训经理 )}">培训经理</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =HRBP )}">HRBP</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">行政</div>
                     <div class="showdiv_content">
@@ -274,17 +315,25 @@
                 <div class="showdiv" id="showdiv7">
                     <div class="showdiv_head">技术开发</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =H5游戏开发 )}">H5游戏开发</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =小游戏开发 )}">小游戏开发</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏后端开发 )}">游戏后端开发</a></div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =H5游戏开发 )}">H5游戏开发</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =小游戏开发 )}">小游戏开发</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =游戏后端开发 )}">游戏后端开发</a></div>
                     </div>
                     <div class="showdiv_head">设计</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏动画)}">游戏动画</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏原画)}">游戏原画</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏界面)}">游戏界面</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏场景)}">游戏场景</a></div>
-                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏角色)}">游戏角色</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏动画)}">游戏动画</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏原画)}">游戏原画</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏界面)}">游戏界面</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏场景)}">游戏场景</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏角色)}">游戏角色</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -312,72 +361,73 @@
     </div>
 
     <!--热门职位 最新职位 选择-->
-    <div class="row pos-list-menu">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <ul class="nav nav-tabs">
-                <li role="presentation"><span><a href="#" class="hot-position" id="hot" style="color: #6495ED"
-                                                 onclick="bigSize('hot','new')">热门职位</a></span></li>
-                <!--<li role="presentation"><span><a href="#" class="hot-position" id="new" onclick="bigSize2('hot','new')">最新发布</a></span>
-                </li>-->
-            </ul>
-            <!--职位列表-->
-            <div class="row">
-                <div class="col-md-4" th:each="p,status:${positionInfoList}">
-                    <div class="pos-list">
-                        <!--职位名称 发布时间 薪资信息-->
-                        <div class="row" style="margin-top: 8px">
-                            <a class="col-md-4 pos-name" th:text="${p.ptitle}"
-                               th:href="@{/position/positionInfo(pid=${p.pid},menutab=1)}"></a>
-                            <div class="col-md-4 time-info"
-                                 th:text="${#dates.format(p.releasetime,'['+'mm:ss'+']')}"></div>
-                            <div class="col-md-4 salary-info" th:text="${p.salary}"></div>
-                        </div>
-                        <!--经验要求-->
-                        <div class="row" style="margin-top: 15px">
-                            <div class="col-md-12 exe-req">
-                                <span th:text="${p.experience} +'/'"></span>
-                                <span th:text="${p.postnature} +'/'"></span>
-                                <span th:text="${p.education}"></span>
+    <div class="pos-list-menu" id="target">
+        <div class="row " >
+            <div class="col-md-1"></div>
+            <div class="col-md-10" >
+                <ul class="nav nav-tabs">
+                    <li role="presentation"><span><a href="#" class="hot-position" id="hot" style="color: #6495ED"
+                                                     onclick="bigSize('hot','new')">热门职位</a></span></li>
+                </ul>
+                <!--职位列表-->
+                <div class="row" >
+                    <div class="col-md-4" th:each="p,status:${positionInfoList}">
+                        <div class="pos-list">
+                            <!--职位名称 发布时间 薪资信息-->
+                            <div class="row" style="margin-top: 8px">
+                                <a class="col-md-4 pos-name" th:text="${p.ptitle}"
+                                   th:href="@{/position/positionInfo(pid=${p.pid},menutab=1)}"></a>
+                                <div class="col-md-4 time-info"
+                                     th:text="${#dates.format(p.releasetime,'['+'mm:ss'+']')}"></div>
+                                <div class="col-md-4 salary-info" th:text="${p.salary}"></div>
                             </div>
-                            <div class="col-md-4 exe-req"></div>
-                        </div>
-                        <!--行业类别-->
-                        <div style="margin-top: 15px;overflow: hidden">
-                            <span class="industry-category" th:text="${p.enterpriseinfoDTO.category}"></span>
-                        </div>
-                        <!--分割线-->
-                        <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
-                        <!--企业信息-->
-                        <div style="display:flex;margin-top: 18px">
-                            <div><img class="img-Logo"
-                                      th:src="@{${'http://localhost:18011/'+p.enterpriseinfoDTO.logoimage}}"></div>
-                            <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555">
-                                    <span th:text="${p.departments}+'/'"></span>
-                                    <span th:text="${p.enterpriseinfoDTO.ename}"></span>
+                            <!--经验要求-->
+                            <div class="row" style="margin-top: 15px">
+                                <div class="col-md-12 exe-req">
+                                    <span th:text="${p.experience} +'/'"></span>
+                                    <span th:text="${p.postnature} +'/'"></span>
+                                    <span th:text="${p.education}"></span>
                                 </div>
-                                <div class="company-info">
-                                    <span th:text="${p.enterpriseinfoDTO.category}"></span>
-                                    <span>/</span>
-                                    <span th:text="${p.enterpriseinfoDTO.financingstage}"></span>
-                                    <span>/</span>
-                                    <span th:text="${#strings.abbreviate(p.enterpriseinfoDTO.eplace,4)}"></span>
+                                <div class="col-md-4 exe-req"></div>
+                            </div>
+                            <!--行业类别-->
+                            <div style="margin-top: 15px;overflow: hidden">
+                                <span class="industry-category" th:text="${p.enterpriseinfoDTO.category}"></span>
+                            </div>
+                            <!--分割线-->
+                            <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
+                            <!--企业信息-->
+                            <div style="display:flex;margin-top: 18px">
+                                <div><img class="img-Logo"
+                                          th:src="@{${'http://localhost:18011/'+p.enterpriseinfoDTO.logoimage}}"></div>
+                                <div style="padding-left: 5px;margin-top: 6px">
+                                    <div style="color: #555555">
+                                        <span th:text="${p.departments}+'/'"></span>
+                                        <span th:text="${p.enterpriseinfoDTO.ename}"></span>
+                                    </div>
+                                    <div class="company-info">
+                                        <span th:text="${p.enterpriseinfoDTO.category}"></span>
+                                        <span>/</span>
+                                        <span th:text="${p.enterpriseinfoDTO.financingstage}"></span>
+                                        <span>/</span>
+                                        <span th:text="${#strings.abbreviate(p.enterpriseinfoDTO.eplace,4)}"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--查看更多按钮-->
-            <div class="row">
-                <a class="more" style="margin-left: 510px "
-                   th:href="@{/position/positionList/(menutab=3)}"><span>查看更多</span></a>
-            </div>
+                <!--查看更多按钮-->
+                <div class="row">
+                    <a class="more" style="margin-left: 510px "
+                       th:href="@{/position/positionList/(menutab=3)}"><span>查看更多</span></a>
+                </div>
 
-        </div>
-        <div class="col-md-1"></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div >
     </div>
+
 
 
 </div>
@@ -429,37 +479,19 @@
 <script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{/component/login.js}"></script>
 <script>
-    layui.use(['dropdown', 'util', 'layer', 'table'], function () {
-        var dropdown = layui.dropdown
-            , util = layui.util
-            , layer = layui.layer
-            , table = layui.table
-            , $ = layui.jquery;
-        //自定义事件 - hover
-        dropdown.render({
-            elem: '#personalCenter'
-            , trigger: 'hover'
-            , data: [{
-                title: '编辑简历'
-                , id: 100
-                , href: '/myInfo/InfoDetail'
-            }, {
-                title: '修改简历'
-                , id: 101
-                , href: '/myInfo/toSelect'
-            }, {
-                title: '为我推荐'
-                , id: 102
-            }, {
-                title: '收藏职位'
-                , id: 102
-            }, {
-                title: '面试评价'
-                , id: 102
-            }
-            ]
-        });
-    })
+    function f() {
+        let title = $("#title").val()
+        console.log('title', title)
+        $.get("/index",
+            {
+                "title": title,
+                "menutab": 1
+            }, function (resp) {
+                $("#target").empty();
+                $("#target").append($(resp).find("#target"));
+                $('html, body').animate({scrollTop: $('#target').offset().top-50}, 850)
+            }, "html");
+    }
 </script>
 </body>
 </html>

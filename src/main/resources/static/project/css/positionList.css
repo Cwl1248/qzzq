@@ -28,9 +28,10 @@ body {
     justify-content: center;
     width: 150px;
     height: calc(1.5em + .75rem + 2px);
-    background: #6495ED;
+    background: #6495ED !important;
     color: white;
     font-weight: bolder;
+   border-color: #6495ED;
 }
 /*---------------*/
 

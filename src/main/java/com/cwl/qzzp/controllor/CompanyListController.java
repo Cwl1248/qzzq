@@ -23,41 +23,42 @@ public class CompanyListController {
     EnterpriseService enterpriseService;
 
     /**
-     *
      * @param modelMap
-     * @param pageNum 页号
+     * @param pageNum  页号
      * @param pageSize 每页数据
-     * @return  分页显示公司信息
+     * @return 分页显示公司信息
      */
     @GetMapping("/companyList")
     public String getCompanyListData(ModelMap modelMap, @RequestParam(value = "pageNum", required = false) Integer pageNum,
-                                     @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+                                     @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                     String title, String place, String category, String numberofworkers, String financingstage) {
         if (pageNum == null) {
             pageNum = 1;
         }
         if (pageSize == null) {
             pageSize = 12;
         }
-        Page<EnterpriseinfoDTO> listData = (Page<EnterpriseinfoDTO>) enterpriseService.getCompanyListData(pageNum, pageSize);
+        Page<EnterpriseinfoDTO> listData = (Page<EnterpriseinfoDTO>) enterpriseService.getCompanyListData(pageNum, pageSize,
+                title, place, category, numberofworkers, financingstage);
         modelMap.addAttribute("list", listData);
         return "companyList/companyList";
     }
 
     /**
-     *
      * @param modelMap
-     * @param eId 公司的主键
+     * @param eId      公司的主键
      * @return 公司的详细信息
      */
     @GetMapping("/companyInfo")
     public String getCompanyInfoData(ModelMap modelMap, String eId) {
-            EnterpriseinfoDTO companyInfoData = enterpriseService.getCompanyInfoData(eId);
-        modelMap.addAttribute("companyInfoData",companyInfoData);
+        EnterpriseinfoDTO companyInfoData = enterpriseService.getCompanyInfoData(eId);
+        modelMap.addAttribute("companyInfoData", companyInfoData);
         return "companyList/companyInfo";
     }
 
     /**
      * 后台添加公司信息
+     *
      * @param company
      * @return
      */
@@ -69,6 +70,7 @@ public class CompanyListController {
 
     /**
      * 后台查询公司信息
+     *
      * @param company
      * @return
      */
@@ -80,6 +82,7 @@ public class CompanyListController {
 
     /**
      * 后台更新公司信息
+     *
      * @param company
      * @return
      */
