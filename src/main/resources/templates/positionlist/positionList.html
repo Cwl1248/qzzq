@@ -18,18 +18,6 @@
 
 <div class="container-fluid">
 
-    <!--&lt;!&ndash;搜索框&ndash;&gt;
-    <div class="row">
-        <div class="search-wrapper col-md-12">
-            <div class="search-box">
-                <div class="input-group ">
-                    <input type="text" class="form-control" placeholder="搜索职位" aria-describedby="basic-addon2">
-                    <span class="input-group-addon" id="basic-addon2">搜 索</span>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
     <div class="row" style="margin-top: 30px">
         <div class="col-md-1"></div>
         <div class="col-md-10">
@@ -37,168 +25,219 @@
                 <!--工作地点-->
                 <li class="choose">
                     <span class="title">主要城市:</span>
-                    <a class="choose-list" href="javascript:">北京</a>
-                    <a class="choose-list" href="javascript:">上海</a>
-                    <a class="choose-list" href="javascript:">广州</a>
-                    <a class="choose-list" href="javascript:">深圳</a>
-                    <a class="choose-list" href="javascript:">杭州</a>
-                    <a class="choose-list" href="javascript:">苏州</a>
-                    <a class="choose-list" href="javascript:">南京</a>
-                    <a class="choose-list" href="javascript:">成都</a>
-                    <a class="choose-list" href="javascript:">西安</a>
-                    <a class="choose-list" href="javascript:">长沙</a>
-                    <a class="choose-list" href="javascript:">武汉</a>
-                    <a class="choose-list" href="javascript:">重庆</a>
-                    <a class="choose-list" href="javascript:">南宁</a>
-                    <a class="choose-list" href="javascript:">青岛</a>
-                    <a class="choose-list" href="javascript:">郑州</a>
-                    <a class="choose-list" href="javascript:">合肥</a>
-                    <a class="choose-list" href="javascript:">惠州</a>
-                    <a class="choose-list" href="javascript:">福州</a>
-                    <a class="choose-list" href="javascript:">大连</a>
-                    <a class="choose-list" href="javascript:">珠海</a>
+                    <a class="choose-list" href="#" onclick="place('北京'); return false;">北京</a>
+                    <a class="choose-list" href="#" onclick="place('上海'); return false;">上海</a>
+                    <a class="choose-list" href="#" onclick="place('广州'); return false;">广州</a>
+                    <a class="choose-list" href="#" onclick="place('深圳'); return false;">深圳</a>
+                    <a class="choose-list" href="#" onclick="place('杭州'); return false;">杭州</a>
+                    <a class="choose-list" href="#" onclick="place('苏州'); return false;">苏州</a>
+                    <a class="choose-list" href="#" onclick="place('南京'); return false;">南京</a>
+                    <a class="choose-list" href="#" onclick="place('成都'); return false;">成都</a>
+                    <a class="choose-list" href="#" onclick="place('西安'); return false;">西安</a>
+                    <a class="choose-list" href="#" onclick="place('长沙'); return false;">长沙</a>
+                    <a class="choose-list" href="#" onclick="place('武汉'); return false;">武汉</a>
+                    <a class="choose-list" href="#" onclick="place('重庆'); return false;">重庆</a>
+                    <a class="choose-list" href="#" onclick="place('南宁'); return false;">南宁</a>
+                    <a class="choose-list" href="#" onclick="place('青岛'); return false;">青岛</a>
+                    <a class="choose-list" href="#" onclick="place('郑州'); return false;">郑州</a>
+                    <a class="choose-list" href="#" onclick="place('合肥'); return false;">合肥</a>
+                    <a class="choose-list" href="#" onclick="place('惠州'); return false;">惠州</a>
+                    <a class="choose-list" href="#" onclick="place('福州'); return false;">福州</a>
+                    <a class="choose-list" href="#" onclick="place('大连'); return false;">大连</a>
+                    <a class="choose-list" href="#" onclick="place('珠海'); return false;">珠海</a>
                 </li>
                 <!--经验要求-->
                 <li class="choose">
                     <span class="title">工作经验:</span>
-                    <a class="choose-list" href="javascript:">在校/应届</a>
-                    <a class="choose-list" href="javascript:">3年以下</a>
-                    <a class="choose-list" href="javascript:">3-5年</a>
-                    <a class="choose-list" href="javascript:">5-10年</a>
-                    <a class="choose-list" href="javascript:">10年以上</a>
-                    <a class="choose-list" href="javascript:">不限</a>
+                    <a class="choose-list" href="#" onclick="experience('在校/应届'); return false; ">在校/应届</a>
+                    <a class="choose-list" href="#" onclick="experience('3年以下'); return false ;">3年以下</a>
+                    <a class="choose-list" href="#" onclick="experience('3-5年'); return false ;">3-5年</a>
+                    <a class="choose-list" href="#" onclick="experience('5-10年'); return false; ">5-10年</a>
+                    <a class="choose-list" href="#" onclick="experience('10年以上'); return false ;">10年以上</a>
+                    <a class="choose-list" href="#" onclick="experience('不限'); return false; ">不限</a>
                 </li>
-                <!--学习要求-->
+                <!--学历要求-->
                 <li class="choose">
-                    <span class="title">学习要求:</span>
-                    <a class="choose-list" href="javascript:">专科</a>
-                    <a class="choose-list" href="javascript:">本科</a>
-                    <a class="choose-list" href="javascript:">硕士</a>
-                    <a class="choose-list" href="javascript:">博士</a>
-                    <a class="choose-list" href="javascript:">不限制</a>
+                    <span class="title">学历要求:</span>
+                    <a class="choose-list" href="#" onclick="education('专科'); return false ; ">专科</a>
+                    <a class="choose-list" href="#" onclick="education('本科'); return false ; ">本科</a>
+                    <a class="choose-list" href="#" onclick="education('硕士'); return false ; ">硕士</a>
+                    <a class="choose-list" href="#" onclick="education('博士'); return false ; ">博士</a>
+                    <a class="choose-list" href="#" onclick="education('不限制'); return false ; ">不限制</a>
                 </li>
                 <!--薪资-->
                 <li class="choose">
                     <span class="title">月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪:</span>
-                    <a class="choose-list" href="javascript:">2k以下</a>
-                    <a class="choose-list" href="javascript:">2k-5k</a>
-                    <a class="choose-list" href="javascript:">5k-10k</a>
-                    <a class="choose-list" href="javascript:">10k-15k</a>
-                    <a class="choose-list" href="javascript:">15k-25k</a>
-                    <a class="choose-list" href="javascript:">25k-50k</a>
-                    <a class="choose-list" href="javascript:">50k以上</a>
+                    <a class="choose-list" href="#" onclick="salary('2k以下'); return false ;">2k以下</a>
+                    <a class="choose-list" href="#" onclick="salary('2k-5k'); return false ;">2k-5k</a>
+                    <a class="choose-list" href="#" onclick="salary('5k-10k'); return false ;">5k-10k</a>
+                    <a class="choose-list" href="#" onclick="salary('10k-15k'); return false ;">10k-15k</a>
+                    <a class="choose-list" href="#" onclick="salary('15k-25k'); return false ;">15k-25k</a>
+                    <a class="choose-list" href="#" onclick="salary('25k-50k'); return false ;">25k-50k</a>
+                    <a class="choose-list" href="#" onclick="salary('50k以上'); return false ;">50k以上</a>
                 </li>
                 <!--工作性质-->
                 <li class="choose">
                     <span class="title">工作性质:</span>
-                    <a class="choose-list" href="javascript:">全职</a>
-                    <a class="choose-list" href="javascript:">兼职</a>
-                    <a class="choose-list" href="javascript:">实习</a>
+                    <a class="choose-list" href="#" onclick="postNature('全职'); return false;">全职</a>
+                    <a class="choose-list" href="#" onclick="postNature('兼职'); return false;">兼职</a>
+                    <a class="choose-list" href="#" onclick="postNature('实习'); return false;">实习</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-1"></div>
     </div>
 
-    <div class="row" style="margin-top:30px;font-size: 18px!important;" th:each="p,status:${list}">
+    <div id="target">
+        <div class="row" style="margin-top:30px;font-size: 18px!important;" th:each="p,status:${list}" >
         <div class="col-md-1"></div>
         <div class="col-md-10">
-            <div style="display:flex; border: 1px solid #ededed;border-radius: 2px;padding: 10px">
-                <div class="col-7">
-                    <a class="position-name" th:href="@{/position/positionInfo(pid=${p.pid},menutab=3)}" th:text="${p.ptitle}"></a>
-                    <span class="t" th:text="${#dates.format(p.releasetime,'mm:ss'+'发布')}"></span>
-                    <div style="margin-top: 15px">
-                        <span style="color: #FD5F39" th:text="${p.salary}"></span>
-                        <span style="color: #555555;margin-left: 15px" th:text="${'经验'+p.experience}+'/'"></span>
-                        <span style="color: #555555" th:text="${p.education}"></span>
+            <div id="content">
+                <div style="display:flex; border: 1px solid #ededed;border-radius: 2px;padding: 10px">
+                    <div class="col-7">
+                        <a class="position-name" th:href="@{/position/positionInfo(pid=${p.pid},menutab=3)}"
+                           th:text="${p.ptitle}"></a>
+                        <span class="t" th:text="${#dates.format(p.releasetime,'mm:ss'+'发布')}"></span>
+                        <div style="margin-top: 15px">
+                            <span style="color: #FD5F39" th:text="${p.salary}"></span>
+                            <span style="color: #555555;margin-left: 15px" th:text="${'经验'+p.experience}+'/'"></span>
+                            <span style="color: #555555" th:text="${p.education}"></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <a class="com-name" th:text="${p.enterpriseinfoDTO.ename}"></a>
+                        <div style="margin-top: 15px;color: #555555">
+                            <span th:text="${p.enterpriseinfoDTO.category}+'/'"></span>
+                            <span th:text="${p.enterpriseinfoDTO.financingstage}+'/ '"></span>
+                            <span th:text="${p.enterpriseinfoDTO.numberofworkers}"></span>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div style="border: 1px solid #ededed;height: 75px"><img style="width: 84px;height: 75px"
+                                                                                 th:src="@{${'http://localhost:18011/'+p.enterpriseinfoDTO.logoimage}}">
+                        </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <a class="com-name" th:text="${p.enterpriseinfoDTO.ename}"></a>
-                    <div style="margin-top: 15px;color: #555555">
-                        <span th:text="${p.enterpriseinfoDTO.category}+'/'"></span>
-                        <span th:text="${p.enterpriseinfoDTO.financingstage}+'/ '"></span>
-                        <span th:text="${p.enterpriseinfoDTO.numberofworkers}"></span>
+                <div style="display:flex;background:#fafafa;padding: 10px">
+                    <div class="col-7">
+                        <div>
+                            <span class="job-category" th:text="${p.posttype1}"
+                                  th:class="${p.posttype1 ne '' ? 'job-category':'p-hide'}"></span>
+                            <span class="job-category" th:text="${p.posttype2}"
+                                  th:class="${p.posttype2 ne '' ? 'job-category':'p-hide'}"></span>
+                            <span class="job-category" th:text="${p.posttype3}"
+                                  th:class="${p.posttype3 ne '' ? 'job-category':'p-hide'}"></span>
+                            <span class="job-category" th:text="${p.posttype4}"
+                                  th:class="${p.posttype4 ne '' ? 'job-category':'p-hide'}"></span>
+                            <span class="job-category" th:text="${p.posttype5}"
+                                  th:class="${p.posttype5 ne '' ? 'job-category':'p-hide'}"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-1">
-                    <div style="border: 1px solid #ededed;height: 75px"><img style="width: 84px;height: 75px" th:src="@{${'http://localhost:18011/'+p.enterpriseinfoDTO.logoimage}}">
+                    <div class="col-4">
+                        <div><span>"</span>
+                            <span th:text="${p.enterpriseinfoDTO.benefit1}"
+                                  th:class="${p.enterpriseinfoDTO.benefit1 ne '' ? '':'p-hide'}"></span>
+                            <span th:text="${p.enterpriseinfoDTO.benefit2}"
+                                  th:class="${p.enterpriseinfoDTO.benefit2 ne '' ? '':'p-hide'}"></span>
+                            <span th:text="${p.enterpriseinfoDTO.benefit3}"
+                                  th:class="${p.enterpriseinfoDTO.benefit3 ne '' ? '':'p-hide'}"></span>
+                            <span th:text="${p.enterpriseinfoDTO.benefit4}"
+                                  th:class="${p.enterpriseinfoDTO.benefit4 ne '' ? '':'p-hide'}"></span>
+                            <span th:text="${p.enterpriseinfoDTO.benefit5}"
+                                  th:class="${p.enterpriseinfoDTO.benefit5 ne '' ? '':'p-hide'}"></span>
+                            <span>"</span>
+                        </div>
                     </div>
+                    <div class="col-1"></div>
                 </div>
-            </div>
-            <div style="display:flex;background:#fafafa;padding: 10px">
-                <div class="col-7">
-                    <div>
-                        <span class="job-category" th:text="${p.posttype1}"
-                              th:class="${p.posttype1 ne '' ? 'job-category':'p-hide'}"></span>
-                        <span class="job-category" th:text="${p.posttype2}"
-                              th:class="${p.posttype2 ne '' ? 'job-category':'p-hide'}"></span>
-                        <span class="job-category" th:text="${p.posttype3}"
-                              th:class="${p.posttype3 ne '' ? 'job-category':'p-hide'}"></span>
-                        <span class="job-category" th:text="${p.posttype4}"
-                              th:class="${p.posttype4 ne '' ? 'job-category':'p-hide'}"></span>
-                        <span class="job-category" th:text="${p.posttype5}"
-                              th:class="${p.posttype5 ne '' ? 'job-category':'p-hide'}"></span>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div><span>"</span>
-                        <span th:text="${p.enterpriseinfoDTO.benefit1}"
-                              th:class="${p.enterpriseinfoDTO.benefit1 ne '' ? '':'p-hide'}"></span>
-                        <span th:text="${p.enterpriseinfoDTO.benefit2}"
-                              th:class="${p.enterpriseinfoDTO.benefit2 ne '' ? '':'p-hide'}"></span>
-                        <span th:text="${p.enterpriseinfoDTO.benefit3}"
-                              th:class="${p.enterpriseinfoDTO.benefit3 ne '' ? '':'p-hide'}"></span>
-                        <span th:text="${p.enterpriseinfoDTO.benefit4}"
-                              th:class="${p.enterpriseinfoDTO.benefit4 ne '' ? '':'p-hide'}"></span>
-                        <span th:text="${p.enterpriseinfoDTO.benefit5}"
-                              th:class="${p.enterpriseinfoDTO.benefit5 ne '' ? '':'p-hide'}"></span>
-                        <span>"</span>
-                    </div>
-                </div>
-                <div class="col-1"></div>
             </div>
         </div>
         <div class="col-md-1"></div>
     </div>
-
+    </div>
     <!--page bar-->
     <div class="" th:if="${list.getPageNum() le list.getPages()}">
         <div class="pagerow " th:if="${list.pages<10}">
             <ul id="menu">
-                <li th:if="${list.pageNum}>1"><a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a></li>
+                <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                                 th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
+                </li>
                 <li th:each="num : ${#numbers.sequence(1,list.pages)}">
-                    <a th:classappend="page-btn" th:text="${num}" th:class="${list.pageNum eq num ? 'page-btn-active':''}"
+                    <a th:classappend="page-btn" th:text="${num}"
+                       th:class="${list.pageNum eq num ? 'page-btn-active':''}"
                        th:href="@{/company/companyList(pageNum=${num},pageSize=${list.pageSize},menutab=3)}"></a>
                 </li>
                 <li th:if="${list.pageNum lt list.pages}">
-                    <a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
+                    <a class="page-btn"
+                       th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
                 </li>
             </ul>
         </div>
 
         <div class="pagerow" th:if="${list.pages>10}">
             <ul id="menu">
-                <li th:if="${list.pageNum}>1"><a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a></li>
-                <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}" th:href="@{/company/companyList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a></li>
-                <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}" th:href="@{/company/companyList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}" th:href="@{/company/companyList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}" th:href="@{/company/companyList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}" th:href="@{/company/companyList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}" th:href="@{/company/companyList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}" th:href="@{/company/companyList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}" th:href="@{/company/companyList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum gt 1}" > <a class="page-btn" th:text="${list.pageNum-1}"  th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum le list.pages}">  <a th:classappend="page-btn" th:class="${list.pageNum le list.pages ? 'page-btn-active':''}" th:text="${list.pageNum}" th:href="@{/company/companyList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}" th:href="@{/company/companyList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}" th:href="@{/company/companyList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}" th:href="@{/company/companyList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}" th:href="@{/company/companyList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}" th:href="@{/company/companyList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}" th:href="@{/company/companyList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}" th:href="@{/company/companyList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=3)}"></a></li>
-                <li th:if="${list.pageNum lt list.pages}">  <a class="page-btn" th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a></li>
+                <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                                 th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
+                </li>
+                <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a>
+                </li>
+                <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}"
+                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum gt 1}"><a class="page-btn" th:text="${list.pageNum-1}"
+                                                    th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum le list.pages}"><a th:classappend="page-btn"
+                                                             th:class="${list.pageNum le list.pages ? 'page-btn-active':''}"
+                                                             th:text="${list.pageNum}"
+                                                             th:href="@{/company/companyList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}"
+                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=3)}"></a>
+                </li>
+                <li th:if="${list.pageNum lt list.pages}"><a class="page-btn"
+                                                             th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -208,14 +247,15 @@
 
 <div th:replace="public/bottom :: bottom"></div>
 <script>
-    function  goNewsPage() {
-        let pageNum3= $("#inputContentNews").val()
-        let pageSize3= $("#pageNewsSelect").val()
+    function goNewsPage() {
+        let pageNum3 = $("#inputContentNews").val()
+        let pageSize3 = $("#pageNewsSelect").val()
         location.href = `/company/companyList?pageNum=${pageNum3}&pageSize=${pageSize3}&menutab=3`;
     }
+
     /*下拉列表*/
-    function goNewsPageSize () {
-        let pageSize3= $("#pageNewsSelect").val()
+    function goNewsPageSize() {
+        let pageSize3 = $("#pageNewsSelect").val()
         location.href = `/company/companyList?pageNum=1&pageSize=${pageSize3}&menutab=3`;
     }
 
@@ -225,6 +265,136 @@
 <script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
 <script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
 <script type="text/javascript" th:src="@{/component/login.js}"></script>
+<script type="text/javascript">
+    function place(place) {
+        $.get("/position/positionList",
+            {
+                "place": place,
+                "menutab": 3
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object);//放到指定的id里
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                }
+            }, "html");
+    }
 
+    function experience(experience) {
+        $.get("/position/positionList",
+            {
+                "experience": experience,
+                "menutab": 3
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object);//放到指定的id里
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                }
+            }, "html");
+    }
+
+    function education(education) {
+        $.get("/position/positionList",
+            {
+                "education": education,
+                "menutab": 3
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object);//放到指定的id里
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                }
+            }, "html");
+    }
+
+    function salary(salary) {
+        $.get("/position/positionList",
+            {
+                "salary": salary,
+                "menutab": 3
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object);//放到指定的id里
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                }
+            }, "html");
+    }
+
+    function postNature(postNature) {
+        $.get("/position/positionList",
+            {
+                "postNature": postNature,
+                "menutab": 3
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object);//放到指定的id里
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                }
+            }, "html");
+    }
+</script>
 </body>
 </html>

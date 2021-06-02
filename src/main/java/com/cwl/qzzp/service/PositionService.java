@@ -98,8 +98,20 @@ public class PositionService {
         return positioninfodao.getPositionInfoData(pid);
     }
 
-    public List<PositioninfoDTO> getPositionData(int pageNum, int pageSize,String title) {
-        List<PositioninfoDTO> positionData = positioninfodao.getPositionData(pageNum, pageSize,title);
+    public List<PositioninfoDTO> getPositionData(int pageNum, int pageSize,
+                                                 String title,
+                                                 String place,
+                                                 String experience,
+                                                 String education,
+                                                 String salary,
+                                                 String postNature   ) {
+        List<PositioninfoDTO> positionData = positioninfodao.getPositionData(pageNum, pageSize,
+                                                                                title,
+                                                                                place,
+                                                                                experience,
+                                                                                education,
+                                                                                salary,
+                                                                                postNature);
         for (PositioninfoDTO positioninfoDTO : positionData) {
             EnterpriseinfoDTO enterpriseinfoDTO = positioninfoDTO.getEnterpriseinfoDTO();
             String logoimage = enterpriseinfoDTO.getLogoimage();

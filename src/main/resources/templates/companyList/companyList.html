@@ -40,78 +40,76 @@
                 <!--工作地点-->
                 <li class="choose">
                     <span class="title">工作地点:</span>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='北京' ,menutab=3)}">北京</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='上海' ,menutab=3)}">上海</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='广州' ,menutab=3)}">广州</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='深圳' ,menutab=3)}">深圳</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='杭州' ,menutab=3)}">杭州</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='苏州' ,menutab=3)}">苏州</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='南京' ,menutab=3)}">南京</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='成都' ,menutab=3)}">成都</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='西安' ,menutab=3)}">西安</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='长沙' ,menutab=3)}">长沙</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='武汉' ,menutab=3)}">武汉</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='重庆' ,menutab=3)}">重庆</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='南宁' ,menutab=3)}">南宁</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='青岛' ,menutab=3)}">青岛</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='郑州' ,menutab=3)}">郑州</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='合肥' ,menutab=3)}">合肥</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='惠州' ,menutab=3)}">惠州</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='福州' ,menutab=3)}">福州</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(place='大连' ,menutab=3)}">大连</a>
+                    <a class="choose-list"  href="#" onclick="place('北京'); return false ">北京</a>
+                    <a class="choose-list"  href="#" onclick="place('上海'); return false ">上海</a>
+                    <a class="choose-list"  href="#" onclick="place('广州'); return false ">广州</a>
+                    <a class="choose-list"  href="#" onclick="place('深圳'); return false ">深圳</a>
+                    <a class="choose-list"  href="#" onclick="place('杭州'); return false ">杭州</a>
+                    <a class="choose-list"  href="#" onclick="place('苏州'); return false ">苏州</a>
+                    <a class="choose-list"  href="#" onclick="place('南京'); return false ">南京</a>
+                    <a class="choose-list"  href="#" onclick="place('成都'); return false ">成都</a>
+                    <a class="choose-list"  href="#" onclick="place('西安'); return false ">西安</a>
+                    <a class="choose-list"  href="#" onclick="place('长沙'); return false ">长沙</a>
+                    <a class="choose-list"  href="#" onclick="place('武汉'); return false ">武汉</a>
+                    <a class="choose-list"  href="#" onclick="place('重庆'); return false ">重庆</a>
+                    <a class="choose-list"  href="#" onclick="place('南宁'); return false ">南宁</a>
+                    <a class="choose-list"  href="#" onclick="place('青岛'); return false ">青岛</a>
+                    <a class="choose-list"  href="#" onclick="place('郑州'); return false ">郑州</a>
+                    <a class="choose-list"  href="#" onclick="place('合肥'); return false ">合肥</a>
+                    <a class="choose-list"  href="#" onclick="place('惠州'); return false ">惠州</a>
+                    <a class="choose-list"  href="#" onclick="place('福州'); return false ">福州</a>
+                    <a class="choose-list"  href="#" onclick="place('大连'); return false ">大连</a>
                 </li>
                 <!--融资阶段-->
                 <li class="choose">
                     <span class="title">融资阶段:</span>
-                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='未融资' ,menutab=3)}">未融资</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='天使轮' ,menutab=3)}">天使轮</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='A轮' ,menutab=3)}">A轮</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='B轮' ,menutab=3)}">B轮</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='C轮' ,menutab=3)}">C轮</a>
-                    <a class="choose-list"
-                       th:href="@{/company/companyList/(financingstage='D轮及以上' ,menutab=3)}">D轮及以上</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(financingstage='上市公司' ,menutab=3)}">上市公司</a>
-                    <a class="choose-list"
-                       th:href="@{/company/companyList/(financingstage='不需要融资' ,menutab=3)}">不需要融资</a>
+                    <a class="choose-list" href="#" onclick="financingstage('未融资'); return false ">未融资</a>
+                    <a class="choose-list" href="#" onclick="financingstage('天使轮'); return false ">天使轮</a>
+                    <a class="choose-list" href="#" onclick="financingstage('A轮'); return false   ">A轮</a>
+                    <a class="choose-list" href="#" onclick="financingstage('B轮'); return false   ">B轮</a>
+                    <a class="choose-list" href="#" onclick="financingstage('C轮'); return false   ">C轮</a>
+                    <a class="choose-list" href="#" onclick="financingstage('D轮及以上'); return false   ">D轮及以上</a>
+                    <a class="choose-list" href="#" onclick="financingstage('上市公司'); return false   ">上市公司</a>
+                    <a class="choose-list" href="#" onclick="financingstage('不需要融资'); return false  ">不需要融资</a>
 
                 </li>
                 <!--公司规模-->
                 <li class="choose">
                     <span class="title">公司规模:</span>
-                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='少于15人' ,menutab=3)}">少于15人</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='15-50人' ,menutab=3)}">15-50人 </a>
-                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='50-150人' ,menutab=3)}">50-150人 </a>
-                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='150-500人' ,menutab=3)}">150-500人</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='500-2000人' ,menutab=3)}">500-2000人</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(numberofworkers='2000人以上' ,menutab=3)}">2000人以上</a>
+                    <a class="choose-list" href="#" onclick="numberofworkers('少于15人'); return false   ">少于15人</a>
+                    <a class="choose-list" href="#" onclick="numberofworkers('15-50人'); return false   ">15-50人 </a>
+                    <a class="choose-list" href="#" onclick="numberofworkers('50-150人 '); return false   ">50-150人 </a>
+                    <a class="choose-list" href="#" onclick="numberofworkers('150-500人'); return false   ">150-500人</a>
+                    <a class="choose-list" href="#" onclick="numberofworkers('500-2000人'); return false    ">500-2000人</a>
+                    <a class="choose-list" href="#" onclick="numberofworkers('2000人以上'); return false   ">2000人以上</a>
                 </li>
                 <!--行业领域-->
                 <li class="choose">
                     <span class="title">行业领域:</span>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='移动互联网' ,menutab=3)}">移动互联网</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='消费生活' ,menutab=3)}">消费生活</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='企业服务' ,menutab=3)}">企业服务</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='电商' ,menutab=3)}">电商</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='金融' ,menutab=3)}">金融</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='教育' ,menutab=3)}">教育</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='游戏' ,menutab=3)}">游戏</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='硬件' ,menutab=3)}">硬件</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='社交' ,menutab=3)}">社交</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='旅游' ,menutab=3)}">旅游</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='体育' ,menutab=3)}">体育</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='汽车' ,menutab=3)}">汽车</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='物流' ,menutab=3)}">物流</a>
-                    <a class="choose-list" th:href="@{/company/companyList/(category='医疗' ,menutab=3)}">医疗</a>
+                    <a class="choose-list" href="#" onclick="category('移动互联网'); return false ">移动互联网</a>
+                    <a class="choose-list" href="#" onclick="category('消费生活'); return false ">消费生活</a>
+                    <a class="choose-list" href="#" onclick="category('企业服务'); return false ">企业服务</a>
+                    <a class="choose-list" href="#" onclick="category('电商'); return false ">电商</a>
+                    <a class="choose-list" href="#" onclick="category('金融'); return false ">金融</a>
+                    <a class="choose-list" href="#" onclick="category('教育'); return false ">教育</a>
+                    <a class="choose-list" href="#" onclick="category('游戏'); return false ">游戏</a>
+                    <a class="choose-list" href="#" onclick="category('硬件'); return false ">硬件</a>
+                    <a class="choose-list" href="#" onclick="category('社交'); return false ">社交</a>
+                    <a class="choose-list" href="#" onclick="category('旅游'); return false ">旅游</a>
+                    <a class="choose-list" href="#" onclick="category('体育'); return false ">体育</a>
+                    <a class="choose-list" href="#" onclick="category('汽车'); return false ">汽车</a>
+                    <a class="choose-list" href="#" onclick="category('物流'); return false ">物流</a>
+                    <a class="choose-list" href="#" onclick="category('医疗'); return false ">医疗</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-1"></div>
     </div>
     <div id="target">
-        <div class="row" style="margin-top:15px;" id="content">
+        <div class="row" style="margin-top:15px;" >
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <div class="row">
+                <div class="row" id="content">
                     <div class="col-md-3" th:each="l,status:${list}">
                         <div class="com-infos">
                             <div class="com-img">
@@ -141,7 +139,7 @@
 
 
     <!--page bar-->
-    <div class="" th:if="${list.getPageNum() le list.getPages()}">
+    <div class="" th:if="${list.getPageNum() le list.getPages()}" id="pagebar">
         <div class="pagerow " th:if="${list.pages<10}">
             <ul id="menu">
                 <li th:if="${list.pageNum}>1"><a class="page-btn"
@@ -240,32 +238,142 @@
 <script>
     function f() {
         let title = $("#title").val()
-        console.log('title', title)
         $.get("/company/companyList",
             {
                 "title": title,
                 "menutab": 2
             }, function (resp) {
                 $("#target").empty();
-                var content = $("#content").html();
-                if(content == null || content.length == 0)
-                {
-                    div_object=document.createElement('p');
-                    div_object.id='div_id'
-                    div_object.innerHTML="暂无数据!!!"
-                    div_object.style.fontSize="20px"
-                    div_object.style.color="#999999"
-                    div_object.style.letterSpacing="10px"
-                    div_object.style.fontWeight="600"
-                    div_object.style.marginTop="20px"
-                    div_object.style.textAlign="center"
-                    document.getElementById('target').append(div_object);//放到指定的id里
-                }
-                else {
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object)
+                    document.getElementById('pagebar').style.display="none"
+                } else {
                     $("#target").append($(resp).find("#target"));
+                    document.getElementById('pagebar').style.display="none"
                 }
 
             }, "html");
     }
+
+    function place(p) {
+        $.get("/company/companyList",
+            {
+                "place": p,
+                "menutab": 2
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object)
+                    document.getElementById('pagebar').style.display="none"
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    document.getElementById('pagebar').style.display="block"
+                }
+            }, "html");
+    }
+
+    function financingstage(f) {
+        $.get("/company/companyList",
+            {
+                "financingstage": f,
+                "menutab": 2
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object)
+                    document.getElementById('pagebar').style.display="none"
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    document.getElementById('pagebar').style.display="block"
+                }
+            }, "html");
+    }
+
+
+    function numberofworkers(n) {
+        $.get("/company/companyList",
+            {
+                "numberofworkers": n,
+                "menutab": 2
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object)
+                    document.getElementById('pagebar').style.display="none"
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    document.getElementById('pagebar').style.display="block"
+                }
+            }, "html");
+    }
+
+    function category(c) {
+        $.get("/company/companyList",
+            {
+                "category": c,
+                "menutab": 2
+            }, function (resp) {
+                $("#target").empty();
+                var content = $(resp).find("#content").html()
+                if (content.trim() === '') {
+                    div_object = document.createElement('p');
+                    div_object.id = 'div_id'
+                    div_object.innerHTML = "暂无数据!!!"
+                    div_object.style.fontSize = "20px"
+                    div_object.style.color = "#999999"
+                    div_object.style.letterSpacing = "10px"
+                    div_object.style.fontWeight = "600"
+                    div_object.style.marginTop = "20px"
+                    div_object.style.textAlign = "center"
+                    document.getElementById('target').append(div_object)
+                    document.getElementById('pagebar').style.display="none"
+                } else {
+                    $("#target").append($(resp).find("#target"));
+                    document.getElementById('pagebar').style.display="block"
+                }
+            }, "html");
+    }
+
+
 </script>
 </html>

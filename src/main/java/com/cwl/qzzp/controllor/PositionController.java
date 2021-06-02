@@ -30,16 +30,27 @@ public class PositionController {
 
     @GetMapping("/positionList")
     public String getPositionData(ModelMap modelMap,
-                                  String title,
-                                  @RequestParam(value = "pageNum", required = false) Integer pageNum,
-                                  @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+                                  @RequestParam(value = "pageNum", required = false)  Integer pageNum,
+                                  @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                                                                      String title,
+                                                                                      String place,
+                                                                                      String experience,
+                                                                                      String education,
+                                                                                      String salary,
+                                                                                      String postNature) {
         if (pageNum == null) {
             pageNum = 1;
         }
         if (pageSize == null) {
             pageSize = 10;
         }
-        Page<PositioninfoDTO> positionData = (Page<PositioninfoDTO>) positionService.getPositionData(pageNum, pageSize,title);
+        Page<PositioninfoDTO> positionData = (Page<PositioninfoDTO>) positionService.getPositionData(pageNum, pageSize,
+                                                                                                            title,
+                                                                                                            place,
+                                                                                                            experience,
+                                                                                                            education,
+                                                                                                            salary,
+                                                                                                            postNature);
         modelMap.addAttribute("list", positionData);
         return "positionlist/positionList";
     }

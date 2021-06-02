@@ -421,7 +421,22 @@
         left join enterpriseinfo e on p.dataId = e.eId
         <where>
             <if test="title!= null and title!=''">
-                AND p.pTitle LIKE concat('%',#{title},'%')
+                or p.pTitle LIKE concat('%',#{title},'%')
+            </if>
+            <if test="place!= null and place!=''">
+                or p.place LIKE concat('%',#{place},'%')
+            </if>
+            <if test="experience!= null and experience!=''">
+                or p.experience LIKE concat('%',#{experience},'%')
+            </if>
+            <if test="education!= null and education!=''">
+                or p.education LIKE concat('%',#{education},'%')
+            </if>
+            <if test="salary!= null and salary!=''">
+                or p.salary LIKE concat('%',#{salary},'%')
+            </if>
+            <if test="postNature!= null and postNature!=''">
+                or p.postNature LIKE concat('%',#{postNature},'%')
             </if>
         </where>
     </select>
