@@ -25,11 +25,11 @@ public interface PositioninfoDao {
 
     List<PositioninfoDTO> getAllPosition(String reid);
 
-    List<PositioninfoDTO> getIndexPosition();
+    List<PositioninfoDTO> getIndexPosition(String title);
 
     PositioninfoDTO getPositionInfoData(String pid);
 
-    List<PositioninfoDTO> getPositionData(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    List<PositioninfoDTO> getPositionData(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize,String title);
 
     List<PositioninfoDTO> getPositionInfoDTO(@Param("pageNum") int pageNum,@Param("pageSize") int pageSize, String position, String city);
 

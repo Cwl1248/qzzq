@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/layui-v2.6.3/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/project/css/public.css}" media="all">
+    <link rel="Shortcut Icon" th:href="@{/project/images/Y.svg}">
+</head>
+<style type="text/css">
+    body .demo-class .layui-layer-title {
+        background: #1E9FFF;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
+        border: none;
+    }
+
+    body .demo-class .layui-layer-btn {
+        border-top: 1px solid #E9E7E7
+    }
+
+    body .demo-class .layui-layer-btn a {
+        background: #1E9FFF;
+    }
+
+    body .demo-class .layui-layer-btn .layui-layer-btn1 {
+        background: #ffffff;
+    }
+</style>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="approve" disabled>已通过</a>
+        </script>
+
+    </div>
+</div>
+<script th:src="@{/lib/layui-v2.6.3/layui.js}" charset="utf-8"></script>
+<script th:inline="none">
+
+    function delHtmlTag(str) {
+        return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
+    }
+    function bindData(data,id){
+        var listener = {};
+        id = id || "" != "" ? "#" + id : "";
+        $(id + " input,select,textarea").each(function(i,item){
+            if($(item).attr("id") != null || $(item).is("input[type='radio'],input[type='checkbox']")){
+                var dataName;
+                if($(item).is("input[type='radio'],input[type='checkbox']")){
+                    dataName = $(item).attr("name");
+                }else{
+                    dataName = $(item).attr("id");
+                    data[dataName] = "";
+                }
+                listener[dataName] = {
+                    get: function() {
+                        var value = $(item).val();
+                        if($(item).is("input[type='radio']")){
+                            value = $(":radio[name='"+$(item).attr("name")+"']:checked").val();
+                        }else if($(item).is("input[type='checkbox']")){
+                            value = [];
+                            $(":checkbox[name='"+$(item).attr("name")+"']:checked").each(function(i,v){
+                                value[i] = $(v).val();
+                            });
+                        }
+                        // layer.msg("get:" + dataName + "的值为:" + value);
+                        return value;
+                    },
+                    set: function(value) {
+                        if($(item).is("input[type='radio']")){
+                            $(":radio[name='"+$(item).attr("name")+"']").removeAttr("checked");
+                            $(":radio[name='"+$(item).attr("name")+"'][value='"+value+"']").prop('checked', true);
+                        }else if($(item).is("input[type='checkbox']")){
+                            value = (value == 0 || (value.length == 1 && value[0] == 0)) ? [,0] : value;
+                            $(":checkbox[name='"+$(item).attr("name")+"']").removeAttr("checked");
+                            $(value).each(function(i,v){
+                                $(":checkbox[name='"+$(item).attr("name")+"'][value='"+v+"']").prop('checked', true);
+                            });
+                        }else{
+                            $(item).val(value);
+                        }
+                        // layer.msg("set:" + dataName + "的值变更为:" + value);
+                    }
+                };
+            }
+        });
+        Object.defineProperties(data, listener);
+    }
+    var data = {}
+    layui.use(['form', 'table'], function () {
+        table = layui.table, $ = layui.$, laypage = layui.laypage, form = layui.form, layer = layui.layer;
+        bindData(data);
+        table.render({
+            elem: '#currentTableId',
+            url: '/root/getAllCompany',
+            toolbar: '#toolbarDemo',
+            cellMinWidth: 80,
+            even: true,//开启隔行背景
+            defaultToolbar: ''
+            , page: {theme: '#1E9FFF'}
+            , parseData: function (res) {
+                var result;
+                if (this.page.curr) {
+                    result = res.data.rows.slice(this.limit * (this.page.curr - 1), this.limit * this.page.curr);
+                } else {
+                    result = res.data.rows.slice(0, this.limit);
+                }
+                return {
+                    "code": res.status,
+                    "msg": res.message,
+                    "count": res.data.records == null ? 0 : res.data.records,
+                    "data": result
+                };
+            }
+            , request: {
+                limitName: 'rows' //每页数据量的参数名，默认：limit
+            }
+            , limit: 10
+            , limits: [10, 20],
+            cols: [[
+                {field: 'ename', title: '公司名称', align: "center"},
+                {field: 'eplace', title: '公司地址', align: "center"},
+                {field: 'signlanguage', title: '宣传语', align: "center"},
+                {field: 'financingstage', title: '融资阶段', align: "center"},
+                {field: 'category', title: '行业类别', align: "center"},
+                {field: 'numberofworkers', title: '员工人数', align: "center"},
+                {field: 'eintroducation', title: '公司介绍', align: "center"},
+                {title: '审批状态', toolbar: '#currentTableBar', align: "center"}
+            ]],
+            done: function (res, curr, count) {
+                $("table").css("width", "100%");
+            },
+        });
+
+        //搜索
+        $(document).on('click', '#data-search-btn', function () {
+            search();
+        });
+        // 按下回车键触发查询操作
+        $(document).keyup(function (event) {
+            if (event.keyCode === 13) {
+                search();
+            }
+        });
+
+
+        function search() {
+            table.reload('currentTableId', {
+                url: 'station/taskQueue/list',
+                where: {
+                    ptitle: $("#ptitle").val(),
+                    place: $("#place").val(),
+                }//查询条件
+                , page: {
+                    curr: 1
+                }
+            });
+        }
+
+        //重置
+        $(document).on('click', '#reset', function () {
+            $.each(data, function (key, value) {
+                data[key] = "";
+                $("#" + key).val('');
+            });
+            form.render();
+            table.reload('currentTableId', {
+                where: {
+                    ptitle: $("#ptitle").val(),
+                    place: $("#place").val(),
+                } //查询条件
+                , page: {
+                    curr: 1
+                }
+            });
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            var pid = data.pid
+            if (obj.event === 'updata') {
+                var index = layer.open({
+                    skin: 'demo-class',
+                    title: '更新职位信息',
+                    type: 2,
+                    maxmin: true,
+                    anim: 5,
+                    area: ['100%', '100%'],
+                    content: '/manage/upDataJobTable?pid=' + pid,
+                    success: function (layero, index) {
+                        layer.iframeAuto(index);  //找到它的子窗口的body
+                        var body = layer.getChildFrame('body', index); //为子窗口元素赋值
+                        body.find('select[name=experience]').find('option[value = ' + data.experience + ']').attr("selected", "selected");
+                        body.find('select[name=education]').find('option[value = ' + data.education + ']').attr("selected", "selected");
+                        body.find('select[name=postnature]').find('option[value = ' + data.postnature + ']').attr("selected", "selected");
+                        body.find("input[name=ptitle]").val(data.ptitle);
+                        body.find("input[name=salary]").val(data.salary);
+                        body.find("input[name=temptation]").val(data.temptation);
+                        body.find("input[name=departments]").val(data.departments);
+                        body.find("input[name=place]").val(data.place);
+                        body.find("input[name=posttype1]").val(data.posttype1);
+                        body.find("input[name=posttype2]").val(data.posttype2);
+                        body.find("input[name=posttype3]").val(data.posttype3);
+                        body.find("input[name=posttype4]").val(data.posttype4);
+                        body.find("input[name=posttype5]").val(data.posttype5);
+                        body.find("textarea[name=description]").val(delHtmlTag(data.description));
+                        body.find("input[name=pid]").val(data.pid);
+                        form.render('select');
+                    }
+                });
+            }
+        });
+
+
+    });
+</script>
+
+
+</body>
+</html>

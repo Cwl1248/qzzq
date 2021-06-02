@@ -82,8 +82,8 @@ public class PositionService {
         }
     }
 
-    public List<PositioninfoDTO> getIndexPosition() {
-        List<PositioninfoDTO> list = positioninfodao.getIndexPosition();
+    public List<PositioninfoDTO> getIndexPosition(String title) {
+        List<PositioninfoDTO> list = positioninfodao.getIndexPosition(title);
         for (PositioninfoDTO positioninfoDTO : list) {
             EnterpriseinfoDTO enterpriseinfoDTO = positioninfoDTO.getEnterpriseinfoDTO();
             String logoimage = enterpriseinfoDTO.getLogoimage();
@@ -98,8 +98,8 @@ public class PositionService {
         return positioninfodao.getPositionInfoData(pid);
     }
 
-    public List<PositioninfoDTO> getPositionData(int pageNum, int pageSize) {
-        List<PositioninfoDTO> positionData = positioninfodao.getPositionData(pageNum, pageSize);
+    public List<PositioninfoDTO> getPositionData(int pageNum, int pageSize,String title) {
+        List<PositioninfoDTO> positionData = positioninfodao.getPositionData(pageNum, pageSize,title);
         for (PositioninfoDTO positioninfoDTO : positionData) {
             EnterpriseinfoDTO enterpriseinfoDTO = positioninfoDTO.getEnterpriseinfoDTO();
             String logoimage = enterpriseinfoDTO.getLogoimage();

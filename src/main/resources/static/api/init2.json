@@ -1,0 +1,18 @@
+{
+  "homeInfo": {
+    "title": "审批",
+    "href": "/root/approve"
+  },
+  "logoInfo": {
+    "title": "云职",
+    "image": "/project/images/Y.svg",
+    "href": ""
+  },"menuInfo": [
+  {
+    "title": "常规管理",
+    "icon": "fa fa-address-book",
+    "href": "",
+    "target": "_self"
+  }
+]
+}

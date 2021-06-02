@@ -329,4 +329,6 @@
                eUrl
         from enterpriseinfo
     </select>
+
+    <select id="selectALL" resultMap="BaseResultMap">select * from enterpriseinfo</select>
 </mapper>

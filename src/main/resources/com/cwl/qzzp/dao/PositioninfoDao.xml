@@ -360,23 +360,26 @@
 
     <select id="getIndexPosition" resultMap="BaseResultMap3">
         select
-            p.pId,
-            p.pTitle,
-            p.departments,
-            p.postnature,
-            p.education,
-            p.experience,
-            p.releaseTime,
-            p.salary,
-            p.visitNum,
-            e.category,
-            e.eName,
-            e.logoimage,
-            e.financingstage,
-            e.eplace
+        p.pId,
+        p.pTitle,
+        p.departments,
+        p.postnature,
+        p.education,
+        p.experience,
+        p.releaseTime,
+        p.salary,
+        p.visitNum,
+        e.category,
+        e.eName,
+        e.logoimage,
+        e.financingstage,
+        e.eplace
         from positioninfo p
-         left join enterpriseinfo e on p.dataId = e.eId
+        left join enterpriseinfo e on p.dataId = e.eId
         where states = '发布'
+        <if test="title!= null and title!=''">
+            AND p.pTitle LIKE concat('%',#{title},'%')
+        </if>
         order by p.visitNum desc
         limit 9;
     </select>
@@ -391,31 +394,36 @@
     </select>
 
     <select id="getPositionData" resultMap="BaseResultMap3">
-       select
-            p.pId,
-            p.pTitle,
-            p.postnature,
-            p.education,
-            p.experience,
-            p.releaseTime,
-            p.salary,
-            p.posttype1,
-            p.posttype2,
-            p.posttype3,
-            p.posttype4,
-            p.posttype5,
-            e.category,
-            e.eName,
-            e.logoimage,
-            e.benefit1,
-            e.benefit2,
-            e.benefit3,
-            e.benefit4,
-            e.benefit5,
-            e.numberofworkers,
-            e.financingstage
+        select
+        p.pId,
+        p.pTitle,
+        p.postnature,
+        p.education,
+        p.experience,
+        p.releaseTime,
+        p.salary,
+        p.posttype1,
+        p.posttype2,
+        p.posttype3,
+        p.posttype4,
+        p.posttype5,
+        e.category,
+        e.eName,
+        e.logoimage,
+        e.benefit1,
+        e.benefit2,
+        e.benefit3,
+        e.benefit4,
+        e.benefit5,
+        e.numberofworkers,
+        e.financingstage
         from positioninfo p
         left join enterpriseinfo e on p.dataId = e.eId
+        <where>
+            <if test="title!= null and title!=''">
+                AND p.pTitle LIKE concat('%',#{title},'%')
+            </if>
+        </where>
     </select>
 
     <select id="getPositionInfoDTO" resultMap="BaseResultMap">
@@ -467,6 +475,35 @@
             p.pTitle
         from positioninfo p
         where p.reId = #{id,jdbcType=CHAR}
+    </select>
+
+    <select id="getAllPositionByTitle" resultMap="BaseResultMap3">
+         select
+            p.pId,
+            p.pTitle,
+            p.postnature,
+            p.education,
+            p.experience,
+            p.releaseTime,
+            p.salary,
+            p.posttype1,
+            p.posttype2,
+            p.posttype3,
+            p.posttype4,
+            p.posttype5,
+            e.category,
+            e.eName,
+            e.logoimage,
+            e.benefit1,
+            e.benefit2,
+            e.benefit3,
+            e.benefit4,
+            e.benefit5,
+            e.numberofworkers,
+            e.financingstage
+        from positioninfo p
+        left join enterpriseinfo e on p.dataId = e.eId
+        where p.pTitle like concat('%',#{title},'%')
     </select>
 
 </mapper>

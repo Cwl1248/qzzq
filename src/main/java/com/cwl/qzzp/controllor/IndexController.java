@@ -22,8 +22,8 @@ public class IndexController {
     PositionService positionService;
 
     @GetMapping("/index")
-    public String getIndexData(ModelMap modelMap) {
-        List<PositioninfoDTO> list = positionService.getIndexPosition();
+    public String getIndexData(ModelMap modelMap,String title) {
+        List<PositioninfoDTO> list = positionService.getIndexPosition(title);
         modelMap.addAttribute("positionInfoList",list);
         return "index/index";
     }

@@ -23,7 +23,7 @@
         <div class="search-wrapper col-md-12">
             <div class="search-box">
                 <div class="input-group ">
-                    <input type="text" class="form-control" placeholder="搜索职位" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" placeholder="搜索职位名称" aria-describedby="basic-addon2">
                     <span class="input-group-addon" id="basic-addon2">搜 索</span>
                 </div>
             </div>
@@ -36,287 +36,255 @@
             <div class="menu_1" id="m1" style="margin-top: 20px;clear:both;" onmouseover="show('showdiv1','m1')"
                  onmouseout="mOut('showdiv1','m1')">
                 <div class="menu_1_text1">技术</div>
-                <div class="menu_1_text2">Java</div>
-                <div class="menu_1_text2">PHP</div>
-                <div class="menu_1_text2">C++</div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = Java)}">Java</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = PHP)}">PHP</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title ='C++' )}">C++</a></div>
                 <div class="menu_1_img"></div>
                 <div class="showdiv" id="showdiv1">
                     <div class="showdiv_head">后端开发</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">Java</div>
-                        <div class="showdiv_content_text">C++</div>
-                        <div class="showdiv_content_text">PHP</div>
-                        <div class="showdiv_content_text">数据挖掘</div>
-                        <div class="showdiv_content_text">搜索算法</div>
-                        <div class="showdiv_content_text">C</div>
-                        <div class="showdiv_content_text">C#</div>
-                        <div class="showdiv_content_text">全栈工程师</div>
-                        <div class="showdiv_content_text">后端开发及其他</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title = Java)}">Java</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title ='C++' )}">C++</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title = PHP)}">PHP</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =数据挖掘 )}">数据挖掘</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =搜索算法 )}">搜索算法</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =C )}">C</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title ='C#' )}">C#</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =全栈工程师 )}">全栈工程师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =数据挖掘 )}">数据挖掘</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">前端开发</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">web前端</div>
-                        <div class="showdiv_content_text">html5</div>
-                        <div class="showdiv_content_text">JavaScript</div>
-                        <div class="showdiv_content_text"></div>
-                        <div class="showdiv_content_text">前端开发及其他</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =web前端 )}">web前端</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =html5 )}">html5</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =JavaScript )}">JavaScript</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">移动开发</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">HTML5</div>
-                        <div class="showdiv_content_text">Android</div>
-                        <div class="showdiv_content_text">iOS</div>
-                        <div class="showdiv_content_text">WP</div>
-                        <div class="showdiv_content_text">移动开发及其他</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =HTML5 )}">HTML5</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =Android )}">Android</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =iOS )}">iOS</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">测试</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">测试工程师</div>
-                        <div class="showdiv_content_text">功能测试</div>
-                        <div class="showdiv_content_text">性能测试</div>
-                        <div class="showdiv_content_text">测试开发</div>
-                        <div class="showdiv_content_text">游戏测试</div>
-                        <div class="showdiv_content_text">白盒测试</div>
-                        <div class="showdiv_content_text">黑盒测试</div>
-                        <div class="showdiv_content_text">白盒测试</div>
-                        <div class="showdiv_content_text">测试及其他</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =测试工程师 )}">测试工程师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =功能测试 )}">功能测试</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =性能测试 )}">性能测试</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏测试 )}">游戏测试</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =测试开发 )}">测试开发</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">运维</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">运维工程师</div>
-                        <div class="showdiv_content_text">运维开发工程师</div>
-                        <div class="showdiv_content_text">网络工程师</div>
-                        <div class="showdiv_content_text">IT支持</div>
-                        <div class="showdiv_content_text">运维及其他</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =运维工程师 )}">运维工程师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =网络工程师 )}">网络工程师</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =IT支持 )}">IT支持</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =运维开发工程师 )}">运维开发工程师</a></div>
                     </div>
                 </div>
             </div>
             <div class="menu_1" id="m2" style="margin-top: 20px;clear:both;" onmouseover="show('showdiv2','m2')"
                  onmouseout="mOut('showdiv2','m2')">
                 <div class="menu_1_text1">产品</div>
-                <div class="menu_1_text2">产品总监</div>
-                <div class="menu_1_text2">产品经理</div>
-                <div class="menu_1_text2">高端职位</div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 产品总监)}">产品总监</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 产品经理)}">产品经理</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 产品助理)}">产品助理</a></div>
                 <div class="menu_1_img"></div>
                 <div class="showdiv" id="showdiv2">
                     <div class="showdiv_head">产品经理</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">产品经理</div>
-                        <div class="showdiv_content_text">网页产品经理</div>
-                        <div class="showdiv_content_text">移动产品经理</div>
-                        <div class="showdiv_content_text">产品助理</div>
-                        <div class="showdiv_content_text">电商产品经理</div>
-                        <div class="showdiv_content_text">数据产品经理</div>
-                        <div class="showdiv_content_text">产品实习生</div>
-                        <div class="showdiv_content_text">游戏策划</div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =网页产品经理 )}">网页产品经理</a></div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =移动产品经理 )}">移动产品经理</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =产品助理 )}">产品助理</a>
+                        </div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =产品实习生 )}">产品实习生</a>
+                        </div>
                     </div>
                     <div class="showdiv_head">产品设计师</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">网页产品设计师</div>
-                        <div class="showdiv_content_text">无线产品设计师</div>
-                    </div>
-                    <div class="showdiv_head">高端职位</div>
-                    <div class="showdiv_content">
-                        <div class="showdiv_content_text">产品部经理</div>
-                        <div class="showdiv_content_text">产品总监</div>
-                        <div class="showdiv_content_text">游戏制作人</div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =网页产品设计师 )}">网页产品设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea"
+                                                             th:href="@{/index(title =无线产品设计师 )}">无线产品设计师</a></div>
                     </div>
                 </div>
             </div>
             <div class="menu_1" id="m3" style="margin-top: 20px;clear:both;" onmouseover="show('showdiv3','m3')"
                  onmouseout="mOut('showdiv3','m3')">
                 <div class="menu_1_text1">设计</div>
-                <div class="menu_1_text2">UI设计师</div>
-                <div class="menu_1_text2">交互设计</div>
-                <div class="menu_1_text2">用户研究</div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 交互设计)}">交互设计</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = UI设计师)}">UI设计师</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 用户研究)}">用户研究</a></div>
                 <div class="menu_1_img"></div>
                 <div class="showdiv" id="showdiv3">
                     <div class="showdiv_head">视觉设计</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">视觉设计师</div>
-                        <div class="showdiv_content_text">网页设计师</div>
-                        <div class="showdiv_content_text">APP设计师</div>
-                        <div class="showdiv_content_text">UI设计师</div>
-                        <div class="showdiv_content_text">美术设计师</div>
-                        <div class="showdiv_content_text">广告设计师</div>
-                        <div class="showdiv_content_text">多媒体设计师</div>
-                        <div class="showdiv_content_text">游戏界面设计师</div>
-                        <div class="showdiv_content_text">游戏特效</div>
-                        <div class="showdiv_content_text">原画师</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =视觉设计师 )}">视觉设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =网页设计师 )}">网页设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =APP设计师 )}">APP设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =美术设计师 )}">美术设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告设计师 )}">广告设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =原画师 )}">原画师</a></div>
                     </div>
                     <div class="showdiv_head">交互设计</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">交互设计师</div>
-                        <div class="showdiv_content_text">无线交互设计师</div>
-                        <div class="showdiv_content_text">网页交互设计师</div>
-                        <div class="showdiv_content_text">硬件交互设计师</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =交互设计师 )}">交互设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =网页交互设计师 )}">网页交互设计师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =无线交互设计师 )}">无线交互设计师</a></div>
                     </div>
                     <div class="showdiv_head">用户研究</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">数据分析师</div>
-                        <div class="showdiv_content_text">用户研究员</div>
-                        <div class="showdiv_content_text">游戏数值策划</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =数据分析师 )}">数据分析师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =用户研究员 )}">用户研究员</a></div>
                     </div>
                 </div>
             </div>
             <div class="menu_1" id="m4" style="margin-top: 20px;clear:both;" onmouseover="show('showdiv4','m4')"
                  onmouseout="mOut('showdiv4','m4')">
                 <div class="menu_1_text1">运营</div>
-                <div class="menu_1_text2">媒体运营</div>
-                <div class="menu_1_text2">客服</div>
-                <div class="menu_1_text2">编辑</div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 产品总监)}">媒体运营</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 客服)}">客服</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 编辑)}">编辑</a></div>
                 <div class="menu_1_img"></div>
                 <div class="showdiv" id="showdiv4">
                     <div class="showdiv_head">运营</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">用户运营</div>
-                        <div class="showdiv_content_text">产品运营</div>
-                        <div class="showdiv_content_text">数据运营</div>
-                        <div class="showdiv_content_text">内容运营</div>
-                        <div class="showdiv_content_text">活动运营</div>
-                        <div class="showdiv_content_text">商家运营</div>
-                        <div class="showdiv_content_text">游戏运营</div>
-                        <div class="showdiv_content_text">新媒体运营</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =用户运营 )}">用户运营</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =商家运营 )}">商家运营</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =产品运营 )}">产品运营</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =内容运营 )}">内容运营</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =新媒体运营 )}">新媒体运营</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏运营 )}">游戏运营</a></div>
                     </div>
                     <div class="showdiv_head">编辑</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">副主编</div>
-                        <div class="showdiv_content_text">内容编辑</div>
-                        <div class="showdiv_content_text">文案策划</div>
-                        <div class="showdiv_content_text">记者</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =副主编 )}">副主编</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =内容编辑 )}">内容编辑</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =文案策划 )}">文案策划</a></div>
                     </div>
                     <div class="showdiv_head">客服</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">售前客服</div>
-                        <div class="showdiv_content_text">售后客服</div>
-                        <div class="showdiv_content_text">客服经理</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =售前客服 )}">售前客服</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =售后客服 )}">售后客服</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =客服经理 )}">客服经理</a></div>
                     </div>
                 </div>
             </div>
             <div class="menu_1" id="m5" style="margin-top: 20px;clear:both;" onmouseover="show('showdiv5','m5')"
                  onmouseout="mOut('showdiv5','m5')">
                 <div class="menu_1_text1">市场</div>
-                <div class="menu_1_text2">市场营销</div>
-                <div class="menu_1_text2">市场推广</div>
-                <div class="menu_1_text2">市场评估</div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 市场营销)}">市场营销</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 市场推广)}">市场推广</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 市场评估)}">市场评估</a></div>
                 <div class="menu_1_img"></div>
                 <div class="showdiv" id="showdiv5">
                     <div class="showdiv_head">市场/营销</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">市场营销</div>
-                        <div class="showdiv_content_text">市场策划</div>
-                        <div class="showdiv_content_text">市场顾问</div>
-                        <div class="showdiv_content_text">商务渠道</div>
-                        <div class="showdiv_content_text">活动策划</div>
-                        <div class="showdiv_content_text">海外市场</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =市场策划 )}">市场策划</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =市场顾问 )}">市场顾问</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =商务渠道 )}">商务渠道</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =海外市场 )}">海外市场</a></div>
                     </div>
                     <div class="showdiv_head">媒体/公关</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">政府关系</div>
-                        <div class="showdiv_content_text">品牌公关</div>
-                        <div class="showdiv_content_text">广告协调</div>
-                        <div class="showdiv_content_text">媒介投放</div>
-                        <div class="showdiv_content_text">媒介合作</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌公关 )}">品牌公关</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =媒介投放 )}">媒介投放</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =媒介合作 )}">媒介合作</a></div>
                     </div>
                     <div class="showdiv_head">品牌/广告</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">广告创意</div>
-                        <div class="showdiv_content_text">广告制作</div>
-                        <div class="showdiv_content_text">广告文案</div>
-                        <div class="showdiv_content_text">广告投放</div>
-                        <div class="showdiv_content_text">品牌合作</div>
-                        <div class="showdiv_content_text">品牌策划</div>
-                        <div class="showdiv_content_text">品牌专员</div>
-                        <div class="showdiv_content_text">美术指导</div>
-                        <div class="showdiv_content_text">品牌合作</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告创意 )}">广告创意</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告制作 )}">广告制作</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告文案 )}">广告文案</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =广告投放 )}">广告投放</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌专员 )}">品牌专员</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =品牌策划 )}">品牌策划</a></div>
                     </div>
                 </div>
             </div>
             <div class="menu_1" id="m6" style="margin-top: 20px;clear:both;" onmouseover="show('showdiv6','m6')"
                  onmouseout="mOut('showdiv6','m6')">
                 <div class="menu_1_text1">职能</div>
-                <div class="menu_1_text2">HR</div>
-                <div class="menu_1_text2">行政</div>
-                <div class="menu_1_text2">财务</div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = HR)}">HR</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 行政)}">行政</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 财务)}">财务</a></div>
                 <div class="menu_1_img"></div>
                 <div class="showdiv" id="showdiv6">
                     <div class="showdiv_head">人力资源</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">人力资源</div>
-                        <div class="showdiv_content_text">招聘</div>
-                        <div class="showdiv_content_text">HRBP</div>
-                        <div class="showdiv_content_text">人事/HR</div>
-                        <div class="showdiv_content_text">培训经理</div>
-                        <div class="showdiv_content_text">薪资福利经理</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =人力资源 )}">人力资源</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =招聘 )}">招聘</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =培训经理 )}">培训经理</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =HRBP )}">HRBP</a></div>
                     </div>
                     <div class="showdiv_head">行政</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">助理</div>
-                        <div class="showdiv_content_text">前台</div>
-                        <div class="showdiv_content_text">行政</div>
-                        <div class="showdiv_content_text">文秘</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =前台 )}">前台</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =行政 )}">行政</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =文秘 )}">文秘</a></div>
                     </div>
                     <div class="showdiv_head">财务</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">会计</div>
-                        <div class="showdiv_content_text">出纳</div>
-                        <div class="showdiv_content_text">财务</div>
-                        <div class="showdiv_content_text">结算</div>
-                        <div class="showdiv_content_text">税务</div>
-                        <div class="showdiv_content_text">审计</div>
-                        <div class="showdiv_content_text">风控</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =会计 )}">会计</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =出纳 )}">出纳</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =财务 )}">财务</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =结算 )}">结算</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =税务 )}">税务</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =审计 )}">审计</a></div>
                     </div>
                     <div class="showdiv_head">法务</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">法务</div>
-                        <div class="showdiv_content_text">律师</div>
-                        <div class="showdiv_content_text">专利</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =会计 )}">法务</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =会计 )}">律师</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =会计 )}">专利</a></div>
                     </div>
                 </div>
             </div>
             <div class="menu_1" id="m7" style="margin-top: 20px;clear:both;" onmouseover="show('showdiv7','m7')"
                  onmouseout="mOut('showdiv7','m7')">
                 <div class="menu_1_text1">游戏</div>
-                <div class="menu_1_text2">游戏开发</div>
-                <div class="menu_1_text2">游戏策划</div>
-                <div class="menu_1_text2">游戏体验官</div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 游戏开发)}">游戏开发</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 游戏策划)}">游戏策划</a></div>
+                <div class="menu_1_text2"><a class="titlea" th:href="@{/index(title = 游戏体验)}">游戏体验</a></div>
                 <div class="menu_1_img"></div>
                 <div class="showdiv" id="showdiv7">
                     <div class="showdiv_head">技术开发</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">H5游戏开发</div>
-                        <div class="showdiv_content_text">小游戏开发</div>
-                        <div class="showdiv_content_text">游戏后端开发</div>
-                        <div class="showdiv_content_text">C++游戏开发</div>
-                        <div class="showdiv_content_text">U3D</div>
-                        <div class="showdiv_content_text">游戏测试</div>
-                    </div>
-                    <div class="showdiv_head">产品策划</div>
-                    <div class="showdiv_content">
-                        <div class="showdiv_content_text">游戏制作人</div>
-                        <div class="showdiv_content_text">游戏产品经理</div>
-                        <div class="showdiv_content_text">游戏文案</div>
-                        <div class="showdiv_content_text">剧情设计</div>
-                        <div class="showdiv_content_text">游戏项目经理</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =H5游戏开发 )}">H5游戏开发</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =小游戏开发 )}">小游戏开发</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏后端开发 )}">游戏后端开发</a></div>
                     </div>
                     <div class="showdiv_head">设计</div>
                     <div class="showdiv_content">
-                        <div class="showdiv_content_text">游戏动画</div>
-                        <div class="showdiv_content_text">游戏原画</div>
-                        <div class="showdiv_content_text">游戏界面</div>
-                        <div class="showdiv_content_text">游戏场景</div>
-                        <div class="showdiv_content_text">游戏角色</div>
-                        <div class="showdiv_content_text">游戏动作</div>
-                        <div class="showdiv_content_text">游戏美工</div>
-                        <div class="showdiv_content_text">游戏动效</div>
-                    </div>
-                    <div class="showdiv_head">其他</div>
-                    <div class="showdiv_content">
-                        <div class="showdiv_content_text">游戏主播</div>
-                        <div class="showdiv_content_text">游戏陪练</div>
-                        <div class="showdiv_content_text">游戏体验官</div>
-                        <div class="showdiv_content_text">电竞主持</div>
-                        <div class="showdiv_content_text">电竞讲师</div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏动画)}">游戏动画</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏原画)}">游戏原画</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏界面)}">游戏界面</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏场景)}">游戏场景</a></div>
+                        <div class="showdiv_content_text"><a class="titlea" th:href="@{/index(title =游戏角色)}">游戏角色</a></div>
                     </div>
                 </div>
             </div>
@@ -325,11 +293,14 @@
         <div class=" col-md-7">
             <div style="margin-top: 30px;height: 372px;" class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{/project/images/img2.JPG}">
+                    <div class="swiper-slide"><img style="height: 100%;width: 100%"
+                                                   th:src="@{/project/images/img2.JPG}">
                     </div>
-                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{/project/images/img3.PNG}">
+                    <div class="swiper-slide"><img style="height: 100%;width: 100%"
+                                                   th:src="@{/project/images/img3.PNG}">
                     </div>
-                    <div class="swiper-slide"><img style="height: 100%;width: 100%" th:src="@{/project/images/img2.JPG}">
+                    <div class="swiper-slide"><img style="height: 100%;width: 100%"
+                                                   th:src="@{/project/images/img2.JPG}">
                     </div>
                 </div>
                 <!-- 如果需要分页器 -->
@@ -347,8 +318,8 @@
             <ul class="nav nav-tabs">
                 <li role="presentation"><span><a href="#" class="hot-position" id="hot" style="color: #6495ED"
                                                  onclick="bigSize('hot','new')">热门职位</a></span></li>
-                <li role="presentation"><span><a href="#" class="hot-position" id="new" onclick="bigSize2('hot','new')">最新发布</a></span>
-                </li>
+                <!--<li role="presentation"><span><a href="#" class="hot-position" id="new" onclick="bigSize2('hot','new')">最新发布</a></span>
+                </li>-->
             </ul>
             <!--职位列表-->
             <div class="row">
@@ -379,9 +350,10 @@
                         <div style="border-bottom:1px dashed #E0E0E0;margin-top: 15px"></div>
                         <!--企业信息-->
                         <div style="display:flex;margin-top: 18px">
-                            <div><img class="img-Logo" th:src="@{${'http://localhost:18011/'+p.enterpriseinfoDTO.logoimage}}"></div>
+                            <div><img class="img-Logo"
+                                      th:src="@{${'http://localhost:18011/'+p.enterpriseinfoDTO.logoimage}}"></div>
                             <div style="padding-left: 5px;margin-top: 6px">
-                                <div style="color: #555555" >
+                                <div style="color: #555555">
                                     <span th:text="${p.departments}+'/'"></span>
                                     <span th:text="${p.enterpriseinfoDTO.ename}"></span>
                                 </div>
@@ -399,7 +371,8 @@
             </div>
             <!--查看更多按钮-->
             <div class="row">
-                <a class="more" style="margin-left: 510px " href="/position/positionList"><span>查看更多</span></a>
+                <a class="more" style="margin-left: 510px "
+                   th:href="@{/position/positionList/(menutab=3)}"><span>查看更多</span></a>
             </div>
 
         </div>
@@ -456,33 +429,33 @@
 <script type="text/javascript" th:src="@{/component/bootstrap4.5.2/js/bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{/component/login.js}"></script>
 <script>
-    layui.use(['dropdown', 'util', 'layer', 'table'], function(){
+    layui.use(['dropdown', 'util', 'layer', 'table'], function () {
         var dropdown = layui.dropdown
-            ,util = layui.util
-            ,layer = layui.layer
-            ,table = layui.table
-            ,$ = layui.jquery;
+            , util = layui.util
+            , layer = layui.layer
+            , table = layui.table
+            , $ = layui.jquery;
         //自定义事件 - hover
         dropdown.render({
             elem: '#personalCenter'
-            ,trigger: 'hover'
-            ,data: [{
+            , trigger: 'hover'
+            , data: [{
                 title: '编辑简历'
-                ,id: 100
-                ,href:'/myInfo/InfoDetail'
-            },{
+                , id: 100
+                , href: '/myInfo/InfoDetail'
+            }, {
                 title: '修改简历'
-                ,id: 101
-                ,href:'/myInfo/toSelect'
-            },{
+                , id: 101
+                , href: '/myInfo/toSelect'
+            }, {
                 title: '为我推荐'
-                ,id: 102
-            },{
+                , id: 102
+            }, {
                 title: '收藏职位'
-                ,id: 102
-            },{
+                , id: 102
+            }, {
                 title: '面试评价'
-                ,id: 102
+                , id: 102
             }
             ]
         });

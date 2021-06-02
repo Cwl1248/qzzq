@@ -21,4 +21,6 @@ public interface EnterpriseinfoDao {
     int updateByPrimaryKey(EnterpriseinfoDTO record);
 
     List<EnterpriseinfoDTO> getCompanyListData(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+
+    List<EnterpriseinfoDTO> selectALL();
 }

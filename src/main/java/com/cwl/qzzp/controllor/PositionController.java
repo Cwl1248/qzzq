@@ -30,6 +30,7 @@ public class PositionController {
 
     @GetMapping("/positionList")
     public String getPositionData(ModelMap modelMap,
+                                  String title,
                                   @RequestParam(value = "pageNum", required = false) Integer pageNum,
                                   @RequestParam(value = "pageSize", required = false) Integer pageSize) {
         if (pageNum == null) {
@@ -38,7 +39,7 @@ public class PositionController {
         if (pageSize == null) {
             pageSize = 10;
         }
-        Page<PositioninfoDTO> positionData =( Page<PositioninfoDTO> ) positionService.getPositionData(pageNum, pageSize);
+        Page<PositioninfoDTO> positionData = (Page<PositioninfoDTO>) positionService.getPositionData(pageNum, pageSize,title);
         modelMap.addAttribute("list", positionData);
         return "positionlist/positionList";
     }
@@ -77,7 +78,7 @@ public class PositionController {
     @PostMapping("/posting")
     @ResponseBody
     public ResultData postingPositionInfoData(@RequestBody PostionAndUser p) {
-        return positionService.postingPositionInfoData(p.getPosition(),p.getLoginUser());
+        return positionService.postingPositionInfoData(p.getPosition(), p.getLoginUser());
     }
 
 
@@ -93,5 +94,23 @@ public class PositionController {
     public ResultData upDataPositionInfoData(@RequestBody PositioninfoDTO position) {
         return positionService.upDataPositionInfoData(position);
     }
+
+
+   /* @GetMapping("/getAllPositionByTitle")
+    public String getAllPositionByTitle(ModelMap modelMap,
+                                        String title,
+                                        @RequestParam(value = "pageNum", required = false) Integer pageNum,
+                                        @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+        if (pageNum == null) {
+            pageNum = 1;
+        }
+        if (pageSize == null) {
+            pageSize = 10;
+        }
+        Page<PositioninfoDTO> positionData = (Page<PositioninfoDTO>) positionService.getAllPositionByTitle(pageNum, pageSize,title);
+        modelMap.addAttribute("list", positionData);
+        return "positionlist/positionList";
+    }*/
+
 
 }
