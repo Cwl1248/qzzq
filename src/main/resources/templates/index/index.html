@@ -370,7 +370,7 @@
                                                      onclick="bigSize('hot','new')">热门职位</a></span></li>
                 </ul>
                 <!--职位列表-->
-                <div class="row" >
+                <div class="row" id="content">
                     <div class="col-md-4" th:each="p,status:${positionInfoList}">
                         <div class="pos-list">
                             <!--职位名称 发布时间 薪资信息-->
@@ -488,8 +488,25 @@
                 "menutab": 1
             }, function (resp) {
                 $("#target").empty();
-                $("#target").append($(resp).find("#target"));
-                $('html, body').animate({scrollTop: $('#target').offset().top-50}, 850)
+                var content = $("#content").html();
+                if(content == null || content.length == 0)
+                {
+                    div_object=document.createElement('p');
+                    div_object.id='div_id'
+                    div_object.innerHTML="暂无数据!!!"
+                    div_object.style.fontSize="20px"
+                    div_object.style.color="#999999"
+                    div_object.style.letterSpacing="10px"
+                    div_object.style.fontWeight="600"
+                    div_object.style.marginTop="20px"
+                    div_object.style.textAlign="center"
+
+                    document.getElementById('target').append(div_object);//放到指定的id里
+                }else {
+                    $("#target").append($(resp).find("#target"));
+                    $('html, body').animate({scrollTop: $('#target').offset().top-50}, 550)
+                }
+
             }, "html");
     }
 </script>

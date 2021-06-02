@@ -47,8 +47,7 @@
                         class="layui-btn layui-btn-primary layui-border-green layui-btn-radius" id="delivery">投递简历
                 </button>
                 <button type="button" style="outline: none"
-                        class="layui-btn layui-btn-primary layui-border-blue layui-btn-radius" id="collect"><i
-                        class="layui-icon  layui-icon-rate"></i>收藏该职位
+                        class="layui-btn layui-btn-primary layui-border-blue layui-btn-radius" id="collect">收藏该职位
                 </button>
 
             </div>
@@ -228,6 +227,9 @@
                     data: JSON.stringify(deliveryDto),
                     async: false,
                     success: function (res) {
+                        if (res.status===0){
+                            layer.msg("投递成功")
+                        }
                         console.log(res)
                     }
                 })
@@ -258,6 +260,9 @@
                     data: JSON.stringify(collectDto),
                     async: false,
                     success: function (res) {
+                        if (res.status===0){
+                            layer.msg("收藏成功")
+                        }
                         console.log(res)
 
                     }
