@@ -88,159 +88,167 @@
         <div class="col-md-1"></div>
     </div>
 
-    <div id="target">
-        <div class="row" style="margin-top:30px;font-size: 18px!important;" th:each="p,status:${list}" >
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div id="content">
-                <div style="display:flex; border: 1px solid #ededed;border-radius: 2px;padding: 10px">
-                    <div class="col-7">
-                        <a class="position-name" th:href="@{/position/positionInfo(pid=${p.pid},menutab=3)}"
-                           th:text="${p.ptitle}"></a>
-                        <span class="t" th:text="${#dates.format(p.releasetime,'mm:ss'+'发布')}"></span>
-                        <div style="margin-top: 15px">
-                            <span style="color: #FD5F39" th:text="${p.salary}"></span>
-                            <span style="color: #555555;margin-left: 15px" th:text="${'经验'+p.experience}+'/'"></span>
-                            <span style="color: #555555" th:text="${p.education}"></span>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <a class="com-name" th:text="${p.enterpriseinfoDTO.ename}"></a>
-                        <div style="margin-top: 15px;color: #555555">
-                            <span th:text="${p.enterpriseinfoDTO.category}+'/'"></span>
-                            <span th:text="${p.enterpriseinfoDTO.financingstage}+'/ '"></span>
-                            <span th:text="${p.enterpriseinfoDTO.numberofworkers}"></span>
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div style="border: 1px solid #ededed;height: 75px"><img style="width: 84px;height: 75px"
-                                                                                 th:src="@{${'http://localhost:18011/'+p.enterpriseinfoDTO.logoimage}}">
-                        </div>
-                    </div>
-                </div>
-                <div style="display:flex;background:#fafafa;padding: 10px">
-                    <div class="col-7">
-                        <div>
+    <div id="target" style="min-height: 300px">
+        <div class="row" >
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div id="content">
+                    <div class="row" th:each="p,status:${list}" style="margin-top:30px;font-size: 18px!important;">
+                        <div class="col-md-12">
+                            <div style="display:flex; border: 1px solid #ededed;border-radius: 2px;padding: 10px">
+                                <div class="col-7">
+                                    <a class="position-name" th:href="@{/position/positionInfo(pid=${p.pid},menutab=3)}"
+                                       th:text="${p.ptitle}"></a>
+                                    <span class="t" th:text="${#dates.format(p.releasetime,'mm:ss'+'发布')}"></span>
+                                    <div style="margin-top: 15px">
+                                        <span style="color: #FD5F39" th:text="${p.salary}"></span>
+                                        <span style="color: #555555;margin-left: 15px"
+                                              th:text="${'经验'+p.experience}+'/'"></span>
+                                        <span style="color: #555555" th:text="${p.education}"></span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <a class="com-name" th:text="${p.enterpriseinfoDTO.ename}"></a>
+                                    <div style="margin-top: 15px;color: #555555">
+                                        <span th:text="${p.enterpriseinfoDTO.category}+'/'"></span>
+                                        <span th:text="${p.enterpriseinfoDTO.financingstage}+'/ '"></span>
+                                        <span th:text="${p.enterpriseinfoDTO.numberofworkers}"></span>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div style="border: 1px solid #ededed;height: 75px"><img
+                                            style="width: 84px;height: 75px"
+                                            th:src="@{${'http://localhost:18011/'+p.enterpriseinfoDTO.logoimage}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display:flex;background:#fafafa;padding: 10px">
+                                <div class="col-7">
+                                    <div>
                             <span class="job-category" th:text="${p.posttype1}"
                                   th:class="${p.posttype1 ne '' ? 'job-category':'p-hide'}"></span>
-                            <span class="job-category" th:text="${p.posttype2}"
-                                  th:class="${p.posttype2 ne '' ? 'job-category':'p-hide'}"></span>
-                            <span class="job-category" th:text="${p.posttype3}"
-                                  th:class="${p.posttype3 ne '' ? 'job-category':'p-hide'}"></span>
-                            <span class="job-category" th:text="${p.posttype4}"
-                                  th:class="${p.posttype4 ne '' ? 'job-category':'p-hide'}"></span>
-                            <span class="job-category" th:text="${p.posttype5}"
-                                  th:class="${p.posttype5 ne '' ? 'job-category':'p-hide'}"></span>
+                                        <span class="job-category" th:text="${p.posttype2}"
+                                              th:class="${p.posttype2 ne '' ? 'job-category':'p-hide'}"></span>
+                                        <span class="job-category" th:text="${p.posttype3}"
+                                              th:class="${p.posttype3 ne '' ? 'job-category':'p-hide'}"></span>
+                                        <span class="job-category" th:text="${p.posttype4}"
+                                              th:class="${p.posttype4 ne '' ? 'job-category':'p-hide'}"></span>
+                                        <span class="job-category" th:text="${p.posttype5}"
+                                              th:class="${p.posttype5 ne '' ? 'job-category':'p-hide'}"></span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div><span>"</span>
+                                        <span th:text="${p.enterpriseinfoDTO.benefit1}"
+                                              th:class="${p.enterpriseinfoDTO.benefit1 ne '' ? '':'p-hide'}"></span>
+                                        <span th:text="${p.enterpriseinfoDTO.benefit2}"
+                                              th:class="${p.enterpriseinfoDTO.benefit2 ne '' ? '':'p-hide'}"></span>
+                                        <span th:text="${p.enterpriseinfoDTO.benefit3}"
+                                              th:class="${p.enterpriseinfoDTO.benefit3 ne '' ? '':'p-hide'}"></span>
+                                        <span th:text="${p.enterpriseinfoDTO.benefit4}"
+                                              th:class="${p.enterpriseinfoDTO.benefit4 ne '' ? '':'p-hide'}"></span>
+                                        <span th:text="${p.enterpriseinfoDTO.benefit5}"
+                                              th:class="${p.enterpriseinfoDTO.benefit5 ne '' ? '':'p-hide'}"></span>
+                                        <span>"</span>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
                         </div>
+
                     </div>
-                    <div class="col-4">
-                        <div><span>"</span>
-                            <span th:text="${p.enterpriseinfoDTO.benefit1}"
-                                  th:class="${p.enterpriseinfoDTO.benefit1 ne '' ? '':'p-hide'}"></span>
-                            <span th:text="${p.enterpriseinfoDTO.benefit2}"
-                                  th:class="${p.enterpriseinfoDTO.benefit2 ne '' ? '':'p-hide'}"></span>
-                            <span th:text="${p.enterpriseinfoDTO.benefit3}"
-                                  th:class="${p.enterpriseinfoDTO.benefit3 ne '' ? '':'p-hide'}"></span>
-                            <span th:text="${p.enterpriseinfoDTO.benefit4}"
-                                  th:class="${p.enterpriseinfoDTO.benefit4 ne '' ? '':'p-hide'}"></span>
-                            <span th:text="${p.enterpriseinfoDTO.benefit5}"
-                                  th:class="${p.enterpriseinfoDTO.benefit5 ne '' ? '':'p-hide'}"></span>
-                            <span>"</span>
-                        </div>
-                    </div>
-                    <div class="col-1"></div>
                 </div>
             </div>
         </div>
         <div class="col-md-1"></div>
     </div>
+</div>
+<!--page bar-->
+<div id="pagebar" th:if="${list.getPageNum() le list.getPages()}">
+    <div class="pagerow " th:if="${list.pages<10}">
+        <ul id="menu">
+            <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                             th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
+            </li>
+            <li th:each="num : ${#numbers.sequence(1,list.pages)}">
+                <a th:classappend="page-btn" th:text="${num}"
+                   th:class="${list.pageNum eq num ? 'page-btn-active':''}"
+                   th:href="@{/company/companyList(pageNum=${num},pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum lt list.pages}">
+                <a class="page-btn"
+                   th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
+            </li>
+        </ul>
     </div>
-    <!--page bar-->
-    <div class="" th:if="${list.getPageNum() le list.getPages()}">
-        <div class="pagerow " th:if="${list.pages<10}">
-            <ul id="menu">
-                <li th:if="${list.pageNum}>1"><a class="page-btn"
-                                                 th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
-                </li>
-                <li th:each="num : ${#numbers.sequence(1,list.pages)}">
-                    <a th:classappend="page-btn" th:text="${num}"
-                       th:class="${list.pageNum eq num ? 'page-btn-active':''}"
-                       th:href="@{/company/companyList(pageNum=${num},pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum lt list.pages}">
-                    <a class="page-btn"
-                       th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
-                </li>
-            </ul>
-        </div>
 
-        <div class="pagerow" th:if="${list.pages>10}">
-            <ul id="menu">
-                <li th:if="${list.pageNum}>1"><a class="page-btn"
-                                                 th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
-                </li>
-                <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}"
-                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a>
-                </li>
-                <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}"
-                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}"
-                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}"
-                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}"
-                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}"
-                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}"
-                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}"
-                                                      th:href="@{/company/companyList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum gt 1}"><a class="page-btn" th:text="${list.pageNum-1}"
-                                                    th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum le list.pages}"><a th:classappend="page-btn"
-                                                             th:class="${list.pageNum le list.pages ? 'page-btn-active':''}"
-                                                             th:text="${list.pageNum}"
-                                                             th:href="@{/company/companyList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}"
-                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}"
-                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}"
-                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}"
-                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}"
-                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}"
-                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}"
-                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}"
-                                                               th:href="@{/company/companyList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=3)}"></a>
-                </li>
-                <li th:if="${list.pageNum lt list.pages}"><a class="page-btn"
-                                                             th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
-                </li>
-            </ul>
-        </div>
+    <div class="pagerow" th:if="${list.pages>10}">
+        <ul id="menu">
+            <li th:if="${list.pageNum}>1"><a class="page-btn"
+                                             th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
+            </li>
+            <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}"
+                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a>
+            </li>
+            <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}"
+                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}"
+                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}"
+                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}"
+                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}"
+                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}"
+                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}"
+                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum gt 1}"><a class="page-btn" th:text="${list.pageNum-1}"
+                                                th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum le list.pages}"><a th:classappend="page-btn"
+                                                         th:class="${list.pageNum le list.pages ? 'page-btn-active':''}"
+                                                         th:text="${list.pageNum}"
+                                                         th:href="@{/company/companyList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}"
+                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}"
+                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}"
+                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}"
+                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}"
+                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}"
+                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}"
+                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}"
+                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=3)}"></a>
+            </li>
+            <li th:if="${list.pageNum lt list.pages}"><a class="page-btn"
+                                                         th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
+            </li>
+        </ul>
     </div>
+</div>
 
 
 </div>
@@ -274,6 +282,7 @@
             }, function (resp) {
                 $("#target").empty();
                 var content = $(resp).find("#content").html()
+                console.log(content.trim())
                 if (content.trim() === '') {
                     div_object = document.createElement('p');
                     div_object.id = 'div_id'
@@ -285,9 +294,11 @@
                     div_object.style.marginTop = "20px"
                     div_object.style.textAlign = "center"
                     document.getElementById('target').append(div_object);//放到指定的id里
+                    document.getElementById('pagebar').style.display="none"
                 } else {
                     $("#target").append($(resp).find("#target"));
                     $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                    document.getElementById('pagebar').style.display="block"
                 }
             }, "html");
     }
@@ -311,9 +322,11 @@
                     div_object.style.marginTop = "20px"
                     div_object.style.textAlign = "center"
                     document.getElementById('target').append(div_object);//放到指定的id里
+                    document.getElementById('pagebar').style.display="none"
                 } else {
                     $("#target").append($(resp).find("#target"));
                     $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                    document.getElementById('pagebar').style.display="block"
                 }
             }, "html");
     }
@@ -337,9 +350,11 @@
                     div_object.style.marginTop = "20px"
                     div_object.style.textAlign = "center"
                     document.getElementById('target').append(div_object);//放到指定的id里
+                    document.getElementById('pagebar').style.display="none"
                 } else {
                     $("#target").append($(resp).find("#target"));
                     $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                    document.getElementById('pagebar').style.display="block"
                 }
             }, "html");
     }
@@ -363,9 +378,11 @@
                     div_object.style.marginTop = "20px"
                     div_object.style.textAlign = "center"
                     document.getElementById('target').append(div_object);//放到指定的id里
+                    document.getElementById('pagebar').style.display="none"
                 } else {
                     $("#target").append($(resp).find("#target"));
                     $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                    document.getElementById('pagebar').style.display="block"
                 }
             }, "html");
     }
@@ -389,9 +406,11 @@
                     div_object.style.marginTop = "20px"
                     div_object.style.textAlign = "center"
                     document.getElementById('target').append(div_object);//放到指定的id里
+                    document.getElementById('pagebar').style.display="none"
                 } else {
                     $("#target").append($(resp).find("#target"));
                     $('html, body').animate({scrollTop: $('#target').offset().top - 50}, 550)
+                    document.getElementById('pagebar').style.display="block"
                 }
             }, "html");
     }
