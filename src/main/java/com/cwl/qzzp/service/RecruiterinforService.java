@@ -28,7 +28,7 @@ public class RecruiterinforService {
         if (ObjectUtils.isNotEmpty(recruiterinforDTO)) {
             RecruiterinforDTO recruiterinfor = recruiterinforMapper.selectByPrimaryKey(recruiterinforDTO);
             if (ObjectUtils.isNotEmpty(recruiterinfor)) {
-                return ResultData.ok(recruiterinfor.getItemid());
+                return ResultData.ok(recruiterinfor);
             } else {
                 return ResultData.failed(RetCode.LOGINFAIL, "登录失败");
             }

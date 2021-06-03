@@ -42,12 +42,6 @@
           "target": "_self",
           "child": [
             {
-              "title": "添加公司信息",
-              "href": "manage/addCompanyInformation",
-              "icon": "fa fa-stumbleupon-circle",
-              "target": "_self"
-            },
-            {
               "title": "修改公司信息",
               "href": "manage/upDataCompanyInformation",
               "icon": "fa fa-tags",

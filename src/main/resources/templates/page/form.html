@@ -233,23 +233,31 @@
         form.on('submit(demo1)', function (data) {
             const position = data.field
             let loginUser = {}
-            loginUser.itemid= window.localStorage.getItem('itemid')
-            $.ajax({
-                    url: '/position/posting',
-                    type: 'post',
-                    contentType: 'application/json; charset=UTF-8',
-                    async: false,
-                    data: JSON.stringify({position,loginUser}),
-                    success: function (res) {
-                        console.log(res)
-                        if (res.status === 0) {
-                            layer.msg("发布成功")
-                        } else {
-                            layer.msg("发布失败")
+            var itemid = window.sessionStorage.getItem('itemid')
+            var dataid = window.sessionStorage.getItem('dataid')
+            loginUser.itemid= itemid
+            loginUser.dataid= dataid
+            if(itemid !='' && dataid !=''){
+                $.ajax({
+                        url: '/position/posting',
+                        type: 'post',
+                        contentType: 'application/json; charset=UTF-8',
+                        async: false,
+                        data: JSON.stringify({position,loginUser}),
+                        success: function (res) {
+                            console.log(res)
+                            if (res.status === 0) {
+                                layer.msg("发布成功")
+                            } else {
+                                layer.msg("发布失败")
+                            }
                         }
                     }
-                }
-            )
+                )
+            }else {
+                layer.msg("发布失败，请检查登录状态")
+            }
+
 
         });
     });

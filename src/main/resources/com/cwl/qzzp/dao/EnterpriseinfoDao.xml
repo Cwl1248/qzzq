@@ -71,9 +71,26 @@
     benefit2, benefit3, benefit4, benefit5, numberOfWorkers
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap2">
-        select e.*,
-               m.*
-                ,
+        select
+               e.eId,
+               e.logoImage,
+               e.eName,
+               e.ePlace,
+               e.signLanguage,
+               e.eIntroducation,
+               e.financingStage,
+               e.category,
+               e.eUrl,
+               e.eImage1,
+               e.eImage2,
+               e.eImage3,
+               e.benefit1,
+               e.benefit2,
+               e.benefit3,
+               e.benefit4,
+               e.benefit5,
+               e.numberOfWorkers,
+               m.*,
                (select count(p2.pId) from positioninfo p2 where p2.dataId = e.eId) as positionNum,
                p.pId,
                p.pTitle,

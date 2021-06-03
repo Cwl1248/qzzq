@@ -168,16 +168,16 @@
     <div class="pagerow " th:if="${list.pages<10}">
         <ul id="menu">
             <li th:if="${list.pageNum}>1"><a class="page-btn"
-                                             th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
+                                             th:href="@{/position/positionList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
             </li>
             <li th:each="num : ${#numbers.sequence(1,list.pages)}">
                 <a th:classappend="page-btn" th:text="${num}"
                    th:class="${list.pageNum eq num ? 'page-btn-active':''}"
-                   th:href="@{/company/companyList(pageNum=${num},pageSize=${list.pageSize},menutab=3)}"></a>
+                   th:href="@{/position/positionList(pageNum=${num},pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum lt list.pages}">
                 <a class="page-btn"
-                   th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
+                   th:href="@{/position/positionList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
             </li>
         </ul>
     </div>
@@ -185,66 +185,66 @@
     <div class="pagerow" th:if="${list.pages>10}">
         <ul id="menu">
             <li th:if="${list.pageNum}>1"><a class="page-btn"
-                                             th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
+                                             th:href="@{/position/positionList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}">&lt;</a>
             </li>
             <li th:if="${list.pageNum-8 gt 1}"><a class="page-btn" th:text="${list.pageNum-9}"
-                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a>
+                                                  th:href="@{/position/positionList(pageNum=${list.pageNum}-9,pageSize=${list.pageSize})}"></a>
             </li>
             <li th:if="${list.pageNum-7 gt 1}"><a class="page-btn" th:text="${list.pageNum-8}"
-                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                  th:href="@{/position/positionList(pageNum=${list.pageNum}-8,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum-6 gt 1}"><a class="page-btn" th:text="${list.pageNum-7}"
-                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                  th:href="@{/position/positionList(pageNum=${list.pageNum}-7,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum-5 gt 1}"><a class="page-btn" th:text="${list.pageNum-6}"
-                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                  th:href="@{/position/positionList(pageNum=${list.pageNum}-6,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum-4 gt 1}"><a class="page-btn" th:text="${list.pageNum-5}"
-                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                  th:href="@{/position/positionList(pageNum=${list.pageNum}-5,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum-3 gt 1}"><a class="page-btn" th:text="${list.pageNum-4}"
-                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                  th:href="@{/position/positionList(pageNum=${list.pageNum}-4,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum-2 gt 1}"><a class="page-btn" th:text="${list.pageNum-3}"
-                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                  th:href="@{/position/positionList(pageNum=${list.pageNum}-3,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum-1 gt 1}"><a class="page-btn" th:text="${list.pageNum-2}"
-                                                  th:href="@{/company/companyList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                  th:href="@{/position/positionList(pageNum=${list.pageNum}-2,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum gt 1}"><a class="page-btn" th:text="${list.pageNum-1}"
-                                                th:href="@{/company/companyList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                th:href="@{/position/positionList(pageNum=${list.pageNum}-1,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum le list.pages}"><a th:classappend="page-btn"
                                                          th:class="${list.pageNum le list.pages ? 'page-btn-active':''}"
                                                          th:text="${list.pageNum}"
-                                                         th:href="@{/company/companyList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=3)}"></a>
+                                                         th:href="@{/position/positionList(pageNum=${list.pageNum},pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum+1 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+1}"
-                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                           th:href="@{/position/positionList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum+2 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+2}"
-                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                           th:href="@{/position/positionList(pageNum=${list.pageNum}+2,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum+3 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+3}"
-                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                           th:href="@{/position/positionList(pageNum=${list.pageNum}+3,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum+4 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+4}"
-                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                           th:href="@{/position/positionList(pageNum=${list.pageNum}+4,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum+5 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+5}"
-                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                           th:href="@{/position/positionList(pageNum=${list.pageNum}+5,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum+6 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+6}"
-                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                           th:href="@{/position/positionList(pageNum=${list.pageNum}+6,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum+7 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+7}"
-                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                           th:href="@{/position/positionList(pageNum=${list.pageNum}+7,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum+8 lt list.pages}"><a class="page-btn" th:text="${list.pageNum+8}"
-                                                           th:href="@{/company/companyList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=3)}"></a>
+                                                           th:href="@{/position/positionList(pageNum=${list.pageNum}+8,pageSize=${list.pageSize},menutab=3)}"></a>
             </li>
             <li th:if="${list.pageNum lt list.pages}"><a class="page-btn"
-                                                         th:href="@{/company/companyList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
+                                                         th:href="@{/position/positionList(pageNum=${list.pageNum}+1,pageSize=${list.pageSize},menutab=3)}">&gt;</a>
             </li>
         </ul>
     </div>
@@ -258,13 +258,13 @@
     function goNewsPage() {
         let pageNum3 = $("#inputContentNews").val()
         let pageSize3 = $("#pageNewsSelect").val()
-        location.href = `/company/companyList?pageNum=${pageNum3}&pageSize=${pageSize3}&menutab=3`;
+        location.href = `/position/positionList?pageNum=${pageNum3}&pageSize=${pageSize3}&menutab=3`;
     }
 
     /*下拉列表*/
     function goNewsPageSize() {
         let pageSize3 = $("#pageNewsSelect").val()
-        location.href = `/company/companyList?pageNum=1&pageSize=${pageSize3}&menutab=3`;
+        location.href = `/position/positionList?pageNum=1&pageSize=${pageSize3}&menutab=3`;
     }
 
 </script>

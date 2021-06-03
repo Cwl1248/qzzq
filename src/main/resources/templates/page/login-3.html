@@ -380,7 +380,8 @@
                             window.localStorage.setItem('username', username)
                             window.localStorage.setItem('password', password)
                             /*招聘者主键*/
-                            window.sessionStorage.setItem('itemid', res.data)
+                            window.sessionStorage.setItem('itemid', res.data.itemid)
+                            window.sessionStorage.setItem('dataid', res.data.dataid)
                         });
                     } else {
                         layer.msg('登录失败', function () {
