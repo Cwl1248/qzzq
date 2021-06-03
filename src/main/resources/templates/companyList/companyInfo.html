@@ -77,7 +77,7 @@
                 <div th:each="p:${companyInfoData.positioninfoDTOList}">
                     <div class="recruitment">
                         <div>
-                            <span class="recruitment-place" th:text="${p.ptitle}"></span>
+                            <a class="recruitment-place" style="cursor: pointer;text-decoration: none" th:text="${p.ptitle}" th:href="@{/position/positionInfo(pid=${p.pid},menutab=3)}"></a>
                             <span class="recruitment-place" style="float: right"  th:text="${p.departments}"></span>
                         </div>
                         <div style="margin-top: 15px;">
