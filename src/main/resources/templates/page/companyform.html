@@ -220,11 +220,11 @@
         var item = window.sessionStorage.getItem('itemid');
         var dataid = window.sessionStorage.getItem('dataid');
         $("#itemid").val(item)
-        /*if (dataid != '') {/!*已经添加过公司信息*!/
-            $("#add").attr('disabled', true);
-        } else {
+        if (dataid === 'undefined') {
             $("#add").attr('disabled', false);
-        }*/
+        } else {
+            $("#add").attr('disabled', true);
+        }
     }
     var eImage = new Array();
     const E = window.wangEditor

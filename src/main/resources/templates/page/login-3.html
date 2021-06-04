@@ -423,9 +423,10 @@
                             window.localStorage.setItem('username', username)
                             window.localStorage.setItem('password', password)
                             window.sessionStorage.setItem('itemid', res.data)
+                            window.sessionStorage.setItem('dataid', res.data.dataid)
                         });
                     } else {
-                        layer.msg('注册失败', function () {
+                        layer.msg(res.message, function () {
                             window.location = '/registered';
                         });
                     }

@@ -42,33 +42,39 @@ public class RecruiterinforService {
     public ResultData registered(RecruiterinforDTO recruiterinforDTO) {
         String itemid = GetUUIDUtil.getUUID();
         if (ObjectUtils.isNotEmpty(recruiterinforDTO)) {
-            recruiterinforDTO.setItemid(itemid);
-            int insert = recruiterinforMapper.insertSelective(recruiterinforDTO);
-            if (insert != 0) {
-                return ResultData.ok(itemid);
+            RecruiterinforDTO recruiterinfor = recruiterinforMapper.selectByPrimaryKey(recruiterinforDTO);
+            if (ObjectUtils.isNotEmpty(recruiterinfor)) {
+                return ResultData.failed(RetCode.REGISTRATIONFAILED.code, "用户已存在");
             } else {
-                return ResultData.failed(RetCode.REGISTRATIONFAILED.code, "注册失败");
+                recruiterinforDTO.setItemid(itemid);
+                int insert = recruiterinforMapper.insertSelective(recruiterinforDTO);
+                if (insert != 0) {
+                    return ResultData.ok(itemid);
+                } else {
+                    return ResultData.failed(RetCode.REGISTRATIONFAILED.code, "注册失败");
+                }
             }
+
         } else {
             return ResultData.failed(RetCode.REGISTRATIONFAILED.code, "注册失败");
         }
 
     }
 
-    public RecruiterinforDTO getLoginUser(RecruiterinforDTO recruiterinforDTO){
+    public RecruiterinforDTO getLoginUser(RecruiterinforDTO recruiterinforDTO) {
         return recruiterinforMapper.selectByPK(recruiterinforDTO);
     }
 
     public ResultData updateLoginUser(RecruiterinforDTO recruiterinforDTO) {
 
-        if(ObjectUtils.isNotEmpty(recruiterinforDTO)){
+        if (ObjectUtils.isNotEmpty(recruiterinforDTO)) {
             int i = recruiterinforMapper.updateByPrimaryKeySelective(recruiterinforDTO);
-            if (i>0){
+            if (i > 0) {
                 return ResultData.ok();
-            }else {
+            } else {
                 return ResultData.failed(RetCode.FAIL);
             }
-        }else {
+        } else {
             return ResultData.failed(RetCode.FAIL);
         }
     }
