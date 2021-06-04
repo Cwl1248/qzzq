@@ -26,7 +26,7 @@ public class JWTUtil {
     public static String getToken(Map<String,String> map){
 
         Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.MINUTE, 30);
+        instance.add(Calendar.HOUR, 24);
 
         //创建jwt builder
         JWTCreator.Builder builder = JWT.create();

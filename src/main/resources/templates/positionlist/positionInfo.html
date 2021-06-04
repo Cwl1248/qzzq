@@ -225,10 +225,13 @@
                     type: 'post',
                     contentType: 'application/json; charset=UTF-8',
                     data: JSON.stringify(deliveryDto),
+                    headers:{'Authorization':sessionStorage.getItem('token')},
                     async: false,
                     success: function (res) {
                         if (res.status===0){
                             layer.msg("投递成功")
+                        }else {
+                            layer.msg("投递失败,请检查登录状态")
                         }
                         console.log(res)
                     }
@@ -258,10 +261,13 @@
                     type: 'post',
                     contentType: 'application/json; charset=UTF-8',
                     data: JSON.stringify(collectDto),
+                    headers:{'Authorization':sessionStorage.getItem('token')},
                     async: false,
                     success: function (res) {
                         if (res.status===0){
                             layer.msg("收藏成功")
+                        }else {
+                            layer.msg("收藏成功,请检查登录状态")
                         }
                         console.log(res)
 

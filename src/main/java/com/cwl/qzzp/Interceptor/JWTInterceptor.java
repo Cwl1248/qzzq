@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 
 /**
- * @author 李显星
+ * @author
  * @date 2021/5/14 21:40
  **/
 public class JWTInterceptor implements HandlerInterceptor {
@@ -22,7 +22,7 @@ public class JWTInterceptor implements HandlerInterceptor {
 
         HashMap<String, String> map = new HashMap<>();
         //获取请求钟的token
-        String token = request.getHeader("token");
+        String token = request.getHeader("Authorization");
 
         try {
             //验证token

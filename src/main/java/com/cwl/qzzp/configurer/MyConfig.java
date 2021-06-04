@@ -2,6 +2,7 @@ package com.cwl.qzzp.configurer;
 
 import com.cwl.qzzp.Interceptor.JWTInterceptor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * @author
  * @date 2021/5/14 23:23
  **/
+@Configuration
 public class MyConfig extends WebMvcConfigurationSupport {
 
     /**
@@ -23,7 +25,8 @@ public class MyConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/resources/")
                 .addResourceLocations("classpath:/static/")
-                .addResourceLocations("classpath:/public/");
+                .addResourceLocations("classpath:/public/")
+                .addResourceLocations("file:D:/qzzpImg/LOGO/");
     }
 
     /**
@@ -34,8 +37,8 @@ public class MyConfig extends WebMvcConfigurationSupport {
     protected void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
         registry.addInterceptor(myInterceptor())
-                .addPathPatterns("/order/**")
-                .excludePathPatterns("/user/**");
+                .addPathPatterns("/collection/insertDelivery")
+                .addPathPatterns("/collection/insertCollection");
     }
 
     /**

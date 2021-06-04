@@ -159,7 +159,7 @@ public class MyInfoController {
     @ResponseBody
     private ResultData insertAppraise(@RequestBody AppraiseDTO appraiseDTO) {
         log.debug("appraiseDTO", appraiseDTO);
-        if (StringUtils.isNotEmpty(appraiseDTO.getUserid())&& StringUtils.isNotEmpty(appraiseDTO.getDataid())) {
+        if (StringUtils.isNotEmpty(appraiseDTO.getUserid()) && StringUtils.isNotEmpty(appraiseDTO.getDataid())) {
             appraiseDTO.setItemid(GetUUIDUtil.getUUID());
             try {
                 int i = appraiseService.insertAppraise(appraiseDTO);
@@ -207,12 +207,17 @@ public class MyInfoController {
         log.info("", user);
         try {
             if (ObjectUtils.isNotEmpty(user)) {
-                user.setUserid(GetUUIDUtil.getUUID());
-                Integer i = userService.registered(user);
-                if (ObjectUtils.isNotEmpty(i)) {
-                    return ResultData.ok();
+                UserinfoDTO existed = userService.login(user);
+                if (ObjectUtils.isNotEmpty(existed)) {
+                    return ResultData.failed(RetCode.LOGINFAIL.code, "用户已存在");
                 } else {
-                    return ResultData.failed(RetCode.LOGINFAIL);
+                    user.setUserid(GetUUIDUtil.getUUID());
+                    Integer i = userService.registered(user);
+                    if (ObjectUtils.isNotEmpty(i)) {
+                        return ResultData.ok();
+                    } else {
+                        return ResultData.failed(RetCode.LOGINFAIL);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -263,6 +268,7 @@ public class MyInfoController {
 
     /**
      * 查询个人信息
+     *
      * @param userid
      * @return
      */

@@ -1,3 +1,42 @@
+var layer
+layui.use(['dropdown', 'util', 'layer', 'table'], function () {
+        var dropdown = layui.dropdown
+            , util = layui.util
+            , table = layui.table
+            , $ = layui.jquery;
+        layer = layui.layer
+        //自定义事件 - hover
+        var userid = sessionStorage.getItem('userid')
+    console.log(window.sessionStorage.getItem('token'));
+    dropdown.render({
+            elem: '#personalCenter'
+            , trigger: 'hover'
+            , data: [{
+                title: '我的简历'
+                , id: 100
+                , href: '/myInfo/InfoDetail'
+            }, {
+                title: '修改简历'
+                , id: 101
+                , href: '/myInfo/toSelect'
+            }, {
+                title: '为我推荐'
+                , id: 102
+                , href: '/myInfo/toRecommend?userid=' + userid
+            }, {
+                title: '收藏职位'
+                , id: 102
+                , href: '/myInfo/toCollection?userid=' + userid
+            }, {
+                title: '投递记录'
+                , id: 102
+                , href: '/myInfo/deliveryRecord?userid=' + userid
+            }
+            ]
+        });
+    }
+)
+
 function login() {
     let email = document.getElementById("inputEmail3").value
     let pwd = document.getElementById("inputPassword3").value
@@ -17,9 +56,14 @@ function login() {
             console.log("Userid:" + res.data['Userid'])
             sessionStorage.setItem("token", res.data['token'])
             sessionStorage.setItem("userid", res.data['Userid'])
-            alert('登录成功')
-            $('#loginModal').modal('hide')
-            $('#registeredModal').modal('hide')
+            console.log(res.status === 0)
+            if (res.status === 0) {
+                layer.msg('登录成功')
+                $('#loginModal').modal('hide')
+                $('#registeredModal').modal('hide')
+            } else {
+                layer.msg('登录失败')
+            }
         }
     })
 }
@@ -38,48 +82,16 @@ function registered() {
         dataType: "json",
         contentType: "application/json",
         success: function (res) {
-            $('#loginModal').modal('hide')
-            $('#registeredModal').modal('hide')
-            alert('注册成功')
+            if (res.status === 0) {
+                layer.msg('注册成功')
+                $('#loginModal').modal('hide')
+                $('#registeredModal').modal('hide')
+            } else {
+                layer.msg(res.message)
+            }
             console.log(res)
         }
     })
 }
 
 
-layui.use(['dropdown', 'util', 'layer', 'table'], function () {
-        var dropdown = layui.dropdown
-            , util = layui.util
-            , layer = layui.layer
-            , table = layui.table
-            , $ = layui.jquery;
-        //自定义事件 - hover
-        var userid = sessionStorage.getItem('userid')
-        dropdown.render({
-            elem: '#personalCenter'
-            , trigger: 'hover'
-            , data: [{
-                title: '我的简历'
-                , id: 100
-                , href: '/myInfo/InfoDetail'
-            }, {
-                title: '修改简历'
-                , id: 101
-                , href: '/myInfo/toSelect'
-            }, {
-                title: '为我推荐'
-                , id: 102
-                , href: '/myInfo/toRecommend?userid=' + userid
-            }, {
-                title: '收藏职位'
-                , id: 102
-                ,href: '/myInfo/toCollection?userid=' + userid
-            }, {
-                title: '投递记录'
-                , id: 102
-                ,href: '/myInfo/deliveryRecord?userid=' + userid
-            }
-            ]
-        });
-    }
-)
