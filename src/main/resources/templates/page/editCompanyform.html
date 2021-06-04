@@ -174,7 +174,6 @@
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <button class="layui-btn" lay-submit="" lay-filter="modify">修改</button>
-                    <!--    <button class="layui-btn layui-btn-primary" lay-submit="" id="getdata">getdata</button>-->
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -219,7 +218,6 @@
                  contentType: 'application/json; charset=UTF-8',
                  data:{'id':itemid},
                  success:function (res) {
-                     console.log(res)
                      if(itemid !=null){
                          $.ajax({
                              url: '/company/selectByPk',
@@ -229,6 +227,7 @@
                              data: {'eid':res.data.dataid },
                              success: function (res) {
                                  if (res.status === 0) {
+                                     $("#eid").val(res.data.eid)
                                      $("#ename").val(res.data.ename)
                                      $("#eplace").val(res.data.eplace)
                                      $("#category").val(res.data.category)
@@ -243,7 +242,6 @@
                                      $("#benefit5").val(res.data.benefit5)
                                      $("#eintroducation").val(delHtmlTag(res.data.eintroducation))
                                      form.render();
-                                     console.log(form.val("scoreRuleForm"))
                                  }
                              }
                          })
