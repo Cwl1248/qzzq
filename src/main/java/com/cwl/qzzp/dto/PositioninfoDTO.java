@@ -117,5 +117,5 @@ public class PositioninfoDTO implements Serializable {
 
     private EnterpriseinfoDTO enterpriseinfoDTO;
 
-    private List<AppraiseDTO> AppraiseDTO;
+    private List<AppraiseDTO> appraiseDTO;
 }

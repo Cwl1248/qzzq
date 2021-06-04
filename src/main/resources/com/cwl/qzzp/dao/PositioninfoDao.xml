@@ -61,9 +61,20 @@
             <result column="benefit5" jdbcType="VARCHAR" property="benefit5"/>
             <result column="numberOfWorkers" jdbcType="INTEGER" property="numberofworkers"/>
         </association>
-        <collection property="appraiseDTO" ofType="com.cwl.qzzp.dto.AppraiseDTO"
-                    resultMap="com.cwl.qzzp.dao.AppraiseDao.BaseResultMap"
-                    column="dataId">
+        <collection property="appraiseDTO" javaType="ArrayList" ofType="com.cwl.qzzp.dto.AppraiseDTO" column="dataId">
+            <id column="itemId" jdbcType="CHAR" property="itemid" />
+            <result column="userId" jdbcType="CHAR" property="userid" />
+            <result column="multipleScore" jdbcType="DOUBLE" property="multiplescore" />
+            <result column="matchScore" jdbcType="DOUBLE" property="matchscore" />
+            <result column="ratingTheInterviewe" jdbcType="DOUBLE" property="ratingtheinterviewe" />
+            <result column="environment" jdbcType="DOUBLE" property="environment" />
+            <result column="InterviewProcess" jdbcType="VARCHAR" property="interviewprocess" />
+            <result column="evaluationLabel1" jdbcType="VARCHAR" property="evaluationlabel1" />
+            <result column="evaluationLabel2" jdbcType="VARCHAR" property="evaluationlabel2" />
+            <result column="evaluationLabel3" jdbcType="VARCHAR" property="evaluationlabel3" />
+            <result column="evaluationLabel4" jdbcType="VARCHAR" property="evaluationlabel4" />
+            <result column="evaluationLabel5" jdbcType="VARCHAR" property="evaluationlabel5" />
+            <result column="crateTime" jdbcType="TIMESTAMP" property="cratetime" />
         </collection>
     </resultMap>
 
