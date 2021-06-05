@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>公司</title>
+    <title>简历</title>
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/head.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/project/css/bottom.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap4.5.2/css/bootstrap.min.css}">
@@ -26,8 +26,13 @@
     .uname{
         color: #565656;
         font-size: 20px;
-        font-weight: 600;
         margin-bottom: 5px;
+        letter-spacing: 5px;
+    }
+    .info{
+        color: #565656;
+        font-size: 18px;
+        font-weight: 400;
     }
 </style>
 <body>
@@ -36,19 +41,18 @@
 <div class="row" >
     <div class="col-md-4 " th:each="p,status:${data}" >
         <div class="boder">
-            <div class="uname" th:text="${'姓名：'+p.username}"></div>
-            <div class="uname" th:text="${'性别：'+p.gender}"></div>
-            <div class="uname" th:text="${'联系方式：'+p.phone}"></div>
-            <div class="uname" th:text="${'邮箱：'+p.email}"></div>
-            <div class="uname" th:text="${'毕业院校：'+p.schoolname}"></div>
-            <div class="uname" th:text="${'专业：'+p.professionalTitle}"></div>
-            <div class="uname" th:text="${'毕业时间：'+#dates.format(p.graduationTime,'yyyy-MM-dd')}"></div>
-            <div class="uname" th:text="${'身份：'+p.identitys}"></div>
-            <div class="uname" style="word-wrap:break-word;" th:text="${'个人优势：'+p.personaladvantage}"></div>
-            <div class="uname" th:text="${'期望薪资：'+p.startingSalaryFrom+'-'+p.startingSalaryTo}"></div>
-            <div class="uname" th:text="${'期待职位：'+p.position}"></div>
-            <div class="uname" th:text="${'期待城市：'+p.city}"></div>
-            <a class="layui-btn layui-btn-primary" style="text-decoration: none" th:href="@{/down(path=${p.resumePath})}">下载简历附件</a>
+            <div><span class="uname"><i class="layui-icon layui-icon-username" style="font-size: 20px;"></i>：</span><span class="info" th:text="${p.username}" style="letter-spacing: 5px"></span></div>
+            <div><span class="uname"><i class="layui-icon layui-icon-male" style="font-size: 20px;"></i>：</span><span class="info"  th:text="${p.gender}"></span></div>
+            <div><span class="uname"><i class="layui-icon layui-icon-cellphone" style="font-size: 20px;"></i>：</span><span class="info"  th:text="${p.phone}"></span></div>
+            <div><span class="uname"><i class="layui-icon layui-icon-email" style="font-size: 20px;"></i>：</span><span class="info"  th:text="${p.email}"></span></div>
+            <div><span class="uname">院校：</span><span class="info"  th:text="${p.schoolname}"></span></div>
+            <div><span class="uname">身份：</span><span class="info"  th:text="${p.identitys}" style="letter-spacing: 5px" ></span></div>
+            <div><span class="uname">毕业时间：</span><span  class="info" th:text="${#dates.format(p.graduationTime,'yyyy-MM-dd')}"></span></div>
+            <div><span class="uname">个人优势：</span><span class="info"  style="word-wrap:break-word;" th:text="${p.personaladvantage}"></span></div>
+            <div><span class="uname">期望薪资：</span><span class="info"  style="color: #FA6041" th:text="${p.startingSalaryFrom+'-'+p.startingSalaryTo}"></span></div>
+            <div><span class="uname">期待职位：</span><span class="info"  th:text="${p.position}"></span></div>
+            <div><span class="uname">期待城市：</span><span class="info"  th:text="${p.city}"></span></div>
+            <a class="layui-btn layui-btn-primary" style="text-decoration: none;margin-top: 15px" th:href="@{/down(path=${p.resumePath})}"><i class="layui-icon layui-icon-download-circle" style="font-size: 20px"></i>下载简历附件</a>
         </div>
 
     </div>
