@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>编辑公司管理者信息</title>
+    <title>编辑公司信息</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -59,17 +59,17 @@
                     <div class="layui-form-item layui-form-text">
                         <div class="layui-input-block">
                             <div id="div1"></div>
-                            <textarea class="layui-textarea" name="mintroducation" lay-verify="title" id="editor"
-                                      style="width: 100%;height: 300px;display: none"></textarea>
+                            <textarea class="layui-textarea" name="mintroducation" lay-verify="title" id="mintroducation"
+                                      style="width: 100%;height: 300px;" disabled></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <input id="dataid" type="text" name="dataid"
-                           class="layui-input layui-hide">
+                    <input id="dataid" type="text" name="dataid" class="layui-input layui-hide">
+                    <input id="mids" type="text" name="mids" class="layui-input layui-hide">
                     <div class="layui-inline">
-                        <button class="layui-btn" lay-submit="" lay-filter="add">立即添加</button>
+                        <button class="layui-btn" lay-submit="" lay-filter="update">立即修改</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -82,7 +82,9 @@
 <script th:src="@{/lib/jquery-3.4.1/jquery-3.4.1.min.js}" charset="utf-8"></script>
 <script th:src="@{/project/js/lay-config.js}" charset="utf-8"></script>
 <script>
-
+    function delHtmlTag(str) {
+        return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
+    }
     window.onload = function () {
         let itemid = window.sessionStorage.getItem("itemid")
         $.ajax({
@@ -92,41 +94,22 @@
             data: {'id': itemid},
             success: function (res) {
                 $("#dataid").val(res.data.dataid)
+
+                $.ajax({
+                    url: '/get/teamInfo',
+                    type: 'get',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: {'dataid': res.data.dataid},
+                    success: function (res) {
+                        $("#mname").val(res.data.mname)
+                        $("#mids").val(res.data.mids)
+                        $("#mintroducation").val(res.data.mintroducation)
+                        $("#pmintroducation").val(delHtmlTag(res.data.pmintroducation))
+                    }
+                })
             }
         })
     }
-    var eImage = new Array();
-    const E = window.wangEditor
-    const editor = new E('#div1')
-    const $text1 = $('#editor')
-    editor.config.menus = [
-        'head',
-        'bold',
-        'fontSize',
-        'fontName',
-        'italic',
-        'underline',
-        'strikeThrough',
-        'indent',
-        'lineHeight',
-        'foreColor',
-        'backColor',
-        'link',
-        'list',
-        'todo',
-        'justify',
-        'quote',
-        'table',
-        'code',
-        'splitLine',
-        'undo',
-        'redo',
-    ]
-    editor.config.onchange = function (html) {
-        $text1.val(html)
-    }
-    editor.create()
-    $text1.val(editor.txt.html())
     layui.use(['form', 'layedit', 'laydate', 'upload', 'element'], function () {
         var form = layui.form,
             layer = layui.layer,
@@ -145,72 +128,27 @@
                 }
             }
         });
-        var logoPath;
-        var uploadInst = upload.render({
-            elem: '#test1'
-            , url: 'http://localhost:18011/img/upload'
-            , accept: 'images'
-            , size: 50000
-            , dragDrop: true                  // 是否可以拖动上传文件
-            , before: function (obj) {
-                obj.preview(function (index, file, result) {
-                    $('#demo1').attr('src', result);
-                });
-                element.progress('demo', '0%'); //进度条复位
-                layer.msg('上传中', {icon: 16, time: 0});
-            }
-            , done: function (res) {
-                //如果上传失败
-                if (res.code > 0) {
-                    return layer.msg('上传失败');
-                }
-                //上传成功
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #4cae4c;">上传成功</span>');
-                logoPath = res.data.src
-                console.log(logoPath)
-                $("#logoimage").val(res.data.src)
-            }
-            , error: function () {
-                //演示失败状态，并实现重传
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                demoText.find('.demo-reload').on('click', function () {
-                    uploadInst.upload();
-                });
-            }
-            , progress: function (n, index, e) {
-                element.progress('demo', n + '%'); //可配合 layui 进度条元素使用
-                if (n == 100) {
-                    layer.msg('上传完毕', {icon: 1});
-                }
-            }
-        });
 
-        form.on('submit(add)', function (data) {
-            var itemid = window.sessionStorage.getItem('itemid');
-            if (itemid === null) {
-                layer.alert("登录失效!!!,请登录")
-            } else {
-                const team = JSON.stringify(data.field)
-                $.ajax({
-                        url: '/insert/teamInfo',
-                        type: 'post',
-                        contentType: 'application/json; charset=UTF-8',
-                        async: false,
-                        dataType: "json",
-                        data: team,
-                        success: function (res) {
-                            console.log(res)
-                            if (res.status === 0) {
-                                layer.msg("发布成功")
-                            } else {
-                                layer.msg("发布失败")
-                            }
+
+        form.on('submit(update)', function (data) {
+            const team = JSON.stringify(data.field)
+            $.ajax({
+                    url: '/update/teamInfo',
+                    type: 'post',
+                    contentType: 'application/json; charset=UTF-8',
+                    async: false,
+                    dataType: "json",
+                    data: team,
+                    success: function (res) {
+                        console.log(res)
+                        if (res.status === 0) {
+                            layer.msg("修改成功")
+                        } else {
+                            layer.msg("修改失败")
                         }
                     }
-                )
-            }
+                }
+            )
 
         });
     })

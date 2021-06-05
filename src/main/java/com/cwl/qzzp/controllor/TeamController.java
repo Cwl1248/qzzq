@@ -9,9 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author ：ChengWl
@@ -48,6 +46,19 @@ public class TeamController {
             return ResultData.failed(RetCode.FAIL.code, "添加失败", e);
         }
         return ResultData.failed(RetCode.FAIL.code, "添加失败");
+    }
+
+
+    @GetMapping("/get/teamInfo")
+    @ResponseBody
+    public ResultData getTeamInfo(String dataid){
+        return teamService.getTeamInfo(dataid);
+    }
+
+    @PostMapping("/update/teamInfo")
+    @ResponseBody
+    public ResultData upTeamInfo(@RequestBody ManagementteamDTO managementteamDTO){
+        return teamService.upTeamInfo(managementteamDTO);
     }
 
 }

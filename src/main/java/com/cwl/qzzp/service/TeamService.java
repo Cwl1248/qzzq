@@ -1,5 +1,6 @@
 package com.cwl.qzzp.service;
 
+import com.cwl.qzzp.common.ResultData;
 import com.cwl.qzzp.dao.ManagementteamDao;
 import com.cwl.qzzp.dto.ManagementteamDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -23,5 +24,13 @@ public class TeamService {
 
     public int insertTeamInfo(ManagementteamDTO managementteamDTO) {
         return managementteamDao.insertSelective(managementteamDTO);
+    }
+
+    public ResultData getTeamInfo(String dataid) {
+        return ResultData.ok(managementteamDao.selectByPrimaryKey(dataid));
+    }
+
+    public ResultData upTeamInfo(ManagementteamDTO managementteamDTO) {
+        return ResultData.ok(managementteamDao.updateByPrimaryKeySelective(managementteamDTO));
     }
 }

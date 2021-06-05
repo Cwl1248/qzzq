@@ -15,7 +15,7 @@
     select 
     <include refid="Base_Column_List" />
     from managementteam
-    where mIds = #{mids,jdbcType=CHAR}
+    where dataId = #{mids,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from managementteam
@@ -67,9 +67,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.cwl.qzzp.dto.ManagementteamDTO">
     update managementteam
     <set>
-      <if test="dataid != null">
-        dataId = #{dataid,jdbcType=CHAR},
-      </if>
       <if test="mname != null">
         mName = #{mname,jdbcType=VARCHAR},
       </if>

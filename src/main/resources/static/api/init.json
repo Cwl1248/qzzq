@@ -52,6 +52,12 @@
               "href": "manage/addManagementTeamInformation",
               "icon": "fa fa-tags",
               "target": "_self"
+            },
+            {
+              "title": "修改公司高管信息",
+              "href": "manage/updateManagementTeamInformation",
+              "icon": "fa fa-tags",
+              "target": "_self"
             }
           ]
         },

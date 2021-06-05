@@ -98,8 +98,20 @@ public class ManagerController {
         return "page/tramFrom";
     }
 
+    /**
+     * 添加管理团队信息
+     * @return
+     */
+    @GetMapping("/updateManagementTeamInformation")
+    public String updateManagementTeamInformation() {
+        return "page/tramFrom2";
+    }
+
     @GetMapping("/resumeDelivery")
     public String resumeDelivery(){
         return "page/deliverytable";
     }
+
+
+
 }

@@ -11,7 +11,7 @@ public interface ManagementteamDao {
 
     int insertSelective(ManagementteamDTO record);
 
-    ManagementteamDTO selectByPrimaryKey(String mids);
+    ManagementteamDTO selectByPrimaryKey(String dataid);
 
     int updateByPrimaryKeySelective(ManagementteamDTO record);
 
